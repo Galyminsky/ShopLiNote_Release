@@ -1,0 +1,47 @@
+<resources>
+    <string name="app_name">ShopLiNote Release</string>
+    <string name="settings">Настройки</string>
+    <string name="notes">Заметки</string>
+    <string name="shop_list">Список покупок</string>
+    <string name="new_item">Новый</string>
+
+    <string name="title_hint">Заголовок</string>
+    <string name="description_hint">Описание</string>
+    <string name="save_menu">Сохранить</string>
+    <string name="bold">Жирный</string>
+    <string name="color">Цвет</string>
+    <string name="new_list_name">Новый список</string>
+    <string name="list_name">Название списка</string>
+    <string name="create">Создать список</string>
+    <!-- TODO: Remove or change this placeholder text -->
+
+    <string name="delete_item">Вы хотите удалить этот список?</string>
+    <string name="delete_alert">УДАЛЕНИЕ</string>
+    <string name="delete_button">УДАЛИТЬ</string>
+    <string name="cancel_button">Отмена</string>
+    <string name="update">Обновить</string>
+    <string name="edit_list">Редактировать список</string>
+    <string name="delete_list">Удалить</string>
+    <string name="clear_list">Очистить</string>
+    <string name="share_list">Поделится...</string>
+    <string name="menu_new_item">Новый элемент</string>
+    <string name="menu_save_item">Сохранить элемент</string>
+    <string name="hint_new_item">Новый элемент</string>
+    <string name="update_list_item">Обновить список элементов</string>
+    <string name="btn_update_item">Обновить</string>
+    <string name="name_item_hint">Название</string>
+    <string name="item_info_hint">Описание</string>
+
+
+    <string name="general">Настройки</string>
+    <string name="chose_note_style">Выбрать стиль списков</string>
+    <string name="chose_time_format">Выбрать формат даты</string>
+    <string name="remove_ads">Удалить Рекламу</string>
+    <string name="remove_ads_summary">Удалить полностью Рекламу из Приложения</string>
+
+    <string name="theme_settings">Настройки Темы</string>
+    <string name="chose_theme">Выбор темы</string>
+    <string name="note_text_setting">Настройки Текста</string>
+    <string name="title_text_size">Размер заголовка</string>
+    <string name="content_text_size">Размер описания</string>
+</resources>

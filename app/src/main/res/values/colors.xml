@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Main Theme -->
+    <color name="purple_200">#80DEEA</color>
+    <color name="purple_500">#00BCD4</color>
+    <color name="purple_700">#0097A7</color>
+    <color name="teal_900">#006064</color>
+    <color name="teal_600">#00ACC1</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <!-- Green Theme -->
+    <color name="green_200">#A5D6A7</color>
+    <color name="green_500">#4CAF50</color>
+    <color name="green_700">#388E3C</color>
+    <color name="green_teal_900">#1B5E20</color>
+    <color name="green_teal_600">#43A047</color>
+    <!-- Red Theme -->
+    <color name="red_200">#EF9A9A</color>
+    <color name="red_500">#F44336</color>
+    <color name="red_700">#D32F2F</color>
+    <color name="red_teal_900">#B71C1C</color>
+    <color name="red_teal_600">#E53935</color>
+    <!-- Picker.Color -->
+    <color name="picker_red">#FF0000</color>
+    <color name="picker_green">#2CD510</color>
+    <color name="picker_blue">#2196F3</color>
+    <color name="picker_black">#434343</color>
+    <color name="picker_yellow">#FFC107</color>
+    <color name="picker_orange">#FF5722</color>
+    <!-- All.Color -->
+    <color name="grey_light">#b4ebf7</color>
+    <!-- Edit List -->
+    <color name="main_theme_count">#53d1ea</color>
+    <color name="main_theme_edit">#b763c5</color>
+    <color name="main_theme_delete">#df5b7d</color>
+</resources>
