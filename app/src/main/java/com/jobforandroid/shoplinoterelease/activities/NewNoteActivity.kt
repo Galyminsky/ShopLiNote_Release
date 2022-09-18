@@ -34,12 +34,11 @@ class NewNoteActivity : AppCompatActivity() {
     private var note: NoteItem? = null
     private var pref: SharedPreferences? = null
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityNewNoteBinding.inflate(layoutInflater)
         defPref = PreferenceManager.getDefaultSharedPreferences(this)
         setTheme(getSelectedTheme())
+        super.onCreate(savedInstanceState)
+        binding = ActivityNewNoteBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         actionBarSetting()
@@ -247,12 +246,12 @@ class NewNoteActivity : AppCompatActivity() {
 
     private fun getSelectedTheme(): Int {
         return if (defPref.getString("theme_key", "main") == "main") {
-            R.style.Theme_ShopLiNoteMain
+            R.style.Theme_NewNoteMain
         } else if (defPref.getString("theme_key", "green") == "green") {
-            R.style.Theme_ShopLiNoteGreen
+            R.style.Theme_NewNoteGreen
         } else {
             (defPref.getString("theme_key", "red") == "red")
-            R.style.Theme_ShopLiNoteRed
+            R.style.Theme_NewNoteRed
         }
     }
 

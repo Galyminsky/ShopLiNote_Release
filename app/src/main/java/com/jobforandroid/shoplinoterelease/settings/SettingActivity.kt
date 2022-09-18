@@ -13,9 +13,9 @@ class SettingActivity : AppCompatActivity() {
     private lateinit var defPref: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
         defPref = PreferenceManager.getDefaultSharedPreferences(this)
         setTheme(getSelectedTheme())
+        super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_setting)
 
         if (savedInstanceState == null) {
@@ -37,10 +37,10 @@ class SettingActivity : AppCompatActivity() {
     private fun getSelectedTheme(): Int {
         return if (defPref.getString("theme_key", "main") == "main") {
             R.style.Theme_ShopLiNoteMain
-        } else if (defPref.getString("theme_key", "main") == "green") {
+        } else if (defPref.getString("theme_key", "green") == "green") {
             R.style.Theme_ShopLiNoteGreen
         } else {
-            (defPref.getString("theme_key", "main") == "red")
+            (defPref.getString("theme_key", "red") == "red")
             R.style.Theme_ShopLiNoteRed
         }
     }

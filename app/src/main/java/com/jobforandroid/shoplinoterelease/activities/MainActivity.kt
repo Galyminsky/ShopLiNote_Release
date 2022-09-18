@@ -26,10 +26,8 @@ class MainActivity : AppCompatActivity(), NewListDialog.Listener {
         defPref = PreferenceManager.getDefaultSharedPreferences(this)
         currentTheme = defPref.getString("theme_key", "main").toString()
         setTheme(getSelectedTheme())
-
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-
         setContentView(binding.root)
         FragmentManager.setFragment(ShopListNamesFragment.newInstance(), this)
 

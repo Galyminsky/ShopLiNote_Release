@@ -41,11 +41,9 @@ class ShopListActivity : AppCompatActivity(), ShopListItemAdapter.Listener {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
         defPref = PreferenceManager.getDefaultSharedPreferences(this)
         currentTheme = defPref.getString("theme_key", "main").toString()
         setTheme(getSelectedTheme())
-
         super.onCreate(savedInstanceState)
         binding = ActivityShopListBinding.inflate(layoutInflater)
         setContentView(binding.root)
