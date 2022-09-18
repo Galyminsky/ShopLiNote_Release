@@ -61,9 +61,9 @@ class ShopListNameAdapter(private val listener: Listener) :
 
         private fun getProgressColorState(item: ShopListNameItem, context: Context): Int {
             return if (item.checkedItemsCounter == item.allItemCounter) {
-                ContextCompat.getColor(context, R.color.picker_red)
+                ContextCompat.getColor(context, R.color.blue_count)
             } else {
-                ContextCompat.getColor(context, R.color.picker_blue)
+                ContextCompat.getColor(context, R.color.red_count)
             }
 
         }
