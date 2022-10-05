@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">ShopLiNote</string>
     <string name="settings">Настройки</string>
     <string name="notes">Заметки</string>
@@ -23,7 +23,7 @@
     <string name="edit_list">Редактировать список</string>
     <string name="delete_list">Удалить</string>
     <string name="clear_list">Очистить</string>
-    <string name="share_list">Поделится...</string>
+    <string name="share_list" tools:ignore="TypographyEllipsis">Поделится...</string>
     <string name="menu_new_item">Новый элемент</string>
     <string name="menu_save_item">Сохранить элемент</string>
     <string name="hint_new_item">Новый элемент</string>
@@ -44,4 +44,8 @@
     <string name="note_text_setting">Настройки Текста</string>
     <string name="title_text_size">Размер заголовка</string>
     <string name="content_text_size">Размер описания</string>
+    <string name="nul">Пусто</string>
+    <string name="nulll">Списки Покупок</string>
+    <string name="_0_0">0/0</string>
+    <string name="textview">TextView</string>
 </resources>

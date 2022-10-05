@@ -9,7 +9,6 @@ import android.os.Bundle
 import android.text.Spannable
 import android.text.style.ForegroundColorSpan
 import android.text.style.StyleSpan
-import android.util.Log
 import android.view.ActionMode
 import android.view.Menu
 import android.view.MenuItem
@@ -228,7 +227,6 @@ class NewNoteActivity : AppCompatActivity() {
             }
 
             override fun onDestroyActionMode(mode: ActionMode?) {
-
             }
         }
         binding.edDescription.customSelectionActionModeCallback = actionCallback
@@ -253,5 +251,4 @@ class NewNoteActivity : AppCompatActivity() {
             R.style.Theme_NewNoteRed
         }
     }
-
 }

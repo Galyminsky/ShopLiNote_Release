@@ -61,7 +61,7 @@
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
-    <ImageButton
+    <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/imDelete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -76,7 +76,7 @@
         app:layout_constraintTop_toTopOf="@+id/cardView"
         app:srcCompat="@drawable/ic_delete_list" />
 
-    <ImageButton
+    <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/imEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -112,11 +112,11 @@
 
             <TextView
                 android:id="@+id/tvCounter"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                android:text="0/0"
+                android:text="@string/_0_0"
                 android:textColor="@color/white"
                 android:textSize="14sp" />
         </LinearLayout>

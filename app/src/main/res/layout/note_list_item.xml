@@ -10,7 +10,6 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:elevation="2dp"
-
         app:cardCornerRadius="10dp"
         app:cardElevation="3dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -24,7 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <ImageButton
+            <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/imDelete"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -53,7 +52,7 @@
                     android:id="@+id/tvTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="TextView"
+                    android:text="@string/textview"
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     android:textStyle="bold" />
@@ -63,7 +62,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:text="TextView"
+                    android:text="@string/textview"
                     android:textColor="@color/black" />
 
                 <LinearLayout

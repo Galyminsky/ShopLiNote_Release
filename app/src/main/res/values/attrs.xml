@@ -2,5 +2,4 @@
 <resources>
     <attr name="allBgColor" format="color"/>
     <attr name="theme_btn" format="color"/>
-
 </resources>
