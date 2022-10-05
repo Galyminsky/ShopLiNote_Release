@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ShopLiNote Release</string>
+    <string name="app_name">ShopLiNote</string>
     <string name="settings">Настройки</string>
     <string name="notes">Заметки</string>
     <string name="shop_list">Список покупок</string>

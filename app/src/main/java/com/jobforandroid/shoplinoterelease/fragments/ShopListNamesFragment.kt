@@ -20,7 +20,7 @@ import com.jobforandroid.shoplinoterelease.entities.ShopListNameItem
 import com.jobforandroid.shoplinoterelease.utils.TimeManager
 
 
-class ShopListNamesFragment : BaseFragment(), ShopListNameAdapter.Listener {
+class ShopListNamesFragment : BaseFragment(), ShopListNameAdapter.Listener  {
     private lateinit var binding: FragmentShopListNamesBinding
     private lateinit var adapter: ShopListNameAdapter
     private val mainViewModel: MainViewModel by activityViewModels {
