@@ -34,7 +34,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
         android:layout_marginTop="1dp"
@@ -46,18 +46,20 @@
         app:layout_constraintTop_toBottomOf="@+id/tvMessage"
         app:layout_constraintVertical_bias="0.0">
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/bDelete"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:width="1dp"
             android:layout_margin="5dp"
             android:layout_weight="1"
             android:text="@string/delete_button" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/bCancel"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:width="1dp"
             android:layout_margin="5dp"
             android:layout_weight="1"
             android:text="@string/cancel_button" />

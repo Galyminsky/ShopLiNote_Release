@@ -39,17 +39,21 @@ class MainActivity : AppCompatActivity(), NewListDialog.Listener {
         binding.bNav.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.settings -> {
+                    supportActionBar?.title = getString(R.string.settings)
                     startActivity(Intent(this, SettingActivity::class.java))
                 }
                 R.id.notes -> {
+                    supportActionBar?.title = getString(R.string.notes)
                     currentMenuItemId = R.id.notes
                     FragmentManager.setFragment(NoteFragment.newInstance(), this)
                 }
                 R.id.shop_list -> {
+                    supportActionBar?.title = getString(R.string.shop_list)
                     currentMenuItemId = R.id.shop_list
                     FragmentManager.setFragment(ShopListNamesFragment.newInstance(), this)
                 }
                 R.id.new_item -> {
+                    supportActionBar?.title = getString(R.string.new_item)
                     FragmentManager.currentFrag?.onClickNew()
                 }
             }

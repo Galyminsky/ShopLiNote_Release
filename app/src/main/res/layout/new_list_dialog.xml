@@ -33,7 +33,7 @@
                 android:text="@string/new_list_name"
                 android:textSize="18sp" />
 
-            <EditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edNewListName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -42,7 +42,7 @@
                 android:inputType="textPersonName"
                 android:minHeight="48dp" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/bCreate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
