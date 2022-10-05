@@ -46,6 +46,7 @@ class ShopListActivity : AppCompatActivity(), ShopListItemAdapter.Listener {
         setTheme(getSelectedTheme())
         super.onCreate(savedInstanceState)
         binding = ActivityShopListBinding.inflate(layoutInflater)
+
         setContentView(binding.root)
         init()
         initRcView()
@@ -102,7 +103,6 @@ class ShopListActivity : AppCompatActivity(), ShopListItemAdapter.Listener {
                     )
                 )
             }
-
         }
         return super.onOptionsItemSelected(item)
     }
@@ -179,7 +179,7 @@ class ShopListActivity : AppCompatActivity(), ShopListItemAdapter.Listener {
                 invalidateOptionsMenu()
                 mainViewModel.libraryItems.removeObservers(this@ShopListActivity)
                 edItem?.setText("")
-                libraryItemObserver()
+                listItemObserver()
                 return true
             }
         }

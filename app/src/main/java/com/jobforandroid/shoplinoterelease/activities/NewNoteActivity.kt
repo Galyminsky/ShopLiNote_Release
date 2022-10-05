@@ -235,7 +235,6 @@ class NewNoteActivity : AppCompatActivity() {
     }
 
     private fun setTextSize() = with(binding) {
-        Log.d("MyLog", "size: ${pref?.getString("title_size_key", "12")}")
         edTitle.setTextSize(pref?.getString("title_size_key", "12"))
         edDescription.setTextSize(pref?.getString("content_size_key", "12"))
     }

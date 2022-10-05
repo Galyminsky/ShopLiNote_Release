@@ -84,13 +84,13 @@ class ShopListItemAdapter(private val listener: Listener) :
                     tvName.setTextColor(
                         ContextCompat.getColor(
                             binding.root.context,
-                            R.color.red_500
+                            R.color.grey_light
                         )
                     )
                     tvInfo.setTextColor(
                         ContextCompat.getColor(
                             binding.root.context,
-                            R.color.red_500
+                            R.color.grey_light
                         )
                     )
                 } else {

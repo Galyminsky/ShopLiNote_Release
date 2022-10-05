@@ -28,12 +28,9 @@ class ShopListNameAdapter(private val listener: Listener) :
 
 
     class ItemHolder(view: View) : RecyclerView.ViewHolder(view) {
-
         private val binding = ListNameItemBinding.bind(view)
 
         fun setData(shopListNameItem: ShopListNameItem, listener: Listener) = with(binding) {
-            val counterText =
-                "${shopListNameItem.checkedItemsCounter} / ${shopListNameItem.allItemCounter}"
             val colorState = ColorStateList.valueOf(
                 getProgressColorState(
                     shopListNameItem,
@@ -46,6 +43,8 @@ class ShopListNameAdapter(private val listener: Listener) :
             pBar.progress = shopListNameItem.checkedItemsCounter
             pBar.progressTintList = colorState
             counterCard.backgroundTintList = colorState
+            val counterText =
+                "${shopListNameItem.checkedItemsCounter} / ${shopListNameItem.allItemCounter}"
             tvCounter.text = counterText
             itemView.setOnClickListener {
                 listener.onClickItem(shopListNameItem)

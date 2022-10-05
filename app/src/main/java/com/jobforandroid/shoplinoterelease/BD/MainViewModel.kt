@@ -24,7 +24,6 @@ class MainViewModel(database: MainDataBase) : ViewModel() {
         libraryItems.postValue(dao.getAllLibraryItems(name))
     }
 
-
     fun insertNote(note: NoteItem) = viewModelScope.launch {
         dao.insertNote(note)
     }
