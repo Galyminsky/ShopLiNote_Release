@@ -23,6 +23,8 @@
 
 ---> LiveData  
 
+Ссылка на черновой вариант ---> https://github.com/Galyminsky/ShopLiNote
+
 
 ![screenshot_1](https://user-images.githubusercontent.com/82653197/194040770-5c8b60c7-831e-4f9c-90e1-5169a278cd11.png)
 ![screenshot_2](https://user-images.githubusercontent.com/82653197/194040780-49eb7d45-b33a-43ff-9386-27d1d1518346.png)
