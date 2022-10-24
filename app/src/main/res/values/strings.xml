@@ -22,7 +22,7 @@
     <string name="update">Обновить</string>
     <string name="edit_list">Редактировать список</string>
     <string name="delete_list">Удалить</string>
-    <string name="clear_list">Очистить</string>
+    <string name="clear_list">Очистить все</string>
     <string name="share_list" tools:ignore="TypographyEllipsis">Поделится...</string>
     <string name="menu_new_item">Новый элемент</string>
     <string name="menu_save_item">Сохранить элемент</string>
