@@ -23,6 +23,8 @@
 
 ---> LiveData  
 
+Скачать приложение с PlayMarket ---> https://play.google.com/store/apps/details?id=com.jobforandroid.shoplinoterelease
+
 Ссылка на черновой вариант ---> https://github.com/Galyminsky/ShopLiNote
 
 
