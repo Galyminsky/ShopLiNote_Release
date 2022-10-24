@@ -19,7 +19,7 @@
     <item
         android:id="@+id/new_item"
         android:title="@string/menu_new_item"
-        android:icon="@drawable/ic_new_shop_item"
+        android:icon="@drawable/ic_new_shop_item_white"
         app:actionLayout="@layout/edit_action_layout"
         android:orderInCategory="1"
         app:showAsAction="always|collapseActionView"
@@ -28,7 +28,7 @@
     <item
         android:id="@+id/save_item"
         android:title="@string/menu_save_item"
-        android:icon="@drawable/ic_save"
+        android:icon="@drawable/ic_save_white"
         android:orderInCategory="2"
         app:showAsAction="always"/>
 
