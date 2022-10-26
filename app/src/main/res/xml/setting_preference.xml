@@ -20,11 +20,11 @@
             android:icon="@drawable/ic_time_format"
             android:title="@string/chose_time_format" />
 
-        <Preference
+        <!--<Preference
             android:title="@string/remove_ads"
             android:summary="@string/remove_ads_summary"
             android:icon="@drawable/ic_remove_ads"
-            />
+            />-->
     </PreferenceCategory>
 
     <PreferenceCategory android:title="@string/theme_settings">

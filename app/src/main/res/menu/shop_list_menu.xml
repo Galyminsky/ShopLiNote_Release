@@ -6,20 +6,25 @@
 
     <item
         android:id="@+id/share_list"
-        android:title="@string/share_list" />
+        android:title="@string/share_list"
+        android:icon="@drawable/ic_share_white"
+        android:orderInCategory="3"
+        app:showAsAction="always"/>
 
     <item
         android:id="@+id/clear_list"
-        android:title="@string/clear_list" />
+        android:title="@string/clear_list"
+        android:orderInCategory="5"/>
 
     <item
         android:id="@+id/delete_list"
-        android:title="@string/delete_list" />
+        android:title="@string/delete_list"
+        android:orderInCategory="4"/>
 
     <item
         android:id="@+id/new_item"
         android:title="@string/menu_new_item"
-        android:icon="@drawable/ic_new_shop_item"
+        android:icon="@drawable/ic_new_shop_item_white"
         app:actionLayout="@layout/edit_action_layout"
         android:orderInCategory="1"
         app:showAsAction="always|collapseActionView"
@@ -28,7 +33,7 @@
     <item
         android:id="@+id/save_item"
         android:title="@string/menu_save_item"
-        android:icon="@drawable/ic_save"
+        android:icon="@drawable/ic_save_white"
         android:orderInCategory="2"
         app:showAsAction="always"/>
 

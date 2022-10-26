@@ -11,9 +11,22 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:src="@drawable/ic_note_back"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/rcViewNote" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rcViewNote"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            tools:layout_editor_absoluteX="61dp"
+            tools:layout_editor_absoluteY="88dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
