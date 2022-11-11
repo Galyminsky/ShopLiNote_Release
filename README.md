@@ -27,6 +27,7 @@
 
 Ссылка на черновой вариант ---> https://github.com/Galyminsky/ShopLiNote
 
+![app_icon](https://user-images.githubusercontent.com/82653197/201367611-765d0489-9cb6-4ab0-a127-7d7ef7a565fc.png)
 
 ![screenshot_1](https://user-images.githubusercontent.com/82653197/194040770-5c8b60c7-831e-4f9c-90e1-5169a278cd11.png)
 ![screenshot_2](https://user-images.githubusercontent.com/82653197/194040780-49eb7d45-b33a-43ff-9386-27d1d1518346.png)
