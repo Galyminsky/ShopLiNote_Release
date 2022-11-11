@@ -35,6 +35,7 @@ class MainActivity : AppCompatActivity(), NewListDialog.Listener {
 
     }
 
+
     private fun setBottomNavListener() {
         binding.bNav.setOnItemSelectedListener {
             when (it.itemId) {
