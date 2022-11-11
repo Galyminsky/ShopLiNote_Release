@@ -1,0 +1,51 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">ShopLiNote</string>
+    <string name="settings">Налаштування</string>
+    <string name="notes">Нотатки</string>
+    <string name="shop_list">Список покупок</string>
+    <string name="new_item">Новий</string>
+
+    <string name="title_hint">Заголовок</string>
+    <string name="description_hint">Опис</string>
+    <string name="save_menu">Зберегти</string>
+    <string name="bold">Жирный</string>
+    <string name="color">Колір</string>
+    <string name="new_list_name">Новий Список</string>
+    <string name="list_name">Назва Списку</string>
+    <string name="create">Створити Список</string>
+
+
+    <string name="delete_item">Ви хочете видалити цей список?</string>
+    <string name="delete_alert">Видалення</string>
+    <string name="delete_button">Видалити</string>
+    <string name="cancel_button">Скасування</string>
+    <string name="update">Оновити</string>
+    <string name="edit_list">Редагувати Список</string>
+    <string name="delete_list">Видалити</string>
+    <string name="clear_list">Очистити Список</string>
+    <string name="share_list" tools:ignore="TypographyEllipsis">Поділиться...</string>
+    <string name="menu_new_item">Новий Елемент</string>
+    <string name="menu_save_item">Зберегти Елемент</string>
+    <string name="hint_new_item">Новий Елемент</string>
+    <string name="update_list_item">Оновити Список Елементів</string>
+    <string name="btn_update_item">Оновити</string>
+    <string name="name_item_hint">Назва</string>
+    <string name="item_info_hint">Опис</string>
+
+
+    <string name="general">Налаштування</string>
+    <string name="chose_note_style">Вибрати стиль списків</string>
+    <string name="chose_time_format">Вибрати формат дати</string>
+    <string name="remove_ads">Видалити Рекламу</string>
+    <string name="remove_ads_summary">Видалити повністю Рекламу з Додатка</string>
+
+    <string name="theme_settings">Налаштування Теми</string>
+    <string name="chose_theme">Вибір теми</string>
+    <string name="note_text_setting">Налаштування Тексту</string>
+    <string name="title_text_size">Розмір заголовка</string>
+    <string name="content_text_size">Розмір опису</string>
+    <string name="nul">Пусто</string>
+    <string name="nulll">Списки покупок</string>
+    <string name="_0_0">0/0</string>
+    <string name="textview">TextView</string>
+</resources>
