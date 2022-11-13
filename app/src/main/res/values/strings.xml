@@ -13,7 +13,6 @@
     <string name="new_list_name">Новый список</string>
     <string name="list_name">Название списка</string>
     <string name="create">Создать список</string>
-    <!-- TODO: Remove or change this placeholder text -->
 
     <string name="delete_item">Вы хотите удалить этот список?</string>
     <string name="delete_alert">УДАЛЕНИЕ</string>
@@ -32,7 +31,6 @@
     <string name="name_item_hint">Название</string>
     <string name="item_info_hint">Описание</string>
 
-
     <string name="general">Настройки</string>
     <string name="chose_note_style">Выбрать стиль списков</string>
     <string name="chose_time_format">Выбрать формат даты</string>
@@ -48,4 +46,7 @@
     <string name="nulll">Списки Покупок</string>
     <string name="_0_0">0/0</string>
     <string name="textview">TextView</string>
+
+    <string name="inter_ad_id" translatable="false">ca-app-pub-2014968687219090/1451071710</string>
+
 </resources>
