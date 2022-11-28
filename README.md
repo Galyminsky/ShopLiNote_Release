@@ -11,7 +11,7 @@
 
 Стек:  
 
----> Room Persistance Library  
+---> Room Persistence Library  
 
 ---> MVVM  
 
