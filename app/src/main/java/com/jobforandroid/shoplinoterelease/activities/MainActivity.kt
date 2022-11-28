@@ -6,6 +6,12 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.preference.PreferenceManager
+import com.google.android.gms.ads.AdError
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.FullScreenContentCallback
+import com.google.android.gms.ads.LoadAdError
+import com.google.android.gms.ads.interstitial.InterstitialAd
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import com.jobforandroid.shoplinoterelease.R
 import com.jobforandroid.shoplinoterelease.databinding.ActivityMainBinding
 import com.jobforandroid.shoplinoterelease.dialogs.NewListDialog
@@ -20,6 +26,7 @@ class MainActivity : AppCompatActivity(), NewListDialog.Listener {
     private var currentMenuItemId = R.id.notes
     private lateinit var defPref: SharedPreferences
     private var currentTheme = ""
+    private var iAd: InterstitialAd? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -32,15 +39,62 @@ class MainActivity : AppCompatActivity(), NewListDialog.Listener {
         FragmentManager.setFragment(ShopListNamesFragment.newInstance(), this)
 
         setBottomNavListener()
+        loadInterAd()
 
+    }
+
+    private fun loadInterAd() {
+        val request = AdRequest.Builder().build()
+        InterstitialAd.load(this, getString(R.string.inter_ad_id), request,
+        object : InterstitialAdLoadCallback() {
+            override fun onAdLoaded(p0: InterstitialAd) {
+                iAd = p0
+                Log.d("MyLog", "Load Ok")
+            }
+
+            override fun onAdFailedToLoad(p0: LoadAdError) {
+                iAd = null
+                Log.d("MyLog", "Load Error")
+            }
+        })
+    }
+
+    private fun showInterAd(adListener: AdListener) {
+        if (iAd != null) {
+            iAd?.fullScreenContentCallback = object : FullScreenContentCallback() {
+                override fun onAdDismissedFullScreenContent() {
+                    iAd = null
+                    loadInterAd()
+                    adListener.onFinish()
+                }
+
+                override fun onAdFailedToShowFullScreenContent(ad: AdError) {
+                    iAd = null
+                    loadInterAd()
+                }
+
+                override fun onAdShowedFullScreenContent() {
+                    iAd = null
+                    loadInterAd()
+                    adListener.onFinish()
+                }
+            }
+            iAd?.show(this@MainActivity)
+        } else{
+            adListener.onFinish()
+        }
     }
 
     private fun setBottomNavListener() {
         binding.bNav.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.settings -> {
-                    supportActionBar?.title = getString(R.string.settings)
-                    startActivity(Intent(this, SettingActivity::class.java))
+                    showInterAd(object : AdListener {
+                        override fun onFinish() {
+                            startActivity(Intent(this@MainActivity, SettingActivity::class.java))
+                        }
+                    })
+
                 }
                 R.id.notes -> {
                     supportActionBar?.title = getString(R.string.notes)
@@ -80,5 +134,9 @@ class MainActivity : AppCompatActivity(), NewListDialog.Listener {
 
     override fun onClick(name: String) {
         Log.d("MyLog", "Name: $name")
+    }
+
+    interface AdListener {
+        fun onFinish()
     }
 }
