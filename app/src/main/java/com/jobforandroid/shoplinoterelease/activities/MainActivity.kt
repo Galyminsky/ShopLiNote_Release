@@ -46,17 +46,17 @@ class MainActivity : AppCompatActivity(), NewListDialog.Listener {
     private fun loadInterAd() {
         val request = AdRequest.Builder().build()
         InterstitialAd.load(this, getString(R.string.inter_ad_id), request,
-        object : InterstitialAdLoadCallback() {
-            override fun onAdLoaded(p0: InterstitialAd) {
-                iAd = p0
-                Log.d("MyLog", "Load Ok")
-            }
+            object : InterstitialAdLoadCallback() {
+                override fun onAdLoaded(p0: InterstitialAd) {
+                    iAd = p0
+                    Log.d("MyLog", "Load Ok")
+                }
 
-            override fun onAdFailedToLoad(p0: LoadAdError) {
-                iAd = null
-                Log.d("MyLog", "Load Error")
-            }
-        })
+                override fun onAdFailedToLoad(p0: LoadAdError) {
+                    iAd = null
+                    Log.d("MyLog", "Load Error")
+                }
+            })
     }
 
     private fun showInterAd(adListener: AdListener) {
@@ -80,7 +80,7 @@ class MainActivity : AppCompatActivity(), NewListDialog.Listener {
                 }
             }
             iAd?.show(this@MainActivity)
-        } else{
+        } else {
             adListener.onFinish()
         }
     }
