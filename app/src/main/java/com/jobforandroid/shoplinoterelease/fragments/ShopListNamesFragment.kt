@@ -21,7 +21,8 @@ import com.jobforandroid.shoplinoterelease.utils.TimeManager
 
 
 class ShopListNamesFragment : BaseFragment(), ShopListNameAdapter.Listener {
-    private lateinit var binding: FragmentShopListNamesBinding
+    private var _binding: FragmentShopListNamesBinding? = null
+    private val binding get() = _binding!!
     private lateinit var adapter: ShopListNameAdapter
     private val mainViewModel: MainViewModel by activityViewModels {
         MainViewModel.MainViewModelFactory((context?.applicationContext as MainApp).database)
@@ -51,7 +52,7 @@ class ShopListNamesFragment : BaseFragment(), ShopListNameAdapter.Listener {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentShopListNamesBinding.inflate(inflater, container, false)
+        _binding = FragmentShopListNamesBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -99,5 +100,10 @@ class ShopListNamesFragment : BaseFragment(), ShopListNameAdapter.Listener {
             putExtra(ShopListActivity.SHOP_LIST_NAME, shopListNameItem)
         }
         startActivity(i)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }

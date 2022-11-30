@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "793254525323",
+    "project_id": "shoplinote",
+    "storage_bucket": "shoplinote.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:793254525323:android:52c53c113b89fc710ad78e",
+        "android_client_info": {
+          "package_name": "com.jobforandroid.shoplinoterelease"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "793254525323-77dl8f7954tuh0qc8utjsacivnsi2ela.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCY_WMHGK-Vpur5gv9nB4Z_temnQAOJRto"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "793254525323-77dl8f7954tuh0qc8utjsacivnsi2ela.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

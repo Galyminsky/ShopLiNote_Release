@@ -24,7 +24,9 @@ import com.jobforandroid.shoplinoterelease.entities.NoteItem
 
 
 class NoteFragment : BaseFragment(), NoteAdapter.Listener {
-    private lateinit var binding: FragmentNoteBinding
+    private var _binding: FragmentNoteBinding? = null
+    private val binding get() = _binding!!
+
     private lateinit var editLauncher: ActivityResultLauncher<Intent>
     private lateinit var adapter: NoteAdapter
     private lateinit var defPref: SharedPreferences
@@ -48,7 +50,7 @@ class NoteFragment : BaseFragment(), NoteAdapter.Listener {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentNoteBinding.inflate(inflater, container, false)
+        _binding = FragmentNoteBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -113,5 +115,10 @@ class NoteFragment : BaseFragment(), NoteAdapter.Listener {
 
         @JvmStatic
         fun newInstance() = NoteFragment()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }
