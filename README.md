@@ -8,6 +8,12 @@
 
 ![app_icon](https://user-images.githubusercontent.com/82653197/201367611-765d0489-9cb6-4ab0-a127-7d7ef7a565fc.png)
 
+===
+
+# Скачать приложение с PlayMarket ---> https://inlnk.ru/Vo8Ex1
+
+===
+
 
 Стек:  
 
@@ -25,9 +31,8 @@
 
 ---> LiveData  
 
-Скачать приложение с PlayMarket ---> https://play.google.com/store/apps/details?id=com.jobforandroid.shoplinoterelease
 
-Ссылка на черновой вариант ---> https://github.com/Galyminsky/ShopLiNote
+
 
 
 ![screenshot_1](https://user-images.githubusercontent.com/82653197/194040770-5c8b60c7-831e-4f9c-90e1-5169a278cd11.png)
