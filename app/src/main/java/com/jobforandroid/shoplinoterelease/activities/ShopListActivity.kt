@@ -247,6 +247,7 @@ class ShopListActivity : AppCompatActivity(), ShopListItemAdapter.Listener {
 
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         saveItemCount()
         super.onBackPressed()
