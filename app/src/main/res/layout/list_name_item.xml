@@ -120,5 +120,6 @@
                 android:textColor="@color/white"
                 android:textSize="14sp" />
         </LinearLayout>
+
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
