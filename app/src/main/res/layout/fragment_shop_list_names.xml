@@ -16,10 +16,12 @@
             android:layout_width="300dp"
             android:layout_height="300dp"
             android:src="@drawable/ic_shoplist_back"
+            android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="@+id/rcView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/rcView" />
+            app:layout_constraintTop_toTopOf="@+id/rcView"
+            tools:visibility="visible" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rcView"

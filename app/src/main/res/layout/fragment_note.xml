@@ -15,11 +15,13 @@
             android:layout_width="300dp"
             android:layout_height="300dp"
             android:src="@drawable/ic_note_back"
+            android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/rcViewNote" />
+            app:layout_constraintTop_toTopOf="@+id/rcViewNote"
+            tools:visibility="invisible" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rcViewNote"
