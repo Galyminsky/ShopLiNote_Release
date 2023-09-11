@@ -9,17 +9,17 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <!-- Green Theme -->
-    <color name="green_200">#e8f5e9</color>
-    <color name="green_500">#4CAF50</color>
-    <color name="green_700">#388E3C</color>
-    <color name="green_teal_900">#1B5E20</color>
-    <color name="green_teal_600">#43A047</color>
+    <color name="green_200">#dbf2cb</color>
+    <color name="green_500">#aae187</color>
+    <color name="green_700">#5eae3d</color>
+    <color name="green_teal_900">#4a9933</color>
+    <color name="green_teal_600">#73c248</color>
     <!-- Red Theme -->
-    <color name="red_200">#ffebee</color>
-    <color name="red_500">#f44336</color>
-    <color name="red_700">#D32F2F</color>
-    <color name="red_teal_700">#d32f2f</color>
-    <color name="red_teal_600">#E53935</color>
+    <color name="red_200">#ffeaec</color>
+    <color name="red_500">#f49791</color>
+    <color name="red_700">#e92f1f</color>
+    <color name="red_teal_700">#e92f1f</color>
+    <color name="red_teal_600">#f34c3f</color>
     <!-- Picker.Color -->
     <color name="picker_red">#FF0000</color>
     <color name="picker_green">#2CD510</color>
