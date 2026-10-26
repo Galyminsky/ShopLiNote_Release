@@ -6,12 +6,12 @@ plugins {
 }
 
 android {
-    compileSdk 33
+    compileSdk 36
 
     defaultConfig {
         applicationId "com.jobforandroid.shoplinoterelease"
         minSdk 21
-        targetSdk 33
+        targetSdk 36
         versionCode 9
         versionName "1.6"
 
@@ -34,7 +34,7 @@ android {
     buildFeatures {
         viewBinding = true
     }
-    namespace 'com.jobforandroid.shoplinoterelease'
+    namespace = 'com.jobforandroid.shoplinoterelease'
 }
 
 dependencies {
