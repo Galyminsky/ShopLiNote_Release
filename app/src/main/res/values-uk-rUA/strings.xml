@@ -1,7 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="nav_purchases">Покупки</string>
     <string name="app_name">ShopLiNote</string>
-    <string name="inter_ad_id">ca-app-pub-2014968687219090/1451071710</string>
     <string name="settings">Налаштування</string>
     <string name="notes">Нотатки</string>
     <string name="shop_list">Список покупок</string>
@@ -38,8 +37,6 @@
     <string name="general">Налаштування</string>
     <string name="chose_note_style">Вибрати стиль списків</string>
     <string name="chose_time_format">Вибрати формат дати</string>
-    <string name="remove_ads">Видалити Рекламу</string>
-    <string name="remove_ads_summary">Видалити повністю Рекламу з Додатка</string>
 
     <string name="theme_settings">Налаштування Теми</string>
     <string name="chose_theme">Вибір теми</string>

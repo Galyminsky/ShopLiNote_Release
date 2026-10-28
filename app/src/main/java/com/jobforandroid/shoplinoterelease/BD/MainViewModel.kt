@@ -7,12 +7,16 @@ import com.jobforandroid.shoplinoterelease.entities.LibraryItem
 import com.jobforandroid.shoplinoterelease.entities.NoteItem
 import com.jobforandroid.shoplinoterelease.entities.ShopListItem
 import com.jobforandroid.shoplinoterelease.entities.ShopListNameItem
+import kotlinx.coroutines.CancellationException
+import kotlinx.coroutines.Deferred
+import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 
 class MainViewModel(private val database: MainDataBase) : ViewModel() {
 
     val dao = database.getDao()
     val libraryItems = MutableLiveData<List<LibraryItem>>()
+    private var librarySearchRequestId = 0L
     val allNotes: LiveData<List<NoteItem>> = dao.getAllNotes().asLiveData()
     val allShopListNameItem: LiveData<List<ShopListNameItem>> =
         dao.getAllShopListNames().asLiveData()
@@ -21,8 +25,14 @@ class MainViewModel(private val database: MainDataBase) : ViewModel() {
         return dao.getAllShopListItems(listId).asLiveData()
     }
 
-    fun getAllLibraryItems(name: String) = viewModelScope.launch {
-        libraryItems.postValue(dao.getAllLibraryItems(name))
+    fun getAllLibraryItems(name: String) {
+        val requestId = ++librarySearchRequestId
+        viewModelScope.launch {
+            val result = dao.getAllLibraryItems(name)
+            if (requestId == librarySearchRequestId) {
+                libraryItems.value = result
+            }
+        }
     }
 
     fun insertNote(note: NoteItem) = viewModelScope.launch {
@@ -33,11 +43,22 @@ class MainViewModel(private val database: MainDataBase) : ViewModel() {
         dao.insertShopListName(listName)
     }
 
-    fun insertShopItem(shopListItem: ShopListItem) = viewModelScope.launch {
-        dao.insertItem(shopListItem)
-        if (!isLibraryItemExists(shopListItem.name))
-            dao.insertLibraryItem(LibraryItem(null, shopListItem.name))
-    }
+    fun insertShopItem(shopListItem: ShopListItem): Deferred<Result<Unit>> =
+        viewModelScope.async {
+            try {
+                database.withTransaction {
+                    dao.insertItem(shopListItem)
+                    if (!isLibraryItemExists(shopListItem.name))
+                        dao.insertLibraryItem(LibraryItem(null, shopListItem.name))
+                    dao.updateShopListCounters(shopListItem.listId)
+                }
+                Result.success(Unit)
+            } catch (cancellation: CancellationException) {
+                throw cancellation
+            } catch (error: Exception) {
+                Result.failure(error)
+            }
+        }
 
     fun updateNote(note: NoteItem) = viewModelScope.launch {
         dao.updateNote(note)
@@ -48,12 +69,27 @@ class MainViewModel(private val database: MainDataBase) : ViewModel() {
     }
 
     fun updateListItem(item: ShopListItem) = viewModelScope.launch {
-        dao.updateListItem(item)
+        database.withTransaction {
+            dao.updateListItem(item)
+            dao.updateShopListCounters(item.listId)
+        }
     }
 
     fun updateListName(shopListName: ShopListNameItem) = viewModelScope.launch {
         dao.updateListName(shopListName)
     }
+
+    fun refreshShopListCounters(listId: Int): Deferred<Result<Unit>> =
+        viewModelScope.async {
+            try {
+                dao.updateShopListCounters(listId)
+                Result.success(Unit)
+            } catch (cancellation: CancellationException) {
+                throw cancellation
+            } catch (error: Exception) {
+                Result.failure(error)
+            }
+        }
 
     fun deleteNote(id: Int) = viewModelScope.launch {
         dao.deleteNote(id)
@@ -67,6 +103,7 @@ class MainViewModel(private val database: MainDataBase) : ViewModel() {
         database.withTransaction {
             if (deleteList) dao.deleteShopListName(id)
             dao.deleteShopItemsByListId(id)
+            if (!deleteList) dao.updateShopListCounters(id)
         }
     }
 

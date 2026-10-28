@@ -51,7 +51,7 @@ class NewNoteActivity : AppCompatActivity() {
         actionBarSetting()
         init()
         setTextSize()
-        getNote()
+        if (!getNote()) return
         onClickColorPicker()
         actionMenuCallback()
         setupSpeedDial()
@@ -86,17 +86,38 @@ class NewNoteActivity : AppCompatActivity() {
         pref = PreferenceManager.getDefaultSharedPreferences(this)
     }
 
-    private fun getNote() {
-        val sNote = intent.getSerializableExtra(NoteFragment.NEW_NOTE_KEY)
-        if (sNote != null) {
-            note = sNote as NoteItem
-            fillNote()
+    private fun getNote(): Boolean {
+        val hasNoteExtra = try {
+            intent.hasExtra(NoteFragment.NEW_NOTE_KEY)
+        } catch (_: RuntimeException) {
+            finish()
+            return false
         }
+        if (!hasNoteExtra) return true
+
+        val extra = try {
+            intent.getSerializableExtra(NoteFragment.NEW_NOTE_KEY)
+        } catch (_: RuntimeException) {
+            finish()
+            return false
+        }
+        val incomingNote = extra as? NoteItem ?: run {
+            finish()
+            return false
+        }
+        if (incomingNote.id == null || incomingNote.id <= 0) {
+            finish()
+            return false
+        }
+
+        note = incomingNote
+        fillNote()
+        return true
     }
 
     private fun fillNote() = with(binding) {
-        edTitle.setText(note?.title)
-        edDescription.setText(HtmlManager.getFromHtml(note?.content!!).trim())
+        edTitle.setText(note?.title.orEmpty())
+        edDescription.setText(HtmlManager.getFromHtml(note?.content.orEmpty()).trim())
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

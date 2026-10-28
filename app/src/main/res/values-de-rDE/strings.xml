@@ -1,6 +1,5 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">ShopLiNote</string>
-    <string name="inter_ad_id">ca-app-pub-2014968687219090/1451071710</string>
     <string name="settings">Einstellungen</string>
     <string name="notes">Anmerkungen</string>
     <string name="shop_list">Einkaufsliste</string>
@@ -38,8 +37,6 @@
     <string name="general">Einstellungen</string>
     <string name="chose_note_style">Listenstil auswählen</string>
     <string name="chose_time_format">Datumsformat auswählen</string>
-    <string name="remove_ads">Anzeigen entfernen</string>
-    <string name="remove_ads_summary">Komplette Werbung aus der App entfernen</string>
 
     <string name="theme_settings">Theme-Einstellungen</string>
     <string name="chose_theme">Thema auswählen</string>

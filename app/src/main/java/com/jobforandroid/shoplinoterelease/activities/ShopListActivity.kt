@@ -19,6 +19,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.doOnLayout
+import androidx.lifecycle.lifecycleScope
 import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -32,6 +33,8 @@ import com.jobforandroid.shoplinoterelease.entities.LibraryItem
 import com.jobforandroid.shoplinoterelease.entities.ShopListItem
 import com.jobforandroid.shoplinoterelease.entities.ShopListNameItem
 import com.jobforandroid.shoplinoterelease.utils.ShareHelper
+import kotlinx.coroutines.CancellationException
+import kotlinx.coroutines.launch
 import kotlin.math.max
 
 class ShopListActivity : AppCompatActivity(), ShopListItemAdapter.Listener {
@@ -46,6 +49,8 @@ class ShopListActivity : AppCompatActivity(), ShopListItemAdapter.Listener {
     private var isAddingItemMode = false
     private var additionalActionsOpen = false
     private var isDeletingList = false
+    private var isRefreshingItemCounters = false
+    private var isAddingShopItem = false
     private var isAddingLibrarySuggestion = false
     private var pendingAddedItemName: String? = null
     private lateinit var textWatcher: TextWatcher
@@ -76,9 +81,35 @@ class ShopListActivity : AppCompatActivity(), ShopListItemAdapter.Listener {
                     newItemMenu?.collapseActionView()
                     return
                 }
-                saveItemCount()
-                isEnabled = false
-                onBackPressedDispatcher.onBackPressed()
+                if (isRefreshingItemCounters) return
+                val listId = shopListNameItem?.id
+                if (listId == null) {
+                    isEnabled = false
+                    onBackPressedDispatcher.onBackPressed()
+                    return
+                }
+                isRefreshingItemCounters = true
+                val refreshOperation = mainViewModel.refreshShopListCounters(listId)
+                lifecycleScope.launch {
+                    val result = try {
+                        refreshOperation.await()
+                    } catch (cancellation: CancellationException) {
+                        isRefreshingItemCounters = false
+                        throw cancellation
+                    }
+                    isRefreshingItemCounters = false
+                    if (isFinishing || isDestroyed) return@launch
+                    if (result.isFailure) {
+                        Toast.makeText(
+                            this@ShopListActivity,
+                            R.string.action_failed,
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        return@launch
+                    }
+                    isEnabled = false
+                    onBackPressedDispatcher.onBackPressed()
+                }
             }
         })
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
@@ -121,14 +152,15 @@ class ShopListActivity : AppCompatActivity(), ShopListItemAdapter.Listener {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.save_item) {
-            addNewShopItem(edItem?.text.toString())
+            saveShopItem(collapseAfterSuccess = false)
             return true
         }
         return super.onOptionsItemSelected(item)
     }
 
-    private fun addNewShopItem(name: String, onComplete: ((Throwable?) -> Unit)? = null) {
-        if (name.isEmpty()) return
+    private fun addNewShopItem(name: String, onComplete: (Result<Unit>) -> Unit): Boolean {
+        if (name.isEmpty() || isAddingShopItem) return false
+        isAddingShopItem = true
         val item = ShopListItem(
             null,
             name,
@@ -137,14 +169,18 @@ class ShopListActivity : AppCompatActivity(), ShopListItemAdapter.Listener {
             shopListNameItem?.id!!,
             0
         )
-        val insertJob = mainViewModel.insertShopItem(item)
-        if (onComplete == null) {
-            edItem?.setText("")
-        } else {
-            insertJob.invokeOnCompletion { error ->
-                runOnUiThread { onComplete(error) }
+        val insertOperation = mainViewModel.insertShopItem(item)
+        lifecycleScope.launch {
+            val result = try {
+                insertOperation.await()
+            } catch (cancellation: CancellationException) {
+                isAddingShopItem = false
+                throw cancellation
             }
+            isAddingShopItem = false
+            onComplete(result)
         }
+        return true
     }
 
     private fun listItemObserver() {
@@ -207,6 +243,7 @@ class ShopListActivity : AppCompatActivity(), ShopListItemAdapter.Listener {
             }
 
             override fun onMenuItemActionCollapse(item: MenuItem): Boolean {
+                if (isAddingShopItem) return false
                 isAddingItemMode = false
                 saveItem.isVisible = false
                 binding.actionAdd.setImageResource(R.drawable.ic_speed_dial_plus)
@@ -241,15 +278,16 @@ class ShopListActivity : AppCompatActivity(), ShopListItemAdapter.Listener {
             ShopListItemAdapter.ADD -> {
                 if (isAddingLibrarySuggestion || shopListItem.name.isEmpty()) return
                 isAddingLibrarySuggestion = true
-                addNewShopItem(shopListItem.name) { error ->
+                val started = addNewShopItem(shopListItem.name) { error ->
                     isAddingLibrarySuggestion = false
-                    if (error == null) {
+                    if (error.isSuccess) {
                         pendingAddedItemName = shopListItem.name
                         newItemMenu?.collapseActionView()
                     } else {
                         Toast.makeText(this, R.string.action_failed, Toast.LENGTH_SHORT).show()
                     }
                 }
+                if (!started) isAddingLibrarySuggestion = false
             }
             ShopListItemAdapter.DELETE_LIBRARY_ITEM -> {
                 mainViewModel.deleteLibraryItem(shopListItem.id!!)
@@ -275,13 +313,18 @@ class ShopListActivity : AppCompatActivity(), ShopListItemAdapter.Listener {
         })
     }
 
-    private fun saveItemCount() {
-        val items = currentShopItems
-        val tempShopListNameItem = shopListNameItem?.copy(
-            allItemCounter = items.size,
-            checkedItemsCounter = items.count { it.itemChecked }
-        )
-        if (tempShopListNameItem != null) mainViewModel.updateListName(tempShopListNameItem)
+    private fun saveShopItem(collapseAfterSuccess: Boolean) {
+        val name = edItem?.text?.toString().orEmpty()
+        if (name.isEmpty()) return
+
+        addNewShopItem(name) { result ->
+            if (result.isFailure) {
+                Toast.makeText(this, R.string.action_failed, Toast.LENGTH_SHORT).show()
+            } else if (edItem?.text?.toString() == name) {
+                edItem?.setText("")
+                if (collapseAfterSuccess) newItemMenu?.collapseActionView()
+            }
+        }
     }
 
     private fun getSelectedTheme(): Int {
@@ -323,9 +366,7 @@ class ShopListActivity : AppCompatActivity(), ShopListItemAdapter.Listener {
     }
 
     private fun saveCurrentInput() {
-        val hasInput = !edItem?.text.isNullOrEmpty()
-        onOptionsItemSelected(saveItem)
-        if (hasInput) newItemMenu?.collapseActionView()
+        saveShopItem(collapseAfterSuccess = true)
     }
 
     private fun shareCurrentList() {
