@@ -3,6 +3,7 @@ package com.jobforandroid.shoplinoterelease.BD
 
 import android.content.Context
 import android.content.res.ColorStateList
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -31,21 +32,25 @@ class ShopListNameAdapter(private val listener: Listener) :
         private val binding = ListNameItemBinding.bind(view)
 
         fun setData(shopListNameItem: ShopListNameItem, listener: Listener) = with(binding) {
+            val isComplete = shopListNameItem.checkedItemsCounter == shopListNameItem.allItemCounter
             val colorState = ColorStateList.valueOf(
-                getProgressColorState(
-                    shopListNameItem,
-                    binding.root.context
+                getThemeColor(
+                    binding.root.context,
+                    if (isComplete) R.attr.theme_count_complete else R.attr.theme_count_incomplete
                 )
             )
             tvListName.text = shopListNameItem.name
             tvTime.text = shopListNameItem.time
             pBar.max = shopListNameItem.allItemCounter
             pBar.progress = shopListNameItem.checkedItemsCounter
-            pBar.progressTintList = colorState
+            pBar.progressTintList = ColorStateList.valueOf(
+                getThemeColor(binding.root.context, R.attr.theme_progress_color)
+            )
             counterCard.backgroundTintList = colorState
             val counterText =
                 "${shopListNameItem.checkedItemsCounter} / ${shopListNameItem.allItemCounter}"
             tvCounter.text = counterText
+            tvCounter.setTextColor(getThemeColor(binding.root.context, R.attr.theme_count_text))
             itemView.setOnClickListener {
                 listener.onClickItem(shopListNameItem)
             }
@@ -58,13 +63,14 @@ class ShopListNameAdapter(private val listener: Listener) :
             }
         }
 
-        private fun getProgressColorState(item: ShopListNameItem, context: Context): Int {
-            return if (item.checkedItemsCounter == item.allItemCounter) {
-                ContextCompat.getColor(context, R.color.blue_count)
+        private fun getThemeColor(context: Context, attribute: Int): Int {
+            val value = TypedValue()
+            context.theme.resolveAttribute(attribute, value, true)
+            return if (value.resourceId != 0) {
+                ContextCompat.getColor(context, value.resourceId)
             } else {
-                ContextCompat.getColor(context, R.color.red_count)
+                value.data
             }
-
         }
 
         companion object {

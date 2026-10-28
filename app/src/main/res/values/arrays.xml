@@ -25,15 +25,15 @@
     </string-array>
 
     <string-array name="choose_theme_array">
-        <item>Main Theme</item>
-        <item>Green Theme</item>
-        <item>Red Theme</item>
+        <item>Lavender Dream</item>
+        <item>Amber Glow</item>
+        <item>Forest Essence</item>
     </string-array>
 
     <string-array name="choose_theme_values">
-        <item>main</item>
-        <item>green</item>
-        <item>red</item>
+        <item>lavender_dream</item>
+        <item>amber_glow</item>
+        <item>forest_essence</item>
 
     </string-array>
 

@@ -34,7 +34,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="@string/new_list_name"
-                android:textColor="@color/black"
+                android:textColor="?attr/colorOnSurface"
                 android:textSize="18sp" />
 
             <com.google.android.material.textfield.TextInputEditText
@@ -51,6 +51,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/create"
+                android:background="?attr/theme_gradient_button_drawable"
                 app:cornerRadius="10dp" />
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>

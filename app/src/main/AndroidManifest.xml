@@ -13,18 +13,18 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.ShopLiNoteMain"
+        android:theme="@style/Theme.ShopLiNoteLavenderDream"
         tools:targetApi="31">
         <activity
             android:name=".settings.SettingActivity"
             android:exported="false" />
         <activity
             android:name=".activities.ShopListActivity"
-            android:theme="@style/Theme.ShopLiNoteMain"
+            android:theme="@style/Theme.ShopLiNoteLavenderDream"
             android:exported="false" />
         <activity
             android:name=".activities.NewNoteActivity"
-            android:theme="@style/Theme.ShopLiNoteMain"
+            android:theme="@style/Theme.ShopLiNoteLavenderDream"
             android:exported="true"
             android:windowSoftInputMode="stateVisible|adjustResize" />
         <activity

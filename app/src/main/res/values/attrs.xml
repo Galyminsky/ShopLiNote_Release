@@ -2,4 +2,23 @@
 <resources>
     <attr name="allBgColor" format="color"/>
     <attr name="theme_btn" format="color"/>
+    <attr name="theme_btn_text" format="color"/>
+    <attr name="theme_gradient_start" format="color" />
+    <attr name="theme_gradient_center" format="color" />
+    <attr name="theme_gradient_end" format="color" />
+    <attr name="theme_on_gradient" format="color" />
+    <attr name="theme_nav_active" format="color" />
+    <attr name="theme_nav_inactive" format="color" />
+    <attr name="theme_muted_text" format="color" />
+    <attr name="theme_gradient_button_drawable" format="reference" />
+    <attr name="theme_count_complete" format="color" />
+    <attr name="theme_count_incomplete" format="color" />
+    <attr name="theme_count_text" format="color" />
+    <attr name="theme_delete_color" format="color" />
+    <attr name="theme_progress_color" format="color" />
+    <attr name="theme_nav_selected_bg" format="color" />
+    <attr name="theme_edit_background" format="color" />
+    <attr name="theme_edit_text" format="color" />
+    <attr name="theme_delete_background" format="color" />
+    <attr name="theme_delete_button_text" format="color" />
 </resources>

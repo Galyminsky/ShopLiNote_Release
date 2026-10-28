@@ -7,6 +7,7 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.preference.PreferenceManager
 import com.jobforandroid.shoplinoterelease.R
+import com.jobforandroid.shoplinoterelease.utils.ThemeManager
 
 class SettingActivity : AppCompatActivity() {
 
@@ -35,13 +36,6 @@ class SettingActivity : AppCompatActivity() {
     }
 
     private fun getSelectedTheme(): Int {
-        return if (defPref.getString("theme_key", "main") == "main") {
-            R.style.Theme_ShopLiNoteMain
-        } else if (defPref.getString("theme_key", "green") == "green") {
-            R.style.Theme_ShopLiNoteGreen
-        } else {
-            (defPref.getString("theme_key", "red") == "red")
-            R.style.Theme_ShopLiNoteRed
-        }
+        return ThemeManager.getThemeStyle(this)
     }
 }

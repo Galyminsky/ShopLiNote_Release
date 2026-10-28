@@ -70,7 +70,7 @@
         android:id="@+id/colorPicker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#DADADA"
+        android:background="?attr/colorSurface"
         android:elevation="10dp"
         android:orientation="horizontal"
         android:visibility="gone"

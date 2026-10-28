@@ -1,25 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Main Theme -->
-    <color name="purple_200">#e0f7fa</color>
-    <color name="purple_500">#00BCD4</color>
-    <color name="purple_700">#0097A7</color>
-    <color name="teal_900">#006064</color>
-    <color name="teal_600">#00ACC1</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
-    <!-- Green Theme -->
-    <color name="green_200">#dbf2cb</color>
-    <color name="green_500">#aae187</color>
-    <color name="green_700">#5eae3d</color>
-    <color name="green_teal_900">#4a9933</color>
-    <color name="green_teal_600">#73c248</color>
-    <!-- Red Theme -->
-    <color name="red_200">#ffeaec</color>
-    <color name="red_500">#f49791</color>
-    <color name="red_700">#e92f1f</color>
-    <color name="red_teal_700">#e92f1f</color>
-    <color name="red_teal_600">#f34c3f</color>
     <!-- Picker.Color -->
     <color name="picker_red">#FF0000</color>
     <color name="picker_green">#2CD510</color>
@@ -27,21 +7,46 @@
     <color name="picker_black">#434343</color>
     <color name="picker_yellow">#FFC107</color>
     <color name="picker_orange">#FF5722</color>
-    <!-- All.Color -->
-    <color name="grey_light">#DCDCDC</color>
-    <color name="grey_dark">#3E3E3E</color>
-    <!-- Edit List -->
-    <color name="main_theme_count">#53d1ea</color>
-    <color name="main_theme_edit">#b763c5</color>
-    <color name="main_theme_delete">#df5b7d</color>
+    <!-- LAVENDER DREAM THEME -->
+    <color name="lavender_dream_primary">#535772</color>
+    <color name="lavender_dream_accent">#8FA2E2</color>
+    <color name="lavender_dream_background">#FBE4F6</color>
+    <color name="lavender_dream_surface">#EAD6F5</color>
+    <color name="lavender_dream_muted">#79897A</color>
+    <color name="lavender_dream_count_complete">#EAD6F5</color>
+    <color name="lavender_dream_count_incomplete">#FBE4F6</color>
+    <!-- Derived Lavender Dream roles -->
+    <color name="lavender_dream_gradient_center">#4D587C</color>
+    <color name="lavender_dream_gradient_end">#596487</color>
+    <color name="lavender_dream_delete">#4E5A4E</color>
 
-    <!-- Shop Button -->
-    <color name="red_theme_bnt">#e57373</color>
-    <color name="green_theme_btn">#81c784</color>
-    <color name="main_theme_btn">#4dcfe1</color>
+    <!-- AMBER GLOW THEME -->
+    <color name="amber_glow_ink">#120F0A</color>
+    <color name="amber_glow_deep">#3B200B</color>
+    <color name="amber_glow_primary">#D76F02</color>
+    <color name="amber_glow_accent">#FAA718</color>
+    <color name="amber_glow_light">#FCCF46</color>
+    <color name="amber_glow_count_complete">#FAA718</color>
+    <color name="amber_glow_count_incomplete">#FCCF46</color>
+    <!-- Derived Amber Glow roles -->
+    <color name="amber_glow_background">#FFF9ED</color>
+    <color name="amber_glow_surface">#FFF0D9</color>
+    <color name="amber_glow_gradient_start">#74400A</color>
+    <color name="amber_glow_gradient_center">#934A04</color>
+    <color name="amber_glow_gradient_end">#A64D00</color>
+    <color name="amber_glow_line">#3B200B</color>
 
-    <!-- Shop Button Code# -->
-    <color name="blue_count">#90c9f9</color>
-    <color name="red_count">#ffa28a</color>
+    <!-- FOREST ESSENCE THEME -->
+    <color name="forest_essence_deep">#002D00</color>
+    <color name="forest_essence_primary">#4E8D07</color>
+    <color name="forest_essence_accent">#AACC83</color>
+    <color name="forest_essence_background">#F8F8F8</color>
+    <color name="forest_essence_surface">#C0BFBF</color>
+    <color name="forest_essence_count_complete">#AACC83</color>
+    <color name="forest_essence_count_incomplete">#C0BFBF</color>
+    <!-- Derived Forest Essence roles -->
+    <color name="forest_essence_card_surface">#EDF4E7</color>
+    <color name="forest_essence_gradient_center">#285A05</color>
+    <color name="forest_essence_gradient_end">#386D07</color>
 
 </resources>

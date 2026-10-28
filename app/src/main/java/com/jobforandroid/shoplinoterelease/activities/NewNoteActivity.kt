@@ -20,6 +20,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.preference.PreferenceManager
 import com.jobforandroid.shoplinoterelease.R
+import com.jobforandroid.shoplinoterelease.utils.ThemeManager
 import com.jobforandroid.shoplinoterelease.databinding.ActivityNewNoteBinding
 import com.jobforandroid.shoplinoterelease.entities.NoteItem
 import com.jobforandroid.shoplinoterelease.fragments.NoteFragment
@@ -242,13 +243,6 @@ class NewNoteActivity : AppCompatActivity() {
     }
 
     private fun getSelectedTheme(): Int {
-        return if (defPref.getString("theme_key", "main") == "main") {
-            R.style.Theme_NewNoteMain
-        } else if (defPref.getString("theme_key", "green") == "green") {
-            R.style.Theme_NewNoteGreen
-        } else {
-            (defPref.getString("theme_key", "red") == "red")
-            R.style.Theme_NewNoteRed
-        }
+        return ThemeManager.getThemeStyle(this, newNote = true)
     }
 }

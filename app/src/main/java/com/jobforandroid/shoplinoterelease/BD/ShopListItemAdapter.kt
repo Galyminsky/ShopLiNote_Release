@@ -5,6 +5,7 @@ import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.util.TypedValue
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -81,24 +82,29 @@ class ShopListItemAdapter(private val listener: Listener) :
                 if (chBox.isChecked) {
                     tvName.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
                     tvInfo.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
-                    tvName.setTextColor(
-                        ContextCompat.getColor(
-                            binding.root.context,
-                            R.color.grey_light
-                        )
-                    )
-                    tvInfo.setTextColor(
-                        ContextCompat.getColor(
-                            binding.root.context,
-                            R.color.grey_light
-                        )
-                    )
+                    val mutedTextColor = getThemeColor(binding.root, R.attr.theme_muted_text)
+                    tvName.setTextColor(mutedTextColor)
+                    tvInfo.setTextColor(mutedTextColor)
                 } else {
                     tvName.paintFlags = Paint.ANTI_ALIAS_FLAG
                     tvInfo.paintFlags = Paint.ANTI_ALIAS_FLAG
-                    tvName.setTextColor(ContextCompat.getColor(binding.root.context, R.color.black))
-                    tvInfo.setTextColor(ContextCompat.getColor(binding.root.context, R.color.black))
+                    val textColor = getThemeColor(
+                        binding.root,
+                        com.google.android.material.R.attr.colorOnSurface
+                    )
+                    tvName.setTextColor(textColor)
+                    tvInfo.setTextColor(textColor)
                 }
+            }
+        }
+
+        private fun getThemeColor(view: View, attribute: Int): Int {
+            val value = TypedValue()
+            view.context.theme.resolveAttribute(attribute, value, true)
+            return if (value.resourceId != 0) {
+                ContextCompat.getColor(view.context, value.resourceId)
+            } else {
+                value.data
             }
         }
 

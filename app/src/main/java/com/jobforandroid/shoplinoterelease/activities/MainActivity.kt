@@ -19,6 +19,7 @@ import com.jobforandroid.shoplinoterelease.fragments.FragmentManager
 import com.jobforandroid.shoplinoterelease.fragments.NoteFragment
 import com.jobforandroid.shoplinoterelease.fragments.ShopListNamesFragment
 import com.jobforandroid.shoplinoterelease.settings.SettingActivity
+import com.jobforandroid.shoplinoterelease.utils.ThemeManager
 
 
 class MainActivity : AppCompatActivity(), NewListDialog.Listener {
@@ -31,7 +32,7 @@ class MainActivity : AppCompatActivity(), NewListDialog.Listener {
     override fun onCreate(savedInstanceState: Bundle?) {
 
         defPref = PreferenceManager.getDefaultSharedPreferences(this)
-        currentTheme = defPref.getString("theme_key", "main").toString()
+        currentTheme = ThemeManager.getThemeKey(this)
         setTheme(getSelectedTheme())
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -118,18 +119,11 @@ class MainActivity : AppCompatActivity(), NewListDialog.Listener {
     override fun onResume() {
         super.onResume()
         binding.bNav.selectedItemId = currentMenuItemId
-        if (defPref.getString("theme_key", "main") != currentTheme) recreate()
+        if (ThemeManager.getThemeKey(this) != currentTheme) recreate()
     }
 
     private fun getSelectedTheme(): Int {
-        return if (defPref.getString("theme_key", "main") == "main") {
-            R.style.Theme_ShopLiNoteMain
-        } else if (defPref.getString("theme_key", "green") == "green") {
-            R.style.Theme_ShopLiNoteGreen
-        } else {
-            (defPref.getString("theme_key", "red") == "red")
-            R.style.Theme_ShopLiNoteRed
-        }
+        return ThemeManager.getThemeStyle(this)
     }
 
     override fun onClick(name: String) {

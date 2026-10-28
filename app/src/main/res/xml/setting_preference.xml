@@ -29,7 +29,7 @@
 
     <PreferenceCategory android:title="@string/theme_settings">
         <ListPreference
-            android:defaultValue="main"
+            android:defaultValue="lavender_dream"
             android:entries="@array/choose_theme_array"
             android:entryValues="@array/choose_theme_values"
             android:key="theme_key"

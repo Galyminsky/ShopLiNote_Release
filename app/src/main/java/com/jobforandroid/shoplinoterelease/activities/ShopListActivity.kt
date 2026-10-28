@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.jobforandroid.shoplinoterelease.BD.MainViewModel
 import com.jobforandroid.shoplinoterelease.BD.ShopListItemAdapter
 import com.jobforandroid.shoplinoterelease.R
+import com.jobforandroid.shoplinoterelease.utils.ThemeManager
 import com.jobforandroid.shoplinoterelease.databinding.ActivityShopListBinding
 import com.jobforandroid.shoplinoterelease.dialogs.EditListItemDialog
 import com.jobforandroid.shoplinoterelease.entities.LibraryItem
@@ -42,7 +43,7 @@ class ShopListActivity : AppCompatActivity(), ShopListItemAdapter.Listener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         defPref = PreferenceManager.getDefaultSharedPreferences(this)
-        currentTheme = defPref.getString("theme_key", "main").toString()
+        currentTheme = ThemeManager.getThemeKey(this)
         setTheme(getSelectedTheme())
         super.onCreate(savedInstanceState)
         binding = ActivityShopListBinding.inflate(layoutInflater)
@@ -236,14 +237,7 @@ class ShopListActivity : AppCompatActivity(), ShopListItemAdapter.Listener {
     }
 
     private fun getSelectedTheme(): Int {
-        return if (defPref.getString("theme_key", "main") == "main") {
-            R.style.Theme_ShopLiNoteMain
-        } else if (defPref.getString("theme_key", "green") == "green") {
-            R.style.Theme_ShopLiNoteGreen
-        } else {
-            (defPref.getString("theme_key", "red") == "red")
-            R.style.Theme_ShopLiNoteRed
-        }
+        return ThemeManager.getThemeStyle(this)
 
     }
 

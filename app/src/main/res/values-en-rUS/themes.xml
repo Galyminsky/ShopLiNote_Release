@@ -1,101 +1,290 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.ShopLiNoteMain" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
-        <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/white</item>
-        <item name="allBgColor">@color/purple_200</item>
-        <item name="theme_btn">@color/main_theme_btn</item>
-        <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_600</item>
-        <item name="colorSecondaryVariant">@color/teal_900</item>
-        <item name="colorOnSecondary">@color/black</item>
-
-        <!-- Status bar color. -->
-        <item name="android:statusBarColor">@color/purple_700</item>
-        <!-- Customize your theme here. -->
-    </style>
-
-    <style name="Theme.NewNoteMain" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
-        <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/white</item>
-        <item name="allBgColor">@color/purple_200</item>
-        <item name="theme_btn">@color/main_theme_btn</item>
-        <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_600</item>
-        <item name="colorSecondaryVariant">@color/teal_900</item>
-        <item name="colorOnSecondary">@color/black</item>
-        <!-- Status bar color. -->
-        <item name="android:statusBarColor">@color/purple_700</item>
-        <!-- Customize your theme here. -->
-    </style>
+    <style name="Theme.ShopLiNoteLavenderDream" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+                <item name="colorPrimary">@color/lavender_dream_primary</item>
+                <item name="colorPrimaryVariant">@color/lavender_dream_primary</item>
+                <item name="colorOnPrimary">@color/lavender_dream_background</item>
+                <item name="colorSurface">@color/lavender_dream_surface</item>
+                <item name="colorSecondary">@color/lavender_dream_accent</item>
+                <item name="colorSecondaryVariant">@color/lavender_dream_primary</item>
+                <item name="colorOnSecondary">@color/lavender_dream_background</item>
+                <item name="android:textColorPrimary">@color/lavender_dream_primary</item>
+                <item name="android:colorBackground">@color/lavender_dream_background</item>
+                <item name="allBgColor">@color/lavender_dream_primary</item>
+                <item name="theme_btn">@color/lavender_dream_primary</item>
+                <item name="theme_btn_text">@color/lavender_dream_background</item>
+                <item name="theme_on_gradient">@color/lavender_dream_background</item>
+                <item name="theme_nav_active">@color/lavender_dream_primary</item>
+                <item name="theme_nav_inactive">@color/lavender_dream_background</item>
+                <item name="theme_gradient_start">@color/lavender_dream_primary</item>
+                <item name="theme_gradient_center">@color/lavender_dream_gradient_center</item>
+                <item name="theme_gradient_end">@color/lavender_dream_gradient_end</item>
+                <item name="theme_muted_text">@color/lavender_dream_muted</item>
+        <item name="theme_gradient_button_drawable">@drawable/theme_gradient_button</item>
+        <item name="actionBarStyle">@style/Widget.ShopLiNote.GradientActionBar</item>
+        <item name="materialButtonStyle">@style/Widget.ShopLiNote.Button</item>
+                <item name="colorControlActivated">@color/lavender_dream_primary</item>
+                <item name="android:statusBarColor">@color/lavender_dream_primary</item>
+            <item name="colorOnSurface">@color/lavender_dream_primary</item>
 
 
-    <style name="Theme.ShopLiNoteGreen" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
-        <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/green_500</item>
-        <item name="colorPrimaryVariant">@color/green_700</item>
-        <item name="colorOnPrimary">@color/white</item>
-        <item name="allBgColor">@color/green_200</item>
-        <item name="theme_btn">@color/green_theme_btn</item>
-        <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/green_teal_600</item>
-        <item name="colorSecondaryVariant">@color/green_teal_900</item>
-        <item name="colorOnSecondary">@color/black</item>
 
-        <!-- Status bar color. -->
-        <item name="android:statusBarColor">@color/green_700</item>
-        <!-- Customize your theme here. -->
-    </style>
-    <style name="Theme.NewNoteGreen" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
-        <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/green_500</item>
-        <item name="colorPrimaryVariant">@color/green_700</item>
-        <item name="colorOnPrimary">@color/white</item>
-        <item name="allBgColor">@color/green_200</item>
-        <item name="theme_btn">@color/green_theme_btn</item>
-        <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/green_teal_600</item>
-        <item name="colorSecondaryVariant">@color/green_teal_900</item>
-        <item name="colorOnSecondary">@color/black</item>
-        <!-- Status bar color. -->
-        <item name="android:statusBarColor">@color/green_700</item>
-        <!-- Customize your theme here. -->
-    </style>
 
-    <style name="Theme.ShopLiNoteRed" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
-        <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/red_500</item>
-        <item name="colorPrimaryVariant">@color/red_700</item>
-        <item name="colorOnPrimary">@color/white</item>
-        <item name="allBgColor">@color/red_200</item>
-        <item name="theme_btn">@color/red_theme_bnt</item>
-        <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/red_teal_600</item>
-        <item name="colorSecondaryVariant">@color/red_teal_700</item>
-        <item name="colorOnSecondary">@color/black</item>
+            <item name="theme_count_complete">@color/lavender_dream_count_complete</item>
+            <item name="theme_count_incomplete">@color/lavender_dream_count_incomplete</item>
+            <item name="theme_count_text">@color/lavender_dream_primary</item>
+            <item name="theme_delete_color">@color/lavender_dream_delete</item>
 
-        <!-- Status bar color. -->
-        <item name="android:statusBarColor">@color/red_700</item>
-        <!-- Customize your theme here. -->
-    </style>
+        <item name="theme_nav_selected_bg">@color/lavender_dream_surface</item>
 
-    <style name="Theme.NewNoteRed" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
-        <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/red_500</item>
-        <item name="colorPrimaryVariant">@color/red_700</item>
-        <item name="colorOnPrimary">@color/white</item>
-        <item name="allBgColor">@color/red_200</item>
-        <item name="theme_btn">@color/red_theme_bnt</item>
-        <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/red_teal_600</item>
-        <item name="colorSecondaryVariant">@color/red_teal_700</item>
-        <item name="colorOnSecondary">@color/black</item>
-        <!-- Status bar color. -->
-        <item name="android:statusBarColor">@color/red_700</item>
-        <!-- Customize your theme here. -->
-    </style>
+        <item name="theme_progress_color">@color/lavender_dream_primary</item>
+
+        <item name="theme_delete_button_text">@color/lavender_dream_background</item>
+
+        <item name="theme_edit_text">@color/lavender_dream_primary</item>
+
+        <item name="theme_edit_background">@color/lavender_dream_surface</item>
+
+        <item name="theme_delete_background">@color/lavender_dream_primary</item>
+</style>
+
+    <style name="Theme.NewNoteLavenderDream" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+                <item name="colorPrimary">@color/lavender_dream_primary</item>
+                <item name="colorPrimaryVariant">@color/lavender_dream_primary</item>
+                <item name="colorOnPrimary">@color/lavender_dream_background</item>
+                <item name="colorSurface">@color/lavender_dream_surface</item>
+                <item name="colorSecondary">@color/lavender_dream_accent</item>
+                <item name="colorSecondaryVariant">@color/lavender_dream_primary</item>
+                <item name="colorOnSecondary">@color/lavender_dream_background</item>
+                <item name="android:textColorPrimary">@color/lavender_dream_primary</item>
+                <item name="android:colorBackground">@color/lavender_dream_background</item>
+                <item name="allBgColor">@color/lavender_dream_primary</item>
+                <item name="theme_btn">@color/lavender_dream_primary</item>
+                <item name="theme_btn_text">@color/lavender_dream_background</item>
+                <item name="theme_on_gradient">@color/lavender_dream_background</item>
+                <item name="theme_nav_active">@color/lavender_dream_primary</item>
+                <item name="theme_nav_inactive">@color/lavender_dream_background</item>
+                <item name="theme_gradient_start">@color/lavender_dream_primary</item>
+                <item name="theme_gradient_center">@color/lavender_dream_gradient_center</item>
+                <item name="theme_gradient_end">@color/lavender_dream_gradient_end</item>
+                <item name="theme_muted_text">@color/lavender_dream_muted</item>
+        <item name="theme_gradient_button_drawable">@drawable/theme_gradient_button</item>
+        <item name="actionBarStyle">@style/Widget.ShopLiNote.GradientActionBar</item>
+        <item name="materialButtonStyle">@style/Widget.ShopLiNote.Button</item>
+                <item name="colorControlActivated">@color/lavender_dream_primary</item>
+                <item name="android:statusBarColor">@color/lavender_dream_primary</item>
+            <item name="colorOnSurface">@color/lavender_dream_primary</item>
+
+
+
+
+            <item name="theme_count_complete">@color/lavender_dream_count_complete</item>
+            <item name="theme_count_incomplete">@color/lavender_dream_count_incomplete</item>
+            <item name="theme_count_text">@color/lavender_dream_primary</item>
+            <item name="theme_delete_color">@color/lavender_dream_delete</item>
+
+        <item name="theme_nav_selected_bg">@color/lavender_dream_surface</item>
+
+        <item name="theme_progress_color">@color/lavender_dream_primary</item>
+
+        <item name="theme_delete_button_text">@color/lavender_dream_background</item>
+
+        <item name="theme_edit_text">@color/lavender_dream_primary</item>
+
+        <item name="theme_edit_background">@color/lavender_dream_surface</item>
+
+        <item name="theme_delete_background">@color/lavender_dream_primary</item>
+</style>
+
+
+    <style name="Theme.ShopLiNoteAmberGlow" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+                <item name="colorPrimary">@color/amber_glow_primary</item>
+                <item name="colorPrimaryVariant">@color/amber_glow_deep</item>
+                <item name="colorOnPrimary">@color/amber_glow_ink</item>
+                <item name="colorSurface">@color/amber_glow_surface</item>
+                <item name="colorSecondary">@color/amber_glow_accent</item>
+                <item name="colorSecondaryVariant">@color/amber_glow_deep</item>
+                <item name="colorOnSecondary">@color/amber_glow_ink</item>
+                <item name="android:textColorPrimary">@color/amber_glow_ink</item>
+                <item name="android:colorBackground">@color/amber_glow_background</item>
+                <item name="allBgColor">@color/amber_glow_line</item>
+                <item name="theme_btn">@color/amber_glow_deep</item>
+                <item name="theme_btn_text">@color/amber_glow_background</item>
+                <item name="theme_on_gradient">@color/amber_glow_background</item>
+                <item name="theme_nav_active">@color/amber_glow_ink</item>
+                <item name="theme_nav_inactive">@color/amber_glow_background</item>
+                <item name="theme_gradient_start">@color/amber_glow_gradient_start</item>
+                <item name="theme_gradient_center">@color/amber_glow_gradient_center</item>
+                <item name="theme_gradient_end">@color/amber_glow_gradient_end</item>
+                <item name="theme_muted_text">@color/amber_glow_deep</item>
+        <item name="theme_gradient_button_drawable">@drawable/theme_gradient_button</item>
+        <item name="actionBarStyle">@style/Widget.ShopLiNote.GradientActionBar</item>
+        <item name="materialButtonStyle">@style/Widget.ShopLiNote.Button</item>
+                <item name="colorControlActivated">@color/amber_glow_deep</item>
+                <item name="android:statusBarColor">@color/amber_glow_deep</item>
+            <item name="colorOnSurface">@color/amber_glow_ink</item>
+
+
+
+
+            <item name="theme_count_complete">@color/amber_glow_count_complete</item>
+            <item name="theme_count_incomplete">@color/amber_glow_count_incomplete</item>
+            <item name="theme_count_text">@color/amber_glow_ink</item>
+            <item name="theme_delete_color">@color/amber_glow_primary</item>
+
+        <item name="theme_nav_selected_bg">@color/amber_glow_surface</item>
+
+        <item name="theme_delete_button_text">@color/amber_glow_background</item>
+
+        <item name="theme_progress_color">@color/amber_glow_deep</item>
+
+        <item name="theme_edit_text">@color/amber_glow_ink</item>
+
+        <item name="theme_edit_background">@color/amber_glow_light</item>
+
+        <item name="theme_delete_background">@color/amber_glow_deep</item>
+</style>
+    <style name="Theme.NewNoteAmberGlow" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+                <item name="colorPrimary">@color/amber_glow_primary</item>
+                <item name="colorPrimaryVariant">@color/amber_glow_deep</item>
+                <item name="colorOnPrimary">@color/amber_glow_ink</item>
+                <item name="colorSurface">@color/amber_glow_surface</item>
+                <item name="colorSecondary">@color/amber_glow_accent</item>
+                <item name="colorSecondaryVariant">@color/amber_glow_deep</item>
+                <item name="colorOnSecondary">@color/amber_glow_ink</item>
+                <item name="android:textColorPrimary">@color/amber_glow_ink</item>
+                <item name="android:colorBackground">@color/amber_glow_background</item>
+                <item name="allBgColor">@color/amber_glow_line</item>
+                <item name="theme_btn">@color/amber_glow_deep</item>
+                <item name="theme_btn_text">@color/amber_glow_background</item>
+                <item name="theme_on_gradient">@color/amber_glow_background</item>
+                <item name="theme_nav_active">@color/amber_glow_ink</item>
+                <item name="theme_nav_inactive">@color/amber_glow_background</item>
+                <item name="theme_gradient_start">@color/amber_glow_gradient_start</item>
+                <item name="theme_gradient_center">@color/amber_glow_gradient_center</item>
+                <item name="theme_gradient_end">@color/amber_glow_gradient_end</item>
+                <item name="theme_muted_text">@color/amber_glow_deep</item>
+        <item name="theme_gradient_button_drawable">@drawable/theme_gradient_button</item>
+        <item name="actionBarStyle">@style/Widget.ShopLiNote.GradientActionBar</item>
+        <item name="materialButtonStyle">@style/Widget.ShopLiNote.Button</item>
+                <item name="colorControlActivated">@color/amber_glow_deep</item>
+                <item name="android:statusBarColor">@color/amber_glow_deep</item>
+            <item name="colorOnSurface">@color/amber_glow_ink</item>
+
+
+
+
+            <item name="theme_count_complete">@color/amber_glow_count_complete</item>
+            <item name="theme_count_incomplete">@color/amber_glow_count_incomplete</item>
+            <item name="theme_count_text">@color/amber_glow_ink</item>
+            <item name="theme_delete_color">@color/amber_glow_primary</item>
+
+        <item name="theme_nav_selected_bg">@color/amber_glow_surface</item>
+
+        <item name="theme_delete_button_text">@color/amber_glow_background</item>
+
+        <item name="theme_progress_color">@color/amber_glow_deep</item>
+
+        <item name="theme_edit_text">@color/amber_glow_ink</item>
+
+        <item name="theme_edit_background">@color/amber_glow_light</item>
+
+        <item name="theme_delete_background">@color/amber_glow_deep</item>
+</style>
+
+    <style name="Theme.ShopLiNoteForestEssence" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+                <item name="colorPrimary">@color/forest_essence_primary</item>
+                <item name="colorPrimaryVariant">@color/forest_essence_deep</item>
+                <item name="colorOnPrimary">@color/forest_essence_deep</item>
+                <item name="colorSurface">@color/forest_essence_card_surface</item>
+                <item name="colorSecondary">@color/forest_essence_accent</item>
+                <item name="colorSecondaryVariant">@color/forest_essence_deep</item>
+                <item name="colorOnSecondary">@color/forest_essence_deep</item>
+                <item name="android:textColorPrimary">@color/forest_essence_deep</item>
+                <item name="android:colorBackground">@color/forest_essence_background</item>
+                <item name="allBgColor">@color/forest_essence_deep</item>
+                <item name="theme_btn">@color/forest_essence_deep</item>
+                <item name="theme_btn_text">@color/forest_essence_background</item>
+                <item name="theme_on_gradient">@color/forest_essence_background</item>
+                <item name="theme_nav_active">@color/forest_essence_deep</item>
+                <item name="theme_nav_inactive">@color/forest_essence_background</item>
+                <item name="theme_gradient_start">@color/forest_essence_deep</item>
+                <item name="theme_gradient_center">@color/forest_essence_gradient_center</item>
+                <item name="theme_gradient_end">@color/forest_essence_gradient_end</item>
+                <item name="theme_muted_text">@color/forest_essence_deep</item>
+        <item name="theme_gradient_button_drawable">@drawable/theme_gradient_button</item>
+        <item name="actionBarStyle">@style/Widget.ShopLiNote.GradientActionBar</item>
+        <item name="materialButtonStyle">@style/Widget.ShopLiNote.Button</item>
+                <item name="colorControlActivated">@color/forest_essence_deep</item>
+                <item name="android:statusBarColor">@color/forest_essence_deep</item>
+            <item name="colorOnSurface">@color/forest_essence_deep</item>
+
+
+
+
+            <item name="theme_count_complete">@color/forest_essence_count_complete</item>
+            <item name="theme_count_incomplete">@color/forest_essence_count_incomplete</item>
+            <item name="theme_count_text">@color/forest_essence_deep</item>
+            <item name="theme_delete_color">@color/forest_essence_primary</item>
+
+        <item name="theme_nav_selected_bg">@color/forest_essence_background</item>
+
+        <item name="theme_progress_color">@color/forest_essence_deep</item>
+
+        <item name="theme_delete_button_text">@color/forest_essence_background</item>
+
+        <item name="theme_edit_text">@color/forest_essence_deep</item>
+
+        <item name="theme_edit_background">@color/forest_essence_accent</item>
+
+        <item name="theme_delete_background">@color/forest_essence_deep</item>
+</style>
+
+    <style name="Theme.NewNoteForestEssence" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+                <item name="colorPrimary">@color/forest_essence_primary</item>
+                <item name="colorPrimaryVariant">@color/forest_essence_deep</item>
+                <item name="colorOnPrimary">@color/forest_essence_deep</item>
+                <item name="colorSurface">@color/forest_essence_card_surface</item>
+                <item name="colorSecondary">@color/forest_essence_accent</item>
+                <item name="colorSecondaryVariant">@color/forest_essence_deep</item>
+                <item name="colorOnSecondary">@color/forest_essence_deep</item>
+                <item name="android:textColorPrimary">@color/forest_essence_deep</item>
+                <item name="android:colorBackground">@color/forest_essence_background</item>
+                <item name="allBgColor">@color/forest_essence_deep</item>
+                <item name="theme_btn">@color/forest_essence_deep</item>
+                <item name="theme_btn_text">@color/forest_essence_background</item>
+                <item name="theme_on_gradient">@color/forest_essence_background</item>
+                <item name="theme_nav_active">@color/forest_essence_deep</item>
+                <item name="theme_nav_inactive">@color/forest_essence_background</item>
+                <item name="theme_gradient_start">@color/forest_essence_deep</item>
+                <item name="theme_gradient_center">@color/forest_essence_gradient_center</item>
+                <item name="theme_gradient_end">@color/forest_essence_gradient_end</item>
+                <item name="theme_muted_text">@color/forest_essence_deep</item>
+        <item name="theme_gradient_button_drawable">@drawable/theme_gradient_button</item>
+        <item name="actionBarStyle">@style/Widget.ShopLiNote.GradientActionBar</item>
+        <item name="materialButtonStyle">@style/Widget.ShopLiNote.Button</item>
+                <item name="colorControlActivated">@color/forest_essence_deep</item>
+                <item name="android:statusBarColor">@color/forest_essence_deep</item>
+            <item name="colorOnSurface">@color/forest_essence_deep</item>
+
+
+
+
+            <item name="theme_count_complete">@color/forest_essence_count_complete</item>
+            <item name="theme_count_incomplete">@color/forest_essence_count_incomplete</item>
+            <item name="theme_count_text">@color/forest_essence_deep</item>
+            <item name="theme_delete_color">@color/forest_essence_primary</item>
+
+        <item name="theme_nav_selected_bg">@color/forest_essence_background</item>
+
+        <item name="theme_progress_color">@color/forest_essence_deep</item>
+
+        <item name="theme_delete_button_text">@color/forest_essence_background</item>
+
+        <item name="theme_edit_text">@color/forest_essence_deep</item>
+
+        <item name="theme_edit_background">@color/forest_essence_accent</item>
+
+        <item name="theme_delete_background">@color/forest_essence_deep</item>
+</style>
 </resources>
