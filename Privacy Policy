@@ -1,62 +1,119 @@
-**Privacy Policy**
+# Privacy Policy for ShopLiNote
 
-Built the ShopLiNote app as a Free app. This SERVICE is provided by at no cost and is intended for use as is.
+**Effective date:** October 28, 2026
 
-This page is used to inform visitors regarding my policies with the collection, use, and disclosure of Personal Information if anyone decided to use my Service.
+**Last updated:** October 28, 2026
 
-If you choose to use my Service, then you agree to the collection and use of information in relation to this policy. The Personal Information that I collect is used for providing and improving the Service. I will not use or share your information with anyone except as described in this Privacy Policy.
+## 1. Introduction
 
-The terms used in this Privacy Policy have the same meanings as in our Terms and Conditions, which are accessible at ShopLiNote unless otherwise defined in this Privacy Policy.
+This Privacy Policy explains how ShopLiNote (“the App”) handles information when you use the application.
 
-**Information Collection and Use**
+ShopLiNote is developed and maintained by GALYAMINSKY. If you have questions about this Privacy Policy, contact us at **galyaminsky@gmail.com**.
 
-For a better experience, while using our Service, I may require you to provide us with certain personally identifiable information, including but not limited to Galyminsky Yuriy. The information that I request will be retained on your device and is not collected by me in any way.
+By using ShopLiNote, you acknowledge the practices described in this Privacy Policy.
 
-The app does use third-party services that may collect information used to identify you.
+## 2. Information Stored on Your Device
 
-Link to the privacy policy of third-party service providers used by the app
+ShopLiNote is designed to store its main content locally on your device. This content may include:
 
-*   [Google Play Services](https://www.google.com/policies/privacy/)
+- Notes and shopping lists.
+- Items and quantities within shopping lists.
+- Entries in the App’s item library.
+- App preferences, such as theme, date format, and text display settings.
 
-**Log Data**
+The App does not require you to create an account. The inspected version does not provide developer-operated cloud storage or account-based synchronization of your notes and shopping lists.
 
-I want to inform you that whenever you use my Service, in a case of an error in the app I collect data and information (through third-party products) on your phone called Log Data. This Log Data may include information such as your device Internet Protocol (“IP”) address, device name, operating system version, the configuration of the app when utilizing my Service, the time and date of your use of the Service, and other statistics.
+Local storage does not necessarily mean that information can never leave your device. Android system backup and device-transfer features may copy eligible app data, depending on the Android version, device configuration, backup service, and your settings.
 
-**Cookies**
+## 3. Analytics and Third-Party Services
 
-Cookies are files with a small amount of data that are commonly used as anonymous unique identifiers. These are sent to your browser from the websites that you visit and are stored on your device's internal memory.
+ShopLiNote uses **Firebase Analytics**, a service provided by Google, to understand how the App is used and to help improve its functionality and reliability.
 
-This Service does not use these “cookies” explicitly. However, the app may use third-party code and libraries that use “cookies” to collect information and improve their services. You have the option to either accept or refuse these cookies and know when a cookie is being sent to your device. If you choose to refuse our cookies, you may not be able to use some portions of this Service.
+Depending on the SDK configuration and applicable platform settings, analytics information may include:
 
-**Service Providers**
+- App interactions and automatically collected app events.
+- App launches, sessions, and usage information.
+- App version and update information.
+- Device model, operating system, and related technical information.
+- An app-instance identifier used for analytics.
+- General geographic information that may be inferred by Google from network information.
 
-I may employ third-party companies and individuals due to the following reasons:
+Firebase Analytics may automatically collect certain events and technical information even when the App does not explicitly log custom analytics events.
 
-*   To facilitate our Service;
-*   To provide the Service on our behalf;
-*   To perform Service-related services; or
-*   To assist us in analyzing how our Service is used.
+The App also uses Google Play Services and other libraries required for its Android functionality. Information processed by these services is subject to the relevant providers’ documentation and privacy practices.
 
-I want to inform users of this Service that these third parties have access to their Personal Information. The reason is to perform the tasks assigned to them on our behalf. However, they are obligated not to disclose or use the information for any other purpose.
+**Advertising ID:** The App is configured to disable Advertising ID collection by Firebase Analytics. This does not necessarily disable every Google attribution mechanism or prevent every third-party service from processing other technical identifiers. The App does not include the Google Mobile Ads SDK in this version and does not display AdMob advertisements.
 
-**Security**
+Google’s privacy information is available at:
 
-I value your trust in providing us your Personal Information, thus we are striving to use commercially acceptable means of protecting it. But remember that no method of transmission over the internet, or method of electronic storage is 100% secure and reliable, and I cannot guarantee its absolute security.
+- [Google Privacy Policy](https://policies.google.com/privacy)
+- [Firebase Privacy and Security](https://firebase.google.com/support/privacy)
+- [Firebase Analytics data collection](https://firebase.google.com/docs/analytics)
 
-**Links to Other Sites**
+## 4. How Information Is Used
 
-This Service may contain links to other sites. If you click on a third-party link, you will be directed to that site. Note that these external sites are not operated by me. Therefore, I strongly advise you to review the Privacy Policy of these websites. I have no control over and assume no responsibility for the content, privacy policies, or practices of any third-party sites or services.
+Information processed by ShopLiNote and its analytics service may be used to:
 
-**Children’s Privacy**
+- Provide the App’s core functionality.
+- Save and display your notes, shopping lists, and preferences.
+- Understand general usage patterns.
+- Identify technical issues and improve app performance.
+- Maintain and improve the App.
 
-These Services do not address anyone under the age of 13. I do not knowingly collect personally identifiable information from children under 13 years of age. In the case I discover that a child under 13 has provided me with personal information, I immediately delete this from our servers. If you are a parent or guardian and you are aware that your child has provided us with personal information, please contact me so that I will be able to do the necessary actions.
+The developer does not use the App’s local notes and shopping-list content for advertising purposes through an integrated advertising SDK.
 
-**Changes to This Privacy Policy**
+## 5. Sharing Information
 
-I may update our Privacy Policy from time to time. Thus, you are advised to review this page periodically for any changes. I will notify you of any changes by posting the new Privacy Policy on this page.
+ShopLiNote does not provide a developer-operated cloud service for synchronizing or storing your notes and shopping lists.
 
-This policy is effective as of 2022-10-05
+Analytics information may be transmitted to and processed by Google through Firebase Analytics in accordance with Google’s applicable terms and privacy documentation.
 
-**Contact Us**
+The App also provides a sharing function. If you choose to share a shopping list, the selected content is passed to the Android sharing interface and the application you select. The recipient application’s handling of that information is governed by its own privacy policy and practices.
 
-If you have any questions or suggestions about my Privacy Policy, do not hesitate to contact me at jobforandroid@protonmail.com.
+Android system backup or device-transfer services may process eligible local app data as described in Section 2.
+
+The developer does not sell your personal information.
+
+## 6. Data Retention and Deletion
+
+Your notes, shopping lists, item-library entries, and preferences are stored in the App’s local data storage. You can generally remove this local data by clearing the App’s storage through Android settings or by uninstalling the App. These actions may permanently remove local information.
+
+If Android backup or device-transfer features have copied eligible data, copies may remain subject to the relevant system or backup service’s retention and restoration behavior.
+
+Analytics data is processed and retained by Google under the applicable Firebase Analytics configuration and Google policies. Retention periods may depend on service settings. The developer does not claim to be able to identify or individually delete every analytics record associated with a device or app instance.
+
+For additional information about Google’s handling of analytics data, consult the Firebase documentation linked above.
+
+## 7. Data Security
+
+ShopLiNote uses Android’s application storage mechanisms for local data. However, no storage method or electronic transmission can be guaranteed to be completely secure.
+
+You are responsible for securing access to your device and reviewing its backup, transfer, and application-permission settings.
+
+## 8. Children’s Privacy
+
+ShopLiNote is not intended to collect personal information directly from children through an account-registration system. The App does not require an account.
+
+Because Firebase Analytics may process technical and usage information, parents or guardians should review the relevant Google and Firebase privacy documentation when considering the App’s use by children.
+
+If you believe that information has been handled inappropriately in connection with the App, contact us at **galyaminsky@gmail.com**.
+
+## 9. External Services and Links
+
+The App may rely on Google Play Services, Firebase Analytics, Android system features, and applications selected by you for sharing content. These services may be governed by separate terms and privacy policies.
+
+The developer is not responsible for the independent privacy practices of third-party services or applications.
+
+## 10. Changes to This Privacy Policy
+
+This Privacy Policy may be updated when the App’s functionality, data practices, or applicable requirements change.
+
+The revised version will display an updated effective date. You should review the policy periodically to remain informed about how information is handled.
+
+## 11. Contact
+
+For questions about this Privacy Policy or ShopLiNote’s data practices, contact:
+
+**Developer:** GALYAMINSKY
+
+**Email:** galyaminsky@gmail.com

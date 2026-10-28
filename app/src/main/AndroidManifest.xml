@@ -15,6 +15,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ShopLiNoteLavenderDream"
         tools:targetApi="31">
+        <meta-data
+            android:name="google_analytics_adid_collection_enabled"
+            android:value="false" />
+
         <activity
             android:name=".settings.SettingActivity"
             android:exported="false" />
