@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Widget.ShopLiNote.GradientActionBar" parent="Widget.AppCompat.ActionBar.Solid">
+        <item name="background">@drawable/theme_gradient</item>
+        <item name="android:background">@drawable/theme_gradient</item>
+        <item name="titleTextStyle">@style/TextAppearance.ShopLiNote.ActionBarTitle</item>
+    </style>
+
+    <style name="Widget.ShopLiNote.GradientActionBar.LavenderDream" parent="Widget.ShopLiNote.GradientActionBar">
+        <item name="homeAsUpIndicator">@drawable/ic_back_lavender</item>
+        <item name="android:homeAsUpIndicator">@drawable/ic_back_lavender</item>
+        <item name="titleTextStyle">@style/TextAppearance.ShopLiNote.LavenderDreamActionBarTitle</item>
+        <item name="android:titleTextStyle">@style/TextAppearance.ShopLiNote.LavenderDreamActionBarTitle</item>
+    </style>
+
+    <style name="TextAppearance.ShopLiNote.ActionBarTitle" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textColor">?attr/theme_on_gradient</item>
+    </style>
+
+    <style name="TextAppearance.ShopLiNote.LavenderDreamActionBarTitle" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="Widget.ShopLiNote.Button" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">?attr/theme_btn</item>
+        <item name="android:textColor">?attr/theme_btn_text</item>
+    </style>
+</resources>

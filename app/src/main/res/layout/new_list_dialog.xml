@@ -51,6 +51,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/create"
+                android:textColor="?attr/theme_on_gradient"
                 android:background="?attr/theme_gradient_button_drawable"
                 app:cornerRadius="10dp" />
         </LinearLayout>

@@ -12,13 +12,14 @@
     <color name="lavender_dream_accent">#8FA2E2</color>
     <color name="lavender_dream_background">#FBE4F6</color>
     <color name="lavender_dream_surface">#EAD6F5</color>
-    <color name="lavender_dream_muted">#79897A</color>
-    <color name="lavender_dream_count_complete">#EAD6F5</color>
-    <color name="lavender_dream_count_incomplete">#FBE4F6</color>
+    <color name="lavender_dream_muted">#585E72</color>
+    <color name="lavender_dream_count_complete">#FBE4F6</color>
+    <color name="lavender_dream_count_incomplete">#8FA2E2</color>
     <!-- Derived Lavender Dream roles -->
-    <color name="lavender_dream_gradient_center">#4D587C</color>
-    <color name="lavender_dream_gradient_end">#596487</color>
+    <color name="lavender_dream_gradient_center">#59607D</color>
+    <color name="lavender_dream_gradient_end">#5F6688</color>
     <color name="lavender_dream_delete">#4E5A4E</color>
+    <color name="lavender_dream_text_on_accent">#2B2F43</color>
 
     <!-- AMBER GLOW THEME -->
     <color name="amber_glow_ink">#120F0A</color>
@@ -31,9 +32,9 @@
     <!-- Derived Amber Glow roles -->
     <color name="amber_glow_background">#FFF9ED</color>
     <color name="amber_glow_surface">#FFF0D9</color>
-    <color name="amber_glow_gradient_start">#74400A</color>
-    <color name="amber_glow_gradient_center">#934A04</color>
-    <color name="amber_glow_gradient_end">#A64D00</color>
+    <color name="amber_glow_gradient_start">#D76F02</color>
+    <color name="amber_glow_gradient_center">#E58B0D</color>
+    <color name="amber_glow_gradient_end">#FAA718</color>
     <color name="amber_glow_line">#3B200B</color>
 
     <!-- FOREST ESSENCE THEME -->
@@ -45,8 +46,9 @@
     <color name="forest_essence_count_complete">#AACC83</color>
     <color name="forest_essence_count_incomplete">#C0BFBF</color>
     <!-- Derived Forest Essence roles -->
-    <color name="forest_essence_card_surface">#EDF4E7</color>
-    <color name="forest_essence_gradient_center">#285A05</color>
-    <color name="forest_essence_gradient_end">#386D07</color>
+    <color name="forest_essence_card_surface">#E5EFD7</color>
+    <color name="forest_essence_gradient_center">#7DAD45</color>
+    <color name="forest_essence_gradient_end">#AACC83</color>
+    <color name="forest_essence_text_on_primary">#001800</color>
 
 </resources>
