@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+﻿<resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Theme.ShopLiNoteLavenderDream" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
                 <item name="colorPrimary">@color/lavender_dream_primary</item>
@@ -11,6 +11,7 @@
                 <item name="android:textColorPrimary">@color/lavender_dream_primary</item>
                 <item name="android:colorBackground">@color/lavender_dream_background</item>
                 <item name="allBgColor">@color/lavender_dream_primary</item>
+                <item name="theme_card_outline">@color/lavender_dream_card_outline</item>
                 <item name="theme_btn">@color/lavender_dream_primary</item>
                 <item name="theme_btn_text">@color/lavender_dream_background</item>
                 <item name="theme_on_gradient">@color/lavender_dream_background</item>
@@ -22,6 +23,8 @@
                 <item name="theme_muted_text">@color/lavender_dream_muted</item>
         <item name="theme_gradient_button_drawable">@drawable/theme_gradient_button</item>
         <item name="actionBarStyle">@style/Widget.ShopLiNote.GradientActionBar.LavenderDream</item>
+        <item name="actionBarTheme">@style/ThemeOverlay.ShopLiNote.LavenderDreamActionBar</item>
+        <item name="android:actionBarStyle">@style/Widget.ShopLiNote.GradientActionBar.LavenderDream</item>
         <item name="materialButtonStyle">@style/Widget.ShopLiNote.Button</item>
                 <item name="colorControlActivated">@color/lavender_dream_primary</item>
                 <item name="android:statusBarColor">@color/lavender_dream_primary</item>
@@ -33,7 +36,7 @@
             <item name="theme_count_complete">@color/lavender_dream_count_complete</item>
             <item name="theme_count_incomplete">@color/lavender_dream_count_incomplete</item>
             <item name="theme_count_text">@color/lavender_dream_text_on_accent</item>
-            <item name="theme_delete_color">@color/lavender_dream_delete</item>
+            <item name="theme_delete_color">@color/lavender_dream_primary</item>
 
         <item name="theme_nav_selected_bg">@color/lavender_dream_surface</item>
 
@@ -43,9 +46,10 @@
 
         <item name="theme_edit_text">@color/lavender_dream_primary</item>
 
-        <item name="theme_edit_background">@color/lavender_dream_surface</item>
+        <item name="theme_edit_background">@color/lavender_dream_edit_badge</item>
 
-        <item name="theme_delete_background">@color/lavender_dream_background</item>
+        <item name="theme_delete_background">@color/lavender_dream_delete_surface</item>
+        <item name="preferenceTheme">@style/ThemeOverlay.ShopLiNote.SettingsPreferences</item>
 </style>
 
     <style name="Theme.NewNoteLavenderDream" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
@@ -59,6 +63,7 @@
                 <item name="android:textColorPrimary">@color/lavender_dream_primary</item>
                 <item name="android:colorBackground">@color/lavender_dream_background</item>
                 <item name="allBgColor">@color/lavender_dream_primary</item>
+                <item name="theme_card_outline">@color/lavender_dream_card_outline</item>
                 <item name="theme_btn">@color/lavender_dream_primary</item>
                 <item name="theme_btn_text">@color/lavender_dream_background</item>
                 <item name="theme_on_gradient">@color/lavender_dream_background</item>
@@ -70,6 +75,8 @@
                 <item name="theme_muted_text">@color/lavender_dream_muted</item>
         <item name="theme_gradient_button_drawable">@drawable/theme_gradient_button</item>
         <item name="actionBarStyle">@style/Widget.ShopLiNote.GradientActionBar.LavenderDream</item>
+        <item name="actionBarTheme">@style/ThemeOverlay.ShopLiNote.LavenderDreamActionBar</item>
+        <item name="android:actionBarStyle">@style/Widget.ShopLiNote.GradientActionBar.LavenderDream</item>
         <item name="materialButtonStyle">@style/Widget.ShopLiNote.Button</item>
                 <item name="colorControlActivated">@color/lavender_dream_primary</item>
                 <item name="android:statusBarColor">@color/lavender_dream_primary</item>
@@ -81,7 +88,7 @@
             <item name="theme_count_complete">@color/lavender_dream_count_complete</item>
             <item name="theme_count_incomplete">@color/lavender_dream_count_incomplete</item>
             <item name="theme_count_text">@color/lavender_dream_text_on_accent</item>
-            <item name="theme_delete_color">@color/lavender_dream_delete</item>
+            <item name="theme_delete_color">@color/lavender_dream_primary</item>
 
         <item name="theme_nav_selected_bg">@color/lavender_dream_surface</item>
 
@@ -91,9 +98,9 @@
 
         <item name="theme_edit_text">@color/lavender_dream_primary</item>
 
-        <item name="theme_edit_background">@color/lavender_dream_surface</item>
+        <item name="theme_edit_background">@color/lavender_dream_edit_badge</item>
 
-        <item name="theme_delete_background">@color/lavender_dream_background</item>
+        <item name="theme_delete_background">@color/lavender_dream_delete_surface</item>
 </style>
 
 
@@ -108,6 +115,7 @@
                 <item name="android:textColorPrimary">@color/amber_glow_ink</item>
                 <item name="android:colorBackground">@color/amber_glow_background</item>
                 <item name="allBgColor">@color/amber_glow_line</item>
+                <item name="theme_card_outline">@color/amber_glow_card_outline</item>
                 <item name="theme_btn">@color/amber_glow_deep</item>
                 <item name="theme_btn_text">@color/amber_glow_background</item>
                 <item name="theme_on_gradient">@color/amber_glow_ink</item>
@@ -130,7 +138,7 @@
             <item name="theme_count_complete">@color/amber_glow_count_complete</item>
             <item name="theme_count_incomplete">@color/amber_glow_count_incomplete</item>
             <item name="theme_count_text">@color/amber_glow_ink</item>
-            <item name="theme_delete_color">@color/amber_glow_ink</item>
+            <item name="theme_delete_color">@color/amber_glow_primary</item>
 
         <item name="theme_nav_selected_bg">@color/amber_glow_surface</item>
 
@@ -143,6 +151,7 @@
         <item name="theme_edit_background">@color/amber_glow_light</item>
 
         <item name="theme_delete_background">@color/amber_glow_surface</item>
+        <item name="preferenceTheme">@style/ThemeOverlay.ShopLiNote.SettingsPreferences</item>
 </style>
     <style name="Theme.NewNoteAmberGlow" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
                 <item name="colorPrimary">@color/amber_glow_primary</item>
@@ -155,6 +164,7 @@
                 <item name="android:textColorPrimary">@color/amber_glow_ink</item>
                 <item name="android:colorBackground">@color/amber_glow_background</item>
                 <item name="allBgColor">@color/amber_glow_line</item>
+                <item name="theme_card_outline">@color/amber_glow_card_outline</item>
                 <item name="theme_btn">@color/amber_glow_deep</item>
                 <item name="theme_btn_text">@color/amber_glow_background</item>
                 <item name="theme_on_gradient">@color/amber_glow_ink</item>
@@ -177,7 +187,7 @@
             <item name="theme_count_complete">@color/amber_glow_count_complete</item>
             <item name="theme_count_incomplete">@color/amber_glow_count_incomplete</item>
             <item name="theme_count_text">@color/amber_glow_ink</item>
-            <item name="theme_delete_color">@color/amber_glow_ink</item>
+            <item name="theme_delete_color">@color/amber_glow_primary</item>
 
         <item name="theme_nav_selected_bg">@color/amber_glow_surface</item>
 
@@ -203,6 +213,7 @@
                 <item name="android:textColorPrimary">@color/forest_essence_deep</item>
                 <item name="android:colorBackground">@color/forest_essence_background</item>
                 <item name="allBgColor">@color/forest_essence_deep</item>
+                <item name="theme_card_outline">@color/forest_essence_card_outline</item>
                 <item name="theme_btn">@color/forest_essence_deep</item>
                 <item name="theme_btn_text">@color/forest_essence_background</item>
                 <item name="theme_on_gradient">@color/forest_essence_text_on_primary</item>
@@ -225,7 +236,7 @@
             <item name="theme_count_complete">@color/forest_essence_count_complete</item>
             <item name="theme_count_incomplete">@color/forest_essence_count_incomplete</item>
             <item name="theme_count_text">@color/forest_essence_deep</item>
-            <item name="theme_delete_color">@color/forest_essence_deep</item>
+            <item name="theme_delete_color">@color/forest_essence_primary</item>
 
         <item name="theme_nav_selected_bg">@color/forest_essence_background</item>
 
@@ -235,9 +246,10 @@
 
         <item name="theme_edit_text">@color/forest_essence_deep</item>
 
-        <item name="theme_edit_background">@color/forest_essence_accent</item>
+        <item name="theme_edit_background">@color/forest_essence_edit_surface</item>
 
         <item name="theme_delete_background">@color/forest_essence_background</item>
+        <item name="preferenceTheme">@style/ThemeOverlay.ShopLiNote.SettingsPreferences</item>
 </style>
 
     <style name="Theme.NewNoteForestEssence" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
@@ -251,6 +263,7 @@
                 <item name="android:textColorPrimary">@color/forest_essence_deep</item>
                 <item name="android:colorBackground">@color/forest_essence_background</item>
                 <item name="allBgColor">@color/forest_essence_deep</item>
+                <item name="theme_card_outline">@color/forest_essence_card_outline</item>
                 <item name="theme_btn">@color/forest_essence_deep</item>
                 <item name="theme_btn_text">@color/forest_essence_background</item>
                 <item name="theme_on_gradient">@color/forest_essence_text_on_primary</item>
@@ -273,7 +286,7 @@
             <item name="theme_count_complete">@color/forest_essence_count_complete</item>
             <item name="theme_count_incomplete">@color/forest_essence_count_incomplete</item>
             <item name="theme_count_text">@color/forest_essence_deep</item>
-            <item name="theme_delete_color">@color/forest_essence_deep</item>
+            <item name="theme_delete_color">@color/forest_essence_primary</item>
 
         <item name="theme_nav_selected_bg">@color/forest_essence_background</item>
 
@@ -283,7 +296,7 @@
 
         <item name="theme_edit_text">@color/forest_essence_deep</item>
 
-        <item name="theme_edit_background">@color/forest_essence_accent</item>
+        <item name="theme_edit_background">@color/forest_essence_edit_surface</item>
 
         <item name="theme_delete_background">@color/forest_essence_background</item>
 </style>

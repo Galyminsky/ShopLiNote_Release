@@ -20,6 +20,9 @@
     <color name="lavender_dream_gradient_end">#5F6688</color>
     <color name="lavender_dream_delete">#4E5A4E</color>
     <color name="lavender_dream_text_on_accent">#2B2F43</color>
+    <color name="lavender_dream_card_outline">#E4D0EE</color>
+    <color name="lavender_dream_delete_surface">#E0D8EA</color>
+    <color name="lavender_dream_edit_badge">#D6C7EC</color>
 
     <!-- AMBER GLOW THEME -->
     <color name="amber_glow_ink">#120F0A</color>
@@ -28,7 +31,7 @@
     <color name="amber_glow_accent">#FAA718</color>
     <color name="amber_glow_light">#FCCF46</color>
     <color name="amber_glow_count_complete">#FAA718</color>
-    <color name="amber_glow_count_incomplete">#FCCF46</color>
+    <color name="amber_glow_count_incomplete">#D76F02</color>
     <!-- Derived Amber Glow roles -->
     <color name="amber_glow_background">#FFF9ED</color>
     <color name="amber_glow_surface">#FFF0D9</color>
@@ -36,6 +39,7 @@
     <color name="amber_glow_gradient_center">#E58B0D</color>
     <color name="amber_glow_gradient_end">#FAA718</color>
     <color name="amber_glow_line">#3B200B</color>
+    <color name="amber_glow_card_outline">#F8EAD3</color>
 
     <!-- FOREST ESSENCE THEME -->
     <color name="forest_essence_deep">#002D00</color>
@@ -50,5 +54,7 @@
     <color name="forest_essence_gradient_center">#7DAD45</color>
     <color name="forest_essence_gradient_end">#AACC83</color>
     <color name="forest_essence_text_on_primary">#001800</color>
+    <color name="forest_essence_card_outline">#DFE9D1</color>
+    <color name="forest_essence_edit_surface">#D5E5C2</color>
 
 </resources>

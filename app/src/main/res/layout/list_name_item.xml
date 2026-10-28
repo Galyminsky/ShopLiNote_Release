@@ -20,7 +20,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:strokeColor="?attr/allBgColor"
+        app:strokeColor="?attr/theme_card_outline"
         app:strokeWidth="1dp">
 
         <LinearLayout
@@ -64,14 +64,14 @@
 
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/imDelete"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_marginEnd="10dp"
         android:alpha="0.8"
-        android:backgroundTint="?attr/theme_delete_background"
+        android:background="@drawable/list_delete_badge_background"
         android:contentDescription="@string/delete_item"
-        android:elevation="10dp"
-        android:minHeight="48dp"
+        android:elevation="3dp"
+        android:padding="0dp"
         app:layout_constraintBottom_toTopOf="@+id/cardView"
         app:layout_constraintEnd_toEndOf="@+id/cardView"
         app:layout_constraintTop_toTopOf="@+id/cardView"
@@ -79,13 +79,14 @@
 
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/imEdit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="5dp"
         android:alpha="0.8"
-        android:backgroundTint="?attr/theme_edit_background"
+        android:background="@drawable/list_edit_badge_background"
         android:contentDescription="@string/edit_list"
-        android:elevation="10dp"
-        android:minHeight="48dp"
+        android:elevation="3dp"
+        android:padding="0dp"
         app:layout_constraintBottom_toTopOf="@+id/cardView"
         app:layout_constraintEnd_toStartOf="@+id/imDelete"
         app:layout_constraintTop_toTopOf="@+id/cardView"
@@ -93,15 +94,13 @@
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/counterCard"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginTop="5dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_marginEnd="5dp"
-        android:layout_marginBottom="5dp"
         app:cardBackgroundColor="?attr/theme_count_incomplete"
         app:cardCornerRadius="10dp"
         app:cardElevation="3dp"
-        app:strokeColor="?attr/allBgColor"
+        app:strokeColor="?attr/theme_card_outline"
         app:strokeWidth="1dp"
         app:layout_constraintBottom_toBottomOf="@+id/imEdit"
         app:layout_constraintEnd_toStartOf="@+id/imEdit"
@@ -115,10 +114,8 @@
 
             <TextView
                 android:id="@+id/tvCounter"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:layout_weight="1"
                 android:text="@string/_0_0"
                 android:textColor="?attr/theme_count_text"
                 android:textSize="14sp" />

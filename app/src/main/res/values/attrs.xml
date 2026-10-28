@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <attr name="allBgColor" format="color"/>
+    <attr name="theme_card_outline" format="color" />
     <attr name="theme_btn" format="color"/>
     <attr name="theme_btn_text" format="color"/>
     <attr name="theme_gradient_start" format="color" />

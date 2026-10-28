@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <style name="ThemeOverlay.ShopLiNote.SettingsPreferences" parent="PreferenceThemeOverlay.v14.Material">
+        <item name="android:textColorPrimary">?attr/colorOnSurface</item>
+        <item name="android:textColorSecondary">?attr/colorOnSurface</item>
+        <item name="preferenceCategoryTitleTextColor">?attr/colorOnSurface</item>
+    </style>
+
+    <style name="PreferenceSummaryTextStyle">
+        <item name="android:textColor">?attr/colorOnSurface</item>
+    </style>
+
+    <style name="ThemeOverlay.ShopLiNote.LavenderDreamActionBar" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="android:textColorPrimary">@android:color/white</item>
+        <item name="colorControlNormal">@android:color/white</item>
+    </style>
+
     <style name="Widget.ShopLiNote.GradientActionBar" parent="Widget.AppCompat.ActionBar.Solid">
         <item name="background">@drawable/theme_gradient</item>
         <item name="android:background">@drawable/theme_gradient</item>
