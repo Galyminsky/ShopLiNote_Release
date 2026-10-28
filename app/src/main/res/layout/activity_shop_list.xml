@@ -10,6 +10,8 @@
         android:id="@+id/rcView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:paddingBottom="112dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,4 +28,102 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:visibility="gone" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/floatingActions"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:elevation="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/actionShare"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/speed_dial_main_background"
+            android:contentDescription="@string/share_list"
+            android:elevation="5dp"
+            android:focusable="false"
+            android:padding="13dp"
+            android:src="@drawable/ic_share_white"
+            android:tint="?attr/colorPrimary"
+            android:translationX="-64dp"
+            app:layout_constraintBottom_toBottomOf="@id/actionAdd"
+            app:layout_constraintEnd_toEndOf="@id/actionAdd"
+            app:layout_constraintStart_toStartOf="@id/actionAdd"
+            app:layout_constraintTop_toTopOf="@id/actionAdd" />
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/actionMore"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/speed_dial_main_background"
+            android:contentDescription="@string/more_actions"
+            android:elevation="5dp"
+            android:focusable="false"
+            android:padding="13dp"
+            android:src="@drawable/ic_more_actions"
+            android:tint="?attr/colorPrimary"
+            android:translationX="-24dp"
+            android:translationY="-68dp"
+            app:layout_constraintBottom_toBottomOf="@id/actionAdd"
+            app:layout_constraintEnd_toEndOf="@id/actionAdd"
+            app:layout_constraintStart_toStartOf="@id/actionAdd"
+            app:layout_constraintTop_toTopOf="@id/actionAdd" />
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/actionDeleteList"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:background="@drawable/speed_dial_main_background"
+            android:contentDescription="@string/delete_current_list_action"
+            android:elevation="5dp"
+            android:focusable="false"
+            android:padding="11dp"
+            android:src="@drawable/ic_delete_list"
+            android:tint="?attr/colorPrimary"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/actionMore"
+            app:layout_constraintEnd_toEndOf="@id/actionMore"
+            app:layout_constraintStart_toStartOf="@id/actionMore"
+            app:layout_constraintTop_toTopOf="@id/actionMore" />
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/actionClearList"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:background="@drawable/speed_dial_main_background"
+            android:contentDescription="@string/clear_all_action"
+            android:elevation="5dp"
+            android:focusable="false"
+            android:padding="11dp"
+            android:src="@drawable/ic_clear_all"
+            android:tint="?attr/colorPrimary"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/actionMore"
+            app:layout_constraintEnd_toEndOf="@id/actionMore"
+            app:layout_constraintStart_toStartOf="@id/actionMore"
+            app:layout_constraintTop_toTopOf="@id/actionMore" />
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/actionAdd"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/shop_action_primary_background"
+            android:contentDescription="@string/add_shop_item_action"
+            android:elevation="7dp"
+            android:focusable="false"
+            android:padding="16dp"
+            android:src="@drawable/ic_speed_dial_plus"
+            android:tint="?attr/colorOnPrimary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

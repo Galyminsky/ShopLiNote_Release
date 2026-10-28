@@ -50,4 +50,22 @@
     <string name="nulll">Shopping Lists</string>
     <string name="_0_0">0/0</string>
     <string name="textview">TextView</string>
+    <string name="new_note_screen_title">New note</string>
+    <string name="edit_note_screen_title">Edit note</string>
+    <string name="formatting">Formatting</string>
+    <string name="italic">Italic</string>
+    <string name="picker_red_description">Red</string>
+    <string name="picker_green_description">Green</string>
+    <string name="picker_blue_description">Blue</string>
+    <string name="picker_black_description">Black</string>
+    <string name="picker_yellow_description">Yellow</string>
+    <string name="picker_orange_description">Orange</string>
+    <string name="add_shop_item_action">Add purchase</string>
+    <string name="more_actions">More actions</string>
+    <string name="delete_current_list_action">Delete list</string>
+    <string name="clear_all_action">Clear all</string>
+    <string name="delete_current_list_confirm">Delete “%1$s” and all of its purchases?</string>
+    <string name="clear_current_list_confirm">Delete all purchases in “%1$s”? The list itself will remain.</string>
+    <string name="share_chooser_title">Share shopping list</string>
+    <string name="action_failed">The operation failed. Please try again.</string>
 </resources>

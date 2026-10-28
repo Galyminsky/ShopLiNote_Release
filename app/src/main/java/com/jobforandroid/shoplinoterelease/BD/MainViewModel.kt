@@ -2,13 +2,14 @@ package com.jobforandroid.shoplinoterelease.BD
 
 
 import androidx.lifecycle.*
+import androidx.room.withTransaction
 import com.jobforandroid.shoplinoterelease.entities.LibraryItem
 import com.jobforandroid.shoplinoterelease.entities.NoteItem
 import com.jobforandroid.shoplinoterelease.entities.ShopListItem
 import com.jobforandroid.shoplinoterelease.entities.ShopListNameItem
 import kotlinx.coroutines.launch
 
-class MainViewModel(database: MainDataBase) : ViewModel() {
+class MainViewModel(private val database: MainDataBase) : ViewModel() {
 
     val dao = database.getDao()
     val libraryItems = MutableLiveData<List<LibraryItem>>()
@@ -63,8 +64,10 @@ class MainViewModel(database: MainDataBase) : ViewModel() {
     }
 
     fun deleteShopList(id: Int, deleteList: Boolean) = viewModelScope.launch {
-        if (deleteList) dao.deleteShopListName(id)
-        dao.deleteShopItemsByListId(id)
+        database.withTransaction {
+            if (deleteList) dao.deleteShopListName(id)
+            dao.deleteShopItemsByListId(id)
+        }
     }
 
     private suspend fun isLibraryItemExists(name: String): Boolean {

@@ -50,4 +50,22 @@
     <string name="nulll">Списки покупок</string>
     <string name="_0_0">0/0</string>
     <string name="textview">TextView</string>
+    <string name="new_note_screen_title">Нова нотатка</string>
+    <string name="edit_note_screen_title">Редагувати нотатку</string>
+    <string name="formatting">Форматування</string>
+    <string name="italic">Курсив</string>
+    <string name="picker_red_description">Червоний</string>
+    <string name="picker_green_description">Зелений</string>
+    <string name="picker_blue_description">Синій</string>
+    <string name="picker_black_description">Чорний</string>
+    <string name="picker_yellow_description">Жовтий</string>
+    <string name="picker_orange_description">Помаранчевий</string>
+    <string name="add_shop_item_action">Додати покупку</string>
+    <string name="more_actions">Додаткові дії</string>
+    <string name="delete_current_list_action">Видалити список</string>
+    <string name="clear_all_action">Очистити все</string>
+    <string name="delete_current_list_confirm">Видалити список «%1$s» разом з усіма покупками?</string>
+    <string name="clear_current_list_confirm">Видалити всі покупки зі списку «%1$s»? Сам список залишиться.</string>
+    <string name="share_chooser_title">Поділитися списком покупок</string>
+    <string name="action_failed">Не вдалося виконати операцію. Спробуйте ще раз.</string>
 </resources>

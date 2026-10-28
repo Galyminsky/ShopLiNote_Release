@@ -1,6 +1,5 @@
 package com.jobforandroid.shoplinoterelease.activities
 
-import android.content.Intent
 import android.content.SharedPreferences
 import android.content.res.ColorStateList
 import android.os.Bundle
@@ -15,19 +14,13 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.preference.PreferenceManager
-import com.google.android.gms.ads.AdError
-import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.FullScreenContentCallback
-import com.google.android.gms.ads.LoadAdError
-import com.google.android.gms.ads.interstitial.InterstitialAd
-import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import com.jobforandroid.shoplinoterelease.R
 import com.jobforandroid.shoplinoterelease.databinding.ActivityMainBinding
 import com.jobforandroid.shoplinoterelease.dialogs.NewListDialog
 import com.jobforandroid.shoplinoterelease.fragments.FragmentManager
 import com.jobforandroid.shoplinoterelease.fragments.NoteFragment
 import com.jobforandroid.shoplinoterelease.fragments.ShopListNamesFragment
-import com.jobforandroid.shoplinoterelease.settings.SettingActivity
+import com.jobforandroid.shoplinoterelease.settings.SettingsFragment
 import com.jobforandroid.shoplinoterelease.utils.ThemeManager
 
 
@@ -36,9 +29,22 @@ class MainActivity : AppCompatActivity(), NewListDialog.Listener {
     private var currentMenuItemId = R.id.notes
     private lateinit var defPref: SharedPreferences
     private var currentTheme = ""
-    private var iAd: InterstitialAd? = null
     private lateinit var navPanelBackground: FloatingNavBackgroundDrawable
     private var activeCircleAnimator: ValueAnimator? = null
+    private var settingsNavigationOpen = false
+    private var settingsReturnNavItemId = R.id.notes
+    private var settingsReturnTitle: CharSequence? = null
+    private var selectedNavigationItemId = R.id.notes
+    private val themePreferenceChangeListener =
+        SharedPreferences.OnSharedPreferenceChangeListener { _, key ->
+            if (key == ThemeManager.THEME_KEY) {
+                val selectedTheme = ThemeManager.getThemeKey(this)
+                if (selectedTheme != currentTheme) {
+                    currentTheme = selectedTheme
+                    recreate()
+                }
+            }
+        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -46,6 +52,13 @@ class MainActivity : AppCompatActivity(), NewListDialog.Listener {
         currentTheme = ThemeManager.getThemeKey(this)
         setTheme(getSelectedTheme())
         super.onCreate(savedInstanceState)
+        settingsNavigationOpen = savedInstanceState?.getBoolean(STATE_SETTINGS_OPEN) ?: false
+        currentMenuItemId = savedInstanceState?.getInt(STATE_CURRENT_MENU_ITEM) ?: R.id.notes
+        selectedNavigationItemId =
+            savedInstanceState?.getInt(STATE_SELECTED_NAV_ITEM) ?: currentMenuItemId
+        settingsReturnNavItemId =
+            savedInstanceState?.getInt(STATE_SETTINGS_RETURN_NAV_ITEM) ?: R.id.notes
+        settingsReturnTitle = savedInstanceState?.getCharSequence(STATE_SETTINGS_RETURN_TITLE)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val outlineValue = TypedValue()
@@ -60,86 +73,112 @@ class MainActivity : AppCompatActivity(), NewListDialog.Listener {
             resources.displayMetrics.density
         )
         binding.bNav.background = navPanelBackground
-        FragmentManager.setFragment(ShopListNamesFragment.newInstance(), this)
+        if (savedInstanceState == null) {
+            FragmentManager.setFragment(ShopListNamesFragment.newInstance(), this)
+        } else {
+            (supportFragmentManager.findFragmentById(R.id.placeHolder) as? com.jobforandroid.shoplinoterelease.fragments.BaseFragment)
+                ?.let { FragmentManager.currentFrag = it }
+            supportActionBar?.title = if (settingsNavigationOpen) {
+                getString(R.string.settings)
+            } else {
+                savedInstanceState.getCharSequence(STATE_ACTION_BAR_TITLE)
+            }
+        }
+        supportFragmentManager.addOnBackStackChangedListener {
+            if (settingsNavigationOpen &&
+                supportFragmentManager.findFragmentByTag(SETTINGS_FRAGMENT_TAG)?.isVisible != true
+            ) {
+                settingsNavigationOpen = false
+                (supportFragmentManager.findFragmentById(R.id.placeHolder) as? com.jobforandroid.shoplinoterelease.fragments.BaseFragment)
+                    ?.let { FragmentManager.currentFrag = it }
+                selectNavigationItem(settingsReturnNavItemId)
+                supportActionBar?.title = settingsReturnTitle
+            }
+        }
 
         setBottomNavListener()
-        selectNavigationItem(currentMenuItemId, animate = false)
+        selectNavigationItem(
+            if (settingsNavigationOpen) R.id.settings else selectedNavigationItemId,
+            animate = false
+        )
         applyNavigationBarInsets()
-        loadInterAd()
 
     }
 
-    private fun loadInterAd() {
-        val request = AdRequest.Builder().build()
-        InterstitialAd.load(this, getString(R.string.inter_ad_id), request,
-            object : InterstitialAdLoadCallback() {
-                override fun onAdLoaded(p0: InterstitialAd) {
-                    iAd = p0
-                    Log.d("MyLog", "Load Ok")
-                }
-
-                override fun onAdFailedToLoad(p0: LoadAdError) {
-                    iAd = null
-                    Log.d("MyLog", "Load Error")
-                }
-            })
+    override fun onStart() {
+        super.onStart()
+        defPref.registerOnSharedPreferenceChangeListener(themePreferenceChangeListener)
     }
 
-    private fun showInterAd(adListener: AdListener) {
-        if (iAd != null) {
-            iAd?.fullScreenContentCallback = object : FullScreenContentCallback() {
-                override fun onAdDismissedFullScreenContent() {
-                    iAd = null
-                    loadInterAd()
-                    adListener.onFinish()
-                }
+    override fun onStop() {
+        defPref.unregisterOnSharedPreferenceChangeListener(themePreferenceChangeListener)
+        super.onStop()
+    }
 
-                override fun onAdFailedToShowFullScreenContent(ad: AdError) {
-                    iAd = null
-                    loadInterAd()
-                }
-
-                override fun onAdShowedFullScreenContent() {
-                    iAd = null
-                    loadInterAd()
-                    adListener.onFinish()
-                }
-            }
-            iAd?.show(this@MainActivity)
-        } else {
-            adListener.onFinish()
-        }
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putBoolean(STATE_SETTINGS_OPEN, settingsNavigationOpen)
+        outState.putInt(STATE_CURRENT_MENU_ITEM, currentMenuItemId)
+        outState.putInt(STATE_SELECTED_NAV_ITEM, selectedNavigationItemId)
+        outState.putInt(STATE_SETTINGS_RETURN_NAV_ITEM, settingsReturnNavItemId)
+        outState.putCharSequence(STATE_SETTINGS_RETURN_TITLE, settingsReturnTitle)
+        outState.putCharSequence(STATE_ACTION_BAR_TITLE, supportActionBar?.title)
+        super.onSaveInstanceState(outState)
     }
 
     private fun setBottomNavListener() {
         binding.navNew.setOnClickListener {
+            closeSettingsForNavigation()
             selectNavigationItem(R.id.new_item)
-            supportActionBar?.title = getString(R.string.new_item)
             FragmentManager.currentFrag?.onClickNew()
         }
         binding.navNotes.setOnClickListener {
+            closeSettingsForNavigation()
             selectNavigationItem(R.id.notes)
             supportActionBar?.title = getString(R.string.notes)
             currentMenuItemId = R.id.notes
             FragmentManager.setFragment(NoteFragment.newInstance(), this)
         }
         binding.navPurchases.setOnClickListener {
+            closeSettingsForNavigation()
             selectNavigationItem(R.id.shop_list)
             supportActionBar?.title = getString(R.string.shop_list)
             currentMenuItemId = R.id.shop_list
             FragmentManager.setFragment(ShopListNamesFragment.newInstance(), this)
         }
         binding.navSettings.setOnClickListener {
-            selectNavigationItem(R.id.settings)
-            showInterAd(object : AdListener {
-                override fun onFinish() {
-                    startActivity(Intent(this@MainActivity, SettingActivity::class.java))
-                }
-            })
+            showSettingsFragment()
         }
     }
 
+    private fun showSettingsFragment() {
+        val fragmentManager = supportFragmentManager
+        if (settingsNavigationOpen ||
+            fragmentManager.findFragmentByTag(SETTINGS_FRAGMENT_TAG)?.isAdded == true
+        ) return
+
+        settingsReturnNavItemId = selectedNavigationItemId
+        settingsReturnTitle = supportActionBar?.title
+        settingsNavigationOpen = true
+        selectNavigationItem(R.id.settings)
+        supportActionBar?.title = getString(R.string.settings)
+        fragmentManager.beginTransaction()
+            .replace(R.id.placeHolder, SettingsFragment(), SETTINGS_FRAGMENT_TAG)
+            .addToBackStack(SETTINGS_BACK_STACK_TAG)
+            .setReorderingAllowed(true)
+            .commit()
+    }
+
+    private fun closeSettingsForNavigation() {
+        if (!settingsNavigationOpen) return
+        supportFragmentManager.popBackStackImmediate(
+            SETTINGS_BACK_STACK_TAG,
+            androidx.fragment.app.FragmentManager.POP_BACK_STACK_INCLUSIVE
+        )
+        settingsNavigationOpen = false
+    }
+
     private fun selectNavigationItem(itemId: Int, animate: Boolean = true) {
+        selectedNavigationItemId = itemId
         val inactiveColor = ContextCompat.getColor(this, R.color.nav_inactive_gray)
         val themePrimary = when (ThemeManager.getThemeKey(this)) {
             ThemeManager.AMBER_GLOW -> ContextCompat.getColor(this, R.color.amber_glow_primary)
@@ -221,7 +260,11 @@ class MainActivity : AppCompatActivity(), NewListDialog.Listener {
 
     override fun onResume() {
         super.onResume()
-        selectNavigationItem(currentMenuItemId, animate = false)
+        if (settingsNavigationOpen) {
+            selectNavigationItem(R.id.settings, animate = false)
+        } else {
+            selectNavigationItem(currentMenuItemId, animate = false)
+        }
         if (ThemeManager.getThemeKey(this) != currentTheme) recreate()
     }
 
@@ -233,7 +276,14 @@ class MainActivity : AppCompatActivity(), NewListDialog.Listener {
         Log.d("MyLog", "Name: $name")
     }
 
-    interface AdListener {
-        fun onFinish()
+    companion object {
+        private const val SETTINGS_FRAGMENT_TAG = "main_settings_fragment"
+        private const val SETTINGS_BACK_STACK_TAG = "main_settings_back_stack"
+        private const val STATE_SETTINGS_OPEN = "main_settings_open"
+        private const val STATE_CURRENT_MENU_ITEM = "main_current_menu_item"
+        private const val STATE_SELECTED_NAV_ITEM = "main_selected_nav_item"
+        private const val STATE_SETTINGS_RETURN_NAV_ITEM = "main_settings_return_nav_item"
+        private const val STATE_SETTINGS_RETURN_TITLE = "main_settings_return_title"
+        private const val STATE_ACTION_BAR_TITLE = "main_action_bar_title"
     }
 }

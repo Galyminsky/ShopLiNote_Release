@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.util.TypedValue
 import androidx.core.content.ContextCompat
+import androidx.core.view.doOnNextLayout
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -36,6 +37,22 @@ class ShopListItemAdapter(private val listener: Listener) :
 
     override fun getItemViewType(position: Int): Int {
         return getItem(position).itemType
+    }
+
+    fun highlightAddedItem(name: String, recyclerView: RecyclerView): Boolean {
+        val position = currentList.indexOfLast { it.itemType == 0 && it.name == name }
+        if (position == -1) return false
+
+        recyclerView.scrollToPosition(position)
+        recyclerView.doOnNextLayout {
+            val holder = recyclerView.findViewHolderForAdapterPosition(position) ?: return@doOnNextLayout
+            holder.itemView.alpha = 0.45f
+            holder.itemView.animate()
+                .alpha(1f)
+                .setDuration(260)
+                .start()
+        }
+        return true
     }
 
 

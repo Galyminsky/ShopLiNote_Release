@@ -1,7 +1,6 @@
 package com.jobforandroid.shoplinoterelease.activities
 
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Typeface
@@ -13,11 +12,13 @@ import android.view.ActionMode
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.view.animation.Animation
-import android.view.animation.AnimationUtils
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.doOnLayout
 import androidx.preference.PreferenceManager
 import com.jobforandroid.shoplinoterelease.R
 import com.jobforandroid.shoplinoterelease.utils.ThemeManager
@@ -25,7 +26,6 @@ import com.jobforandroid.shoplinoterelease.databinding.ActivityNewNoteBinding
 import com.jobforandroid.shoplinoterelease.entities.NoteItem
 import com.jobforandroid.shoplinoterelease.fragments.NoteFragment
 import com.jobforandroid.shoplinoterelease.utils.HtmlManager
-import com.jobforandroid.shoplinoterelease.utils.MyTouchListener
 import com.jobforandroid.shoplinoterelease.utils.TimeManager
 
 class NewNoteActivity : AppCompatActivity() {
@@ -33,6 +33,11 @@ class NewNoteActivity : AppCompatActivity() {
     private lateinit var defPref: SharedPreferences
     private var note: NoteItem? = null
     private var pref: SharedPreferences? = null
+    private var openSubmenu: Submenu? = null
+    private var colorSelectionStart = -1
+    private var colorSelectionEnd = -1
+
+    private enum class Submenu { COLOR, FORMATTING }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         defPref = PreferenceManager.getDefaultSharedPreferences(this)
@@ -47,33 +52,35 @@ class NewNoteActivity : AppCompatActivity() {
         getNote()
         onClickColorPicker()
         actionMenuCallback()
+        setupSpeedDial()
+        supportActionBar?.title = getString(
+            if (note == null) R.string.new_note_screen_title else R.string.edit_note_screen_title
+        )
 
     }
 
     private fun onClickColorPicker() = with(binding) {
         imRed.setOnClickListener {
-            setColorForSelectedText(R.color.picker_red)
+            applyColorFromPicker(R.color.picker_red)
         }
         imGreen.setOnClickListener {
-            setColorForSelectedText(R.color.picker_green)
+            applyColorFromPicker(R.color.picker_green)
         }
         imBlue.setOnClickListener {
-            setColorForSelectedText(R.color.picker_blue)
+            applyColorFromPicker(R.color.picker_blue)
         }
         imBlack.setOnClickListener {
-            setColorForSelectedText(R.color.picker_black)
+            applyColorFromPicker(R.color.picker_black)
         }
         imYellow.setOnClickListener {
-            setColorForSelectedText(R.color.picker_yellow)
+            applyColorFromPicker(R.color.picker_yellow)
         }
         imOrange.setOnClickListener {
-            setColorForSelectedText(R.color.picker_orange)
+            applyColorFromPicker(R.color.picker_orange)
         }
     }
 
-    @SuppressLint("ClickableViewAccessibility")
     private fun init() {
-        binding.colorPicker.setOnTouchListener(MyTouchListener())
         pref = PreferenceManager.getDefaultSharedPreferences(this)
     }
 
@@ -96,46 +103,49 @@ class NewNoteActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == R.id.id_save) {
-            setMainResult()
-        } else if (item.itemId == android.R.id.home) {
+        if (item.itemId == android.R.id.home) {
             finish()
-        } else if (item.itemId == R.id.id_bold) {
-            setBoldForSelectedText()
-        } else if (item.itemId == R.id.id_color) {
-            if (binding.colorPicker.isShown) {
-                closeColorPicker()
-            } else {
-                openColorPicker()
-            }
+            return true
         }
         return super.onOptionsItemSelected(item)
     }
 
-    private fun setBoldForSelectedText() = with(binding) {
-        val startPos = edDescription.selectionStart
-        val endPos = edDescription.selectionEnd
+    private fun setBoldForSelectedText() = toggleStyleForSelectedText(Typeface.BOLD)
 
-        val styles = edDescription.text.getSpans(startPos, endPos, StyleSpan::class.java)
-        var boldStyle: StyleSpan? = null
-        if (styles.isNotEmpty()) {
-            edDescription.text.removeSpan(styles[0])
-        } else {
-            boldStyle = StyleSpan(Typeface.BOLD)
+    private fun setItalicForSelectedText() = toggleStyleForSelectedText(Typeface.ITALIC)
+
+    private fun toggleStyleForSelectedText(style: Int) = with(binding.edDescription) {
+        restoreTextSelection() ?: return
+        val startPos = selectionStart
+        val endPos = selectionEnd
+        if (startPos < 0 || endPos <= startPos) return
+
+        val spans = text.getSpans(startPos, endPos, StyleSpan::class.java)
+            .filter { text.getSpanStart(it) <= startPos && text.getSpanEnd(it) >= endPos }
+        val current = spans.firstOrNull()
+        val currentStyle = current?.style ?: Typeface.NORMAL
+        val hasStyle = currentStyle and style != 0
+        current?.let {
+            val spanStart = text.getSpanStart(it)
+            val spanEnd = text.getSpanEnd(it)
+            text.removeSpan(it)
+            val updatedStyle = if (hasStyle) currentStyle and style.inv() else currentStyle or style
+            if (updatedStyle != Typeface.NORMAL) {
+                text.setSpan(StyleSpan(updatedStyle), spanStart, spanEnd, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+            }
         }
-        edDescription.text.setSpan(
-            boldStyle,
-            startPos,
-            endPos,
-            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
-        )
-        edDescription.text.trim()
-        edDescription.setSelection(startPos)
+        if (current == null) {
+            text.setSpan(StyleSpan(style), startPos, endPos, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+        }
+        setSelection(startPos, endPos)
+        clearSavedTextSelection()
     }
 
     private fun setColorForSelectedText(colorId: Int) = with(binding) {
+        restoreTextSelection() ?: return
         val startPos = edDescription.selectionStart
         val endPos = edDescription.selectionEnd
+        if (startPos < 0 || endPos <= startPos) return
 
         val styles = edDescription.text.getSpans(startPos, endPos, ForegroundColorSpan::class.java)
         if (styles.isNotEmpty()) edDescription.text.removeSpan(styles[0])
@@ -147,7 +157,8 @@ class NewNoteActivity : AppCompatActivity() {
             Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
         )
         edDescription.text.trim()
-        edDescription.setSelection(startPos)
+        edDescription.setSelection(startPos, endPos)
+        clearSavedTextSelection()
     }
 
     private fun setMainResult() {
@@ -189,26 +200,161 @@ class NewNoteActivity : AppCompatActivity() {
         ab?.setDisplayHomeAsUpEnabled(true)
     }
 
-    private fun openColorPicker() {
-        binding.colorPicker.visibility = View.VISIBLE
-        val openAnim = AnimationUtils.loadAnimation(this, R.anim.open_color_picker)
-        binding.colorPicker.startAnimation(openAnim)
+    private fun applyColorFromPicker(colorId: Int) = with(binding.edDescription) {
+        setColorForSelectedText(colorId)
+        colorSelectionStart = -1
+        colorSelectionEnd = -1
+        setSubmenu(null)
     }
 
-    private fun closeColorPicker() {
-        val openAnim = AnimationUtils.loadAnimation(this, R.anim.close_color_picker)
-        openAnim.setAnimationListener(object : Animation.AnimationListener {
-            override fun onAnimationStart(p0: Animation?) {
-            }
+    private fun setupSpeedDial() {
+        binding.speedDialSave.setOnClickListener {
+            setMainResult()
+        }
+        binding.speedDialColor.setOnClickListener {
+            rememberTextSelection()
+            setSubmenu(if (openSubmenu == Submenu.COLOR) null else Submenu.COLOR)
+        }
+        binding.speedDialFormat.setOnClickListener {
+            rememberTextSelection()
+            setSubmenu(if (openSubmenu == Submenu.FORMATTING) null else Submenu.FORMATTING)
+        }
+        binding.speedDialBold.setOnClickListener {
+            setBoldForSelectedText()
+            setSubmenu(null)
+        }
+        binding.speedDialItalic.setOnClickListener {
+            setItalicForSelectedText()
+            setSubmenu(null)
+        }
+        applySpeedDialInsets()
+    }
 
-            override fun onAnimationEnd(p0: Animation?) {
-                binding.colorPicker.visibility = View.GONE
-            }
+    private fun setSubmenu(submenu: Submenu?) {
+        openSubmenu = submenu
+        if (submenu == Submenu.COLOR) {
+            binding.colorPicker.visibility = View.VISIBLE
+            animateFan(colorButtons(), true, binding.speedDialColor, colorFanOffsets())
+        } else {
+            animateFan(colorButtons(), false, binding.speedDialColor, colorFanOffsets())
+            binding.colorPicker.postDelayed({
+                if (openSubmenu != Submenu.COLOR) binding.colorPicker.visibility = View.GONE
+            }, 220)
+        }
+        val formatButtons = listOf(binding.speedDialBold, binding.speedDialItalic)
+        animateFan(formatButtons, submenu == Submenu.FORMATTING, binding.speedDialFormat, formattingFanOffsets())
+    }
 
-            override fun onAnimationRepeat(p0: Animation?) {
+    private fun colorButtons() = listOf(
+        binding.imRed, binding.imGreen, binding.imBlue,
+        binding.imBlack, binding.imYellow, binding.imOrange
+    )
+
+    private fun colorFanOffsets(): List<Pair<Float, Float>> {
+        val radius = 70f * resources.displayMetrics.density
+        return (0..5).map { index ->
+            val angle = Math.toRadians(90.0 + index * 36.0)
+            (kotlin.math.cos(angle).toFloat() * radius) to
+                (kotlin.math.sin(angle).toFloat() * radius)
+        }
+    }
+
+    private fun formattingFanOffsets(): List<Pair<Float, Float>> {
+        val radius = 62f * resources.displayMetrics.density
+        return listOf(135.0, 45.0).map { degrees ->
+            (kotlin.math.cos(Math.toRadians(degrees)).toFloat() * radius) to
+                (-kotlin.math.sin(Math.toRadians(degrees)).toFloat() * radius)
+        }
+    }
+
+    private fun animateFan(
+        buttons: List<View>,
+        open: Boolean,
+        anchor: View,
+        offsets: List<Pair<Float, Float>>
+    ) {
+        buttons.forEachIndexed { index, button ->
+            button.animate().cancel()
+            if (open) {
+                button.visibility = View.VISIBLE
+                button.alpha = 0f
+                button.scaleX = 0.65f
+                button.scaleY = 0.65f
+                button.translationX = 0f
+                button.translationY = 0f
             }
-        })
-        binding.colorPicker.startAnimation(openAnim)
+            button.doOnLayout {
+                if (open && openSubmenu != submenuFor(anchor)) {
+                    button.visibility = View.GONE
+                    return@doOnLayout
+                }
+                val targetX: Float
+                val targetY: Float
+                if (open) {
+                    val anchorCenterX = anchor.x + anchor.width / 2f
+                    val anchorCenterY = anchor.y + anchor.height / 2f
+                    val (dx, dy) = offsets[index]
+                    val halfW = button.width / 2f
+                    val halfH = button.height / 2f
+                    val targetCenterX = (anchorCenterX + dx).coerceIn(halfW, binding.root.width - halfW)
+                    val targetCenterY = (anchorCenterY + dy).coerceIn(halfH, binding.root.height - halfH)
+                    targetX = targetCenterX - button.left - halfW
+                    targetY = targetCenterY - button.top - halfH
+                } else {
+                    targetX = 0f
+                    targetY = 0f
+                }
+                button.animate()
+                    .translationX(targetX)
+                    .translationY(targetY)
+                    .alpha(if (open) 1f else 0f)
+                    .scaleX(if (open) 1f else 0.65f)
+                    .scaleY(if (open) 1f else 0.65f)
+                    .setDuration(220)
+                    .setInterpolator(android.view.animation.AccelerateDecelerateInterpolator())
+                    .withEndAction { if (!open) button.visibility = View.GONE }
+                    .start()
+            }
+        }
+    }
+
+    private fun submenuFor(anchor: View) = if (anchor.id == R.id.speedDialColor) {
+        Submenu.COLOR
+    } else {
+        Submenu.FORMATTING
+    }
+
+    private fun rememberTextSelection() {
+        colorSelectionStart = binding.edDescription.selectionStart
+        colorSelectionEnd = binding.edDescription.selectionEnd
+    }
+
+    private fun restoreTextSelection(): Unit? {
+        val text = binding.edDescription
+        val start = colorSelectionStart.takeIf { it >= 0 } ?: text.selectionStart
+        val end = colorSelectionEnd.takeIf { it >= 0 } ?: text.selectionEnd
+        if (start < 0 || end < 0 || end <= start || end > text.text.length) return null
+        text.requestFocus()
+        text.setSelection(start, end)
+        return Unit
+    }
+
+    private fun clearSavedTextSelection() {
+        colorSelectionStart = -1
+        colorSelectionEnd = -1
+    }
+
+    private fun applySpeedDialInsets() {
+        val baseBottomMargin = (24 * resources.displayMetrics.density).toInt()
+        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { _, insets ->
+            val navigationInset = insets.getInsets(WindowInsetsCompat.Type.navigationBars()).bottom
+            val params = binding.speedDialSave.layoutParams as ConstraintLayout.LayoutParams
+            params.bottomMargin = baseBottomMargin + navigationInset
+            binding.speedDialSave.layoutParams = params
+            binding.root.post { openSubmenu?.let(::setSubmenu) }
+            insets
+        }
+        ViewCompat.requestApplyInsets(binding.root)
     }
 
     private fun actionMenuCallback() {
