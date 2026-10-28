@@ -14,6 +14,7 @@ import android.view.WindowManager
 import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -63,6 +64,23 @@ class ShopListActivity : AppCompatActivity(), ShopListItemAdapter.Listener {
         binding = ActivityShopListBinding.inflate(layoutInflater)
 
         setContentView(binding.root)
+
+        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                if (isDeletingList) return
+                if (additionalActionsOpen) {
+                    setAdditionalActionsOpen(false)
+                    return
+                }
+                if (newItemMenu?.isActionViewExpanded == true) {
+                    newItemMenu?.collapseActionView()
+                    return
+                }
+                saveItemCount()
+                isEnabled = false
+                onBackPressedDispatcher.onBackPressed()
+            }
+        })
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
         init()
         supportActionBar?.title = shopListNameItem?.name
@@ -269,20 +287,6 @@ class ShopListActivity : AppCompatActivity(), ShopListItemAdapter.Listener {
     private fun getSelectedTheme(): Int {
         return ThemeManager.getThemeStyle(this)
 
-    }
-
-    override fun onBackPressed() {
-        if (isDeletingList) return
-        if (additionalActionsOpen) {
-            setAdditionalActionsOpen(false)
-            return
-        }
-        if (newItemMenu?.isActionViewExpanded == true) {
-            newItemMenu?.collapseActionView()
-            return
-        }
-        saveItemCount()
-        super.onBackPressed()
     }
 
     private fun setupFloatingActions() = with(binding) {

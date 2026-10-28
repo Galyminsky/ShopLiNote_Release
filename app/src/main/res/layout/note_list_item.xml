@@ -9,14 +9,15 @@
     <com.google.android.material.card.MaterialCardView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        app:cardCornerRadius="10dp"
+        android:layout_marginBottom="8dp"
+        app:cardCornerRadius="12dp"
         app:cardBackgroundColor="?attr/colorSurface"
-        app:cardElevation="3dp"
+        app:cardElevation="5dp"
+        android:outlineSpotShadowColor="?attr/theme_surface_shadow"
+        android:outlineAmbientShadowColor="?attr/theme_surface_highlight"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,6 +26,7 @@
         app:strokeWidth="1dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cardContent"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -48,7 +50,10 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
 
-                android:padding="10dp"
+                android:paddingStart="14dp"
+                android:paddingTop="16dp"
+                android:paddingEnd="10dp"
+                android:paddingBottom="16dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/imDelete"
                 app:layout_constraintStart_toStartOf="parent"
@@ -68,26 +73,78 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
+                    android:maxLines="3"
+                    android:ellipsize="end"
+                    android:breakStrategy="high_quality"
                     android:text="@string/textview"
                     android:textColor="?attr/colorOnSurface" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="3dp"
+                    android:layout_height="1dp"
                     android:layout_marginTop="5dp"
-                    android:background="?attr/allBgColor"
+                    android:background="?attr/theme_card_outline"
                     android:orientation="horizontal">
 
                 </LinearLayout>
 
-                <TextView
-                    android:id="@+id/tvTime"
+                <LinearLayout
+                    android:id="@+id/metadataRow"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:text="TextView"
-                    android:textColor="?attr/colorOnSurface"
-                    android:textSize="16sp" />
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:id="@+id/timeRow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:layout_marginEnd="8dp"
+                        android:contentDescription="@null"
+                        app:srcCompat="@drawable/ic_time_format"
+                        app:tint="?attr/colorSecondary" />
+
+                    <TextView
+                        android:id="@+id/tvTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/textview"
+                        android:textColor="?attr/colorOnSurface"
+                        android:textSize="16sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/dateRow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:layout_marginEnd="8dp"
+                            android:contentDescription="@null"
+                            app:srcCompat="@drawable/ic_calendar"
+                            app:tint="?attr/colorSecondary" />
+
+                        <TextView
+                            android:id="@+id/tvDate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/textview"
+                            android:textColor="?attr/colorOnSurface"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+                </LinearLayout>
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>

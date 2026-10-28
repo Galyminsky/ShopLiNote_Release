@@ -7,12 +7,14 @@ import android.view.LayoutInflater
 import android.view.View
 import com.jobforandroid.shoplinoterelease.databinding.EditListItemDialogBinding
 import com.jobforandroid.shoplinoterelease.entities.ShopListItem
+import com.jobforandroid.shoplinoterelease.utils.CardGradient
 
 object EditListItemDialog {
     fun showDialog(context: Context, item: ShopListItem, listener: Listener) {
         var dialog: AlertDialog? = null
         val builder = AlertDialog.Builder(context)
         val binding = EditListItemDialogBinding.inflate(LayoutInflater.from(context))
+        CardGradient.apply(binding.cardContent, 0)
         builder.setView(binding.root)
         binding.apply {
             edName.setText(item.name)

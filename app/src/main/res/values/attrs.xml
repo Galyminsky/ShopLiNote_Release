@@ -2,6 +2,9 @@
 <resources>
     <attr name="allBgColor" format="color"/>
     <attr name="theme_card_outline" format="color" />
+    <attr name="theme_surface_shadow" format="color" />
+    <attr name="theme_surface_highlight" format="color" />
+    <attr name="theme_card_gradient_end" format="color" />
     <attr name="theme_btn" format="color"/>
     <attr name="theme_btn_text" format="color"/>
     <attr name="theme_gradient_start" format="color" />

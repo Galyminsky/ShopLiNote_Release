@@ -1,13 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <style name="ThemeOverlay.ShopLiNote.SettingsPreferences" parent="PreferenceThemeOverlay.v14.Material">
         <item name="android:textColorPrimary">?attr/colorOnSurface</item>
-        <item name="android:textColorSecondary">?attr/colorOnSurface</item>
+        <item name="android:textColorSecondary">?attr/theme_muted_text</item>
         <item name="preferenceCategoryTitleTextColor">?attr/colorOnSurface</item>
     </style>
 
-    <style name="PreferenceSummaryTextStyle">
-        <item name="android:textColor">?attr/colorOnSurface</item>
+    <style name="ThemeOverlay.ShopLiNote.SettingsDialog" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog">
+        <item name="android:windowBackground">@drawable/dialog_card_background</item>
+        <item name="android:windowElevation">8dp</item>
+        <item name="android:textColorPrimary">?attr/colorOnSurface</item>
+        <item name="android:textColorSecondary">?attr/theme_muted_text</item>
+        <item name="android:colorBackground">?attr/colorSurface</item>
+        <item name="colorControlActivated">?attr/colorPrimary</item>
+        <item name="android:colorAccent">?attr/colorPrimary</item>
+        <item name="colorAccent">?attr/colorPrimary</item>
+    </style>
+
+    <style name="PreferenceSummaryTextStyle" tools:override="true">
+        <item name="android:textColor">?attr/theme_muted_text</item>
     </style>
 
     <style name="ThemeOverlay.ShopLiNote.LavenderDreamActionBar" parent="ThemeOverlay.AppCompat.Dark.ActionBar">

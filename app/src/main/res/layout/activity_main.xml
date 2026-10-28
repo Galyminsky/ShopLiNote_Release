@@ -14,8 +14,10 @@
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <FrameLayout
         android:id="@+id/bNav"
@@ -27,7 +29,9 @@
         android:background="@drawable/floating_nav_background"
         android:clipChildren="false"
         android:clipToPadding="false"
-        android:elevation="8dp"
+        android:elevation="12dp"
+        android:outlineSpotShadowColor="?attr/theme_surface_shadow"
+        android:outlineAmbientShadowColor="?attr/theme_surface_highlight"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -49,14 +53,14 @@
                 android:focusable="true"
                 android:clickable="true">
 
-                <ImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/navNewIcon"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_gravity="top|center_horizontal"
                     android:layout_marginTop="16dp"
                     android:src="@drawable/ic_new_gradient"
-                    android:tint="@color/nav_inactive_gray" />
+                    app:tint="@color/nav_inactive_gray" />
 
                 <TextView
                     android:id="@+id/navNewLabel"
@@ -80,14 +84,14 @@
                 android:focusable="true"
                 android:clickable="true">
 
-                <ImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/navNotesIcon"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_gravity="top|center_horizontal"
                     android:layout_marginTop="16dp"
                     android:src="@drawable/ic_note"
-                    android:tint="@color/nav_inactive_gray" />
+                    app:tint="@color/nav_inactive_gray" />
 
                 <TextView
                     android:id="@+id/navNotesLabel"
@@ -111,14 +115,14 @@
                 android:focusable="true"
                 android:clickable="true">
 
-                <ImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/navPurchasesIcon"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_gravity="top|center_horizontal"
                     android:layout_marginTop="16dp"
                     android:src="@drawable/ic_shopp"
-                    android:tint="@color/nav_inactive_gray" />
+                    app:tint="@color/nav_inactive_gray" />
 
                 <TextView
                     android:id="@+id/navPurchasesLabel"
@@ -142,14 +146,14 @@
                 android:focusable="true"
                 android:clickable="true">
 
-                <ImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/navSettingsIcon"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_gravity="top|center_horizontal"
                     android:layout_marginTop="16dp"
                     android:src="@drawable/ic_settings"
-                    android:tint="@color/nav_inactive_gray" />
+                    app:tint="@color/nav_inactive_gray" />
 
                 <TextView
                     android:id="@+id/navSettingsLabel"
@@ -171,16 +175,18 @@
             android:layout_height="70dp"
             android:layout_gravity="top|start"
             android:background="@drawable/floating_nav_active_circle"
-            android:elevation="8dp"
+            android:elevation="12dp"
+        android:outlineSpotShadowColor="?attr/theme_surface_shadow"
+        android:outlineAmbientShadowColor="?attr/theme_surface_highlight"
             android:translationY="-35dp">
 
-            <ImageView
+            <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/navActiveIcon"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_gravity="center"
                 android:src="@drawable/ic_note"
-                android:tint="@color/nav_inactive_gray" />
+                app:tint="@color/nav_inactive_gray" />
         </FrameLayout>
     </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

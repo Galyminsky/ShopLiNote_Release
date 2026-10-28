@@ -14,6 +14,7 @@
     <string name="color">Color</string>
     <string name="new_list_name">New List</string>
     <string name="list_name">List name</string>
+    <string name="list_details_placeholder">Details</string>
     <string name="create">Create List</string>
 
 
@@ -23,7 +24,6 @@
     <string name="cancel_button">Cancel</string>
     <string name="update">Update</string>
     <string name="edit_list">Edit List</string>
-    <string name="delete_list">Delete</string>
     <string name="clear_list">Clear List</string>
     <string name="share_list" tools:ignore="TypographyEllipsis">Share...</string>
     <string name="menu_new_item">New Item</string>

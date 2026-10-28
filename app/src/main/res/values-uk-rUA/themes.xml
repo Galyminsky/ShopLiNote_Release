@@ -1,4 +1,4 @@
-﻿<resources xmlns:tools="http://schemas.android.com/tools">
+<resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Theme.ShopLiNoteLavenderDream" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
                 <item name="colorPrimary">@color/lavender_dream_primary</item>
@@ -12,6 +12,9 @@
                 <item name="android:colorBackground">@color/lavender_dream_background</item>
                 <item name="allBgColor">@color/lavender_dream_primary</item>
                 <item name="theme_card_outline">@color/lavender_dream_card_outline</item>
+                <item name="theme_surface_shadow">@color/lavender_dream_surface_shadow</item>
+                <item name="theme_surface_highlight">@color/lavender_dream_surface_highlight</item>
+                <item name="theme_card_gradient_end">@color/lavender_dream_card_gradient_end</item>
                 <item name="theme_btn">@color/lavender_dream_primary</item>
                 <item name="theme_btn_text">@color/lavender_dream_background</item>
                 <item name="theme_on_gradient">@color/lavender_dream_background</item>
@@ -26,6 +29,9 @@
         <item name="actionBarTheme">@style/ThemeOverlay.ShopLiNote.LavenderDreamActionBar</item>
         <item name="android:actionBarStyle">@style/Widget.ShopLiNote.GradientActionBar.LavenderDream</item>
         <item name="materialButtonStyle">@style/Widget.ShopLiNote.Button</item>
+        <item name="alertDialogTheme">@style/ThemeOverlay.ShopLiNote.SettingsDialog</item>
+        <item name="android:alertDialogTheme">@style/ThemeOverlay.ShopLiNote.SettingsDialog</item>
+        <item name="materialAlertDialogTheme">@style/ThemeOverlay.ShopLiNote.SettingsDialog</item>
                 <item name="colorControlActivated">@color/lavender_dream_primary</item>
                 <item name="android:statusBarColor">@color/lavender_dream_primary</item>
             <item name="colorOnSurface">@color/lavender_dream_primary</item>
@@ -64,6 +70,9 @@
                 <item name="android:colorBackground">@color/lavender_dream_background</item>
                 <item name="allBgColor">@color/lavender_dream_primary</item>
                 <item name="theme_card_outline">@color/lavender_dream_card_outline</item>
+                <item name="theme_surface_shadow">@color/lavender_dream_surface_shadow</item>
+                <item name="theme_surface_highlight">@color/lavender_dream_surface_highlight</item>
+                <item name="theme_card_gradient_end">@color/lavender_dream_card_gradient_end</item>
                 <item name="theme_btn">@color/lavender_dream_primary</item>
                 <item name="theme_btn_text">@color/lavender_dream_background</item>
                 <item name="theme_on_gradient">@color/lavender_dream_background</item>
@@ -78,6 +87,9 @@
         <item name="actionBarTheme">@style/ThemeOverlay.ShopLiNote.LavenderDreamActionBar</item>
         <item name="android:actionBarStyle">@style/Widget.ShopLiNote.GradientActionBar.LavenderDream</item>
         <item name="materialButtonStyle">@style/Widget.ShopLiNote.Button</item>
+        <item name="alertDialogTheme">@style/ThemeOverlay.ShopLiNote.SettingsDialog</item>
+        <item name="android:alertDialogTheme">@style/ThemeOverlay.ShopLiNote.SettingsDialog</item>
+        <item name="materialAlertDialogTheme">@style/ThemeOverlay.ShopLiNote.SettingsDialog</item>
                 <item name="colorControlActivated">@color/lavender_dream_primary</item>
                 <item name="android:statusBarColor">@color/lavender_dream_primary</item>
             <item name="colorOnSurface">@color/lavender_dream_primary</item>
@@ -116,6 +128,9 @@
                 <item name="android:colorBackground">@color/amber_glow_background</item>
                 <item name="allBgColor">@color/amber_glow_line</item>
                 <item name="theme_card_outline">@color/amber_glow_card_outline</item>
+                <item name="theme_surface_shadow">@color/amber_glow_surface_shadow</item>
+                <item name="theme_surface_highlight">@color/amber_glow_surface_highlight</item>
+                <item name="theme_card_gradient_end">@color/amber_glow_card_gradient_end</item>
                 <item name="theme_btn">@color/amber_glow_deep</item>
                 <item name="theme_btn_text">@color/amber_glow_background</item>
                 <item name="theme_on_gradient">@color/amber_glow_ink</item>
@@ -128,6 +143,9 @@
         <item name="theme_gradient_button_drawable">@drawable/theme_gradient_button</item>
         <item name="actionBarStyle">@style/Widget.ShopLiNote.GradientActionBar</item>
         <item name="materialButtonStyle">@style/Widget.ShopLiNote.Button</item>
+        <item name="alertDialogTheme">@style/ThemeOverlay.ShopLiNote.SettingsDialog</item>
+        <item name="android:alertDialogTheme">@style/ThemeOverlay.ShopLiNote.SettingsDialog</item>
+        <item name="materialAlertDialogTheme">@style/ThemeOverlay.ShopLiNote.SettingsDialog</item>
                 <item name="colorControlActivated">@color/amber_glow_deep</item>
                 <item name="android:statusBarColor">@color/amber_glow_deep</item>
             <item name="colorOnSurface">@color/amber_glow_ink</item>
@@ -165,6 +183,9 @@
                 <item name="android:colorBackground">@color/amber_glow_background</item>
                 <item name="allBgColor">@color/amber_glow_line</item>
                 <item name="theme_card_outline">@color/amber_glow_card_outline</item>
+                <item name="theme_surface_shadow">@color/amber_glow_surface_shadow</item>
+                <item name="theme_surface_highlight">@color/amber_glow_surface_highlight</item>
+                <item name="theme_card_gradient_end">@color/amber_glow_card_gradient_end</item>
                 <item name="theme_btn">@color/amber_glow_deep</item>
                 <item name="theme_btn_text">@color/amber_glow_background</item>
                 <item name="theme_on_gradient">@color/amber_glow_ink</item>
@@ -177,6 +198,9 @@
         <item name="theme_gradient_button_drawable">@drawable/theme_gradient_button</item>
         <item name="actionBarStyle">@style/Widget.ShopLiNote.GradientActionBar</item>
         <item name="materialButtonStyle">@style/Widget.ShopLiNote.Button</item>
+        <item name="alertDialogTheme">@style/ThemeOverlay.ShopLiNote.SettingsDialog</item>
+        <item name="android:alertDialogTheme">@style/ThemeOverlay.ShopLiNote.SettingsDialog</item>
+        <item name="materialAlertDialogTheme">@style/ThemeOverlay.ShopLiNote.SettingsDialog</item>
                 <item name="colorControlActivated">@color/amber_glow_deep</item>
                 <item name="android:statusBarColor">@color/amber_glow_deep</item>
             <item name="colorOnSurface">@color/amber_glow_ink</item>
@@ -214,6 +238,9 @@
                 <item name="android:colorBackground">@color/forest_essence_background</item>
                 <item name="allBgColor">@color/forest_essence_deep</item>
                 <item name="theme_card_outline">@color/forest_essence_card_outline</item>
+                <item name="theme_surface_shadow">@color/forest_essence_surface_shadow</item>
+                <item name="theme_surface_highlight">@color/forest_essence_surface_highlight</item>
+                <item name="theme_card_gradient_end">@color/forest_essence_card_gradient_end</item>
                 <item name="theme_btn">@color/forest_essence_deep</item>
                 <item name="theme_btn_text">@color/forest_essence_background</item>
                 <item name="theme_on_gradient">@color/forest_essence_text_on_primary</item>
@@ -226,6 +253,9 @@
         <item name="theme_gradient_button_drawable">@drawable/theme_gradient_button</item>
         <item name="actionBarStyle">@style/Widget.ShopLiNote.GradientActionBar</item>
         <item name="materialButtonStyle">@style/Widget.ShopLiNote.Button</item>
+        <item name="alertDialogTheme">@style/ThemeOverlay.ShopLiNote.SettingsDialog</item>
+        <item name="android:alertDialogTheme">@style/ThemeOverlay.ShopLiNote.SettingsDialog</item>
+        <item name="materialAlertDialogTheme">@style/ThemeOverlay.ShopLiNote.SettingsDialog</item>
                 <item name="colorControlActivated">@color/forest_essence_deep</item>
                 <item name="android:statusBarColor">@color/forest_essence_deep</item>
             <item name="colorOnSurface">@color/forest_essence_deep</item>
@@ -264,6 +294,9 @@
                 <item name="android:colorBackground">@color/forest_essence_background</item>
                 <item name="allBgColor">@color/forest_essence_deep</item>
                 <item name="theme_card_outline">@color/forest_essence_card_outline</item>
+                <item name="theme_surface_shadow">@color/forest_essence_surface_shadow</item>
+                <item name="theme_surface_highlight">@color/forest_essence_surface_highlight</item>
+                <item name="theme_card_gradient_end">@color/forest_essence_card_gradient_end</item>
                 <item name="theme_btn">@color/forest_essence_deep</item>
                 <item name="theme_btn_text">@color/forest_essence_background</item>
                 <item name="theme_on_gradient">@color/forest_essence_text_on_primary</item>
@@ -276,6 +309,9 @@
         <item name="theme_gradient_button_drawable">@drawable/theme_gradient_button</item>
         <item name="actionBarStyle">@style/Widget.ShopLiNote.GradientActionBar</item>
         <item name="materialButtonStyle">@style/Widget.ShopLiNote.Button</item>
+        <item name="alertDialogTheme">@style/ThemeOverlay.ShopLiNote.SettingsDialog</item>
+        <item name="android:alertDialogTheme">@style/ThemeOverlay.ShopLiNote.SettingsDialog</item>
+        <item name="materialAlertDialogTheme">@style/ThemeOverlay.ShopLiNote.SettingsDialog</item>
                 <item name="colorControlActivated">@color/forest_essence_deep</item>
                 <item name="android:statusBarColor">@color/forest_essence_deep</item>
             <item name="colorOnSurface">@color/forest_essence_deep</item>

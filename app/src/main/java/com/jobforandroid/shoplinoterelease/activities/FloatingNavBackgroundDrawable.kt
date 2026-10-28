@@ -11,13 +11,17 @@ import android.graphics.PixelFormat
 import android.graphics.RectF
 import android.graphics.Shader
 import android.graphics.drawable.Drawable
+import com.jobforandroid.shoplinoterelease.utils.NeumorphicSurfaceDrawable
 import kotlin.math.cos
 import kotlin.math.sin
 
 internal class FloatingNavBackgroundDrawable(
     private val outlineColor: Int,
+    private val highlightColor: Int,
+    private val shadowColor: Int,
     density: Float
 ) : Drawable() {
+    private val densityScale = density
     private val cornerRadius = 16f * density
     private val notchRadius = 39f * density
     private val transitionWidth = 5f * density
@@ -29,6 +33,7 @@ internal class FloatingNavBackgroundDrawable(
 
     private val path = Path()
     private val fillPaint = Paint(Paint.ANTI_ALIAS_FLAG)
+    private val bevelPaint = Paint(Paint.ANTI_ALIAS_FLAG)
     private val strokePaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         style = Paint.Style.STROKE
         strokeWidth = this@FloatingNavBackgroundDrawable.strokeWidth
@@ -63,6 +68,15 @@ internal class FloatingNavBackgroundDrawable(
         strokePaint.alpha = drawableAlpha
         strokePaint.colorFilter = colorFilter
         canvas.drawPath(path, fillPaint)
+        NeumorphicSurfaceDrawable.drawInnerBevel(
+            canvas = canvas,
+            path = path,
+            bounds = RectF(bounds),
+            depth = 18f * densityScale,
+            highlightColor = highlightColor,
+            shadowColor = shadowColor,
+            paint = bevelPaint
+        )
         canvas.drawPath(path, strokePaint)
     }
 

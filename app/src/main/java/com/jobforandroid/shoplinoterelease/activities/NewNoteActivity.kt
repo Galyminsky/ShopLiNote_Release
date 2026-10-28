@@ -27,6 +27,7 @@ import com.jobforandroid.shoplinoterelease.entities.NoteItem
 import com.jobforandroid.shoplinoterelease.fragments.NoteFragment
 import com.jobforandroid.shoplinoterelease.utils.HtmlManager
 import com.jobforandroid.shoplinoterelease.utils.TimeManager
+import com.jobforandroid.shoplinoterelease.utils.CardGradient
 
 class NewNoteActivity : AppCompatActivity() {
     private lateinit var binding: ActivityNewNoteBinding
@@ -45,6 +46,7 @@ class NewNoteActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityNewNoteBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        CardGradient.apply(binding.cardContent, 0)
 
         actionBarSetting()
         init()

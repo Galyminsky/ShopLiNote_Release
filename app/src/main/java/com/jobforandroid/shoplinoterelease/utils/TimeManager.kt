@@ -23,4 +23,28 @@ object TimeManager {
             time
         }
     }
+
+    fun getTimeAndDate(time: String, preferences: SharedPreferences): Pair<String, String?> {
+        val formatted = getTimeFormat(time, preferences)
+        val parts = formatted.split(" - ", limit = 2)
+        if (parts.size == 2) {
+            val format = preferences.getString("time_format_key", DEF_TIME_FORMAT).orEmpty()
+            val timePosition = format.indexOfAny(charArrayOf('h', 'H', 'k', 'K'))
+            val datePosition = format.indexOf('d')
+            return if (timePosition < datePosition) {
+                parts[0] to parts[1]
+            } else {
+                parts[1] to parts[0]
+            }
+        }
+
+        val storedDate = runCatching {
+            SimpleDateFormat(DEF_TIME_FORMAT, Locale.getDefault()).parse(time)
+        }.getOrNull()
+        val date = storedDate?.let {
+            SimpleDateFormat("dd.MM.yy", Locale.getDefault()).format(it)
+        } ?: time.substringAfterLast(" - ").takeIf { " - " in time }
+
+        return formatted to date
+    }
 }

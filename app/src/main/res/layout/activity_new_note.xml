@@ -12,9 +12,11 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="10dp"
-        app:cardCornerRadius="10dp"
+        app:cardCornerRadius="12dp"
         app:cardBackgroundColor="?attr/colorSurface"
-        app:cardElevation="3dp"
+        app:cardElevation="5dp"
+        android:outlineSpotShadowColor="?attr/theme_surface_shadow"
+        android:outlineAmbientShadowColor="?attr/theme_surface_highlight"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,6 +25,7 @@
         app:strokeWidth="1dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cardContent"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="10dp">
@@ -41,6 +44,7 @@
                 android:minHeight="48dp"
                 android:textColor="?attr/theme_edit_text"
                 android:textColorHint="?attr/theme_muted_text"
+                android:backgroundTint="?attr/theme_card_outline"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -61,6 +65,7 @@
                 android:inputType="textMultiLine|textPersonName"
                 android:textColor="?attr/theme_edit_text"
                 android:textColorHint="?attr/theme_muted_text"
+                android:backgroundTint="?attr/theme_card_outline"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/edTitle"

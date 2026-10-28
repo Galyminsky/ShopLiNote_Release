@@ -15,6 +15,7 @@ import com.jobforandroid.shoplinoterelease.R
 import com.jobforandroid.shoplinoterelease.databinding.ShopLibraryListItemBinding
 import com.jobforandroid.shoplinoterelease.databinding.ShopListItemBinding
 import com.jobforandroid.shoplinoterelease.entities.ShopListItem
+import com.jobforandroid.shoplinoterelease.utils.CardGradient
 
 class ShopListItemAdapter(private val listener: Listener) :
     ListAdapter<ShopListItem, ShopListItemAdapter.ItemHolder>(ItemComparator()) {
@@ -29,9 +30,9 @@ class ShopListItemAdapter(private val listener: Listener) :
 
     override fun onBindViewHolder(holder: ItemHolder, position: Int) {
         if (getItem(position).itemType == 0) {
-            holder.setItemData(getItem(position), listener)
+            holder.setItemData(getItem(position), listener, position)
         } else {
-            holder.setLibraryData(getItem(position), listener)
+            holder.setLibraryData(getItem(position), listener, position)
         }
     }
 
@@ -58,9 +59,10 @@ class ShopListItemAdapter(private val listener: Listener) :
 
     class ItemHolder(val view: View) : RecyclerView.ViewHolder(view) {
 
-        fun setItemData(shopListItem: ShopListItem, listener: Listener) {
+        fun setItemData(shopListItem: ShopListItem, listener: Listener, position: Int) {
             val binding = ShopListItemBinding.bind(view)
             binding.apply {
+                CardGradient.apply(cardContent, position)
                 tvName.text = shopListItem.name
                 tvInfo.text = shopListItem.itemInfo
                 tvInfo.visibility = infoVisibility(shopListItem)
@@ -78,9 +80,10 @@ class ShopListItemAdapter(private val listener: Listener) :
             }
         }
 
-        fun setLibraryData(shopListItem: ShopListItem, listener: Listener) {
+        fun setLibraryData(shopListItem: ShopListItem, listener: Listener, position: Int) {
             val binding = ShopLibraryListItemBinding.bind(view)
             binding.apply {
+                CardGradient.apply(cardContent, position)
                 tvName.text = shopListItem.name
                 imEdit.setOnClickListener {
                     listener.onClickItem(shopListItem, EDIT_LIBRARY_ITEM)

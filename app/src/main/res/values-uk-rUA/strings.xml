@@ -14,6 +14,7 @@
     <string name="color">Колір</string>
     <string name="new_list_name">Новий Список</string>
     <string name="list_name">Назва Списку</string>
+    <string name="list_details_placeholder">Подробиці</string>
     <string name="create">Створити Список</string>
 
 
@@ -23,7 +24,6 @@
     <string name="cancel_button">Скасування</string>
     <string name="update">Оновити</string>
     <string name="edit_list">Редагувати Список</string>
-    <string name="delete_list">Видалити</string>
     <string name="clear_list">Очистити Список</string>
     <string name="share_list" tools:ignore="TypographyEllipsis">Поділиться...</string>
     <string name="menu_new_item">Новий Елемент</string>

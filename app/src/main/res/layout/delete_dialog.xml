@@ -5,7 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/dialog_card_background"
-    android:elevation="3dp">
+    android:elevation="5dp"
+    android:outlineSpotShadowColor="?attr/theme_surface_shadow"
+    android:outlineAmbientShadowColor="?attr/theme_surface_highlight">
 
     <TextView
         android:id="@+id/tvTitle"

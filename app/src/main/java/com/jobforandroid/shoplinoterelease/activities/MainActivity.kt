@@ -13,6 +13,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.android.material.color.MaterialColors
 import androidx.preference.PreferenceManager
 import com.jobforandroid.shoplinoterelease.R
 import com.jobforandroid.shoplinoterelease.databinding.ActivityMainBinding
@@ -70,11 +71,14 @@ class MainActivity : AppCompatActivity(), NewListDialog.Listener {
         }
         navPanelBackground = FloatingNavBackgroundDrawable(
             outlineColor,
+            MaterialColors.getColor(binding.bNav, R.attr.theme_surface_highlight),
+            MaterialColors.getColor(binding.bNav, R.attr.theme_surface_shadow),
             resources.displayMetrics.density
         )
         binding.bNav.background = navPanelBackground
         if (savedInstanceState == null) {
-            FragmentManager.setFragment(ShopListNamesFragment.newInstance(), this)
+            FragmentManager.setFragment(NoteFragment.newInstance(), this)
+            supportActionBar?.title = getString(R.string.notes)
         } else {
             (supportFragmentManager.findFragmentById(R.id.placeHolder) as? com.jobforandroid.shoplinoterelease.fragments.BaseFragment)
                 ?.let { FragmentManager.currentFrag = it }
@@ -203,8 +207,17 @@ class MainActivity : AppCompatActivity(), NewListDialog.Listener {
             entry.icon.alpha = if (entry.menuId == itemId) 0f else 1f
             entry.label.setTextColor(color)
         }
-        binding.navActiveIcon.setImageResource(selected.iconRes)
-        binding.navActiveIcon.imageTintList = ColorStateList.valueOf(selected.accentColor)
+        val accentIcon = ContextCompat.getDrawable(this, selected.iconRes)?.mutate()
+        if (accentIcon != null) {
+            binding.navActiveIcon.setImageDrawable(
+                NeonIconGlowDrawable(accentIcon, selected.accentColor, resources.displayMetrics.density)
+            )
+            binding.navActiveIcon.imageTintList = null
+        }
+        binding.navActiveCircle.foreground = NeonCircleOutlineDrawable(
+            selected.accentColor,
+            resources.displayMetrics.density
+        )
         binding.navActiveCircle.post {
             val activeCircle = binding.navActiveCircle
             val panelWidth = binding.bNav.width.toFloat()
