@@ -4,6 +4,7 @@
     <string name="settings">Настройки</string>
     <string name="notes">Заметки</string>
     <string name="shop_list">Список покупок</string>
+    <string name="nav_purchases">Покупки</string>
     <string name="new_item">Новый</string>
 
     <string name="title_hint">Заголовок</string>

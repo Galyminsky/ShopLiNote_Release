@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="nav_inactive_gray">#FF737373</color>
     <!-- Picker.Color -->
     <color name="picker_red">#FF0000</color>
     <color name="picker_green">#2CD510</color>

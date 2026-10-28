@@ -1,4 +1,5 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="nav_purchases">Покупки</string>
     <string name="app_name">ShopLiNote</string>
     <string name="inter_ad_id">ca-app-pub-2014968687219090/1451071710</string>
     <string name="settings">Налаштування</string>
