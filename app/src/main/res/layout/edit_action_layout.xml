@@ -10,5 +10,8 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/hint_new_item"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        android:textColor="?attr/theme_on_gradient"
+        android:textColorHint="?attr/theme_on_gradient"
+        android:backgroundTint="?attr/theme_card_outline" />
 </LinearLayout>

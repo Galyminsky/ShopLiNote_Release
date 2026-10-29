@@ -28,7 +28,7 @@ class NoteFragment : BaseFragment(), NoteAdapter.Listener {
     private val binding get() = _binding!!
 
     private lateinit var editLauncher: ActivityResultLauncher<Intent>
-    private lateinit var adapter: NoteAdapter
+    private var adapter: NoteAdapter? = null
     private lateinit var defPref: SharedPreferences
 
 
@@ -79,7 +79,7 @@ class NoteFragment : BaseFragment(), NoteAdapter.Listener {
 
     private fun observer() {
         mainViewModel.allNotes.observe(viewLifecycleOwner) {
-            adapter.submitList(it)
+            adapter?.submitList(it)
         }
     }
 
@@ -88,11 +88,23 @@ class NoteFragment : BaseFragment(), NoteAdapter.Listener {
             ActivityResultContracts.StartActivityForResult()
         ) {
             if (it.resultCode == Activity.RESULT_OK) {
-                val editState = it.data?.getStringExtra(EDIT_STATE_KEY)
-                if (editState == "update") {
-                    mainViewModel.updateNote(it.data?.getSerializableExtra(NEW_NOTE_KEY) as NoteItem)
-                } else {
-                    mainViewModel.insertNote(it.data?.getSerializableExtra(NEW_NOTE_KEY) as NoteItem)
+                val resultNote = try {
+                    it.data?.getSerializableExtra(NEW_NOTE_KEY) as? NoteItem
+                } catch (_: RuntimeException) {
+                    null
+                } ?: return@registerForActivityResult
+                val editState = try {
+                    it.data?.getStringExtra(EDIT_STATE_KEY)
+                } catch (_: RuntimeException) {
+                    null
+                }
+                when (editState) {
+                    "update" -> if (resultNote.id != null && resultNote.id > 0) {
+                        mainViewModel.updateNote(resultNote)
+                    }
+                    "new" -> if (resultNote.id == null) {
+                        mainViewModel.insertNote(resultNote)
+                    }
                 }
             }
         }
@@ -117,8 +129,10 @@ class NoteFragment : BaseFragment(), NoteAdapter.Listener {
         fun newInstance() = NoteFragment()
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onDestroyView() {
+        binding.rcViewNote.adapter = null
+        adapter = null
         _binding = null
+        super.onDestroyView()
     }
 }

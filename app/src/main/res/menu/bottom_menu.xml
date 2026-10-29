@@ -22,7 +22,7 @@
     <item
         android:id="@+id/shop_list"
         android:icon="@drawable/ic_shopp"
-        android:title="@string/shop_list"
+        android:title="@string/nav_purchases"
         android:orderInCategory="3"
         app:showAsAction="ifRoom">
 
@@ -30,7 +30,7 @@
 
     <item
         android:id="@+id/new_item"
-        android:icon="@drawable/ic_new_4"
+        android:icon="@drawable/ic_new_gradient"
         android:title="@string/new_item"
         android:orderInCategory="1"
         app:showAsAction="ifRoom">

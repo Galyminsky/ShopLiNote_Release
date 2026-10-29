@@ -3,7 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@drawable/dialog_card_background"
+    android:elevation="5dp"
+    android:outlineSpotShadowColor="?attr/theme_surface_shadow"
+    android:outlineAmbientShadowColor="?attr/theme_surface_highlight">
 
     <TextView
         android:id="@+id/tvTitle"
@@ -11,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/delete_alert"
-        android:textColor="@color/black"
+        android:textColor="?attr/colorOnSurface"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -27,7 +31,7 @@
         android:layout_marginEnd="8dp"
         android:gravity="center_horizontal"
         android:text="@string/delete_item"
-        android:textColor="@color/black"
+        android:textColor="?attr/colorOnSurface"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -53,6 +57,8 @@
             android:width="1dp"
             android:layout_margin="5dp"
             android:layout_weight="1"
+            android:background="?attr/theme_gradient_button_drawable"
+            android:textColor="?attr/theme_on_gradient"
             android:text="@string/delete_button" />
 
         <com.google.android.material.button.MaterialButton
@@ -62,6 +68,10 @@
             android:width="1dp"
             android:layout_margin="5dp"
             android:layout_weight="1"
+            android:textColor="?attr/colorOnSurface"
+            app:backgroundTint="?attr/colorSurface"
+            app:strokeColor="?attr/allBgColor"
+            app:strokeWidth="1dp"
             android:text="@string/cancel_button" />
     </LinearLayout>
 

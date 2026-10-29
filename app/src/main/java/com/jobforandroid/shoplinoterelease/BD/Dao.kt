@@ -39,6 +39,18 @@ interface Dao {
     @Query("DELETE FROM shop_list_item WHERE listId LIKE :listId")
     suspend fun deleteShopItemsByListId(listId: Int)
 
+    @Query(
+        """UPDATE shopping_list_names
+            SET allItemCounter = (
+                SELECT COUNT(*) FROM shop_list_item WHERE listId = :listId
+            ), checkedItemsCounter = (
+                SELECT COUNT(*) FROM shop_list_item
+                WHERE listId = :listId AND itemChecked = 1
+            )
+            WHERE id = :listId"""
+    )
+    suspend fun updateShopListCounters(listId: Int)
+
     @Insert
     suspend fun insertNote(note: NoteItem)
 

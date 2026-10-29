@@ -5,12 +5,14 @@ import android.content.Context
 import android.view.LayoutInflater
 import com.jobforandroid.shoplinoterelease.R
 import com.jobforandroid.shoplinoterelease.databinding.NewListDialogBinding
+import com.jobforandroid.shoplinoterelease.utils.CardGradient
 
 object NewListDialog {
     fun showDialog(context: Context, listener: Listener, name: String) {
         var dialog: AlertDialog? = null
         val builder = AlertDialog.Builder(context)
         val binding = NewListDialogBinding.inflate(LayoutInflater.from(context))
+        CardGradient.apply(binding.cardContent, 0)
         builder.setView(binding.root)
         binding.apply {
             edNewListName.setText(name)

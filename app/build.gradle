@@ -11,8 +11,8 @@ android {
         applicationId "com.jobforandroid.shoplinoterelease"
         minSdk 29
         targetSdk 36
-        versionCode 9
-        versionName "1.6"
+        versionCode 10
+        versionName "1.7"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -48,9 +48,6 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.11.0'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.11.0'
     implementation 'androidx.preference:preference-ktx:1.2.1'
-
-    implementation 'com.google.android.gms:play-services-ads:25.5.0'
-
 
     implementation platform('com.google.firebase:firebase-bom:35.1.0')
     implementation 'com.google.firebase:firebase-analytics'

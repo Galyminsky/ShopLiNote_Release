@@ -1,9 +1,9 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">ShopLiNote</string>
-    <string name="inter_ad_id">ca-app-pub-2014968687219090/1451071710</string>
     <string name="settings">Настройки</string>
     <string name="notes">Заметки</string>
     <string name="shop_list">Список покупок</string>
+    <string name="nav_purchases">Покупки</string>
     <string name="new_item">Новый</string>
 
     <string name="title_hint">Заголовок</string>
@@ -13,6 +13,7 @@
     <string name="color">Цвет</string>
     <string name="new_list_name">Новый список</string>
     <string name="list_name">Название списка</string>
+    <string name="list_details_placeholder">Подробности</string>
     <string name="create">Создать список</string>
 
     <string name="delete_item">Вы хотите удалить этот список?</string>
@@ -21,7 +22,6 @@
     <string name="cancel_button">Отмена</string>
     <string name="update">Обновить</string>
     <string name="edit_list">Редактировать список</string>
-    <string name="delete_list">Удалить</string>
     <string name="clear_list">Очистить все</string>
     <string name="share_list" tools:ignore="TypographyEllipsis">Поделится...</string>
     <string name="menu_new_item">Новый элемент</string>
@@ -35,8 +35,6 @@
     <string name="general">Настройки</string>
     <string name="chose_note_style">Выбрать стиль списков</string>
     <string name="chose_time_format">Выбрать формат даты</string>
-    <string name="remove_ads">Удалить Рекламу</string>
-    <string name="remove_ads_summary">Удалить полностью Рекламу из Приложения</string>
 
     <string name="theme_settings">Настройки Темы</string>
     <string name="chose_theme">Выбор темы</string>
@@ -47,7 +45,22 @@
     <string name="nulll">Списки Покупок</string>
     <string name="_0_0">0/0</string>
     <string name="textview">TextView</string>
-
-
-
+    <string name="new_note_screen_title">Новая заметка</string>
+    <string name="edit_note_screen_title">Редактировать заметку</string>
+    <string name="formatting">Начертание</string>
+    <string name="italic">Курсив</string>
+    <string name="picker_red_description">Красный</string>
+    <string name="picker_green_description">Зелёный</string>
+    <string name="picker_blue_description">Синий</string>
+    <string name="picker_black_description">Чёрный</string>
+    <string name="picker_yellow_description">Жёлтый</string>
+    <string name="picker_orange_description">Оранжевый</string>
+    <string name="add_shop_item_action">Добавить покупку</string>
+    <string name="more_actions">Дополнительные действия</string>
+    <string name="delete_current_list_action">Удалить список</string>
+    <string name="clear_all_action">Очистить всё</string>
+    <string name="delete_current_list_confirm">Удалить список «%1$s» вместе со всеми покупками?</string>
+    <string name="clear_current_list_confirm">Удалить все покупки из списка «%1$s»? Сам список останется.</string>
+    <string name="share_chooser_title">Поделиться списком покупок</string>
+    <string name="action_failed">Не удалось выполнить операцию. Попробуйте ещё раз.</string>
 </resources>

@@ -13,6 +13,7 @@ import com.jobforandroid.shoplinoterelease.databinding.NoteListItemBinding
 import com.jobforandroid.shoplinoterelease.entities.NoteItem
 import com.jobforandroid.shoplinoterelease.utils.HtmlManager
 import com.jobforandroid.shoplinoterelease.utils.TimeManager
+import com.jobforandroid.shoplinoterelease.utils.CardGradient
 
 class NoteAdapter(private val listener: Listener, private val defRref: SharedPreferences) :
     ListAdapter<NoteItem, NoteAdapter.ItemHolder>(ItemComparator()) {
@@ -23,7 +24,7 @@ class NoteAdapter(private val listener: Listener, private val defRref: SharedPre
     }
 
     override fun onBindViewHolder(holder: ItemHolder, position: Int) {
-        holder.setData(getItem(position), listener, defRref)
+        holder.setData(getItem(position), listener, defRref, position)
     }
 
 
@@ -31,11 +32,15 @@ class NoteAdapter(private val listener: Listener, private val defRref: SharedPre
 
         private val binding = NoteListItemBinding.bind(view)
 
-        fun setData(note: NoteItem, listener: Listener, defRref: SharedPreferences) =
+        fun setData(note: NoteItem, listener: Listener, defRref: SharedPreferences, position: Int) =
             with(binding) {
+                CardGradient.apply(cardContent, position)
                 tvTitle.text = note.title
                 tvDescription.text = HtmlManager.getFromHtml(note.content).trim()
-                tvTime.text = TimeManager.getTimeFormat(note.time, defRref)
+                val (time, date) = TimeManager.getTimeAndDate(note.time, defRref)
+                tvTime.text = time
+                tvDate.text = date.orEmpty()
+                dateRow.visibility = if (date == null) View.GONE else View.VISIBLE
                 itemView.setOnClickListener {
                     listener.onClickItem(note)
                 }

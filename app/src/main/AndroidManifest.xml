@@ -13,19 +13,23 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.ShopLiNoteMain"
+        android:theme="@style/Theme.ShopLiNoteLavenderDream"
         tools:targetApi="31">
+        <meta-data
+            android:name="google_analytics_adid_collection_enabled"
+            android:value="false" />
+
         <activity
             android:name=".settings.SettingActivity"
             android:exported="false" />
         <activity
             android:name=".activities.ShopListActivity"
-            android:theme="@style/Theme.ShopLiNoteMain"
+            android:theme="@style/Theme.ShopLiNoteLavenderDream"
             android:exported="false" />
         <activity
             android:name=".activities.NewNoteActivity"
-            android:theme="@style/Theme.ShopLiNoteMain"
-            android:exported="true"
+            android:theme="@style/Theme.ShopLiNoteLavenderDream"
+            android:exported="false"
             android:windowSoftInputMode="stateVisible|adjustResize" />
         <activity
             android:name=".activities.MainActivity"
@@ -36,10 +40,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <meta-data
-            android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-2014968687219090~3973293274"/>
     </application>
 
 </manifest>

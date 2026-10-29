@@ -3,73 +3,137 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:clipChildren="false">
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:elevation="2dp"
-        android:padding="10dp"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="3dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        app:cardCornerRadius="12dp"
+        app:cardBackgroundColor="?attr/colorSurface"
+        app:cardElevation="5dp"
+        android:outlineSpotShadowColor="?attr/theme_surface_shadow"
+        android:outlineAmbientShadowColor="?attr/theme_surface_highlight"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:strokeColor="?attr/allBgColor"
-        app:strokeWidth="2dp">
+        app:strokeColor="?attr/theme_card_outline"
+        app:strokeWidth="1dp">
 
         <LinearLayout
+            android:id="@+id/cardContent"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="5dp"
+            android:gravity="center_vertical"
+            android:minHeight="88dp"
+            android:layout_margin="0dp"
             android:orientation="vertical"
-            android:padding="5dp">
+            android:paddingStart="14dp"
+            android:paddingTop="16dp"
+            android:paddingEnd="14dp"
+            android:paddingBottom="16dp">
 
             <TextView
                 android:id="@+id/tvListName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:text="Название списка"
-                android:textColor="@color/black"
+                android:layout_marginBottom="3dp"
+                android:text="@string/list_name"
+                android:textColor="?attr/colorOnSurface"
                 android:textSize="16sp"
-                android:textStyle="bold"
-                app:fontFamily="@font/" />
+                android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/tvTime"
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="5dp"
+                android:background="?attr/theme_card_outline" />
+
+            <LinearLayout
+                android:id="@+id/metadataRow"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:text="Подробности"
-                android:textSize="12sp"
-                android:visibility="visible"
-                tools:visibility="visible" />
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/timeRow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_marginEnd="8dp"
+                    android:contentDescription="@null"
+                    app:srcCompat="@drawable/ic_time_format"
+                    app:tint="?attr/colorSecondary" />
+
+                <TextView
+                    android:id="@+id/tvTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="@string/list_details_placeholder"
+                    android:textColor="?attr/colorOnSurface"
+                    android:textSize="14sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/dateRow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_marginEnd="8dp"
+                    android:contentDescription="@null"
+                    app:srcCompat="@drawable/ic_calendar"
+                    app:tint="?attr/colorSecondary" />
+
+                <TextView
+                    android:id="@+id/tvDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/list_details_placeholder"
+                    android:textColor="?attr/colorOnSurface"
+                    android:textSize="12sp" />
+                </LinearLayout>
+            </LinearLayout>
 
             <ProgressBar
                 android:id="@+id/pBar"
                 style="?android:attr/progressBarStyleHorizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp" />
+                android:layout_marginTop="4dp" />
 
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/imDelete"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_marginEnd="10dp"
         android:alpha="0.8"
-        android:backgroundTint="?attr/theme_btn"
+        android:background="@drawable/list_delete_badge_background"
         android:contentDescription="@string/delete_item"
-        android:elevation="10dp"
-        android:minHeight="48dp"
+        android:elevation="5dp"
+        android:padding="0dp"
         app:layout_constraintBottom_toTopOf="@+id/cardView"
         app:layout_constraintEnd_toEndOf="@+id/cardView"
         app:layout_constraintTop_toTopOf="@+id/cardView"
@@ -77,28 +141,31 @@
 
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/imEdit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="5dp"
         android:alpha="0.8"
-        android:backgroundTint="?attr/theme_btn"
+        android:background="@drawable/list_edit_badge_background"
         android:contentDescription="@string/edit_list"
-        android:elevation="10dp"
-        android:minHeight="48dp"
+        android:elevation="5dp"
+        android:padding="0dp"
         app:layout_constraintBottom_toTopOf="@+id/cardView"
         app:layout_constraintEnd_toStartOf="@+id/imDelete"
         app:layout_constraintTop_toTopOf="@+id/cardView"
         app:srcCompat="@drawable/ic_edit" />
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/counterCard"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginTop="5dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_marginEnd="5dp"
-        android:layout_marginBottom="5dp"
-        android:backgroundTint="?attr/theme_btn"
-        app:cardCornerRadius="5dp"
+        app:cardBackgroundColor="?attr/theme_count_incomplete"
+        app:cardCornerRadius="12dp"
         app:cardElevation="5dp"
+        android:outlineSpotShadowColor="?attr/theme_surface_shadow"
+        android:outlineAmbientShadowColor="?attr/theme_surface_highlight"
+        app:strokeColor="?attr/theme_card_outline"
+        app:strokeWidth="1dp"
         app:layout_constraintBottom_toBottomOf="@+id/imEdit"
         app:layout_constraintEnd_toStartOf="@+id/imEdit"
         app:layout_constraintTop_toTopOf="@+id/imEdit">
@@ -111,14 +178,12 @@
 
             <TextView
                 android:id="@+id/tvCounter"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:layout_weight="1"
                 android:text="@string/_0_0"
-                android:textColor="@color/white"
+                android:textColor="?attr/theme_count_text"
                 android:textSize="14sp" />
         </LinearLayout>
 
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

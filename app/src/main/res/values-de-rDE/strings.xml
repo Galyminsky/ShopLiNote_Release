@@ -1,9 +1,9 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">ShopLiNote</string>
-    <string name="inter_ad_id">ca-app-pub-2014968687219090/1451071710</string>
     <string name="settings">Einstellungen</string>
     <string name="notes">Anmerkungen</string>
     <string name="shop_list">Einkaufsliste</string>
+    <string name="nav_purchases">Einkäufe</string>
     <string name="new_item">Neu</string>
 
     <string name="title_hint">Titel</string>
@@ -13,6 +13,7 @@
     <string name="color">Farbe</string>
     <string name="new_list_name">Neue Liste</string>
     <string name="list_name">Name der Liste</string>
+    <string name="list_details_placeholder">Details</string>
     <string name="create">Liste erstellen</string>
 
 
@@ -22,7 +23,6 @@
     <string name="cancel_button">Abbrechen</string>
     <string name="update">Auffrischen</string>
     <string name="edit_list">Liste bearbeiten</string>
-    <string name="delete_list">Löschen</string>
     <string name="clear_list">Liste löschen</string>
     <string name="share_list" tools:ignore="TypographyEllipsis">Teilen...</string>
     <string name="menu_new_item">Neuer Artikel</string>
@@ -37,8 +37,6 @@
     <string name="general">Einstellungen</string>
     <string name="chose_note_style">Listenstil auswählen</string>
     <string name="chose_time_format">Datumsformat auswählen</string>
-    <string name="remove_ads">Anzeigen entfernen</string>
-    <string name="remove_ads_summary">Komplette Werbung aus der App entfernen</string>
 
     <string name="theme_settings">Theme-Einstellungen</string>
     <string name="chose_theme">Thema auswählen</string>
@@ -49,4 +47,22 @@
     <string name="nulll">Einkaufslisten</string>
     <string name="_0_0">0/0</string>
     <string name="textview">TextView</string>
+    <string name="new_note_screen_title">Neue Notiz</string>
+    <string name="edit_note_screen_title">Notiz bearbeiten</string>
+    <string name="formatting">Formatierung</string>
+    <string name="italic">Kursiv</string>
+    <string name="picker_red_description">Rot</string>
+    <string name="picker_green_description">Grün</string>
+    <string name="picker_blue_description">Blau</string>
+    <string name="picker_black_description">Schwarz</string>
+    <string name="picker_yellow_description">Gelb</string>
+    <string name="picker_orange_description">Orange</string>
+    <string name="add_shop_item_action">Einkauf hinzufügen</string>
+    <string name="more_actions">Weitere Aktionen</string>
+    <string name="delete_current_list_action">Liste löschen</string>
+    <string name="clear_all_action">Alles leeren</string>
+    <string name="delete_current_list_confirm">„%1$s“ und alle enthaltenen Einkäufe löschen?</string>
+    <string name="clear_current_list_confirm">Alle Einkäufe aus „%1$s“ löschen? Die Liste bleibt erhalten.</string>
+    <string name="share_chooser_title">Einkaufsliste teilen</string>
+    <string name="action_failed">Der Vorgang ist fehlgeschlagen. Bitte erneut versuchen.</string>
 </resources>

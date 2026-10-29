@@ -2,9 +2,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
+    android:clipChildren="false"
     tools:context=".activities.MainActivity">
 
     <FrameLayout
@@ -13,22 +14,179 @@
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
-    </FrameLayout>
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
+    <FrameLayout
         android:id="@+id/bNav"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_height="74dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         android:layout_marginBottom="16dp"
-        android:background="@drawable/oval_background"
-        app:itemBackground="@android:color/transparent"
+        android:background="@drawable/floating_nav_background"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:elevation="12dp"
+        android:outlineSpotShadowColor="?attr/theme_surface_shadow"
+        android:outlineAmbientShadowColor="?attr/theme_surface_highlight"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bottom_menu" />
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:id="@+id/navItems"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp">
+
+            <FrameLayout
+                android:id="@+id/navNew"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:contentDescription="@string/new_item"
+                android:focusable="true"
+                android:clickable="true">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/navNewIcon"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="top|center_horizontal"
+                    android:layout_marginTop="16dp"
+                    android:src="@drawable/ic_new_gradient"
+                    app:tint="@color/nav_inactive_gray" />
+
+                <TextView
+                    android:id="@+id/navNewLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_gravity="bottom"
+                    android:layout_marginBottom="6dp"
+                    android:gravity="center"
+                    android:maxLines="1"
+                    android:text="@string/new_item"
+                    android:textColor="@color/nav_inactive_gray"
+                    android:textSize="12sp" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/navNotes"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:contentDescription="@string/notes"
+                android:focusable="true"
+                android:clickable="true">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/navNotesIcon"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="top|center_horizontal"
+                    android:layout_marginTop="16dp"
+                    android:src="@drawable/ic_note"
+                    app:tint="@color/nav_inactive_gray" />
+
+                <TextView
+                    android:id="@+id/navNotesLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_gravity="bottom"
+                    android:layout_marginBottom="6dp"
+                    android:gravity="center"
+                    android:maxLines="1"
+                    android:text="@string/notes"
+                    android:textColor="@color/nav_inactive_gray"
+                    android:textSize="12sp" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/navPurchases"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:contentDescription="@string/nav_purchases"
+                android:focusable="true"
+                android:clickable="true">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/navPurchasesIcon"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="top|center_horizontal"
+                    android:layout_marginTop="16dp"
+                    android:src="@drawable/ic_shopp"
+                    app:tint="@color/nav_inactive_gray" />
+
+                <TextView
+                    android:id="@+id/navPurchasesLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_gravity="bottom"
+                    android:layout_marginBottom="6dp"
+                    android:gravity="center"
+                    android:maxLines="1"
+                    android:text="@string/nav_purchases"
+                    android:textColor="@color/nav_inactive_gray"
+                    android:textSize="12sp" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/navSettings"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:contentDescription="@string/settings"
+                android:focusable="true"
+                android:clickable="true">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/navSettingsIcon"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="top|center_horizontal"
+                    android:layout_marginTop="16dp"
+                    android:src="@drawable/ic_settings"
+                    app:tint="@color/nav_inactive_gray" />
+
+                <TextView
+                    android:id="@+id/navSettingsLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_gravity="bottom"
+                    android:layout_marginBottom="6dp"
+                    android:gravity="center"
+                    android:maxLines="1"
+                    android:text="@string/settings"
+                    android:textColor="@color/nav_inactive_gray"
+                    android:textSize="12sp" />
+            </FrameLayout>
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/navActiveCircle"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_gravity="top|start"
+            android:background="@drawable/floating_nav_active_circle"
+            android:elevation="12dp"
+        android:outlineSpotShadowColor="?attr/theme_surface_shadow"
+        android:outlineAmbientShadowColor="?attr/theme_surface_highlight"
+            android:translationY="-35dp">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/navActiveIcon"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_note"
+                app:tint="@color/nav_inactive_gray" />
+        </FrameLayout>
+    </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

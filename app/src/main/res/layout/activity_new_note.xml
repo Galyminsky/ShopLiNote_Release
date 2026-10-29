@@ -4,23 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:clipChildren="false"
+    android:clipToPadding="false"
     tools:context=".activities.NewNoteActivity">
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="10dp"
-        android:elevation="2dp"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="3dp"
+        app:cardCornerRadius="12dp"
+        app:cardBackgroundColor="?attr/colorSurface"
+        app:cardElevation="5dp"
+        android:outlineSpotShadowColor="?attr/theme_surface_shadow"
+        android:outlineAmbientShadowColor="?attr/theme_surface_highlight"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:strokeColor="?attr/allBgColor"
-        app:strokeWidth="2dp">
+        app:strokeColor="?attr/theme_card_outline"
+        app:strokeWidth="1dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cardContent"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="10dp">
@@ -37,6 +42,9 @@
                 android:hint="@string/title_hint"
                 android:inputType="textPersonName"
                 android:minHeight="48dp"
+                android:textColor="?attr/theme_edit_text"
+                android:textColorHint="?attr/theme_muted_text"
+                android:backgroundTint="?attr/theme_card_outline"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -55,6 +63,9 @@
                 android:gravity="top"
                 android:hint="@string/description_hint"
                 android:inputType="textMultiLine|textPersonName"
+                android:textColor="?attr/theme_edit_text"
+                android:textColorHint="?attr/theme_muted_text"
+                android:backgroundTint="?attr/theme_card_outline"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/edTitle"
@@ -66,87 +77,205 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/colorPicker"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#DADADA"
-        android:elevation="10dp"
-        android:orientation="horizontal"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:elevation="8dp"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TableLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="5dp">
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/imRed"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/speed_dial_child_background"
+            android:contentDescription="@string/picker_red_description"
+            android:focusable="false"
+            android:padding="3dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="24dp"
+            app:backgroundTint="@color/picker_red"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/imGreen"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/speed_dial_child_background"
+            android:contentDescription="@string/picker_green_description"
+            android:focusable="false"
+            android:padding="3dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="24dp"
+            app:backgroundTint="@color/picker_green"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
-                <androidx.appcompat.widget.AppCompatImageButton
-                    android:id="@+id/imRed"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_margin="2dp"
-                    android:background="@null"
-                    android:padding="3dp"
-                    app:srcCompat="@color/picker_red" />
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/imBlue"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/speed_dial_child_background"
+            android:contentDescription="@string/picker_blue_description"
+            android:focusable="false"
+            android:padding="3dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="24dp"
+            app:backgroundTint="@color/picker_blue"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
-                <androidx.appcompat.widget.AppCompatImageButton
-                    android:id="@+id/imGreen"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_margin="2dp"
-                    android:background="@null"
-                    android:padding="3dp"
-                    app:srcCompat="@color/picker_green" />
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/imBlack"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/speed_dial_child_background"
+            android:contentDescription="@string/picker_black_description"
+            android:focusable="false"
+            android:padding="3dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="24dp"
+            app:backgroundTint="@color/picker_black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
-                <androidx.appcompat.widget.AppCompatImageButton
-                    android:id="@+id/imBlue"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_margin="2dp"
-                    android:background="@null"
-                    android:padding="3dp"
-                    app:srcCompat="@color/picker_blue" />
-            </TableRow>
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/imYellow"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/speed_dial_child_background"
+            android:contentDescription="@string/picker_yellow_description"
+            android:focusable="false"
+            android:padding="3dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="24dp"
+            app:backgroundTint="@color/picker_yellow"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/imOrange"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/speed_dial_child_background"
+            android:contentDescription="@string/picker_orange_description"
+            android:focusable="false"
+            android:padding="3dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="24dp"
+            app:backgroundTint="@color/picker_orange"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <androidx.appcompat.widget.AppCompatImageButton
-                    android:id="@+id/imBlack"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_margin="2dp"
-                    android:background="@null"
-                    android:padding="3dp"
-                    app:srcCompat="@color/picker_black" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/speedDialGroup"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:elevation="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-                <androidx.appcompat.widget.AppCompatImageButton
-                    android:id="@+id/imYellow"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_margin="2dp"
-                    android:background="@null"
-                    android:padding="3dp"
-                    app:srcCompat="@color/picker_yellow" />
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/speedDialColor"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/speed_dial_child_background"
+            android:contentDescription="@string/color"
+            android:elevation="5dp"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:padding="12dp"
+            android:src="@drawable/ic_speed_dial_color"
+            android:tint="@android:color/white"
+            android:translationX="-66dp"
+            android:translationY="-50dp"
+            app:layout_constraintBottom_toBottomOf="@id/speedDialSave"
+            app:layout_constraintEnd_toEndOf="@id/speedDialSave"
+            app:layout_constraintStart_toStartOf="@id/speedDialSave"
+            app:layout_constraintTop_toTopOf="@id/speedDialSave" />
 
-                <androidx.appcompat.widget.AppCompatImageButton
-                    android:id="@+id/imOrange"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_margin="2dp"
-                    android:background="@null"
-                    android:padding="3dp"
-                    app:srcCompat="@color/picker_orange" />
-            </TableRow>
-        </TableLayout>
-    </LinearLayout>
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/speedDialFormat"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/speed_dial_main_background"
+            android:contentDescription="@string/formatting"
+            android:elevation="5dp"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:padding="12dp"
+            android:src="@drawable/ic_speed_dial_bold"
+            android:tint="@color/amber_glow_primary"
+            android:translationX="-20dp"
+            android:translationY="-110dp"
+            app:layout_constraintBottom_toBottomOf="@id/speedDialSave"
+            app:layout_constraintEnd_toEndOf="@id/speedDialSave"
+            app:layout_constraintStart_toStartOf="@id/speedDialSave"
+            app:layout_constraintTop_toTopOf="@id/speedDialSave" />
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/speedDialBold"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/speed_dial_child_background"
+            android:contentDescription="@string/bold"
+            android:elevation="5dp"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:padding="12dp"
+            android:src="@drawable/ic_speed_dial_bold"
+            android:tint="@android:color/white"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/speedDialFormat"
+            app:layout_constraintEnd_toEndOf="@id/speedDialFormat"
+            app:layout_constraintStart_toStartOf="@id/speedDialFormat"
+            app:layout_constraintTop_toTopOf="@id/speedDialFormat" />
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/speedDialItalic"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/speed_dial_child_background"
+            android:contentDescription="@string/italic"
+            android:elevation="5dp"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:padding="12dp"
+            android:src="@drawable/ic_speed_dial_italic"
+            android:tint="@android:color/white"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/speedDialFormat"
+            app:layout_constraintEnd_toEndOf="@id/speedDialFormat"
+            app:layout_constraintStart_toStartOf="@id/speedDialFormat"
+            app:layout_constraintTop_toTopOf="@id/speedDialFormat" />
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/speedDialSave"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:background="@drawable/speed_dial_main_background"
+            android:contentDescription="@string/save_menu"
+            android:elevation="7dp"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:padding="18dp"
+            android:src="@drawable/ic_speed_dial_save"
+            android:tint="@color/amber_glow_primary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="24dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

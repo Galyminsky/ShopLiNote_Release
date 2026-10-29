@@ -23,7 +23,7 @@ import com.jobforandroid.shoplinoterelease.utils.TimeManager
 class ShopListNamesFragment : BaseFragment(), ShopListNameAdapter.Listener {
     private var _binding: FragmentShopListNamesBinding? = null
     private val binding get() = _binding!!
-    private lateinit var adapter: ShopListNameAdapter
+    private var adapter: ShopListNameAdapter? = null
     private val mainViewModel: MainViewModel by activityViewModels {
         MainViewModel.MainViewModelFactory((context?.applicationContext as MainApp).database)
     }
@@ -70,7 +70,7 @@ class ShopListNamesFragment : BaseFragment(), ShopListNameAdapter.Listener {
 
     private fun observer() {
         mainViewModel.allShopListNameItem.observe(viewLifecycleOwner) {
-            adapter.submitList(it)
+            adapter?.submitList(it)
         }
     }
 
@@ -102,8 +102,10 @@ class ShopListNamesFragment : BaseFragment(), ShopListNameAdapter.Listener {
         startActivity(i)
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onDestroyView() {
+        binding.rcView.adapter = null
+        adapter = null
         _binding = null
+        super.onDestroyView()
     }
 }

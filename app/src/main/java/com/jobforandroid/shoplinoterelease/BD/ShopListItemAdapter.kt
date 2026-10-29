@@ -5,7 +5,9 @@ import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.util.TypedValue
 import androidx.core.content.ContextCompat
+import androidx.core.view.doOnNextLayout
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -13,6 +15,7 @@ import com.jobforandroid.shoplinoterelease.R
 import com.jobforandroid.shoplinoterelease.databinding.ShopLibraryListItemBinding
 import com.jobforandroid.shoplinoterelease.databinding.ShopListItemBinding
 import com.jobforandroid.shoplinoterelease.entities.ShopListItem
+import com.jobforandroid.shoplinoterelease.utils.CardGradient
 
 class ShopListItemAdapter(private val listener: Listener) :
     ListAdapter<ShopListItem, ShopListItemAdapter.ItemHolder>(ItemComparator()) {
@@ -27,9 +30,9 @@ class ShopListItemAdapter(private val listener: Listener) :
 
     override fun onBindViewHolder(holder: ItemHolder, position: Int) {
         if (getItem(position).itemType == 0) {
-            holder.setItemData(getItem(position), listener)
+            holder.setItemData(getItem(position), listener, position)
         } else {
-            holder.setLibraryData(getItem(position), listener)
+            holder.setLibraryData(getItem(position), listener, position)
         }
     }
 
@@ -37,12 +40,29 @@ class ShopListItemAdapter(private val listener: Listener) :
         return getItem(position).itemType
     }
 
+    fun highlightAddedItem(name: String, recyclerView: RecyclerView): Boolean {
+        val position = currentList.indexOfLast { it.itemType == 0 && it.name == name }
+        if (position == -1) return false
+
+        recyclerView.scrollToPosition(position)
+        recyclerView.doOnNextLayout {
+            val holder = recyclerView.findViewHolderForAdapterPosition(position) ?: return@doOnNextLayout
+            holder.itemView.alpha = 0.45f
+            holder.itemView.animate()
+                .alpha(1f)
+                .setDuration(260)
+                .start()
+        }
+        return true
+    }
+
 
     class ItemHolder(val view: View) : RecyclerView.ViewHolder(view) {
 
-        fun setItemData(shopListItem: ShopListItem, listener: Listener) {
+        fun setItemData(shopListItem: ShopListItem, listener: Listener, position: Int) {
             val binding = ShopListItemBinding.bind(view)
             binding.apply {
+                CardGradient.apply(cardContent, position)
                 tvName.text = shopListItem.name
                 tvInfo.text = shopListItem.itemInfo
                 tvInfo.visibility = infoVisibility(shopListItem)
@@ -60,9 +80,10 @@ class ShopListItemAdapter(private val listener: Listener) :
             }
         }
 
-        fun setLibraryData(shopListItem: ShopListItem, listener: Listener) {
+        fun setLibraryData(shopListItem: ShopListItem, listener: Listener, position: Int) {
             val binding = ShopLibraryListItemBinding.bind(view)
             binding.apply {
+                CardGradient.apply(cardContent, position)
                 tvName.text = shopListItem.name
                 imEdit.setOnClickListener {
                     listener.onClickItem(shopListItem, EDIT_LIBRARY_ITEM)
@@ -81,24 +102,29 @@ class ShopListItemAdapter(private val listener: Listener) :
                 if (chBox.isChecked) {
                     tvName.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
                     tvInfo.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
-                    tvName.setTextColor(
-                        ContextCompat.getColor(
-                            binding.root.context,
-                            R.color.grey_light
-                        )
-                    )
-                    tvInfo.setTextColor(
-                        ContextCompat.getColor(
-                            binding.root.context,
-                            R.color.grey_light
-                        )
-                    )
+                    val mutedTextColor = getThemeColor(binding.root, R.attr.theme_muted_text)
+                    tvName.setTextColor(mutedTextColor)
+                    tvInfo.setTextColor(mutedTextColor)
                 } else {
                     tvName.paintFlags = Paint.ANTI_ALIAS_FLAG
                     tvInfo.paintFlags = Paint.ANTI_ALIAS_FLAG
-                    tvName.setTextColor(ContextCompat.getColor(binding.root.context, R.color.black))
-                    tvInfo.setTextColor(ContextCompat.getColor(binding.root.context, R.color.black))
+                    val textColor = getThemeColor(
+                        binding.root,
+                        com.google.android.material.R.attr.colorOnSurface
+                    )
+                    tvName.setTextColor(textColor)
+                    tvInfo.setTextColor(textColor)
                 }
+            }
+        }
+
+        private fun getThemeColor(view: View, attribute: Int): Int {
+            val value = TypedValue()
+            view.context.theme.resolveAttribute(attribute, value, true)
+            return if (value.resourceId != 0) {
+                ContextCompat.getColor(view.context, value.resourceId)
+            } else {
+                value.data
             }
         }
 
