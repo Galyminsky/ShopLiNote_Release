@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    <style name="Theme.App.DS" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:windowBackground">@color/ds_surface</item>
+        <item name="android:fontFamily">@font/inter</item>
+        <item name="android:textColorPrimary">@color/ds_on_surface</item>
+        <item name="android:textColorSecondary">@color/ds_on_surface_variant</item>
+        <item name="android:statusBarColor">@color/ds_surface</item>
+        <item name="android:navigationBarColor">@color/ds_surface</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowLightNavigationBar">true</item>
+        <item name="colorPrimary">@color/ds_accent</item>
+        <item name="colorOnPrimary">@color/ds_on_accent</item>
+        <item name="colorSurface">@color/ds_surface</item>
+        <item name="colorOnSurface">@color/ds_on_surface</item>
+    </style>
+</resources>

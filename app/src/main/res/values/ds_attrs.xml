@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="DsNeumorphicSurface">
+        <attr name="dsVariant">
+            <enum name="raised" value="0" />
+            <enum name="raisedFlat" value="1" />
+            <enum name="inset" value="2" />
+        </attr>
+        <attr name="dsCornerRadius" format="dimension" />
+    </declare-styleable>
+</resources>

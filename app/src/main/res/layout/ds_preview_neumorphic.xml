@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:background="@color/ds_surface"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    tools:theme="@style/Theme.App.DS"
+    >
+
+    <com.jobforandroid.shoplinoterelease.ui.ds.NeumorphicSurface
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:padding="18dp"
+        app:dsCornerRadius="@dimen/ds_radius_l"
+        app:dsVariant="raised">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="raised"
+                android:textAppearance="@style/TextAppearance.DS.NoteTitle" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="9dp"
+                android:text="Забрать посылку, записаться к врачу и найти время для себя."
+                android:textAppearance="@style/TextAppearance.DS.NoteBody" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="9dp"
+                android:text="30 октября · 18:20"
+                android:textAppearance="@style/TextAppearance.DS.NoteDate" />
+        </LinearLayout>
+    </com.jobforandroid.shoplinoterelease.ui.ds.NeumorphicSurface>
+
+    <com.jobforandroid.shoplinoterelease.ui.ds.NeumorphicSurface
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:padding="18dp"
+        app:dsCornerRadius="@dimen/ds_radius_l"
+        app:dsVariant="raisedFlat">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="raisedFlat"
+                android:textAppearance="@style/TextAppearance.DS.NoteTitle" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="9dp"
+                android:text="Забрать посылку, записаться к врачу и найти время для себя."
+                android:textAppearance="@style/TextAppearance.DS.NoteBody" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="9dp"
+                android:text="30 октября · 18:20"
+                android:textAppearance="@style/TextAppearance.DS.NoteDate" />
+        </LinearLayout>
+    </com.jobforandroid.shoplinoterelease.ui.ds.NeumorphicSurface>
+
+    <com.jobforandroid.shoplinoterelease.ui.ds.NeumorphicSurface
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:padding="18dp"
+        app:dsCornerRadius="@dimen/ds_radius_l"
+        app:dsVariant="inset">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="inset (тень пока не рисуется)"
+                android:textAppearance="@style/TextAppearance.DS.NoteTitle" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="9dp"
+                android:text="Забрать посылку, записаться к врачу и найти время для себя."
+                android:textAppearance="@style/TextAppearance.DS.NoteBody" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="9dp"
+                android:text="30 октября · 18:20"
+                android:textAppearance="@style/TextAppearance.DS.NoteDate" />
+        </LinearLayout>
+    </com.jobforandroid.shoplinoterelease.ui.ds.NeumorphicSurface>
+</LinearLayout>
