@@ -65,7 +65,7 @@ class NoteViewActivityDs : AppCompatActivity() {
         renderNote()
         binding.btnBack.setOnClickListener { finish() }
         binding.btnEdit.setOnClickListener {
-            val intent = Intent(this, NewNoteActivity::class.java).apply {
+            val intent = Intent(this, NewNoteActivityDs::class.java).apply {
                 putExtra(NoteFragmentDs.NEW_NOTE_KEY, note)
             }
             editorLauncher.launch(intent)

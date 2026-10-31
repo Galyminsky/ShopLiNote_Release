@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="ds_screen_padding_h">24dp</dimen>
     <dimen name="ds_screen_padding_top">16dp</dimen>
@@ -15,6 +15,8 @@
     <dimen name="ds_radius_m">14dp</dimen>
     <dimen name="ds_radius_l">20dp</dimen>
     <dimen name="ds_search_height">48dp</dimen>
+    <dimen name="ds_inset_shadow_offset">3dp</dimen>
+    <dimen name="ds_inset_shadow_blur">6dp</dimen>
     <dimen name="ds_button_height">52dp</dimen>
     <dimen name="ds_nav_item_height">52dp</dimen>
     <dimen name="ds_segment_large_height">58dp</dimen>
@@ -38,4 +40,12 @@
     <dimen name="ds_note_view_action_gap">10dp</dimen>
     <dimen name="ds_note_view_delete_gap">12dp</dimen>
     <dimen name="ds_note_view_action_size">52dp</dimen>
+    <dimen name="ds_note_edit_toolbar_height">48dp</dimen>
+    <dimen name="ds_note_edit_save_width">100dp</dimen>
+    <dimen name="ds_note_edit_save_height">48dp</dimen>
+    <dimen name="ds_note_edit_card_padding">22dp</dimen>
+    <dimen name="ds_note_edit_format_height">56dp</dimen>
+    <dimen name="ds_note_edit_format_shadow_margin">10dp</dimen>
+    <dimen name="ds_note_edit_palette_outer_padding">16dp</dimen>
+    <dimen name="ds_note_edit_palette_padding">14dp</dimen>
 </resources>

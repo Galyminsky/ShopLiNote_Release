@@ -17,7 +17,7 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.jobforandroid.shoplinoterelease.BD.MainViewModel
 import com.jobforandroid.shoplinoterelease.BD.NoteAdapterDs
 import com.jobforandroid.shoplinoterelease.activities.MainApp
-import com.jobforandroid.shoplinoterelease.activities.NewNoteActivity
+import com.jobforandroid.shoplinoterelease.activities.NewNoteActivityDs
 import com.jobforandroid.shoplinoterelease.activities.NoteViewActivityDs
 import com.jobforandroid.shoplinoterelease.databinding.FragmentNoteDsBinding
 import com.jobforandroid.shoplinoterelease.entities.NoteItem
@@ -37,7 +37,7 @@ class NoteFragmentDs : BaseFragment(), NoteAdapterDs.Listener {
     }
 
     override fun onClickNew() {
-        editLauncher.launch(Intent(activity, NewNoteActivity::class.java))
+        editLauncher.launch(Intent(activity, NewNoteActivityDs::class.java))
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -126,7 +126,7 @@ class NoteFragmentDs : BaseFragment(), NoteAdapterDs.Listener {
     }
 
     override fun onEditClick(note: NoteItem) {
-        editLauncher.launch(Intent(activity, NewNoteActivity::class.java).apply {
+        editLauncher.launch(Intent(activity, NewNoteActivityDs::class.java).apply {
             putExtra(NEW_NOTE_KEY, note)
         })
     }

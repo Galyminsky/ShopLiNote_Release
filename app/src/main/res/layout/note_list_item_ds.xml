@@ -30,6 +30,8 @@
                 android:layout_weight="1"
                 android:ellipsize="end"
                 android:maxLines="1"
+                android:fontFamily="@font/inter"
+                android:textFontWeight="600"
                 android:textAppearance="@style/TextAppearance.DS.NoteTitle"
                 tools:text="Shopping list" />
 

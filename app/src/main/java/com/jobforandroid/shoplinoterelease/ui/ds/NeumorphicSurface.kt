@@ -44,8 +44,8 @@ class NeumorphicSurface @JvmOverloads constructor(
     private val density = resources.displayMetrics.density
     private val shadowMarginPx = 32f * density
     private val shadowBlurPx = 10f * density
-    private val insetShadowOffsetPx = 3f * density
-    private val insetShadowBlurPx = 6f * density
+    private val insetShadowOffsetPx = resources.getDimension(R.dimen.ds_inset_shadow_offset)
+    private val insetShadowBlurPx = resources.getDimension(R.dimen.ds_inset_shadow_blur)
     private val shadowOffsetXPx = 5f * density
     private val shadowLightOffsetYPx = -5f * density
     private val shadowDarkOffsetYPx = 6f * density
@@ -145,30 +145,8 @@ class NeumorphicSurface @JvmOverloads constructor(
             }
             bitmapCanvas.clipPath(clipPath)
 
-            val insetPath = Path().apply {
-                fillType = Path.FillType.EVEN_ODD
-                addRect(
-                    RectF(-width.toFloat(), -height.toFloat(), width * 2f, height * 2f),
-                    Path.Direction.CW
-                )
-                val innerRect = RectF(
-                    insetShadowOffsetPx,
-                    insetShadowOffsetPx,
-                    width + insetShadowOffsetPx,
-                    height + insetShadowOffsetPx
-                )
-                addRoundRect(
-                    innerRect,
-                    cornerRadiusPx,
-                    cornerRadiusPx,
-                    Path.Direction.CW
-                )
-            }
-            val insetPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
-                color = ContextCompat.getColor(context, R.color.ds_shadow_inset)
-                maskFilter = BlurMaskFilter(insetShadowBlurPx, BlurMaskFilter.Blur.NORMAL)
-            }
-            bitmapCanvas.drawPath(insetPath, insetPaint)
+            drawInsetShadow(bitmapCanvas, width, height, insetShadowOffsetPx, R.color.ds_shadow_inset)
+            drawInsetShadow(bitmapCanvas, width, height, -insetShadowOffsetPx, R.color.ds_shadow_light)
             shadowBitmap = bitmap
             if (invalidateAfterBuild) invalidate()
             return true
@@ -227,6 +205,24 @@ class NeumorphicSurface @JvmOverloads constructor(
         }
         val shadowRect = RectF(rect).apply { offset(offsetX, offsetY) }
         canvas.drawRoundRect(shadowRect, cornerRadiusPx, cornerRadiusPx, shadowPaint)
+    }
+
+    private fun drawInsetShadow(canvas: Canvas, width: Int, height: Int, offset: Float, colorResource: Int) {
+        val path = Path().apply {
+            fillType = Path.FillType.EVEN_ODD
+            addRect(RectF(-width.toFloat(), -height.toFloat(), width * 2f, height * 2f), Path.Direction.CW)
+            addRoundRect(
+                RectF(offset, offset, width + offset, height + offset),
+                cornerRadiusPx,
+                cornerRadiusPx,
+                Path.Direction.CW
+            )
+        }
+        val paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+            color = ContextCompat.getColor(context, colorResource)
+            maskFilter = BlurMaskFilter(insetShadowBlurPx, BlurMaskFilter.Blur.NORMAL)
+        }
+        canvas.drawPath(path, paint)
     }
 
     private companion object {

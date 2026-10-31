@@ -31,7 +31,7 @@
             layout="@layout/new_note_button_ds"
         android:id="@+id/newNoteInclude"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/ds_button_height"
             android:layout_marginHorizontal="@dimen/ds_screen_padding_h" />
 
         <include

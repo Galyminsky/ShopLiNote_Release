@@ -14,4 +14,10 @@
     <color name="ds_surface_floating">#F8F8FC</color>
     <color name="ds_stroke_floating">@color/ds_divider</color>
     <color name="ds_shadow_floating">#292836</color>
+    <color name="ds_note_color_ink">#292836</color>
+    <color name="ds_note_color_accent">#7260A5</color>
+    <color name="ds_note_color_red">#B04A5A</color>
+    <color name="ds_note_color_orange">#A4551B</color>
+    <color name="ds_note_color_green">#2F7556</color>
+    <color name="ds_note_color_blue">#3B68A6</color>
 </resources>

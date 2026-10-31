@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    android:orientation="vertical"
+    android:padding="@dimen/ds_note_edit_palette_outer_padding">
+    <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:background="@drawable/ds_bg_floating" android:gravity="center" android:orientation="horizontal" android:padding="@dimen/ds_note_edit_palette_padding">
+        <FrameLayout android:id="@+id/swatch1" android:layout_width="40dp" android:layout_height="40dp" android:background="?attr/selectableItemBackgroundBorderless" android:clickable="true" android:focusable="true" android:contentDescription="@string/note_edit_color_ink">
+            <View android:layout_width="28dp" android:layout_height="28dp" android:layout_gravity="center" android:background="@drawable/ds_bg_swatch" android:backgroundTint="@color/ds_note_color_ink" />
+            <View android:layout_width="32dp" android:layout_height="32dp" android:layout_gravity="center" android:background="@drawable/ds_bg_swatch_selected" />
+        </FrameLayout>
+        <FrameLayout android:id="@+id/swatch2" android:layout_width="40dp" android:layout_height="40dp" android:layout_marginStart="8dp" android:background="?attr/selectableItemBackgroundBorderless" android:clickable="true" android:focusable="true" android:contentDescription="@string/note_edit_color_accent">
+            <View android:layout_width="28dp" android:layout_height="28dp" android:layout_gravity="center" android:background="@drawable/ds_bg_swatch" android:backgroundTint="@color/ds_note_color_accent" />
+        </FrameLayout>
+        <FrameLayout android:id="@+id/swatch3" android:layout_width="40dp" android:layout_height="40dp" android:layout_marginStart="8dp" android:background="?attr/selectableItemBackgroundBorderless" android:clickable="true" android:focusable="true" android:contentDescription="@string/note_edit_color_red">
+            <View android:layout_width="28dp" android:layout_height="28dp" android:layout_gravity="center" android:background="@drawable/ds_bg_swatch" android:backgroundTint="@color/ds_note_color_red" />
+        </FrameLayout>
+        <FrameLayout android:id="@+id/swatch4" android:layout_width="40dp" android:layout_height="40dp" android:layout_marginStart="8dp" android:background="?attr/selectableItemBackgroundBorderless" android:clickable="true" android:focusable="true" android:contentDescription="@string/note_edit_color_orange">
+            <View android:layout_width="28dp" android:layout_height="28dp" android:layout_gravity="center" android:background="@drawable/ds_bg_swatch" android:backgroundTint="@color/ds_note_color_orange" />
+        </FrameLayout>
+        <FrameLayout android:id="@+id/swatch5" android:layout_width="40dp" android:layout_height="40dp" android:layout_marginStart="8dp" android:background="?attr/selectableItemBackgroundBorderless" android:clickable="true" android:focusable="true" android:contentDescription="@string/note_edit_color_green">
+            <View android:layout_width="28dp" android:layout_height="28dp" android:layout_gravity="center" android:background="@drawable/ds_bg_swatch" android:backgroundTint="@color/ds_note_color_green" />
+        </FrameLayout>
+        <FrameLayout android:id="@+id/swatch6" android:layout_width="40dp" android:layout_height="40dp" android:layout_marginStart="8dp" android:background="?attr/selectableItemBackgroundBorderless" android:clickable="true" android:focusable="true" android:contentDescription="@string/note_edit_color_blue">
+            <View android:layout_width="28dp" android:layout_height="28dp" android:layout_gravity="center" android:background="@drawable/ds_bg_swatch" android:backgroundTint="@color/ds_note_color_blue" />
+        </FrameLayout>
+    </LinearLayout>
+</LinearLayout>
