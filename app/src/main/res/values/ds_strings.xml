@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ds_notes_title">Заметки</string>
+    <string name="ds_notes_subtitle">Всё важное — под рукой</string>
+    <string name="ds_notes_search_hint">Найти заметку</string>
+    <string name="ds_notes_section_all">Все заметки</string>
+    <string name="ds_notes_section_sort">По дате</string>
+</resources>

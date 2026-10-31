@@ -12,6 +12,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:text="@string/ds_notes_section_all"
         android:textAppearance="@style/TextAppearance.DS.SectionLabel"
         tools:text="Все заметки" />
 
@@ -19,6 +20,7 @@
         android:id="@+id/tvSectionMeta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="@string/ds_notes_section_sort"
         android:textAppearance="@style/TextAppearance.DS.Caption"
         tools:text="По дате" />
 </LinearLayout>

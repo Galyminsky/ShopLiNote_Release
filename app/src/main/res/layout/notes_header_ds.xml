@@ -10,6 +10,7 @@
         android:id="@+id/tvScreenTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="@string/ds_notes_title"
         android:textAppearance="@style/TextAppearance.DS.Title"
         tools:text="Заметки" />
 
@@ -18,6 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
+        android:text="@string/ds_notes_subtitle"
         android:textAppearance="@style/TextAppearance.DS.Subtitle"
         tools:text="Всё важное — под рукой" />
 
@@ -51,7 +53,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:background="@null"
-                android:hint="Найти заметку"
+                android:hint="@string/ds_notes_search_hint"
                 android:importantForAutofill="no"
                 android:imeOptions="actionSearch"
                 android:inputType="text"
