@@ -84,7 +84,18 @@ class NeumorphicSurface @JvmOverloads constructor(
         rebuildShadowBitmap()
     }
 
+    override fun onAttachedToWindow() {
+        super.onAttachedToWindow()
+        if (ensureShadow()) invalidate()
+    }
+
+    override fun onLayout(changed: Boolean, left: Int, top: Int, right: Int, bottom: Int) {
+        super.onLayout(changed, left, top, right, bottom)
+        ensureShadow()
+    }
+
     override fun onDraw(canvas: Canvas) {
+        ensureShadow()
         shadowBitmap?.let {
             if (variant == VARIANT_INSET) {
                 canvas.drawBitmap(it, 0f, 0f, null)
@@ -95,7 +106,6 @@ class NeumorphicSurface @JvmOverloads constructor(
     }
 
     override fun onDetachedFromWindow() {
-        shadowBitmap = null
         super.onDetachedFromWindow()
     }
 
@@ -110,11 +120,15 @@ class NeumorphicSurface @JvmOverloads constructor(
         }
     }
 
-    private fun rebuildShadowBitmap() {
+    private fun ensureShadow(): Boolean {
+        if (shadowBitmap != null || width <= 0 || height <= 0) return false
+        return rebuildShadowBitmap(invalidateAfterBuild = false)
+    }
+
+    private fun rebuildShadowBitmap(invalidateAfterBuild: Boolean = true): Boolean {
         shadowBitmap = null
         if (width <= 0 || height <= 0) {
-            invalidate()
-            return
+            return false
         }
 
         if (variant == VARIANT_INSET) {
@@ -156,8 +170,8 @@ class NeumorphicSurface @JvmOverloads constructor(
             }
             bitmapCanvas.drawPath(insetPath, insetPaint)
             shadowBitmap = bitmap
-            invalidate()
-            return
+            if (invalidateAfterBuild) invalidate()
+            return true
         }
 
         val margin = shadowMarginPx.toInt()
@@ -196,7 +210,8 @@ class NeumorphicSurface @JvmOverloads constructor(
         }
         bitmapCanvas.drawRoundRect(rect, cornerRadiusPx, cornerRadiusPx, surfacePaint)
         shadowBitmap = bitmap
-        invalidate()
+        if (invalidateAfterBuild) invalidate()
+        return true
     }
 
     private fun drawShadow(

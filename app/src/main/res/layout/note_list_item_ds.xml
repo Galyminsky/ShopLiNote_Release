@@ -8,6 +8,7 @@
     android:layout_marginBottom="@dimen/ds_space_list"
     android:clipChildren="false"
     android:padding="@dimen/ds_card_padding"
+    android:foreground="@drawable/ds_ripple_card"
     app:dsCornerRadius="@dimen/ds_radius_l"
     app:dsVariant="raised">
 

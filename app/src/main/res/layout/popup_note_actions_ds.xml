@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/ds_bg_floating"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:elevation="12dp"
+        android:minWidth="180dp"
+        android:outlineAmbientShadowColor="@color/ds_shadow_floating"
+        android:outlineSpotShadowColor="@color/ds_shadow_floating"
+        android:orientation="vertical"
+        android:padding="6dp">
+
+        <LinearLayout
+            android:id="@+id/rowEdit"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@drawable/ds_popup_row_ripple"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="12dp">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:contentDescription="@null"
+                app:srcCompat="@drawable/ds_ic_pencil"
+                app:tint="@color/ds_on_surface" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:text="@string/note_menu_edit"
+                android:textAppearance="@style/TextAppearance.DS.NoteMenuAction" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/rowDelete"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@drawable/ds_popup_row_ripple"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="12dp">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:contentDescription="@null"
+                app:srcCompat="@drawable/ds_ic_trash"
+                app:tint="@color/ds_on_surface" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:text="@string/note_menu_delete"
+                android:textAppearance="@style/TextAppearance.DS.NoteMenuAction" />
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>

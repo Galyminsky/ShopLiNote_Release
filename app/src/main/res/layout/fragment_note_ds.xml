@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/ds_surface"
     android:clipChildren="false"
+    android:clipToPadding="false"
     android:orientation="vertical">
 
     <include
@@ -16,23 +17,56 @@
         android:layout_marginTop="@dimen/ds_screen_padding_top" />
 
     <include
+        android:id="@+id/sectionHeader"
         layout="@layout/section_header_ds"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/ds_screen_padding_h"
         android:layout_marginTop="@dimen/ds_space_block"
-        android:layout_marginBottom="0dp"/>
+        android:layout_marginBottom="0dp"
+        android:visibility="gone" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rcViewNote"
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:clipChildren="false"
         android:clipToPadding="false"
-        android:paddingHorizontal="@dimen/ds_screen_padding_h"
-        android:paddingBottom="24dp"
-        tools:itemCount="3"
-        android:paddingTop="@dimen/ds_space_list"
-        tools:listitem="@layout/note_list_item_ds" />
+        android:paddingHorizontal="@dimen/ds_screen_padding_h">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcViewNote"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:paddingBottom="24dp"
+            android:paddingTop="@dimen/ds_space_list"
+            tools:itemCount="3"
+            tools:listitem="@layout/note_list_item_ds" />
+
+        <LinearLayout
+            android:id="@+id/emptyState"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/notes_empty_title"
+                android:textAppearance="@style/TextAppearance.DS.NotesEmptyTitle" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:maxWidth="280dp"
+                android:text="@string/notes_empty_message"
+                android:textAppearance="@style/TextAppearance.DS.NotesEmptyMessage" />
+        </LinearLayout>
+    </FrameLayout>
 </LinearLayout>

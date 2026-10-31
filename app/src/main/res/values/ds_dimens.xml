@@ -26,4 +26,16 @@
     <dimen name="ds_icon_search">19dp</dimen>
     <dimen name="ds_icon_leading">20dp</dimen>
     <dimen name="ds_icon_nav">21dp</dimen>
+    <dimen name="ds_note_view_back_height">48dp</dimen>
+    <dimen name="ds_note_view_icon">20dp</dimen>
+    <dimen name="ds_note_view_back_gap">6dp</dimen>
+    <dimen name="ds_note_view_title_date_gap">6dp</dimen>
+    <dimen name="ds_note_view_card_padding">22dp</dimen>
+    <dimen name="ds_note_view_card_top">20dp</dimen>
+    <dimen name="ds_note_view_card_bottom">16dp</dimen>
+    <dimen name="ds_note_view_edited_top">18dp</dimen>
+    <dimen name="ds_note_view_actions_top">12dp</dimen>
+    <dimen name="ds_note_view_action_gap">10dp</dimen>
+    <dimen name="ds_note_view_delete_gap">12dp</dimen>
+    <dimen name="ds_note_view_action_size">52dp</dimen>
 </resources>

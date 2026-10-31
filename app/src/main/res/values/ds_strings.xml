@@ -5,4 +5,26 @@
     <string name="ds_notes_search_hint">Найти заметку</string>
     <string name="ds_notes_section_all">Все заметки</string>
     <string name="ds_notes_section_sort">По дате</string>
+    <string name="note_view_back">&#x417;&#x430;&#x43C;&#x435;&#x442;&#x43A;&#x438;</string>
+    <string name="note_view_empty">&#x41D;&#x435;&#x442; &#x442;&#x435;&#x43A;&#x441;&#x442;&#x430;</string>
+    <string name="note_view_edited_default">
+        &#x418;&#x437;&#x43C;&#x435;&#x43D;&#x435;&#x43D;&#x43E; &#xB7; 30 &#x43E;&#x43A;&#x442;&#x44F;&#x431;&#x440;&#x44F; 2026 &#xB7; 09:41
+    </string>
+    <string name="note_view_edit">&#x420;&#x435;&#x434;&#x430;&#x43A;&#x442;&#x438;&#x440;&#x43E;&#x432;&#x430;&#x442;&#x44C;</string>
+    <string name="note_view_delete">&#x423;&#x434;&#x430;&#x43B;&#x438;&#x442;&#x44C;</string>
+    <string name="note_view_preview_title">&#x418;&#x434;&#x435;&#x438; &#x43D;&#x430; &#x432;&#x44B;&#x445;&#x43E;&#x434;&#x43D;&#x44B;&#x435;</string>
+    <string name="note_view_preview_date">30 &#x43E;&#x43A;&#x442;&#x44F;&#x431;&#x440;&#x44F; 2026 &#xB7; 09:41</string>
+    <string name="note_view_preview_paragraph_one">&#x41F;&#x440;&#x43E;&#x433;&#x443;&#x43B;&#x43A;&#x430; &#x443; &#x43E;&#x437;&#x435;&#x440;&#x430; &#x438; &#x43F;&#x438;&#x43A;&#x43D;&#x438;&#x43A; &#x43D;&#x430; &#x437;&#x430;&#x43A;&#x430;&#x442;&#x435;.</string>
+    <string name="note_view_preview_paragraph_two">&#x412;&#x437;&#x44F;&#x442;&#x44C; &#x441; &#x441;&#x43E;&#x431;&#x43E;&#x439; &#x43A;&#x43D;&#x438;&#x433;&#x443;, &#x43F;&#x43B;&#x435;&#x434; &#x438; &#x442;&#x435;&#x440;&#x43C;&#x43E;&#x441; &#x441; &#x447;&#x430;&#x435;&#x43C;.</string>
+    <string name="note_view_preview_paragraph_three">&#x415;&#x441;&#x43B;&#x438; &#x43E;&#x441;&#x442;&#x430;&#x43D;&#x435;&#x442;&#x441;&#x44F; &#x432;&#x440;&#x435;&#x43C;&#x44F;, &#x437;&#x430;&#x439;&#x442;&#x438; &#x432; &#x43C;&#x443;&#x437;&#x435;&#x439;.</string>
+    <string name="note_view_preview_body">&#x41F;&#x440;&#x43E;&#x433;&#x443;&#x43B;&#x43A;&#x430; &#x443; &#x43E;&#x437;&#x435;&#x440;&#x430; &#x438; &#x43F;&#x438;&#x43A;&#x43D;&#x438;&#x43A; &#x43D;&#x430; &#x437;&#x430;&#x43A;&#x430;&#x442;&#x435;.&#10;&#10;&#x412;&#x437;&#x44F;&#x442;&#x44C; &#x441; &#x441;&#x43E;&#x431;&#x43E;&#x439; &#x43A;&#x43D;&#x438;&#x433;&#x443;, &#x43F;&#x43B;&#x435;&#x434; &#x438; &#x442;&#x435;&#x440;&#x43C;&#x43E;&#x441; &#x441; &#x447;&#x430;&#x435;&#x43C;.&#10;&#10;&#x415;&#x441;&#x43B;&#x438; &#x43E;&#x441;&#x442;&#x430;&#x43D;&#x435;&#x442;&#x441;&#x44F; &#x432;&#x440;&#x435;&#x43C;&#x44F;, &#x437;&#x430;&#x439;&#x442;&#x438; &#x432; &#x43C;&#x443;&#x437;&#x435;&#x439;.</string>
+    <string name="note_view_screen_title">&#x41F;&#x440;&#x43E;&#x441;&#x43C;&#x43E;&#x442;&#x440; &#x437;&#x430;&#x43C;&#x435;&#x442;&#x43A;&#x438;</string>
+    <string name="note_view_edited_prefix">&#x418;&#x437;&#x43C;&#x435;&#x43D;&#x435;&#x43D;&#x43E; &#xB7; </string>
+    <string name="note_view_delete_confirm_title">&#x423;&#x434;&#x430;&#x43B;&#x438;&#x442;&#x44C; &#x437;&#x430;&#x43C;&#x435;&#x442;&#x43A;&#x443;?</string>
+    <string name="note_view_delete_confirm_message">&#x42D;&#x442;&#x43E; &#x434;&#x435;&#x439;&#x441;&#x442;&#x432;&#x438;&#x435; &#x43D;&#x435;&#x43B;&#x44C;&#x437;&#x44F; &#x43E;&#x442;&#x43C;&#x435;&#x43D;&#x438;&#x442;&#x44C;.</string>
+    <string name="note_view_cancel">&#x41E;&#x442;&#x43C;&#x435;&#x43D;&#x430;</string>
+    <string name="note_menu_edit">&#x420;&#x435;&#x434;&#x430;&#x43A;&#x442;&#x438;&#x440;&#x43E;&#x432;&#x430;&#x442;&#x44C;</string>
+    <string name="note_menu_delete">&#x423;&#x434;&#x430;&#x43B;&#x438;&#x442;&#x44C;</string>
+    <string name="notes_empty_title">&#x41F;&#x43E;&#x43A;&#x430; &#x43D;&#x435;&#x442; &#x437;&#x430;&#x43C;&#x435;&#x442;&#x43E;&#x43A;</string>
+    <string name="notes_empty_message">&#x41D;&#x430;&#x436;&#x43C;&#x438;&#x442;&#x435; &#xAB;&#x41D;&#x43E;&#x432;&#x430;&#x44F; &#x437;&#x430;&#x43C;&#x435;&#x442;&#x43A;&#x430;&#xBB;, &#x447;&#x442;&#x43E;&#x431;&#x44B; &#x441;&#x43E;&#x437;&#x434;&#x430;&#x442;&#x44C; &#x43F;&#x435;&#x440;&#x432;&#x443;&#x44E;</string>
 </resources>

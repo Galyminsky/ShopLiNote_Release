@@ -130,4 +130,83 @@
                 <item name="android:fontFamily">@font/inter_semibold</item>
 <item name="android:textColor">@color/ds_accent</item>
     </style>
+    <style name="TextAppearance.DS.NoteViewBack" parent="">
+        <item name="android:fontFamily">@font/inter_regular</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineHeight">20sp</item>
+        <item name="android:textColor">@color/ds_on_surface</item>
+    </style>
+    <style name="TextAppearance.DS.NoteViewTitle" parent="">
+        <item name="android:fontFamily">@font/inter_regular</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textSize">28sp</item>
+        <item name="android:lineHeight">34sp</item>
+        <item name="android:letterSpacing">-0.029</item>
+        <item name="android:textColor">@color/ds_on_surface</item>
+    </style>
+    <style name="TextAppearance.DS.NoteViewContentTitle" parent="">
+        <item name="android:fontFamily">@font/inter_semibold</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textSize">25sp</item>
+        <item name="android:lineHeight">31.25sp</item>
+        <item name="android:letterSpacing">-0.024</item>
+        <item name="android:textColor">@color/ds_on_surface</item>
+    </style>
+    <style name="TextAppearance.DS.NoteViewDate" parent="">
+        <item name="android:fontFamily">@font/inter_regular</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:lineHeight">16sp</item>
+        <item name="android:textColor">@color/ds_on_surface_variant</item>
+    </style>
+    <style name="TextAppearance.DS.NoteViewBody" parent="">
+        <item name="android:fontFamily">@font/inter_regular</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:lineHeight">26.4sp</item>
+        <item name="android:textColor">@color/ds_on_surface</item>
+    </style>
+    <style name="TextAppearance.DS.NoteViewEmpty" parent="">
+        <item name="android:fontFamily">@font/inter_regular</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:lineHeight">26.4sp</item>
+        <item name="android:textColor">@color/ds_on_surface_variant</item>
+    </style>
+    <style name="TextAppearance.DS.NoteViewEdited" parent="">
+        <item name="android:fontFamily">@font/inter_regular</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textSize">11sp</item>
+        <item name="android:lineHeight">15sp</item>
+        <item name="android:textColor">@color/ds_on_surface_variant</item>
+    </style>
+    <style name="TextAppearance.DS.NoteViewAction" parent="">
+        <item name="android:fontFamily">@font/inter_semibold</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:lineHeight">18sp</item>
+        <item name="android:textColor">@color/ds_accent</item>
+    </style>
+    <style name="TextAppearance.DS.NoteMenuAction" parent="">
+        <item name="android:fontFamily">@font/inter_regular</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:lineHeight">20sp</item>
+        <item name="android:textColor">@color/ds_on_surface</item>
+    </style>
+    <style name="TextAppearance.DS.NotesEmptyTitle" parent="">
+        <item name="android:fontFamily">@font/inter_semibold</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:lineHeight">23sp</item>
+        <item name="android:textColor">@color/ds_on_surface</item>
+    </style>
+    <style name="TextAppearance.DS.NotesEmptyMessage" parent="">
+        <item name="android:fontFamily">@font/inter_regular</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineHeight">20sp</item>
+        <item name="android:textColor">@color/ds_on_surface_variant</item>
+    </style>
 </resources>

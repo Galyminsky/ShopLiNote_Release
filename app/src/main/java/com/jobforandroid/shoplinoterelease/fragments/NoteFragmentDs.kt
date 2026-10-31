@@ -18,14 +18,17 @@ import com.jobforandroid.shoplinoterelease.BD.MainViewModel
 import com.jobforandroid.shoplinoterelease.BD.NoteAdapterDs
 import com.jobforandroid.shoplinoterelease.activities.MainApp
 import com.jobforandroid.shoplinoterelease.activities.NewNoteActivity
+import com.jobforandroid.shoplinoterelease.activities.NoteViewActivityDs
 import com.jobforandroid.shoplinoterelease.databinding.FragmentNoteDsBinding
 import com.jobforandroid.shoplinoterelease.entities.NoteItem
+import com.jobforandroid.shoplinoterelease.ui.ds.DeleteNoteDialogDs
 
 class NoteFragmentDs : BaseFragment(), NoteAdapterDs.Listener {
     private var _binding: FragmentNoteDsBinding? = null
     private val binding get() = _binding!!
 
     private lateinit var editLauncher: ActivityResultLauncher<Intent>
+    private lateinit var noteViewLauncher: ActivityResultLauncher<Intent>
     private var adapter: NoteAdapterDs? = null
     private lateinit var defPref: SharedPreferences
 
@@ -73,6 +76,10 @@ class NoteFragmentDs : BaseFragment(), NoteAdapterDs.Listener {
 
     private fun observer() {
         mainViewModel.allNotes.observe(viewLifecycleOwner) {
+            val hasNotes = it.isNotEmpty()
+            binding.sectionHeader.root.visibility = if (hasNotes) View.VISIBLE else View.GONE
+            binding.rcViewNote.visibility = if (hasNotes) View.VISIBLE else View.GONE
+            binding.emptyState.visibility = if (hasNotes) View.GONE else View.VISIBLE
             adapter?.submitList(it)
         }
     }
@@ -80,39 +87,54 @@ class NoteFragmentDs : BaseFragment(), NoteAdapterDs.Listener {
     private fun onEditResult() {
         editLauncher = registerForActivityResult(
             ActivityResultContracts.StartActivityForResult()
-        ) {
-            if (it.resultCode == Activity.RESULT_OK) {
-                val resultNote = try {
-                    it.data?.getSerializableExtra(NEW_NOTE_KEY) as? NoteItem
-                } catch (_: RuntimeException) {
-                    null
-                } ?: return@registerForActivityResult
-                val editState = try {
-                    it.data?.getStringExtra(EDIT_STATE_KEY)
-                } catch (_: RuntimeException) {
-                    null
-                }
-                when (editState) {
-                    "update" -> if (resultNote.id != null && resultNote.id > 0) {
-                        mainViewModel.updateNote(resultNote)
-                    }
-                    "new" -> if (resultNote.id == null) {
-                        mainViewModel.insertNote(resultNote)
-                    }
-                }
+        ) { result -> handleNoteResult(result.resultCode, result.data) }
+        noteViewLauncher = registerForActivityResult(
+            ActivityResultContracts.StartActivityForResult()
+        ) { result -> handleNoteResult(result.resultCode, result.data) }
+    }
+
+    private fun handleNoteResult(resultCode: Int, data: Intent?) {
+        if (resultCode != Activity.RESULT_OK) return
+        val resultNote = try {
+            data?.getSerializableExtra(NEW_NOTE_KEY) as? NoteItem
+        } catch (_: RuntimeException) {
+            null
+        } ?: return
+        val editState = try {
+            data?.getStringExtra(EDIT_STATE_KEY)
+        } catch (_: RuntimeException) {
+            null
+        }
+        when (editState) {
+            "update" -> if (resultNote.id != null && resultNote.id > 0) {
+                mainViewModel.updateNote(resultNote)
+            }
+            "new" -> if (resultNote.id == null) {
+                mainViewModel.insertNote(resultNote)
+            }
+            "delete" -> if (resultNote.id != null && resultNote.id > 0) {
+                mainViewModel.deleteNote(resultNote.id)
             }
         }
     }
 
-    override fun deleteItem(id: Int) {
-        mainViewModel.deleteNote(id)
+    override fun onClickItem(note: NoteItem) {
+        val intent = Intent(activity, NoteViewActivityDs::class.java).apply {
+            putExtra(NoteViewActivityDs.NOTE_EXTRA, note)
+        }
+        noteViewLauncher.launch(intent)
     }
 
-    override fun onClickItem(note: NoteItem) {
-        val intent = Intent(activity, NewNoteActivity::class.java).apply {
+    override fun onEditClick(note: NoteItem) {
+        editLauncher.launch(Intent(activity, NewNoteActivity::class.java).apply {
             putExtra(NEW_NOTE_KEY, note)
+        })
+    }
+
+    override fun onDeleteClick(note: NoteItem) {
+        DeleteNoteDialogDs.show(requireContext()) {
+            note.id?.let { mainViewModel.deleteNote(it) }
         }
-        editLauncher.launch(intent)
     }
 
     companion object {
