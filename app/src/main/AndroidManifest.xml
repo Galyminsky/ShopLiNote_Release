@@ -40,6 +40,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.jobforandroid.shoplinoterelease.activities.MainActivityDs"
+            android:exported="true"
+            android:theme="@style/Theme.App.DS" />
     </application>
 
 </manifest>
