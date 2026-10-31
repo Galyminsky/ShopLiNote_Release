@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/ds_surface"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    android:orientation="vertical"
+    android:paddingHorizontal="24dp"
+    android:paddingTop="16dp"
+    tools:theme="@style/Theme.App.DS">
+
+    <include layout="@layout/notes_header_ds" />
+
+    <include
+        layout="@layout/section_header_ds"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/ds_space_block"
+        android:layout_marginBottom="@dimen/ds_space_list" />
+
+    <include layout="@layout/note_list_item_ds" />
+
+    <include layout="@layout/note_list_item_ds" />
+</LinearLayout>

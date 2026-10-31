@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvScreenTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.DS.Title"
+        tools:text="Заметки" />
+
+    <TextView
+        android:id="@+id/tvScreenSubtitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:textAppearance="@style/TextAppearance.DS.Subtitle"
+        tools:text="Всё важное — под рукой" />
+
+    <com.jobforandroid.shoplinoterelease.ui.ds.NeumorphicSurface
+        android:id="@+id/searchField"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/ds_search_height"
+        android:layout_marginTop="@dimen/ds_space_block"
+        android:clipChildren="false"
+        app:dsCornerRadius="@dimen/ds_radius_m"
+        app:dsVariant="inset">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="16dp">
+
+            <ImageView
+                android:id="@+id/ivSearchIcon"
+                android:layout_width="@dimen/ds_icon_search"
+                android:layout_height="@dimen/ds_icon_search"
+                android:importantForAccessibility="no"
+                app:srcCompat="@drawable/ds_ic_search"
+                app:tint="@color/ds_on_surface_variant" />
+
+            <EditText
+                android:id="@+id/etSearch"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:background="@null"
+                android:hint="Найти заметку"
+                android:importantForAutofill="no"
+                android:imeOptions="actionSearch"
+                android:inputType="text"
+                android:maxLines="1"
+                android:padding="0dp"
+                android:textAppearance="@style/TextAppearance.DS.Input"
+                android:textColorHint="@color/ds_on_surface_variant"
+                android:layout_weight="1" />
+        </LinearLayout>
+    </com.jobforandroid.shoplinoterelease.ui.ds.NeumorphicSurface>
+</LinearLayout>
