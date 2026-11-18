@@ -6,7 +6,8 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <TextView
+    <com.jobforandroid.shoplinoterelease.ui.ds.EmbossTextView
+        style="@style/Widget.DS.EmbossHeading"
         android:id="@+id/tvScreenTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

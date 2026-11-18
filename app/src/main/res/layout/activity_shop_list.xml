@@ -4,12 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/ds_surface"
+    android:fitsSystemWindows="true"
     tools:context=".activities.ShopListActivity">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:clipChildren="false"
+        android:paddingHorizontal="@dimen/ds_screen_padding_h"
+        android:paddingTop="@dimen/ds_space_block"
         android:clipToPadding="false"
         android:paddingBottom="112dp"
         app:layout_constraintBottom_toBottomOf="parent"

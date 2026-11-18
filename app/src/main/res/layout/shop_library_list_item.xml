@@ -6,24 +6,17 @@
     android:layout_height="wrap_content"
     android:clipChildren="false">
 
-    <com.google.android.material.card.MaterialCardView
+    <com.jobforandroid.shoplinoterelease.ui.ds.NeumorphicSurface app:dsCornerRadius="@dimen/ds_radius_l" app:dsVariant="raised"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="4dp"
-        app:cardCornerRadius="12dp"
-        app:cardBackgroundColor="?attr/colorSurface"
-        app:cardElevation="5dp"
-        android:outlineSpotShadowColor="?attr/theme_surface_shadow"
-        android:outlineAmbientShadowColor="?attr/theme_surface_highlight"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:strokeColor="?attr/theme_card_outline"
-        app:strokeWidth="1dp">
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cardContent"
@@ -41,7 +34,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
                 android:layout_marginEnd="5dp"
-                android:text="@string/textview"
+                android:text=""
                 android:textColor="?attr/colorOnSurface"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -61,7 +54,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_delete_library" />
+                app:srcCompat="@drawable/ds_ic_trash" />
 
             <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/imEdit"
@@ -75,9 +68,9 @@
                 app:layout_constraintBottom_toBottomOf="@+id/imDelete"
                 app:layout_constraintEnd_toStartOf="@+id/imDelete"
                 app:layout_constraintTop_toTopOf="@+id/imDelete"
-                app:srcCompat="@drawable/ic_edit_library"
+                app:srcCompat="@drawable/ds_ic_pencil"
                 tools:ignore="TouchTargetSizeCheck" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </com.google.android.material.card.MaterialCardView>
+    </com.jobforandroid.shoplinoterelease.ui.ds.NeumorphicSurface>
 </androidx.constraintlayout.widget.ConstraintLayout>

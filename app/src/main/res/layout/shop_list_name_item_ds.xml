@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.jobforandroid.shoplinoterelease.ui.ds.NeumorphicSurface xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardShopList"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/ds_space_list"
+    android:clipChildren="false"
+    android:padding="@dimen/ds_shop_card_padding"
+    app:dsCornerRadius="@dimen/ds_radius_l"
+    app:dsVariant="raised">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvListName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textAppearance="@style/TextAppearance.DS.ShopListName"
+                tools:text="Покупки на неделю" />
+
+            <ImageView
+                android:id="@+id/ivChevron"
+                android:layout_width="@dimen/ds_icon_leading"
+                android:layout_height="@dimen/ds_icon_leading"
+                android:importantForAccessibility="no"
+                app:srcCompat="@drawable/ds_ic_chevron_right"
+                app:tint="@color/ds_on_surface_variant" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvListLeft"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/ds_shop_card_content_gap"
+            android:textAppearance="@style/TextAppearance.DS.ShopListLeft"
+            tools:text="Осталось 3" />
+
+        <com.jobforandroid.shoplinoterelease.ui.ds.NeumorphicSurface
+            android:id="@+id/progressTrack"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/ds_shop_progress_height"
+            android:layout_marginTop="@dimen/ds_shop_card_content_gap"
+            android:clipChildren="true"
+            android:clipToPadding="true"
+            app:dsCornerRadius="@dimen/ds_shop_progress_radius"
+            app:dsVariant="inset">
+
+            <ProgressBar
+                android:id="@+id/progressFill"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:indeterminate="false"
+                android:max="100"
+                android:background="@android:color/transparent"
+                android:padding="0dp"
+                tools:progress="40"
+                android:progressDrawable="@drawable/ds_progress_shop_list_fill" />
+        </com.jobforandroid.shoplinoterelease.ui.ds.NeumorphicSurface>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/ds_shop_card_content_gap"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvListChecked"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textAppearance="@style/TextAppearance.DS.ShopListChecked"
+                tools:text="2 из 5 куплено" />
+
+            <TextView
+                android:id="@+id/tvListDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.DS.ShopListDate"
+                tools:text="30 октября · 09:30" />
+        </LinearLayout>
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="end" android:orientation="horizontal">
+            <androidx.appcompat.widget.AppCompatImageButton android:id="@+id/btnRename" android:layout_width="48dp" android:layout_height="48dp" android:padding="14dp" android:background="?attr/selectableItemBackgroundBorderless" android:contentDescription="@string/edit_list" app:srcCompat="@drawable/ds_ic_pencil" app:tint="@color/ds_accent" />
+            <androidx.appcompat.widget.AppCompatImageButton android:id="@+id/btnDelete" android:layout_width="48dp" android:layout_height="48dp" android:padding="14dp" android:background="?attr/selectableItemBackgroundBorderless" android:contentDescription="@string/delete_button" app:srcCompat="@drawable/ds_ic_trash" app:tint="@color/ds_on_surface_variant" />
+        </LinearLayout>
+    </LinearLayout>
+</com.jobforandroid.shoplinoterelease.ui.ds.NeumorphicSurface>

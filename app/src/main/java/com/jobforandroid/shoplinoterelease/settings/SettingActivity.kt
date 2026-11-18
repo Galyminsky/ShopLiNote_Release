@@ -36,6 +36,6 @@ class SettingActivity : AppCompatActivity() {
     }
 
     private fun getSelectedTheme(): Int {
-        return ThemeManager.getThemeStyle(this)
+        return R.style.Theme_App_DS_Shop
     }
 }

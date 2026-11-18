@@ -54,4 +54,6 @@
         <item>32</item>
         <item>34</item>
     </string-array>
+    <string-array name="ds_mode_labels"><item>@string/ds_mode_light</item></string-array>
+    <string-array name="ds_mode_values"><item>light</item></string-array>
 </resources>

@@ -98,7 +98,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="inset (тень пока не рисуется)"
+                android:text="inset"
                 android:textAppearance="@style/TextAppearance.DS.NoteTitle" />
 
             <TextView

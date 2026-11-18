@@ -40,7 +40,7 @@ object TimeManager {
         return formatted to date
     }
 
-    private fun parseStoredTime(time: String): Date? {
+    fun parseStoredTime(time: String): Date? {
         if (time.isBlank()) return null
 
         return runCatching {

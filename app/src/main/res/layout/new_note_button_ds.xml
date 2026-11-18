@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.button.MaterialButton xmlns:android="http://schemas.android.com/apk/res/android"
+<com.jobforandroid.shoplinoterelease.ui.ds.NeumorphicSurface xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" style="@style/Widget.DS.PrimarySurface" android:layout_width="match_parent" android:layout_height="wrap_content">
+<com.google.android.material.button.MaterialButton android:layout_width="match_parent" android:layout_height="wrap_content" xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navNew"
     style="@style/Widget.DS.Button.Primary"
-    android:layout_width="match_parent"
-    android:layout_height="@dimen/ds_button_height"
     android:elevation="0dp"
-    android:text="Новая заметка"
+    android:text="@string/note_edit_new_title"
     app:icon="@drawable/ds_ic_plus"
     app:iconGravity="textStart"
     app:iconPadding="10dp"
     app:iconSize="20dp"
-    app:iconTint="@color/ds_on_accent" />
+    app:iconTint="@color/ds_on_primary_surface" />
+</com.jobforandroid.shoplinoterelease.ui.ds.NeumorphicSurface>

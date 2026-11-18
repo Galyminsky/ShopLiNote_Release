@@ -20,4 +20,9 @@
     <color name="ds_note_color_orange">#A4551B</color>
     <color name="ds_note_color_green">#2F7556</color>
     <color name="ds_note_color_blue">#3B68A6</color>
+    <color name="ds_primary_surface">#D5CAE5</color>
+    <color name="ds_on_primary_surface">#43334F</color>
+    <color name="ds_accent_muted">#786387</color>
+    <color name="ds_emboss_highlight">#CCFFFFFF</color>
+    <color name="ds_emboss_shadow">#40686677</color>
 </resources>

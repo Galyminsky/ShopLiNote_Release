@@ -6,6 +6,7 @@ import android.graphics.BlurMaskFilter
 import android.graphics.Canvas
 import android.graphics.Paint
 import android.graphics.Path
+import android.graphics.Rect
 import android.graphics.RectF
 import android.graphics.drawable.GradientDrawable
 import android.util.AttributeSet
@@ -41,15 +42,19 @@ class NeumorphicSurface @JvmOverloads constructor(
             }
         }
 
-    private val density = resources.displayMetrics.density
-    private val shadowMarginPx = 32f * density
-    private val shadowBlurPx = 10f * density
-    private val insetShadowOffsetPx = resources.getDimension(R.dimen.ds_inset_shadow_offset)
+    private val shadowMarginPx = resources.getDimension(R.dimen.ds_shadow_margin)
+    private val shadowBlurPx = resources.getDimension(R.dimen.ds_shadow_blur)
+    private var insetShadowOffsetPx = resources.getDimension(R.dimen.ds_inset_shadow_offset)
     private val insetShadowBlurPx = resources.getDimension(R.dimen.ds_inset_shadow_blur)
-    private val shadowOffsetXPx = 5f * density
-    private val shadowLightOffsetYPx = -5f * density
-    private val shadowDarkOffsetYPx = 6f * density
+    private val shadowOffsetXPx = resources.getDimension(R.dimen.ds_shadow_offset_x)
+    private val shadowLightOffsetYPx = -resources.getDimension(R.dimen.ds_shadow_offset_x)
+    private val shadowDarkOffsetYPx = resources.getDimension(R.dimen.ds_shadow_offset_y)
     private var shadowBitmap: Bitmap? = null
+    private var fillColor: Int? = null
+    private var pressedInset = false
+    private var wasPressed = false
+    private var shadowOpacity = 1f
+    private val renderedVariant get() = if (pressedInset && wasPressed) VARIANT_INSET else variant
 
     init {
         setWillNotDraw(false)
@@ -63,6 +68,10 @@ class NeumorphicSurface @JvmOverloads constructor(
         val initialVariant: Int
         val initialCornerRadius: Float
         try {
+            if (typedArray.hasValue(R.styleable.DsNeumorphicSurface_dsSurfaceColor)) fillColor = typedArray.getColor(R.styleable.DsNeumorphicSurface_dsSurfaceColor, 0)
+            insetShadowOffsetPx = typedArray.getDimension(R.styleable.DsNeumorphicSurface_dsInsetShadowOffset, insetShadowOffsetPx)
+            pressedInset = typedArray.getBoolean(R.styleable.DsNeumorphicSurface_dsPressedInset, false)
+            shadowOpacity = typedArray.getFloat(R.styleable.DsNeumorphicSurface_dsShadowOpacity, 1f).coerceIn(0f, 1f)
             initialVariant = typedArray.getInt(
                 R.styleable.DsNeumorphicSurface_dsVariant,
                 VARIANT_RAISED
@@ -77,6 +86,16 @@ class NeumorphicSurface @JvmOverloads constructor(
         variant = initialVariant
         cornerRadiusPx = initialCornerRadius
         updateBackground()
+    }
+
+    override fun drawableStateChanged() {
+        super.drawableStateChanged()
+        val pressed = drawableState.contains(android.R.attr.state_pressed)
+        if (pressedInset && pressed != wasPressed) {
+            wasPressed = pressed
+            updateBackground()
+            rebuildShadowBitmap()
+        }
     }
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
@@ -97,8 +116,16 @@ class NeumorphicSurface @JvmOverloads constructor(
     override fun onDraw(canvas: Canvas) {
         ensureShadow()
         shadowBitmap?.let {
-            if (variant == VARIANT_INSET) {
-                canvas.drawBitmap(it, 0f, 0f, null)
+            if (renderedVariant == VARIANT_INSET) {
+                if (it.height == height) {
+                    canvas.drawBitmap(it, 0f, 0f, null)
+                } else {
+                    // Preserve corner geometry and stretch only the straight side shadows of long fields.
+                    val edge = minOf(it.height / 3, kotlin.math.ceil(cornerRadiusPx + insetShadowBlurPx * 2 + insetShadowOffsetPx).toInt())
+                    canvas.drawBitmap(it, Rect(0, 0, it.width, edge), Rect(0, 0, width, edge), null)
+                    canvas.drawBitmap(it, Rect(0, edge, it.width, it.height - edge), Rect(0, edge, width, height - edge), null)
+                    canvas.drawBitmap(it, Rect(0, it.height - edge, it.width, it.height), Rect(0, height - edge, width, height), null)
+                }
             } else {
                 canvas.drawBitmap(it, -shadowMarginPx, -shadowMarginPx, null)
             }
@@ -110,31 +137,33 @@ class NeumorphicSurface @JvmOverloads constructor(
     }
 
     private fun updateBackground() {
-        val colorResource = when (variant) {
+        val colorResource = when (renderedVariant) {
             VARIANT_INSET -> R.color.ds_surface_inset
             else -> R.color.ds_surface
         }
         background = GradientDrawable().apply {
-            setColor(ContextCompat.getColor(context, colorResource))
+            setColor(fillColor ?: ContextCompat.getColor(context, colorResource))
             cornerRadius = cornerRadiusPx
         }
     }
 
     private fun ensureShadow(): Boolean {
-        if (shadowBitmap != null || width <= 0 || height <= 0) return false
+        if (shadowBitmap != null || width <= 0 || height <= 0 || renderedVariant == VARIANT_FLAT) return false
         return rebuildShadowBitmap(invalidateAfterBuild = false)
     }
 
     private fun rebuildShadowBitmap(invalidateAfterBuild: Boolean = true): Boolean {
         shadowBitmap = null
-        if (width <= 0 || height <= 0) {
+        if (width <= 0 || height <= 0 || renderedVariant == VARIANT_FLAT) {
             return false
         }
 
-        if (variant == VARIANT_INSET) {
-            val bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
+        if (renderedVariant == VARIANT_INSET) {
+            // An editor can be taller than the screen; shadow memory must not scale with note length.
+            val bitmapHeight = minOf(height, maxOf(resources.displayMetrics.heightPixels, (cornerRadiusPx * 4).toInt() + 1))
+            val bitmap = Bitmap.createBitmap(width, bitmapHeight, Bitmap.Config.ARGB_8888)
             val bitmapCanvas = Canvas(bitmap)
-            val viewRect = RectF(0f, 0f, width.toFloat(), height.toFloat())
+            val viewRect = RectF(0f, 0f, width.toFloat(), bitmapHeight.toFloat())
             val clipPath = Path().apply {
                 addRoundRect(
                     viewRect,
@@ -145,8 +174,8 @@ class NeumorphicSurface @JvmOverloads constructor(
             }
             bitmapCanvas.clipPath(clipPath)
 
-            drawInsetShadow(bitmapCanvas, width, height, insetShadowOffsetPx, R.color.ds_shadow_inset)
-            drawInsetShadow(bitmapCanvas, width, height, -insetShadowOffsetPx, R.color.ds_shadow_light)
+            drawInsetShadow(bitmapCanvas, width, bitmapHeight, insetShadowOffsetPx, R.color.ds_shadow_inset)
+            drawInsetShadow(bitmapCanvas, width, bitmapHeight, -insetShadowOffsetPx, R.color.ds_shadow_light)
             shadowBitmap = bitmap
             if (invalidateAfterBuild) invalidate()
             return true
@@ -166,7 +195,7 @@ class NeumorphicSurface @JvmOverloads constructor(
             shadowMarginPx + height
         )
 
-        if (variant == VARIANT_RAISED) {
+        if (renderedVariant == VARIANT_RAISED) {
             drawShadow(
                 bitmapCanvas,
                 rect,
@@ -184,7 +213,7 @@ class NeumorphicSurface @JvmOverloads constructor(
         )
 
         val surfacePaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
-            color = ContextCompat.getColor(context, R.color.ds_surface)
+            color = fillColor ?: ContextCompat.getColor(context, R.color.ds_surface)
         }
         bitmapCanvas.drawRoundRect(rect, cornerRadiusPx, cornerRadiusPx, surfacePaint)
         shadowBitmap = bitmap
@@ -201,6 +230,7 @@ class NeumorphicSurface @JvmOverloads constructor(
     ) {
         val shadowPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
             color = ContextCompat.getColor(context, colorResource)
+            alpha = (alpha * shadowOpacity).toInt()
             maskFilter = BlurMaskFilter(shadowBlurPx, BlurMaskFilter.Blur.NORMAL)
         }
         val shadowRect = RectF(rect).apply { offset(offsetX, offsetY) }
@@ -220,6 +250,7 @@ class NeumorphicSurface @JvmOverloads constructor(
         }
         val paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
             color = ContextCompat.getColor(context, colorResource)
+            alpha = (alpha * shadowOpacity).toInt()
             maskFilter = BlurMaskFilter(insetShadowBlurPx, BlurMaskFilter.Blur.NORMAL)
         }
         canvas.drawPath(path, paint)
@@ -229,5 +260,6 @@ class NeumorphicSurface @JvmOverloads constructor(
         const val VARIANT_RAISED = 0
         const val VARIANT_RAISED_FLAT = 1
         const val VARIANT_INSET = 2
+        const val VARIANT_FLAT = 3
     }
 }

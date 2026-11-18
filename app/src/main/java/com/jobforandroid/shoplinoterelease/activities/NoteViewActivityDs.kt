@@ -29,7 +29,7 @@ class NoteViewActivityDs : AppCompatActivity() {
 
         note = try {
             @Suppress("DEPRECATION")
-            intent.getSerializableExtra(NOTE_EXTRA) as? NoteItem
+            (savedInstanceState?.getSerializable(NOTE_EXTRA) ?: intent.getSerializableExtra(NOTE_EXTRA)) as? NoteItem
         } catch (_: RuntimeException) {
             null
         } ?: run {
@@ -55,13 +55,15 @@ class NoteViewActivityDs : AppCompatActivity() {
             if (state == "update" && editedNote.id != null && editedNote.id > 0) {
                 note = note.copy(
                     title = editedNote.title,
-                    content = editedNote.content
+                    content = editedNote.content,
+                    modifiedAt = editedNote.modifiedAt, hasBeenEdited = editedNote.hasBeenEdited
                 )
                 renderNote()
                 setResult(Activity.RESULT_OK, buildResultIntent("update", note))
             }
         }
 
+        if (savedInstanceState?.getBoolean("updated") == true) setResult(Activity.RESULT_OK, buildResultIntent("update", note))
         renderNote()
         binding.btnBack.setOnClickListener { finish() }
         binding.btnEdit.setOnClickListener {
@@ -73,8 +75,15 @@ class NoteViewActivityDs : AppCompatActivity() {
         binding.btnDelete.setOnClickListener { showDeleteConfirmation() }
     }
 
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putSerializable(NOTE_EXTRA, note)
+        outState.putBoolean("updated", note != intent.getSerializableExtra(NOTE_EXTRA))
+        super.onSaveInstanceState(outState)
+    }
+
     private fun renderNote() = with(binding) {
         tvNoteTitle.text = note.title
+        com.jobforandroid.shoplinoterelease.utils.NoteTextPreferences.apply(tvNoteTitle, tvNoteText)
         tvNoteTitle.visibility = if (note.title.isEmpty()) View.GONE else View.VISIBLE
 
         val content = HtmlManager.getFromHtml(note.content).trim()
@@ -91,9 +100,9 @@ class NoteViewActivityDs : AppCompatActivity() {
         val (time, date) = TimeManager.getTimeAndDate(note.time, preferences)
         val dateLabel = listOfNotNull(date, time).joinToString(" · ")
         tvViewDate.text = dateLabel
-        // TODO(redesign): replace with the actual last-edited date when that field exists.
-        tvEditedLabel.text = getString(R.string.note_view_edited_prefix) + dateLabel
-        tvEditedLabel.visibility = View.VISIBLE
+        val editedTime = java.text.SimpleDateFormat(TimeManager.DEF_TIME_FORMAT, java.util.Locale.getDefault()).format(java.util.Date(note.modifiedAt))
+        tvEditedLabel.text = getString(R.string.note_view_edited_prefix).trimEnd() + " " + TimeManager.getTimeFormat(editedTime, preferences)
+        tvEditedLabel.visibility = if (note.hasBeenEdited) View.VISIBLE else View.GONE
     }
 
     private fun showDeleteConfirmation() {

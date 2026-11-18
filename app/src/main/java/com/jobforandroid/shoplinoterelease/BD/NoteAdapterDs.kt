@@ -37,8 +37,9 @@ class NoteAdapterDs(private val listener: Listener, private val defRref: SharedP
         fun setData(note: NoteItem, listener: Listener, defRref: SharedPreferences) =
             with(binding) {
                 tvTitle.text = note.title
+                com.jobforandroid.shoplinoterelease.utils.NoteTextPreferences.apply(tvTitle, tvDescription)
                 tvDescription.text = HtmlManager.getFromHtml(note.content).trim()
-                val (time, date) = TimeManager.getTimeAndDate(note.time, defRref)
+                val (time, date) = TimeManager.getTimeAndDate(if (note.modifiedAt > 0) java.text.SimpleDateFormat(TimeManager.DEF_TIME_FORMAT, java.util.Locale.getDefault()).format(java.util.Date(note.modifiedAt)) else note.time, defRref)
                 tvTime.text = time
                 tvDate.text = date.orEmpty()
                 dateRow.visibility = if (date == null) View.GONE else View.VISIBLE

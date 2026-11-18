@@ -1,17 +1,57 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
     <style name="Theme.App.DS" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:forceDarkAllowed">false</item>
         <item name="android:windowBackground">@color/ds_surface</item>
         <item name="android:fontFamily">@font/inter</item>
         <item name="android:textColorPrimary">@color/ds_on_surface</item>
         <item name="android:textColorSecondary">@color/ds_on_surface_variant</item>
         <item name="android:statusBarColor">@color/ds_surface</item>
         <item name="android:navigationBarColor">@color/ds_surface</item>
-        <item name="android:windowLightStatusBar">true</item>
-        <item name="android:windowLightNavigationBar">true</item>
+        <item name="android:windowLightStatusBar">@bool/ds_light_bars</item>
+        <item name="android:windowLightNavigationBar">@bool/ds_light_bars</item>
         <item name="colorPrimary">@color/ds_accent</item>
         <item name="colorOnPrimary">@color/ds_on_accent</item>
         <item name="colorSurface">@color/ds_surface</item>
         <item name="colorOnSurface">@color/ds_on_surface</item>
+        <item name="allBgColor">@color/ds_surface</item>
+        <item name="theme_card_outline">@color/ds_divider</item>
+        <item name="theme_surface_shadow">@color/ds_shadow_dark</item>
+        <item name="theme_surface_highlight">@color/ds_shadow_light</item>
+        <item name="theme_card_gradient_end">@color/ds_surface</item>
+        <item name="theme_btn">@color/ds_accent</item>
+        <item name="theme_btn_text">@color/ds_on_accent</item>
+        <item name="theme_gradient_start">@color/ds_surface</item>
+        <item name="theme_gradient_center">@color/ds_surface</item>
+        <item name="theme_gradient_end">@color/ds_surface</item>
+        <item name="theme_on_gradient">@color/ds_on_surface</item>
+        <item name="theme_nav_active">@color/ds_accent</item>
+        <item name="theme_nav_inactive">@color/ds_on_surface_variant</item>
+        <item name="theme_muted_text">@color/ds_on_surface_variant</item>
+        <item name="theme_count_complete">@color/ds_surface_inset</item>
+        <item name="theme_count_incomplete">@color/ds_surface</item>
+        <item name="theme_count_text">@color/ds_on_surface</item>
+        <item name="theme_delete_color">@color/ds_note_color_red</item>
+        <item name="theme_progress_color">@color/ds_accent</item>
+        <item name="theme_nav_selected_bg">@color/ds_surface_inset</item>
+        <item name="theme_edit_background">@color/ds_surface</item>
+        <item name="theme_edit_text">@color/ds_accent</item>
+        <item name="theme_delete_background">@color/ds_surface</item>
+        <item name="theme_delete_button_text">@color/ds_note_color_red</item>
+        <item name="theme_gradient_button_drawable">@drawable/ds_bg_note_edit_save</item>
+        <item name="colorAccent">@color/ds_accent</item>
+        <item name="colorControlActivated">@color/ds_accent</item>
+        <item name="android:colorBackground">@color/ds_surface</item>
     </style>
+    <style name="Theme.App.DS.Shop" parent="Theme.App.DS">
+        <item name="windowActionBar">true</item>
+        <item name="windowNoTitle">false</item>
+        <item name="actionBarStyle">@style/Widget.DS.ActionBar</item>
+    </style>
+    <style name="Widget.DS.ActionBar" parent="Widget.MaterialComponents.ActionBar.Solid">
+        <item name="background">@color/ds_surface</item>
+        <item name="elevation">0dp</item>
+        <item name="titleTextStyle">@style/TextAppearance.DS.Title</item>
+    </style>
+    <bool name="ds_light_bars">true</bool>
 </resources>

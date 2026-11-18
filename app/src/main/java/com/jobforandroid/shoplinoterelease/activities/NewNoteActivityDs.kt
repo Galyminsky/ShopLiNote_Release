@@ -43,6 +43,7 @@ class NewNoteActivityDs : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        androidx.core.view.WindowCompat.setDecorFitsSystemWindows(window, false)
         binding = ActivityNoteEditDsBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setResult(RESULT_CANCELED)
@@ -56,6 +57,9 @@ class NewNoteActivityDs : AppCompatActivity() {
 
         applyInsets()
         render()
+        com.jobforandroid.shoplinoterelease.utils.NoteTextPreferences.apply(binding.etTitle, binding.etContent)
+        savedInstanceState?.getString("draft_title")?.let { binding.etTitle.setText(it) }
+        savedInstanceState?.getCharSequence("draft_content")?.let { binding.etContent.setText(it) }
         initialTitle = savedInstanceState?.getString(STATE_INITIAL_TITLE) ?: note?.title.orEmpty()
         initialHtml = savedInstanceState?.getString(STATE_INITIAL_HTML) ?: HtmlManager.toHtml(binding.etContent.text)
         binding.btnCancel.setOnClickListener { requestCancel() }
@@ -80,6 +84,7 @@ class NewNoteActivityDs : AppCompatActivity() {
             override fun handleOnBackPressed() = requestCancel()
         })
 
+        if (savedInstanceState == null) {
         val focusTarget = if (note == null) binding.etTitle else binding.etContent
         focusTarget.requestFocus()
         focusTarget.post {
@@ -87,9 +92,12 @@ class NewNoteActivityDs : AppCompatActivity() {
             (getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager)
                 .showSoftInput(focusTarget, InputMethodManager.SHOW_IMPLICIT)
         }
+        }
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
+        outState.putString("draft_title", binding.etTitle.text.toString())
+        outState.putCharSequence("draft_content", android.text.SpannableString(binding.etContent.text))
         outState.putInt(STATE_SELECTED_COLOR, selectedPaletteColor)
         outState.putString(STATE_INITIAL_TITLE, initialTitle)
         outState.putString(STATE_INITIAL_HTML, initialHtml)
@@ -272,9 +280,11 @@ class NewNoteActivityDs : AppCompatActivity() {
     }
 
     private fun setMainResult() {
+        if (note != null && !dirty) { finish(); return }
         val resultNote = note?.copy(
             title = binding.etTitle.text.toString(),
-            content = HtmlManager.toHtml(binding.etContent.text)
+            content = HtmlManager.toHtml(binding.etContent.text),
+            modifiedAt = System.currentTimeMillis(), hasBeenEdited = true
         ) ?: NoteItem(
             null,
             binding.etTitle.text.toString(),
@@ -291,16 +301,18 @@ class NewNoteActivityDs : AppCompatActivity() {
     }
 
     private fun applyInsets() {
+        // Edge-to-edge is explicit: this listener is the only owner of system/IME padding.
         val root = binding.root
         val initialLeft = root.paddingLeft
         val initialTop = root.paddingTop
         val initialRight = root.paddingRight
         val initialBottom = root.paddingBottom
         ViewCompat.setOnApplyWindowInsetsListener(root) { view, insets ->
-            val status = insets.getInsets(WindowInsetsCompat.Type.statusBars()).top
-            val navigation = insets.getInsets(WindowInsetsCompat.Type.navigationBars()).bottom
+            val bars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            val status = bars.top
+            val navigation = bars.bottom
             val ime = insets.getInsets(WindowInsetsCompat.Type.ime()).bottom
-            view.setPadding(initialLeft, initialTop + status, initialRight, initialBottom + maxOf(navigation, ime))
+            view.setPadding(initialLeft + bars.left, initialTop + status, initialRight + bars.right, initialBottom + maxOf(navigation, ime))
             insets
         }
         ViewCompat.requestApplyInsets(root)

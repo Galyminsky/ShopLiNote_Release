@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/ds_surface">
+
+    <LinearLayout
+        android:id="@+id/settingsHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/ds_screen_padding_h"
+        android:layout_marginTop="@dimen/ds_screen_padding_top"
+        android:orientation="vertical">
+        <com.jobforandroid.shoplinoterelease.ui.ds.EmbossTextView
+            style="@style/Widget.DS.EmbossHeading"
+            android:id="@+id/settingsTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/settings"
+            android:textAppearance="@style/TextAppearance.DS.Title" />
+        <TextView
+            android:id="@+id/settingsSubtitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/ds_shop_subtitle_gap"
+            android:text="@string/ds_settings_subtitle"
+            android:textAppearance="@style/TextAppearance.DS.Subtitle" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/settingsListViewport"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipChildren="true"
+        android:clipToPadding="true" />
+</LinearLayout>

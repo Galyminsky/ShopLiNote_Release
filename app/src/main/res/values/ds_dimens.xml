@@ -17,6 +17,18 @@
     <dimen name="ds_search_height">48dp</dimen>
     <dimen name="ds_inset_shadow_offset">3dp</dimen>
     <dimen name="ds_inset_shadow_blur">6dp</dimen>
+    <dimen name="ds_shop_card_padding">20dp</dimen>
+    <dimen name="ds_shop_card_content_gap">13dp</dimen>
+    <dimen name="ds_shop_progress_height">6dp</dimen>
+    <dimen name="ds_shop_progress_radius">6dp</dimen>
+    <dimen name="ds_shop_search_padding_h">16dp</dimen>
+    <dimen name="ds_shop_search_icon_gap">12dp</dimen>
+    <dimen name="ds_shop_subtitle_gap">5dp</dimen>
+    <dimen name="ds_shop_empty_message_gap">8dp</dimen>
+    <dimen name="ds_shop_list_bottom_padding">24dp</dimen>
+    <dimen name="ds_shop_button_bottom_gap">8dp</dimen>
+    <dimen name="ds_shop_button_icon_gap">10dp</dimen>
+    <dimen name="ds_shop_empty_max_width">280dp</dimen>
     <dimen name="ds_button_height">52dp</dimen>
     <dimen name="ds_nav_item_height">52dp</dimen>
     <dimen name="ds_segment_large_height">58dp</dimen>
@@ -48,4 +60,16 @@
     <dimen name="ds_note_edit_format_shadow_margin">10dp</dimen>
     <dimen name="ds_note_edit_palette_outer_padding">16dp</dimen>
     <dimen name="ds_note_edit_palette_padding">14dp</dimen>
+    <dimen name="ds_shadow_margin">32dp</dimen>
+    <dimen name="ds_shadow_blur">10dp</dimen>
+    <dimen name="ds_shadow_offset_x">5dp</dimen>
+    <dimen name="ds_shadow_offset_y">6dp</dimen>
+    <dimen name="ds_nav_panel_padding">8dp</dimen>
+    <dimen name="ds_nav_bottom_gap">16dp</dimen>
+    <dimen name="ds_dialog_shadow_space">24dp</dimen>
+    <dimen name="ds_field_padding">12dp</dimen>
+    <dimen name="ds_settings_section_gap">16dp</dimen>
+    <dimen name="ds_settings_row_height">60dp</dimen>
+    <dimen name="ds_settings_inset_offset">4dp</dimen>
+    <dimen name="ds_emboss_offset">0.75dp</dimen>
 </resources>

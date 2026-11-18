@@ -1,34 +1,8 @@
 package com.jobforandroid.shoplinoterelease.dialogs
-
-
-import android.app.AlertDialog
 import android.content.Context
-import android.view.LayoutInflater
-import com.jobforandroid.shoplinoterelease.databinding.DeleteDialogBinding
-
-
+import com.jobforandroid.shoplinoterelease.R
+import com.jobforandroid.shoplinoterelease.ui.ds.DsDialogs
 object DeleteDialog {
-    fun showDialog(context: Context, listener: Listener) {
-        var dialog: AlertDialog? = null
-        val builder = AlertDialog.Builder(context)
-        val binding = DeleteDialogBinding.inflate(LayoutInflater.from(context))
-        builder.setView(binding.root)
-
-        binding.apply {
-            bDelete.setOnClickListener {
-                listener.onClick()
-                dialog?.dismiss()
-            }
-            bCancel.setOnClickListener {
-                dialog?.dismiss()
-            }
-        }
-        dialog = builder.create()
-        dialog.window?.setBackgroundDrawable(null)
-        dialog.show()
-    }
-
-    interface Listener {
-        fun onClick()
-    }
+    fun showDialog(context: Context, listener: Listener) = DsDialogs.confirm(context, context.getString(R.string.delete_alert), context.getString(R.string.delete_item), R.string.delete_button, R.string.cancel_button) { listener.onClick() }
+    interface Listener { fun onClick() }
 }

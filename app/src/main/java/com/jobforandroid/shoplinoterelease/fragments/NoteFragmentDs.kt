@@ -30,6 +30,8 @@ class NoteFragmentDs : BaseFragment(), NoteAdapterDs.Listener {
     private lateinit var editLauncher: ActivityResultLauncher<Intent>
     private lateinit var noteViewLauncher: ActivityResultLauncher<Intent>
     private var adapter: NoteAdapterDs? = null
+    private var notes: List<NoteItem> = emptyList()
+    private var query = ""
     private lateinit var defPref: SharedPreferences
 
     private val mainViewModel: MainViewModel by activityViewModels {
@@ -56,6 +58,13 @@ class NoteFragmentDs : BaseFragment(), NoteAdapterDs.Listener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initRcView()
+        query = savedInstanceState?.getString("query").orEmpty()
+        binding.notesHeader.etSearch.setText(query)
+        binding.notesHeader.etSearch.addTextChangedListener(object : android.text.TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) = Unit
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) { query = s.toString(); renderNotes() }
+            override fun afterTextChanged(s: android.text.Editable?) = Unit
+        })
         observer()
     }
 
@@ -76,11 +85,33 @@ class NoteFragmentDs : BaseFragment(), NoteAdapterDs.Listener {
 
     private fun observer() {
         mainViewModel.allNotes.observe(viewLifecycleOwner) {
-            val hasNotes = it.isNotEmpty()
-            binding.sectionHeader.root.visibility = if (hasNotes) View.VISIBLE else View.GONE
-            binding.rcViewNote.visibility = if (hasNotes) View.VISIBLE else View.GONE
-            binding.emptyState.visibility = if (hasNotes) View.GONE else View.VISIBLE
-            adapter?.submitList(it)
+            notes = it
+            renderNotes()
+        }
+    }
+
+    private fun renderNotes() {
+        val filtered = notes.filter { query.isBlank() || it.title.contains(query, true) || com.jobforandroid.shoplinoterelease.utils.HtmlManager.getFromHtml(it.content).toString().contains(query, true) }
+        binding.sectionHeader.root.visibility = if (filtered.isNotEmpty()) View.VISIBLE else View.GONE
+        binding.rcViewNote.visibility = if (filtered.isNotEmpty()) View.VISIBLE else View.GONE
+        binding.emptyState.visibility = if (filtered.isEmpty()) View.VISIBLE else View.GONE
+        (binding.emptyState.getChildAt(0) as android.widget.TextView).setText(if (query.isBlank()) com.jobforandroid.shoplinoterelease.R.string.notes_empty_title else com.jobforandroid.shoplinoterelease.R.string.ds_no_results)
+        (binding.emptyState.getChildAt(1) as android.widget.TextView).visibility = if (query.isBlank()) View.VISIBLE else View.GONE
+        adapter?.submitList(filtered)
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putString("query", query)
+        super.onSaveInstanceState(outState)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (adapter != null) {
+            val linear = defPref.getString("note_style_key", "Linear") == "Linear"
+            if (linear != (binding.rcViewNote.layoutManager is LinearLayoutManager)) binding.rcViewNote.layoutManager = getLayoutManager()
+            adapter?.notifyItemRangeChanged(0, adapter?.itemCount ?: 0)
+            renderNotes()
         }
     }
 

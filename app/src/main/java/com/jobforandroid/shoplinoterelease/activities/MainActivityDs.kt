@@ -16,66 +16,58 @@ import com.jobforandroid.shoplinoterelease.settings.SettingsFragment
 class MainActivityDs : AppCompatActivity() {
     private lateinit var binding: ActivityMainDsBinding
     private var selectedTabIndex = 0
-    private var settingsOpen = false
+    private var previousTab = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainDsBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        if (savedInstanceState == null) {
-            FragmentManager.setFragment(NoteFragmentDs.newInstance(), this)
-        } else {
-            settingsOpen = supportFragmentManager.findFragmentByTag(SETTINGS_FRAGMENT_TAG)?.isAdded == true
-            (supportFragmentManager.findFragmentById(R.id.placeHolder) as? BaseFragment)
-                ?.let { FragmentManager.currentFrag = it }
-            selectedTabIndex = savedInstanceState.getInt(STATE_SELECTED_TAB, 0)
+        androidx.core.view.WindowCompat.setDecorFitsSystemWindows(window, false)
+        androidx.core.view.ViewCompat.setOnApplyWindowInsetsListener(binding.root) { view, insets ->
+            val bars = insets.getInsets(androidx.core.view.WindowInsetsCompat.Type.systemBars())
+            view.setPadding(bars.left, bars.top, bars.right, bars.bottom + resources.getDimensionPixelSize(R.dimen.ds_nav_bottom_gap))
+            insets
         }
-
-        supportFragmentManager.addOnBackStackChangedListener {
-            val current = supportFragmentManager.findFragmentById(R.id.placeHolder)
-            settingsOpen = current is SettingsFragment
-            (current as? BaseFragment)?.let { FragmentManager.currentFrag = it }
-            if (!settingsOpen && current is NoteFragmentDs) selectTab(0)
-            if (!settingsOpen && current is ShopListNamesFragment) selectTab(1)
-        }
-
-        binding.bottomNavInclude.navNotes.setOnClickListener {
-            leaveSettingsIfNeeded()
-            selectTab(0)
-            FragmentManager.setFragment(NoteFragmentDs.newInstance(), this)
-        }
-        binding.bottomNavInclude.navPurchases.setOnClickListener {
-            leaveSettingsIfNeeded()
-            selectTab(1)
-            FragmentManager.setFragment(ShopListNamesFragment.newInstance(), this)
-        }
-        binding.bottomNavInclude.navSettings.setOnClickListener {
-            if (!settingsOpen) {
-                supportFragmentManager.beginTransaction()
-                    .replace(R.id.placeHolder, SettingsFragment(), SETTINGS_FRAGMENT_TAG)
-                    .addToBackStack(SETTINGS_BACK_STACK_TAG)
-                    .setReorderingAllowed(true)
-                    .commit()
-                settingsOpen = true
-                selectTab(2)
-            }
-        }
+        androidx.core.view.ViewCompat.requestApplyInsets(binding.root)
+        previousTab = savedInstanceState?.getInt("previous_tab") ?: 0
+        binding.bottomNavInclude.navNotes.setOnClickListener { showTab(0) }
+        binding.bottomNavInclude.navPurchases.setOnClickListener { showTab(1) }
+        binding.bottomNavInclude.navSettings.setOnClickListener { showTab(2) }
         binding.newNoteInclude.navNew.setOnClickListener {
-            if (!settingsOpen) FragmentManager.currentFrag?.onClickNew()
+            (supportFragmentManager.findFragmentByTag("ds_tab_" + selectedTabIndex) as? BaseFragment)?.onClickNew()
         }
-
-        selectTab(if (settingsOpen) 2 else selectedTabIndex)
+        onBackPressedDispatcher.addCallback(this, object : androidx.activity.OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                when (selectedTabIndex) {
+                    2 -> showTab(previousTab)
+                    1 -> showTab(0)
+                    else -> { isEnabled = false; onBackPressedDispatcher.onBackPressed() }
+                }
+            }
+        })
+        selectedTabIndex = savedInstanceState?.getInt("selected_tab") ?: 0
+        showTab(selectedTabIndex)
     }
 
-    private fun leaveSettingsIfNeeded() {
-        if (settingsOpen) {
-            supportFragmentManager.popBackStackImmediate(
-                SETTINGS_BACK_STACK_TAG,
-                androidx.fragment.app.FragmentManager.POP_BACK_STACK_INCLUSIVE
-            )
-            settingsOpen = false
+    private fun showTab(index: Int) {
+        if (index == 2 && selectedTabIndex != 2) previousTab = selectedTabIndex
+        val manager = supportFragmentManager
+        val transaction = manager.beginTransaction().setReorderingAllowed(true)
+        manager.fragments.filter { it.tag?.startsWith("ds_tab_") == true }.forEach {
+            transaction.hide(it).setMaxLifecycle(it, androidx.lifecycle.Lifecycle.State.STARTED)
         }
+        val tag = "ds_tab_" + index
+        val fragment = manager.findFragmentByTag(tag) ?: when (index) {
+            0 -> NoteFragmentDs.newInstance()
+            1 -> ShopListNamesFragment.newInstance()
+            else -> SettingsFragment()
+        }
+        if (!fragment.isAdded) transaction.add(R.id.placeHolder, fragment, tag) else transaction.show(fragment)
+        transaction.setMaxLifecycle(fragment, androidx.lifecycle.Lifecycle.State.RESUMED).commitNow()
+        FragmentManager.currentFrag = fragment as? BaseFragment
+        selectTab(index)
+        binding.newNoteInclude.root.visibility = if (index == 2) View.GONE else View.VISIBLE
+        binding.newNoteInclude.navNew.setText(if (index == 1) R.string.shop_new_list else R.string.note_edit_new_title)
     }
 
     private fun selectTab(index: Int) {
@@ -85,7 +77,7 @@ class MainActivityDs : AppCompatActivity() {
             Triple(binding.bottomNavInclude.navPurchasesBg, binding.bottomNavInclude.navPurchasesIcon, binding.bottomNavInclude.navPurchasesLabel),
             Triple(binding.bottomNavInclude.navSettingsBg, binding.bottomNavInclude.navSettingsIcon, binding.bottomNavInclude.navSettingsLabel)
         )
-        val accent = ContextCompat.getColor(this, R.color.ds_accent)
+        val accent = ContextCompat.getColor(this, R.color.ds_accent_muted)
         val inactive = ContextCompat.getColor(this, R.color.ds_on_surface_variant)
         tabs.forEachIndexed { tabIndex, (background, icon, label) ->
             val active = tabIndex == index
@@ -101,14 +93,10 @@ class MainActivityDs : AppCompatActivity() {
         }
     }
 
-    override fun onSaveInstanceState(outState: Bundle) {
-        outState.putInt(STATE_SELECTED_TAB, selectedTabIndex)
-        super.onSaveInstanceState(outState)
-    }
 
-    companion object {
-        private const val SETTINGS_FRAGMENT_TAG = "main_settings_fragment_ds"
-        private const val SETTINGS_BACK_STACK_TAG = "main_settings_back_stack_ds"
-        private const val STATE_SELECTED_TAB = "main_selected_tab_ds"
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putInt("selected_tab", selectedTabIndex)
+        outState.putInt("previous_tab", previousTab)
+        super.onSaveInstanceState(outState)
     }
 }

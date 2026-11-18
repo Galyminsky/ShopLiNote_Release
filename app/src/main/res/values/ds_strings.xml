@@ -52,4 +52,40 @@
     <string name="note_edit_discard_message">&#x412;&#x432;&#x435;&#x434;&#x451;&#x43D;&#x43D;&#x44B;&#x439; &#x442;&#x435;&#x43A;&#x441;&#x442; &#x43D;&#x435; &#x431;&#x443;&#x434;&#x435;&#x442; &#x441;&#x43E;&#x445;&#x440;&#x430;&#x43D;&#x451;&#x43D;.</string>
     <string name="note_edit_discard_continue">&#x41F;&#x440;&#x43E;&#x434;&#x43E;&#x43B;&#x436;&#x438;&#x442;&#x44C; &#x440;&#x435;&#x434;&#x430;&#x43A;&#x442;&#x438;&#x440;&#x43E;&#x432;&#x430;&#x43D;&#x438;&#x435;</string>
     <string name="note_edit_discard_cancel">&#x41E;&#x442;&#x43C;&#x435;&#x43D;&#x438;&#x442;&#x44C;</string>
+    <string name="shop_title">&#x41F;&#x43E;&#x43A;&#x443;&#x43F;&#x43A;&#x438;</string>
+    <string name="shop_active_lists_preview">2 &#x430;&#x43A;&#x442;&#x438;&#x432;&#x43D;&#x44B;&#x445; &#x441;&#x43F;&#x438;&#x441;&#x43A;&#x430;</string>
+    <string name="shop_search_hint">&#x41D;&#x430;&#x439;&#x442;&#x438; &#x441;&#x43F;&#x438;&#x441;&#x43E;&#x43A;</string>
+    <string name="shop_new_list">&#x41D;&#x43E;&#x432;&#x44B;&#x439; &#x441;&#x43F;&#x438;&#x441;&#x43E;&#x43A;</string>
+    <string name="shop_empty_title">&#x41F;&#x43E;&#x43A;&#x430; &#x43D;&#x435;&#x442; &#x441;&#x43F;&#x438;&#x441;&#x43A;&#x43E;&#x432;</string>
+    <string name="shop_empty_message">&#x41D;&#x430;&#x436;&#x43C;&#x438;&#x442;&#x435; &#xAB;&#x41D;&#x43E;&#x432;&#x44B;&#x439; &#x441;&#x43F;&#x438;&#x441;&#x43E;&#x43A;&#xBB;, &#x447;&#x442;&#x43E;&#x431;&#x44B; &#x441;&#x43E;&#x437;&#x434;&#x430;&#x442;&#x44C; &#x43F;&#x435;&#x440;&#x432;&#x44B;&#x439;</string>
+    <string name="shop_section_in_progress">&#x412; &#x41F;&#x420;&#x41E;&#x426;&#x415;&#x421;&#x421;&#x415;</string>
+    <string name="shop_list_count_preview">2 &#x441;&#x43F;&#x438;&#x441;&#x43A;&#x430;</string>
+    <string name="shop_list_left_preview">&#x41E;&#x441;&#x442;&#x430;&#x43B;&#x43E;&#x441;&#x44C; 3</string>
+    <string name="shop_list_checked_preview">2 &#x438;&#x437; 5 &#x43A;&#x443;&#x43F;&#x43B;&#x435;&#x43D;&#x43E;</string>
+    <string name="shop_list_date_preview">30 &#x43E;&#x43A;&#x442;&#x44F;&#x431;&#x440;&#x44F; &#xB7; 09:30</string>
+    <plurals name="shop_active_lists">
+        <item quantity="one">%d &#x430;&#x43A;&#x442;&#x438;&#x432;&#x43D;&#x44B;&#x439; &#x441;&#x43F;&#x438;&#x441;&#x43E;&#x43A;</item>
+        <item quantity="few">%d &#x430;&#x43A;&#x442;&#x438;&#x432;&#x43D;&#x44B;&#x445; &#x441;&#x43F;&#x438;&#x441;&#x43A;&#x430;</item>
+        <item quantity="many">%d &#x430;&#x43A;&#x442;&#x438;&#x432;&#x43D;&#x44B;&#x445; &#x441;&#x43F;&#x438;&#x441;&#x43A;&#x43E;&#x432;</item>
+        <item quantity="other">%d &#x430;&#x43A;&#x442;&#x438;&#x432;&#x43D;&#x43E;&#x433;&#x43E; &#x441;&#x43F;&#x438;&#x441;&#x43A;&#x430;</item>
+    </plurals>
+    <plurals name="shop_list_count">
+        <item quantity="one">%d &#x441;&#x43F;&#x438;&#x441;&#x43E;&#x43A;</item>
+        <item quantity="few">%d &#x441;&#x43F;&#x438;&#x441;&#x43A;&#x430;</item>
+        <item quantity="many">%d &#x441;&#x43F;&#x438;&#x441;&#x43A;&#x43E;&#x432;</item>
+        <item quantity="other">%d &#x441;&#x43F;&#x438;&#x441;&#x43A;&#x430;</item>
+    </plurals>
+    <plurals name="shop_list_left">
+        <item quantity="one">&#x41E;&#x441;&#x442;&#x430;&#x43B;&#x43E;&#x441;&#x44C; %d</item>
+        <item quantity="few">&#x41E;&#x441;&#x442;&#x430;&#x43B;&#x43E;&#x441;&#x44C; %d</item>
+        <item quantity="many">&#x41E;&#x441;&#x442;&#x430;&#x43B;&#x43E;&#x441;&#x44C; %d</item>
+        <item quantity="other">&#x41E;&#x441;&#x442;&#x430;&#x43B;&#x43E;&#x441;&#x44C; %d</item>
+    </plurals>
+    <string name="ds_no_results">Ничего не найдено</string>
+    <string name="ds_mode_light">Светлая</string>
+    <string name="ds_mode_dark">Тёмная</string>
+    <string name="ds_shop_checked">%1$d из %2$d куплено</string>
+    <string name="ds_shop_all_lists">Все списки</string>
+    <string name="ds_settings_subtitle">Персонализация приложения</string>
+    <string name="ds_settings_general">Общие настройки</string>
 </resources>

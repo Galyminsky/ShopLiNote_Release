@@ -15,7 +15,6 @@ import com.jobforandroid.shoplinoterelease.R
 import com.jobforandroid.shoplinoterelease.databinding.ShopLibraryListItemBinding
 import com.jobforandroid.shoplinoterelease.databinding.ShopListItemBinding
 import com.jobforandroid.shoplinoterelease.entities.ShopListItem
-import com.jobforandroid.shoplinoterelease.utils.CardGradient
 
 class ShopListItemAdapter(private val listener: Listener) :
     ListAdapter<ShopListItem, ShopListItemAdapter.ItemHolder>(ItemComparator()) {
@@ -62,7 +61,6 @@ class ShopListItemAdapter(private val listener: Listener) :
         fun setItemData(shopListItem: ShopListItem, listener: Listener, position: Int) {
             val binding = ShopListItemBinding.bind(view)
             binding.apply {
-                CardGradient.apply(cardContent, position)
                 tvName.text = shopListItem.name
                 tvInfo.text = shopListItem.itemInfo
                 tvInfo.visibility = infoVisibility(shopListItem)
@@ -74,6 +72,7 @@ class ShopListItemAdapter(private val listener: Listener) :
                         CHECK_BOX
                     )
                 }
+                itemView.setOnLongClickListener { listener.onClickItem(shopListItem, DELETE_ITEM); true }
                 imEdit.setOnClickListener {
                     listener.onClickItem(shopListItem, EDIT)
                 }
@@ -83,7 +82,6 @@ class ShopListItemAdapter(private val listener: Listener) :
         fun setLibraryData(shopListItem: ShopListItem, listener: Listener, position: Int) {
             val binding = ShopLibraryListItemBinding.bind(view)
             binding.apply {
-                CardGradient.apply(cardContent, position)
                 tvName.text = shopListItem.name
                 imEdit.setOnClickListener {
                     listener.onClickItem(shopListItem, EDIT_LIBRARY_ITEM)
@@ -174,6 +172,7 @@ class ShopListItemAdapter(private val listener: Listener) :
     }
 
     companion object {
+        const val DELETE_ITEM = 5
         const val EDIT = 0
         const val CHECK_BOX = 1
         const val EDIT_LIBRARY_ITEM = 2

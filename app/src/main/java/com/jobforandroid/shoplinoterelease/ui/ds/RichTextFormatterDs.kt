@@ -13,17 +13,18 @@ object RichTextFormatterDs {
 
     private fun toggleStyle(editable: Spannable, start: Int, end: Int, style: Int) {
         if (start < 0 || end <= start || end > editable.length) return
-        val covering = editable.getSpans(start, end, StyleSpan::class.java)
-            .firstOrNull { editable.getSpanStart(it) <= start && editable.getSpanEnd(it) >= end }
-        val currentStyle = covering?.style ?: Typeface.NORMAL
-        if (covering != null) {
-            val spanStart = editable.getSpanStart(covering)
-            val spanEnd = editable.getSpanEnd(covering)
-            editable.removeSpan(covering)
-            val updated = if (currentStyle and style != 0) currentStyle and style.inv() else currentStyle or style
-            if (updated != Typeface.NORMAL) editable.setSpan(StyleSpan(updated), spanStart, spanEnd, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-        } else {
-            editable.setSpan(StyleSpan(style), start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+        val spans = editable.getSpans(0, editable.length, StyleSpan::class.java)
+        data class Run(val start: Int, val end: Int, val style: Int)
+        val runs = spans.map { Run(editable.getSpanStart(it), editable.getSpanEnd(it), it.style) }
+        val points = (runs.flatMap { listOf(it.start, it.end) } + listOf(0, start, end, editable.length)).distinct().sorted()
+        fun styleAt(a: Int, b: Int) = runs.filter { it.start < b && it.end > a }.fold(0) { value, run -> value or run.style }
+        val remove = points.zipWithNext().filter { it.first >= start && it.second <= end }
+            .all { styleAt(it.first, it.second) and style != 0 }
+        spans.forEach { editable.removeSpan(it) }
+        points.zipWithNext().forEach { (a, b) ->
+            var value = styleAt(a, b)
+            if (a >= start && b <= end) value = if (remove) value and style.inv() else value or style
+            if (value != Typeface.NORMAL && b > a) editable.setSpan(StyleSpan(value), a, b, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
         }
     }
 

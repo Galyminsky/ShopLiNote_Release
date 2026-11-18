@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.jobforandroid.shoplinoterelease.ui.ds.NeumorphicSurface xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent" android:layout_height="wrap_content" android:clickable="true" android:focusable="true" app:dsVariant="flat" app:dsPressedInset="true" app:dsCornerRadius="@dimen/ds_radius_s">
+<RadioButton android:id="@+id/choiceLabel" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="48dp" android:clickable="false" android:focusable="false" android:buttonTint="@color/ds_accent_muted" android:textAppearance="@style/TextAppearance.DS.SettingTitle" />
+</com.jobforandroid.shoplinoterelease.ui.ds.NeumorphicSurface>
