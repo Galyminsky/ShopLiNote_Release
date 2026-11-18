@@ -54,9 +54,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/ds_note_view_title_date_gap"
-        android:text="@string/note_view_preview_date"
-        android:textAppearance="@style/TextAppearance.DS.NoteViewDate"
-        tools:text="@string/note_view_preview_date" />
+        android:textAppearance="@style/TextAppearance.DS.NoteViewDate" />
 
     <com.jobforandroid.shoplinoterelease.ui.ds.NeumorphicSurface
         android:id="@+id/cardNote"
@@ -94,16 +92,14 @@
                         android:id="@+id/tvNoteTitle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textAppearance="@style/TextAppearance.DS.NoteViewContentTitle"
-                        tools:text="@string/note_view_preview_title" />
+                        android:textAppearance="@style/TextAppearance.DS.NoteViewContentTitle" />
 
                     <TextView
                         android:id="@+id/tvNoteText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="18dp"
-                        android:textAppearance="@style/TextAppearance.DS.NoteViewBody"
-                        tools:text="@string/note_view_preview_body" />
+                        android:textAppearance="@style/TextAppearance.DS.NoteViewBody" />
 
                     <TextView
                         android:id="@+id/tvNoteEmpty"
@@ -123,7 +119,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/ds_note_view_edited_top"
-        android:text="@string/note_view_edited_default"
         android:textAppearance="@style/TextAppearance.DS.NoteViewEdited"
         android:visibility="visible" />
 

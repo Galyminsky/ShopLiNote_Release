@@ -11,7 +11,7 @@
         android:ems="10"
         android:hint="@string/hint_new_item"
         android:inputType="textPersonName"
-        android:textColor="?attr/theme_on_gradient"
+        android:textColor="@color/ds_on_surface"
         android:textColorHint="@color/ds_on_surface_variant"
-        android:backgroundTint="?attr/theme_card_outline" />
+        android:backgroundTint="@color/ds_divider" />
 </LinearLayout>

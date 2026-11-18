@@ -7,16 +7,12 @@
     <string name="ds_notes_section_sort">By date</string>
     <string name="note_view_back">Notes</string>
     <string name="note_view_empty">No text</string>
-    <string name="note_view_edited_default">Edited</string>
+
     <string name="note_view_edit">Edit</string>
     <string name="note_view_delete">Delete</string>
-    <string name="note_view_preview_title">Weekend ideas</string>
-    <string name="note_view_preview_date">30 October 2026 · 09:41</string>
-    <string name="note_view_preview_paragraph_one">Walk by the lake and picnic at sunset.</string>
-    <string name="note_view_preview_paragraph_two">Bring a book, a blanket and a flask of tea.</string>
-    <string name="note_view_preview_paragraph_three">Visit a museum if there is time.</string>
+
     <string name="note_view_screen_title">View note</string>
-    <string name="note_view_edited_prefix">Edited · </string>
+    <string name="note_view_edited_prefix">Edited · %1$s</string>
     <string name="note_view_delete_confirm_title">Delete note?</string>
     <string name="note_view_delete_confirm_message">This cannot be undone.</string>
     <string name="note_view_cancel">Cancel</string>
@@ -47,25 +43,19 @@
     <string name="note_edit_discard_continue">Keep editing</string>
     <string name="note_edit_discard_cancel">Discard</string>
     <string name="shop_title">Shopping</string>
-    <string name="shop_active_lists_preview">2 active lists</string>
+
     <string name="shop_search_hint">Find a list</string>
     <string name="shop_new_list">New list</string>
     <string name="shop_empty_title">No lists yet</string>
     <string name="shop_empty_message">Tap “New list” to create your first list</string>
     <string name="shop_section_in_progress">IN PROGRESS</string>
-    <string name="shop_list_count_preview">2 lists</string>
-    <string name="shop_list_left_preview">3 left</string>
-    <string name="shop_list_checked_preview">2 of 5 purchased</string>
-    <string name="shop_list_date_preview">30 October · 09:30</string>
+
     <string name="ds_no_results">No results</string>
     <string name="ds_mode_light">Light</string>
-    <string name="ds_mode_dark">Dark</string>
+
     <string name="ds_shop_checked">%1$d of %2$d purchased</string>
     <string name="ds_shop_all_lists">All lists</string>
-    <string name="note_edit_date_preview">30 October 2026 · 09:41</string>
-    <string name="note_edit_preview_title">Weekend ideas</string>
-    <string name="note_view_preview_body">Walk by the lake and picnic at sunset.\n\nBring a book, a blanket and a flask of tea.\n\nVisit a museum if there is time.</string>
-    <string name="note_edit_preview_content">Walk by the lake and picnic at sunset.\n\nBring a book, a blanket and a flask of tea.\n\nVisit a museum if there is time.</string>
+
     <plurals name="shop_active_lists"><item quantity="one">%d active list</item><item quantity="other">%d active lists</item></plurals>
     <plurals name="shop_list_count"><item quantity="one">%d list</item><item quantity="other">%d lists</item></plurals>
     <plurals name="shop_list_left"><item quantity="one">%d left</item><item quantity="other">%d left</item></plurals>

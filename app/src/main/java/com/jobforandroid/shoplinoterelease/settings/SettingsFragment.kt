@@ -9,7 +9,7 @@ import androidx.preference.ListPreference
 import androidx.preference.Preference
 import androidx.preference.PreferenceCategory
 import androidx.preference.PreferenceFragmentCompat
-import androidx.preference.PreferenceGroupAdapter
+import androidx.preference.PreferenceGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.jobforandroid.shoplinoterelease.R
 import com.jobforandroid.shoplinoterelease.ui.ds.DsDialogs
@@ -26,7 +26,24 @@ class SettingsFragment : PreferenceFragmentCompat() {
         return root
     }
 
+    private fun visiblePreferences(group: PreferenceGroup = preferenceScreen): List<Preference> {
+        val rows = mutableListOf<Preference>()
+        for (index in 0 until group.preferenceCount) {
+            val preference = group.getPreference(index)
+            if (!preference.isVisible) continue
+            rows.add(preference)
+            if (preference is PreferenceCategory) rows.addAll(visiblePreferences(preference))
+        }
+        return rows
+    }
+
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
+        val preferences = androidx.preference.PreferenceManager.getDefaultSharedPreferences(requireContext())
+        val storedFormat = runCatching { preferences.getString("time_format_key", null) }.getOrNull()
+        val normalizedFormat = com.jobforandroid.shoplinoterelease.utils.TimeManager.normalizedDisplayFormat(storedFormat)
+        if (storedFormat != null && normalizedFormat != storedFormat) {
+            preferences.edit().putString("time_format_key", normalizedFormat).apply()
+        }
         setPreferencesFromResource(R.xml.setting_preference, rootKey)
     }
 
@@ -51,20 +68,19 @@ class SettingsFragment : PreferenceFragmentCompat() {
         listView.addItemDecoration(object : RecyclerView.ItemDecoration() {
             private val panels = mutableMapOf<Preference, NeumorphicSurface>()
             override fun getItemOffsets(outRect: Rect, child: View, parent: RecyclerView, state: RecyclerView.State) {
-                val adapter = parent.adapter as? PreferenceGroupAdapter ?: return
                 val position = parent.getChildAdapterPosition(child)
                 if (position == RecyclerView.NO_POSITION) return
-                val item = adapter.getItem(position)
+                val item = visiblePreferences().getOrNull(position)
                 if (item is PreferenceCategory && position > 0) outRect.top = gap
             }
             override fun onDraw(canvas: Canvas, parent: RecyclerView, state: RecyclerView.State) {
-                val adapter = parent.adapter as? PreferenceGroupAdapter ?: return
+                val rows = visiblePreferences()
                 val groups = linkedMapOf<Preference, Rect>()
                 for (i in 0 until parent.childCount) {
                     val child = parent.getChildAt(i)
                     val position = parent.getChildAdapterPosition(child)
                     if (position == RecyclerView.NO_POSITION) continue
-                    val item = adapter.getItem(position) ?: continue
+                    val item = rows.getOrNull(position) ?: continue
                     val category = if (item is PreferenceCategory) item else item.parent ?: continue
                     val bounds = groups.getOrPut(category) { Rect(padding, child.top, parent.width - padding, child.bottom) }
                     bounds.bottom = child.bottom

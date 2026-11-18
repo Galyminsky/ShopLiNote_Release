@@ -6,10 +6,7 @@ import android.view.inputmethod.InputMethodManager
 import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.Color
-import android.view.ActionMode
 import android.view.Gravity
-import android.view.Menu
-import android.view.MenuItem
 import android.view.View
 import android.widget.PopupWindow
 import androidx.activity.OnBackPressedCallback
@@ -88,6 +85,7 @@ class NewNoteActivityDs : AppCompatActivity() {
         val focusTarget = if (note == null) binding.etTitle else binding.etContent
         focusTarget.requestFocus()
         focusTarget.post {
+            if (isFinishing || isDestroyed) return@post
             focusTarget.setSelection(focusTarget.text.length)
             (getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager)
                 .showSoftInput(focusTarget, InputMethodManager.SHOW_IMPLICIT)
@@ -115,15 +113,15 @@ class NewNoteActivityDs : AppCompatActivity() {
             rememberSelection()
             showColorPopup()
         }
-        etContent.customSelectionActionModeCallback = object : ActionMode.Callback {
-            override fun onCreateActionMode(mode: ActionMode?, menu: Menu?): Boolean { menu?.clear(); return true }
-            override fun onPrepareActionMode(mode: ActionMode?, menu: Menu?): Boolean { menu?.clear(); return true }
-            override fun onActionItemClicked(mode: ActionMode?, item: MenuItem?) = true
-            override fun onDestroyActionMode(mode: ActionMode?) = Unit
-        }
         val current = ContextCompat.getColor(this@NewNoteActivityDs, selectedPaletteColor)
         tvColorGlyph.setTextColor(current)
         vColorBar.backgroundTintList = ColorStateList.valueOf(current)
+    }
+
+    override fun onDestroy() {
+        colorPopup?.dismiss()
+        colorPopup = null
+        super.onDestroy()
     }
 
     private fun rememberSelection() {
@@ -188,7 +186,7 @@ class NewNoteActivityDs : AppCompatActivity() {
         swatches.forEachIndexed { index, swatch ->
             val item = palette[index]
             val resolved = ContextCompat.getColor(this, item.resource)
-            (swatch.getChildAt(0) as? View)?.backgroundTintList = ColorStateList.valueOf(resolved)
+            swatch.getChildAt(0)?.backgroundTintList = ColorStateList.valueOf(resolved)
             if (swatch.childCount < 2) {
                 swatch.addView(View(this).apply {
                     layoutParams = android.widget.FrameLayout.LayoutParams(
@@ -219,9 +217,11 @@ class NewNoteActivityDs : AppCompatActivity() {
             }
         }
         colorPopup = popup
+        val visibleFrame = android.graphics.Rect()
+        binding.root.getWindowVisibleDisplayFrame(visibleFrame)
         popupBinding.root.measure(
-            View.MeasureSpec.makeMeasureSpec(resources.displayMetrics.widthPixels, View.MeasureSpec.AT_MOST),
-            View.MeasureSpec.makeMeasureSpec(resources.displayMetrics.heightPixels, View.MeasureSpec.AT_MOST)
+            View.MeasureSpec.makeMeasureSpec(visibleFrame.width(), View.MeasureSpec.AT_MOST),
+            View.MeasureSpec.makeMeasureSpec(visibleFrame.height(), View.MeasureSpec.AT_MOST)
         )
         val anchor = binding.btnColor
         val loc = IntArray(2)
@@ -230,17 +230,20 @@ class NewNoteActivityDs : AppCompatActivity() {
         binding.root.getLocationOnScreen(rootLoc)
         val popupWidth = popupBinding.root.measuredWidth
         val popupHeight = popupBinding.root.measuredHeight
-        val x = loc[0] - rootLoc[0] + anchor.width / 2 - popupWidth / 2
+        val minX = visibleFrame.left - rootLoc[0]
+        val maxX = (visibleFrame.right - rootLoc[0] - popupWidth).coerceAtLeast(minX)
+        val x = (loc[0] - rootLoc[0] + anchor.width / 2 - popupWidth / 2).coerceIn(minX, maxX)
         val above = loc[1] - rootLoc[1] - popupHeight
-        val y = if (above >= 0) above else loc[1] - rootLoc[1] + anchor.height
+        val minY = visibleFrame.top - rootLoc[1]
+        val maxY = (visibleFrame.bottom - rootLoc[1] - popupHeight).coerceAtLeast(minY)
+        val y = (if (above >= minY) above else loc[1] - rootLoc[1] + anchor.height).coerceIn(minY, maxY)
         popup.showAtLocation(binding.root, Gravity.TOP or Gravity.LEFT, x, y)
     }
 
     private fun readNote(): NoteItem? {
         if (!intent.hasExtra(NoteFragmentDs.NEW_NOTE_KEY)) return null
         val incoming = try {
-            @Suppress("DEPRECATION")
-            intent.getSerializableExtra(NoteFragmentDs.NEW_NOTE_KEY) as? NoteItem
+            androidx.core.content.IntentCompat.getSerializableExtra(intent, NoteFragmentDs.NEW_NOTE_KEY, NoteItem::class.java)
         } catch (_: RuntimeException) { null } ?: return null
         if (incoming.id == null || incoming.id <= 0) return null
         return incoming
@@ -256,7 +259,7 @@ class NewNoteActivityDs : AppCompatActivity() {
         tvEditDate.text = listOfNotNull(date, time).joinToString(" \u00B7 ")
         note?.let {
             etTitle.setText(it.title)
-            etContent.setText(HtmlManager.getFromHtml(it.content).trim())
+            etContent.setText(HtmlManager.getFromHtml(it.content).trimEnd('\n'))
         }
     }
 
@@ -267,7 +270,7 @@ class NewNoteActivityDs : AppCompatActivity() {
     }
 
     private fun updateDirtyState() {
-        dirty = binding.etTitle.text.toString().trim() != initialTitle.trim() ||
+        dirty = binding.etTitle.text.toString() != initialTitle ||
             HtmlManager.toHtml(binding.etContent.text) != initialHtml
         binding.tvEditStatus.visibility = if (dirty) View.VISIBLE else View.INVISIBLE
         if (dirty) binding.tvEditStatus.setText(

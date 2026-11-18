@@ -6,11 +6,4 @@ abstract class BaseFragment : Fragment() {
 
     abstract fun onClickNew()
 
-    override fun onDestroy() {
-        if (FragmentManager.currentFrag === this) {
-            FragmentManager.currentFrag = null
-        }
-        super.onDestroy()
-    }
-
 }

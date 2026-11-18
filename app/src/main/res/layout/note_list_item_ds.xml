@@ -86,7 +86,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="4dp"
                 android:importantForAccessibility="no"
-                android:text="·"
+                android:text="@string/ds_metadata_separator"
                 android:textAppearance="@style/TextAppearance.DS.NoteDate" />
 
             <LinearLayout

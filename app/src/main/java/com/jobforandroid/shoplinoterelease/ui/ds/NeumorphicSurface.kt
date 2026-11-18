@@ -50,6 +50,8 @@ class NeumorphicSurface @JvmOverloads constructor(
     private val shadowLightOffsetYPx = -resources.getDimension(R.dimen.ds_shadow_offset_x)
     private val shadowDarkOffsetYPx = resources.getDimension(R.dimen.ds_shadow_offset_y)
     private var shadowBitmap: Bitmap? = null
+    private val shadowSourceRect = Rect()
+    private val shadowTargetRect = Rect()
     private var fillColor: Int? = null
     private var pressedInset = false
     private var wasPressed = false
@@ -61,23 +63,23 @@ class NeumorphicSurface @JvmOverloads constructor(
         val defaultCornerRadius = resources.getDimension(R.dimen.ds_radius_l)
         val typedArray = context.obtainStyledAttributes(
             attrs,
-            R.styleable.DsNeumorphicSurface,
+            R.styleable.NeumorphicSurface,
             defStyleAttr,
             0
         )
         val initialVariant: Int
         val initialCornerRadius: Float
         try {
-            if (typedArray.hasValue(R.styleable.DsNeumorphicSurface_dsSurfaceColor)) fillColor = typedArray.getColor(R.styleable.DsNeumorphicSurface_dsSurfaceColor, 0)
-            insetShadowOffsetPx = typedArray.getDimension(R.styleable.DsNeumorphicSurface_dsInsetShadowOffset, insetShadowOffsetPx)
-            pressedInset = typedArray.getBoolean(R.styleable.DsNeumorphicSurface_dsPressedInset, false)
-            shadowOpacity = typedArray.getFloat(R.styleable.DsNeumorphicSurface_dsShadowOpacity, 1f).coerceIn(0f, 1f)
+            if (typedArray.hasValue(R.styleable.NeumorphicSurface_dsSurfaceColor)) fillColor = typedArray.getColor(R.styleable.NeumorphicSurface_dsSurfaceColor, 0)
+            insetShadowOffsetPx = typedArray.getDimension(R.styleable.NeumorphicSurface_dsInsetShadowOffset, insetShadowOffsetPx)
+            pressedInset = typedArray.getBoolean(R.styleable.NeumorphicSurface_dsPressedInset, false)
+            shadowOpacity = typedArray.getFloat(R.styleable.NeumorphicSurface_dsShadowOpacity, 1f).coerceIn(0f, 1f)
             initialVariant = typedArray.getInt(
-                R.styleable.DsNeumorphicSurface_dsVariant,
+                R.styleable.NeumorphicSurface_dsVariant,
                 VARIANT_RAISED
             )
             initialCornerRadius = typedArray.getDimension(
-                R.styleable.DsNeumorphicSurface_dsCornerRadius,
+                R.styleable.NeumorphicSurface_dsCornerRadius,
                 defaultCornerRadius
             )
         } finally {
@@ -122,18 +124,20 @@ class NeumorphicSurface @JvmOverloads constructor(
                 } else {
                     // Preserve corner geometry and stretch only the straight side shadows of long fields.
                     val edge = minOf(it.height / 3, kotlin.math.ceil(cornerRadiusPx + insetShadowBlurPx * 2 + insetShadowOffsetPx).toInt())
-                    canvas.drawBitmap(it, Rect(0, 0, it.width, edge), Rect(0, 0, width, edge), null)
-                    canvas.drawBitmap(it, Rect(0, edge, it.width, it.height - edge), Rect(0, edge, width, height - edge), null)
-                    canvas.drawBitmap(it, Rect(0, it.height - edge, it.width, it.height), Rect(0, height - edge, width, height), null)
+                    shadowSourceRect.set(0, 0, it.width, edge)
+                    shadowTargetRect.set(0, 0, width, edge)
+                    canvas.drawBitmap(it, shadowSourceRect, shadowTargetRect, null)
+                    shadowSourceRect.set(0, edge, it.width, it.height - edge)
+                    shadowTargetRect.set(0, edge, width, height - edge)
+                    canvas.drawBitmap(it, shadowSourceRect, shadowTargetRect, null)
+                    shadowSourceRect.set(0, it.height - edge, it.width, it.height)
+                    shadowTargetRect.set(0, height - edge, width, height)
+                    canvas.drawBitmap(it, shadowSourceRect, shadowTargetRect, null)
                 }
             } else {
                 canvas.drawBitmap(it, -shadowMarginPx, -shadowMarginPx, null)
             }
         }
-    }
-
-    override fun onDetachedFromWindow() {
-        super.onDetachedFromWindow()
     }
 
     private fun updateBackground() {

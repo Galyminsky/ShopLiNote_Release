@@ -7,16 +7,12 @@
     <string name="ds_notes_section_sort">За датою</string>
     <string name="note_view_back">Нотатки</string>
     <string name="note_view_empty">Немає тексту</string>
-    <string name="note_view_edited_default">Змінено</string>
+
     <string name="note_view_edit">Редагувати</string>
     <string name="note_view_delete">Видалити</string>
-    <string name="note_view_preview_title">Ідеї на вихідні</string>
-    <string name="note_view_preview_date">30 жовтня 2026 · 09:41</string>
-    <string name="note_view_preview_paragraph_one">Прогулянка біля озера та пікнік на заході сонця.</string>
-    <string name="note_view_preview_paragraph_two">Взяти книгу, плед і термос із чаєм.</string>
-    <string name="note_view_preview_paragraph_three">Якщо буде час, зайти до музею.</string>
+
     <string name="note_view_screen_title">Перегляд нотатки</string>
-    <string name="note_view_edited_prefix">Змінено · </string>
+    <string name="note_view_edited_prefix">Змінено · %1$s</string>
     <string name="note_view_delete_confirm_title">Видалити нотатку?</string>
     <string name="note_view_delete_confirm_message">Цю дію неможливо скасувати.</string>
     <string name="note_view_cancel">Скасувати</string>
@@ -47,25 +43,19 @@
     <string name="note_edit_discard_continue">Продовжити редагування</string>
     <string name="note_edit_discard_cancel">Скасувати</string>
     <string name="shop_title">Покупки</string>
-    <string name="shop_active_lists_preview">2 активні списки</string>
+
     <string name="shop_search_hint">Знайти список</string>
     <string name="shop_new_list">Новий список</string>
     <string name="shop_empty_title">Списків поки немає</string>
     <string name="shop_empty_message">Натисніть «Новий список», щоб створити перший</string>
     <string name="shop_section_in_progress">У ПРОЦЕСІ</string>
-    <string name="shop_list_count_preview">2 списки</string>
-    <string name="shop_list_left_preview">Залишилося 3</string>
-    <string name="shop_list_checked_preview">2 з 5 придбано</string>
-    <string name="shop_list_date_preview">30 жовтня · 09:30</string>
+
     <string name="ds_no_results">Нічого не знайдено</string>
     <string name="ds_mode_light">Світла</string>
-    <string name="ds_mode_dark">Темна</string>
+
     <string name="ds_shop_checked">%1$d з %2$d придбано</string>
     <string name="ds_shop_all_lists">Усі списки</string>
-    <string name="note_edit_date_preview">30 жовтня 2026 · 09:41</string>
-    <string name="note_edit_preview_title">Ідеї на вихідні</string>
-    <string name="note_view_preview_body">Прогулянка біля озера та пікнік на заході сонця.\n\nВзяти книгу, плед і термос із чаєм.\n\nЯкщо буде час, зайти до музею.</string>
-    <string name="note_edit_preview_content">Прогулянка біля озера та пікнік на заході сонця.\n\nВзяти книгу, плед і термос із чаєм.\n\nЯкщо буде час, зайти до музею.</string>
+
     <plurals name="shop_active_lists"><item quantity="one">%d активний список</item><item quantity="few">%d активні списки</item><item quantity="many">%d активних списків</item><item quantity="other">%d активного списку</item></plurals>
     <plurals name="shop_list_count"><item quantity="one">%d список</item><item quantity="few">%d списки</item><item quantity="many">%d списків</item><item quantity="other">%d списку</item></plurals>
     <plurals name="shop_list_left"><item quantity="one">Залишилося %d</item><item quantity="few">Залишилося %d</item><item quantity="many">Залишилося %d</item><item quantity="other">Залишилося %d</item></plurals>

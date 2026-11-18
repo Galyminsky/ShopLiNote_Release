@@ -19,11 +19,11 @@ class EmbossTextView @JvmOverloads constructor(
     private val edgeShadowColor: Int
 
     init {
-        val attributes = context.obtainStyledAttributes(attrs, R.styleable.DsEmbossHeading, defStyleAttr, 0)
+        val attributes = context.obtainStyledAttributes(attrs, R.styleable.EmbossTextView, defStyleAttr, 0)
         try {
-            edgeOffset = attributes.getDimension(R.styleable.DsEmbossHeading_dsEmbossOffset, resources.getDimension(R.dimen.ds_emboss_offset))
-            highlightColor = attributes.getColor(R.styleable.DsEmbossHeading_dsEmbossHighlight, ContextCompat.getColor(context, R.color.ds_emboss_highlight))
-            edgeShadowColor = attributes.getColor(R.styleable.DsEmbossHeading_dsEmbossShadow, ContextCompat.getColor(context, R.color.ds_emboss_shadow))
+            edgeOffset = attributes.getDimension(R.styleable.EmbossTextView_dsEmbossOffset, resources.getDimension(R.dimen.ds_emboss_offset))
+            highlightColor = attributes.getColor(R.styleable.EmbossTextView_dsEmbossHighlight, ContextCompat.getColor(context, R.color.ds_emboss_highlight))
+            edgeShadowColor = attributes.getColor(R.styleable.EmbossTextView_dsEmbossShadow, ContextCompat.getColor(context, R.color.ds_emboss_shadow))
         } finally {
             attributes.recycle()
         }

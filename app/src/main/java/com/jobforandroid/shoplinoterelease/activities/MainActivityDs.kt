@@ -8,7 +8,6 @@ import androidx.core.widget.ImageViewCompat
 import com.jobforandroid.shoplinoterelease.R
 import com.jobforandroid.shoplinoterelease.databinding.ActivityMainDsBinding
 import com.jobforandroid.shoplinoterelease.fragments.BaseFragment
-import com.jobforandroid.shoplinoterelease.fragments.FragmentManager
 import com.jobforandroid.shoplinoterelease.fragments.NoteFragmentDs
 import com.jobforandroid.shoplinoterelease.fragments.ShopListNamesFragment
 import com.jobforandroid.shoplinoterelease.settings.SettingsFragment
@@ -64,7 +63,6 @@ class MainActivityDs : AppCompatActivity() {
         }
         if (!fragment.isAdded) transaction.add(R.id.placeHolder, fragment, tag) else transaction.show(fragment)
         transaction.setMaxLifecycle(fragment, androidx.lifecycle.Lifecycle.State.RESUMED).commitNow()
-        FragmentManager.currentFrag = fragment as? BaseFragment
         selectTab(index)
         binding.newNoteInclude.root.visibility = if (index == 2) View.GONE else View.VISIBLE
         binding.newNoteInclude.navNew.setText(if (index == 1) R.string.shop_new_list else R.string.note_edit_new_title)
@@ -77,6 +75,7 @@ class MainActivityDs : AppCompatActivity() {
             Triple(binding.bottomNavInclude.navPurchasesBg, binding.bottomNavInclude.navPurchasesIcon, binding.bottomNavInclude.navPurchasesLabel),
             Triple(binding.bottomNavInclude.navSettingsBg, binding.bottomNavInclude.navSettingsIcon, binding.bottomNavInclude.navSettingsLabel)
         )
+        listOf(binding.bottomNavInclude.navNotes, binding.bottomNavInclude.navPurchases, binding.bottomNavInclude.navSettings).forEachIndexed { tab, view -> view.isSelected = tab == index }
         val accent = ContextCompat.getColor(this, R.color.ds_accent_muted)
         val inactive = ContextCompat.getColor(this, R.color.ds_on_surface_variant)
         tabs.forEachIndexed { tabIndex, (background, icon, label) ->

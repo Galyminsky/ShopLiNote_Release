@@ -30,16 +30,30 @@ class NoteAdapterDs(private val listener: Listener, private val defRref: SharedP
         holder.setData(getItem(position), listener, defRref)
     }
 
+    override fun onViewRecycled(holder: ItemHolder) {
+        holder.dismissActions()
+        super.onViewRecycled(holder)
+    }
+
+    override fun onViewDetachedFromWindow(holder: ItemHolder) {
+        holder.dismissActions()
+        super.onViewDetachedFromWindow(holder)
+    }
+
     class ItemHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         private val binding = NoteListItemDsBinding.bind(view)
+        private var actionsPopup: PopupWindow? = null
+
+        fun dismissActions() { actionsPopup?.dismiss(); actionsPopup = null }
 
         fun setData(note: NoteItem, listener: Listener, defRref: SharedPreferences) =
             with(binding) {
+                dismissActions()
                 tvTitle.text = note.title
                 com.jobforandroid.shoplinoterelease.utils.NoteTextPreferences.apply(tvTitle, tvDescription)
                 tvDescription.text = HtmlManager.getFromHtml(note.content).trim()
-                val (time, date) = TimeManager.getTimeAndDate(if (note.modifiedAt > 0) java.text.SimpleDateFormat(TimeManager.DEF_TIME_FORMAT, java.util.Locale.getDefault()).format(java.util.Date(note.modifiedAt)) else note.time, defRref)
+                val (time, date) = if (note.modifiedAt > 0) TimeManager.getTimeAndDate(note.modifiedAt, defRref) else TimeManager.getTimeAndDate(note.time, defRref)
                 tvTime.text = time
                 tvDate.text = date.orEmpty()
                 dateRow.visibility = if (date == null) View.GONE else View.VISIBLE
@@ -52,6 +66,8 @@ class NoteAdapterDs(private val listener: Listener, private val defRref: SharedP
             }
 
         private fun showActionsPopup(anchor: View, note: NoteItem, listener: Listener) {
+            dismissActions()
+            if (!anchor.isAttachedToWindow) return
             val menuBinding = PopupNoteActionsDsBinding.inflate(LayoutInflater.from(anchor.context))
             val visibleFrame = Rect()
             anchor.getWindowVisibleDisplayFrame(visibleFrame)
@@ -73,7 +89,9 @@ class NoteAdapterDs(private val listener: Listener, private val defRref: SharedP
                 isOutsideTouchable = true
                 setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
                 animationStyle = 0
+                setOnDismissListener { actionsPopup = null }
             }
+            actionsPopup = popup
             menuBinding.rowEdit.setOnClickListener {
                 popup.dismiss()
                 listener.onEditClick(note)
@@ -83,7 +101,7 @@ class NoteAdapterDs(private val listener: Listener, private val defRref: SharedP
                 listener.onDeleteClick(note)
             }
             val yOffset = if (fitsBelow) 0 else -anchor.height - popupHeight
-            popup.showAsDropDown(anchor, 0, yOffset, Gravity.RIGHT)
+            popup.showAsDropDown(anchor, 0, yOffset, Gravity.END)
         }
 
         companion object {

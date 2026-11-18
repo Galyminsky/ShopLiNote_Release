@@ -15,6 +15,17 @@ import com.jobforandroid.shoplinoterelease.databinding.DsDialogBinding
 /** Shared DS window treatment; transparent only outside the raised surface, retaining dim and IME. */
 object DsDialogs {
     fun show(dialog: AlertDialog): AlertDialog {
+        var ownerContext = dialog.context
+        while (ownerContext is android.content.ContextWrapper && ownerContext !is androidx.lifecycle.LifecycleOwner) {
+            ownerContext = ownerContext.baseContext
+        }
+        val owner = ownerContext as? androidx.lifecycle.LifecycleOwner
+        if (owner?.lifecycle?.currentState == androidx.lifecycle.Lifecycle.State.DESTROYED) return dialog
+        val observer = object : androidx.lifecycle.DefaultLifecycleObserver {
+            override fun onDestroy(owner: androidx.lifecycle.LifecycleOwner) { dialog.dismiss() }
+        }
+        owner?.lifecycle?.addObserver(observer)
+        dialog.setOnDismissListener { owner?.lifecycle?.removeObserver(observer) }
         dialog.show()
         dialog.window?.apply {
             setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))

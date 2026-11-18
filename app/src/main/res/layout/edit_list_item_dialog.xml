@@ -45,7 +45,7 @@
                 android:hint="@string/name_item_hint"
                 android:inputType="textPersonName"
                 android:textColor="?attr/colorOnSurface"
-                android:textColorHint="?attr/theme_muted_text" /></com.jobforandroid.shoplinoterelease.ui.ds.NeumorphicSurface>
+                android:textColorHint="@color/ds_on_surface_variant" /></com.jobforandroid.shoplinoterelease.ui.ds.NeumorphicSurface>
 
             <com.jobforandroid.shoplinoterelease.ui.ds.NeumorphicSurface android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginVertical="@dimen/ds_space_card_inner" app:dsVariant="inset" app:dsCornerRadius="@dimen/ds_radius_m"><com.google.android.material.textfield.TextInputEditText android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@null" android:padding="@dimen/ds_field_padding"
                 android:id="@+id/edInfo"
@@ -55,9 +55,9 @@
                 android:maxLength="100"
                 android:maxLines="1"
                 android:textColor="?attr/colorOnSurface"
-                android:textColorHint="?attr/theme_muted_text" /></com.jobforandroid.shoplinoterelease.ui.ds.NeumorphicSurface>
+                android:textColorHint="@color/ds_on_surface_variant" /></com.jobforandroid.shoplinoterelease.ui.ds.NeumorphicSurface>
 
-            <com.jobforandroid.shoplinoterelease.ui.ds.NeumorphicSurface xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" style="@style/Widget.DS.PrimarySurface" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="5dp">
+            <com.jobforandroid.shoplinoterelease.ui.ds.NeumorphicSurface style="@style/Widget.DS.PrimarySurface" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="5dp">
 <com.google.android.material.button.MaterialButton android:layout_width="match_parent" android:layout_height="wrap_content"
                 android:id="@+id/bUpdate"
                 android:text="@string/btn_update_item"
@@ -65,7 +65,7 @@
                 style="@style/Widget.DS.Button.Primary"
                 app:cornerRadius="10dp" />
 </com.jobforandroid.shoplinoterelease.ui.ds.NeumorphicSurface>
-            <com.jobforandroid.shoplinoterelease.ui.ds.NeumorphicSurface xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" style="@style/Widget.DS.PrimarySurface" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <com.jobforandroid.shoplinoterelease.ui.ds.NeumorphicSurface style="@style/Widget.DS.PrimarySurface" android:layout_width="match_parent" android:layout_height="wrap_content">
 <com.google.android.material.button.MaterialButton android:layout_width="match_parent" android:layout_height="wrap_content"
                 android:id="@+id/bDeleteItem"
                 style="@style/Widget.DS.Button.Primary"

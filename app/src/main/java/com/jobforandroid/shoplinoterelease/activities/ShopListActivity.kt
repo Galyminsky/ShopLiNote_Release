@@ -2,11 +2,9 @@ package com.jobforandroid.shoplinoterelease.activities
 
 
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -20,13 +18,11 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.doOnLayout
 import androidx.lifecycle.lifecycleScope
-import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.jobforandroid.shoplinoterelease.ui.ds.DsDialogs
 import com.jobforandroid.shoplinoterelease.BD.MainViewModel
 import com.jobforandroid.shoplinoterelease.BD.ShopListItemAdapter
 import com.jobforandroid.shoplinoterelease.R
-import com.jobforandroid.shoplinoterelease.utils.ThemeManager
 import com.jobforandroid.shoplinoterelease.databinding.ActivityShopListBinding
 import com.jobforandroid.shoplinoterelease.dialogs.EditListItemDialog
 import com.jobforandroid.shoplinoterelease.entities.LibraryItem
@@ -54,8 +50,6 @@ class ShopListActivity : AppCompatActivity(), ShopListItemAdapter.Listener {
     private var isAddingLibrarySuggestion = false
     private var pendingAddedItemName: String? = null
     private lateinit var textWatcher: TextWatcher
-    private lateinit var defPref: SharedPreferences
-    private var currentTheme = ""
     private var restoredInput: String? = null
     private var restoredActions = false
 
@@ -64,9 +58,7 @@ class ShopListActivity : AppCompatActivity(), ShopListItemAdapter.Listener {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        defPref = PreferenceManager.getDefaultSharedPreferences(this)
-        currentTheme = ThemeManager.getThemeKey(this)
-        setTheme(getSelectedTheme())
+        setTheme(R.style.Theme_App_DS_Shop)
         super.onCreate(savedInstanceState)
         binding = ActivityShopListBinding.inflate(layoutInflater)
 
@@ -160,7 +152,6 @@ class ShopListActivity : AppCompatActivity(), ShopListItemAdapter.Listener {
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-                Log.d("MyLog", "On Text Changed: $s")
                 mainViewModel.getAllLibraryItems("%$s%")
             }
 
@@ -180,13 +171,14 @@ class ShopListActivity : AppCompatActivity(), ShopListItemAdapter.Listener {
 
     private fun addNewShopItem(name: String, onComplete: (Result<Unit>) -> Unit): Boolean {
         if (name.isEmpty() || isAddingShopItem) return false
+        val listId = shopListNameItem?.id ?: return false
         isAddingShopItem = true
         val item = ShopListItem(
             null,
             name,
             "",
             false,
-            shopListNameItem?.id!!,
+            listId,
             0
         )
         val insertOperation = mainViewModel.insertShopItem(item)
@@ -204,7 +196,8 @@ class ShopListActivity : AppCompatActivity(), ShopListItemAdapter.Listener {
     }
 
     private fun listItemObserver() {
-        mainViewModel.getAllItemsFromList(shopListNameItem?.id!!).observe(this) {
+        val listId = shopListNameItem?.id ?: return
+        mainViewModel.getAllItemsFromList(listId).observe(this) {
             currentShopItems = it
             if (!isAddingItemMode) {
                 adapter?.submitList(it) { showPendingAddedItemFeedback() }
@@ -283,7 +276,7 @@ class ShopListActivity : AppCompatActivity(), ShopListItemAdapter.Listener {
     }
 
     private fun init() {
-        shopListNameItem = intent.getSerializableExtra(SHOP_LIST_NAME) as? ShopListNameItem
+        shopListNameItem = runCatching { androidx.core.content.IntentCompat.getSerializableExtra(intent, SHOP_LIST_NAME, ShopListNameItem::class.java) }.getOrNull()
         if (shopListNameItem?.id == null) { finish(); return }
     }
 
@@ -314,7 +307,7 @@ class ShopListActivity : AppCompatActivity(), ShopListItemAdapter.Listener {
                 if (!started) isAddingLibrarySuggestion = false
             }
             ShopListItemAdapter.DELETE_LIBRARY_ITEM -> {
-                mainViewModel.deleteLibraryItem(shopListItem.id!!)
+                shopListItem.id?.let { mainViewModel.deleteLibraryItem(it) }
                 mainViewModel.getAllLibraryItems("%${edItem?.text.toString()}%")
             }
         }
@@ -350,11 +343,6 @@ class ShopListActivity : AppCompatActivity(), ShopListItemAdapter.Listener {
                 if (collapseAfterSuccess) newItemMenu?.collapseActionView()
             }
         }
-    }
-
-    private fun getSelectedTheme(): Int {
-        return R.style.Theme_App_DS_Shop
-
     }
 
     private fun setupFloatingActions() = with(binding) {
@@ -416,6 +404,7 @@ class ShopListActivity : AppCompatActivity(), ShopListItemAdapter.Listener {
         isDeletingList = true
         mainViewModel.deleteShopList(listId, true).invokeOnCompletion { error ->
             runOnUiThread {
+                if (isDestroyed || isFinishing) return@runOnUiThread
                 isDeletingList = false
                 if (error == null) {
                     finish()
@@ -432,6 +421,7 @@ class ShopListActivity : AppCompatActivity(), ShopListItemAdapter.Listener {
                 val listId = list.id ?: return@confirm
                 mainViewModel.deleteShopList(listId, false).invokeOnCompletion { error ->
                     if (error != null) runOnUiThread {
+                        if (isDestroyed || isFinishing) return@runOnUiThread
                         Toast.makeText(this, R.string.action_failed, Toast.LENGTH_SHORT).show()
                     }
                 }

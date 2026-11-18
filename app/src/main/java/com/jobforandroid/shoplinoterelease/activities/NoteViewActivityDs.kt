@@ -20,6 +20,7 @@ class NoteViewActivityDs : AppCompatActivity() {
     private lateinit var binding: ActivityNoteViewDsBinding
     private lateinit var editorLauncher: ActivityResultLauncher<Intent>
     private lateinit var note: NoteItem
+    private var hasUpdates = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,8 +29,8 @@ class NoteViewActivityDs : AppCompatActivity() {
         setResult(Activity.RESULT_CANCELED)
 
         note = try {
-            @Suppress("DEPRECATION")
-            (savedInstanceState?.getSerializable(NOTE_EXTRA) ?: intent.getSerializableExtra(NOTE_EXTRA)) as? NoteItem
+            savedInstanceState?.let { androidx.core.os.BundleCompat.getSerializable(it, NOTE_EXTRA, NoteItem::class.java) }
+                ?: androidx.core.content.IntentCompat.getSerializableExtra(intent, NOTE_EXTRA, NoteItem::class.java)
         } catch (_: RuntimeException) {
             null
         } ?: run {
@@ -42,8 +43,7 @@ class NoteViewActivityDs : AppCompatActivity() {
         ) { result ->
             if (result.resultCode != Activity.RESULT_OK) return@registerForActivityResult
             val editedNote = try {
-                @Suppress("DEPRECATION")
-                result.data?.getSerializableExtra(NoteFragmentDs.NEW_NOTE_KEY) as? NoteItem
+                result.data?.let { androidx.core.content.IntentCompat.getSerializableExtra(it, NoteFragmentDs.NEW_NOTE_KEY, NoteItem::class.java) }
             } catch (_: RuntimeException) {
                 null
             } ?: return@registerForActivityResult
@@ -52,7 +52,8 @@ class NoteViewActivityDs : AppCompatActivity() {
             } catch (_: RuntimeException) {
                 null
             }
-            if (state == "update" && editedNote.id != null && editedNote.id > 0) {
+            if (state == "update" && editedNote.id == note.id && editedNote.id != null) {
+                hasUpdates = true
                 note = note.copy(
                     title = editedNote.title,
                     content = editedNote.content,
@@ -63,7 +64,8 @@ class NoteViewActivityDs : AppCompatActivity() {
             }
         }
 
-        if (savedInstanceState?.getBoolean("updated") == true) setResult(Activity.RESULT_OK, buildResultIntent("update", note))
+        hasUpdates = savedInstanceState?.getBoolean("updated") ?: false
+        if (hasUpdates) setResult(Activity.RESULT_OK, buildResultIntent("update", note))
         renderNote()
         binding.btnBack.setOnClickListener { finish() }
         binding.btnEdit.setOnClickListener {
@@ -76,8 +78,8 @@ class NoteViewActivityDs : AppCompatActivity() {
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
-        outState.putSerializable(NOTE_EXTRA, note)
-        outState.putBoolean("updated", note != intent.getSerializableExtra(NOTE_EXTRA))
+        if (::note.isInitialized) outState.putSerializable(NOTE_EXTRA, note)
+        outState.putBoolean("updated", hasUpdates)
         super.onSaveInstanceState(outState)
     }
 
@@ -100,8 +102,7 @@ class NoteViewActivityDs : AppCompatActivity() {
         val (time, date) = TimeManager.getTimeAndDate(note.time, preferences)
         val dateLabel = listOfNotNull(date, time).joinToString(" · ")
         tvViewDate.text = dateLabel
-        val editedTime = java.text.SimpleDateFormat(TimeManager.DEF_TIME_FORMAT, java.util.Locale.getDefault()).format(java.util.Date(note.modifiedAt))
-        tvEditedLabel.text = getString(R.string.note_view_edited_prefix).trimEnd() + " " + TimeManager.getTimeFormat(editedTime, preferences)
+        tvEditedLabel.text = getString(R.string.note_view_edited_prefix, TimeManager.getTimeFormat(note.modifiedAt, preferences))
         tvEditedLabel.visibility = if (note.hasBeenEdited) View.VISIBLE else View.GONE
     }
 

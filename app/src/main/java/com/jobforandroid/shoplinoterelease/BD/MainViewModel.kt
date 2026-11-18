@@ -115,7 +115,7 @@ class MainViewModel(private val database: MainDataBase) : ViewModel() {
     }
 
     private suspend fun isLibraryItemExists(name: String): Boolean {
-        return dao.getAllLibraryItems(name).isNotEmpty()
+        return dao.libraryItemExists(name)
     }
 
     class MainViewModelFactory(val database: MainDataBase) : ViewModelProvider.Factory {

@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.jobforandroid.shoplinoterelease.BD.MainViewModel
@@ -27,11 +26,11 @@ class ShopListNamesFragment : BaseFragment(), ShopListNameAdapter.Listener {
     private var query = ""
     private var adapter: ShopListNameAdapter? = null
     private val mainViewModel: MainViewModel by activityViewModels {
-        MainViewModel.MainViewModelFactory((context?.applicationContext as MainApp).database)
+        MainViewModel.MainViewModelFactory((requireActivity().application as MainApp).database)
     }
 
     override fun onClickNew() {
-        NewListDialog.showDialog(activity as AppCompatActivity, object : NewListDialog.Listener {
+        NewListDialog.showDialog(requireContext(), object : NewListDialog.Listener {
             override fun onClick(name: String) {
                 val shopListName = ShopListNameItem(
                     null,
@@ -44,10 +43,6 @@ class ShopListNamesFragment : BaseFragment(), ShopListNameAdapter.Listener {
                 mainViewModel.insertShopListName(shopListName)
             }
         }, "")
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
     }
 
     override fun onCreateView(
@@ -110,7 +105,7 @@ class ShopListNamesFragment : BaseFragment(), ShopListNameAdapter.Listener {
     }
 
     override fun deleteItem(id: Int) {
-        DeleteDialog.showDialog(context as AppCompatActivity, object : DeleteDialog.Listener {
+        DeleteDialog.showDialog(requireContext(), object : DeleteDialog.Listener {
             override fun onClick() {
                 mainViewModel.deleteShopList(id, true)
             }
@@ -118,7 +113,7 @@ class ShopListNamesFragment : BaseFragment(), ShopListNameAdapter.Listener {
     }
 
     override fun editItem(shopListNameItem: ShopListNameItem) {
-        NewListDialog.showDialog(activity as AppCompatActivity, object : NewListDialog.Listener {
+        NewListDialog.showDialog(requireContext(), object : NewListDialog.Listener {
             override fun onClick(name: String) {
                 mainViewModel.updateListName(shopListNameItem.copy(name = name))
             }

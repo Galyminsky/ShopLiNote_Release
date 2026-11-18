@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <PreferenceCategory
-        android:layout="@layout/preference_category"
+        android:layout="@layout/ds_preference_category"
         android:title="@string/ds_settings_general">
         <ListPreference
             android:defaultValue="Linear"
@@ -15,7 +15,7 @@
             android:icon="@drawable/ds_ic_panels_top_left"
             android:title="@string/chose_note_style" />
         <ListPreference
-            android:defaultValue="hh:mm:ss - dd.MM.yy"
+            android:defaultValue="HH:mm:ss - dd.MM.yyyy"
             android:entries="@array/time_format_array"
             android:entryValues="@array/time_format_values"
             android:key="time_format_key"
@@ -27,7 +27,7 @@
     </PreferenceCategory>
 
     <PreferenceCategory
-        android:layout="@layout/preference_category"
+        android:layout="@layout/ds_preference_category"
         android:title="@string/theme_settings">
         <ListPreference
             android:defaultValue="light"
@@ -42,7 +42,7 @@
 
 
     <PreferenceCategory
-        android:layout="@layout/preference_category"
+        android:layout="@layout/ds_preference_category"
         android:title="@string/note_text_setting">
         <ListPreference
             android:defaultValue="20"

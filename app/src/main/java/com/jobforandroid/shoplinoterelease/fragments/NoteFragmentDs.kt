@@ -35,7 +35,7 @@ class NoteFragmentDs : BaseFragment(), NoteAdapterDs.Listener {
     private lateinit var defPref: SharedPreferences
 
     private val mainViewModel: MainViewModel by activityViewModels {
-        MainViewModel.MainViewModelFactory((context?.applicationContext as MainApp).database)
+        MainViewModel.MainViewModelFactory((requireActivity().application as MainApp).database)
     }
 
     override fun onClickNew() {
@@ -69,7 +69,7 @@ class NoteFragmentDs : BaseFragment(), NoteAdapterDs.Listener {
     }
 
     private fun initRcView() = with(binding) {
-        defPref = activity?.let { PreferenceManager.getDefaultSharedPreferences(it) }!!
+        defPref = PreferenceManager.getDefaultSharedPreferences(requireContext())
         rcViewNote.layoutManager = getLayoutManager()
         adapter = NoteAdapterDs(this@NoteFragmentDs, defPref)
         rcViewNote.adapter = adapter
@@ -127,7 +127,7 @@ class NoteFragmentDs : BaseFragment(), NoteAdapterDs.Listener {
     private fun handleNoteResult(resultCode: Int, data: Intent?) {
         if (resultCode != Activity.RESULT_OK) return
         val resultNote = try {
-            data?.getSerializableExtra(NEW_NOTE_KEY) as? NoteItem
+            data?.let { androidx.core.content.IntentCompat.getSerializableExtra(it, NEW_NOTE_KEY, NoteItem::class.java) }
         } catch (_: RuntimeException) {
             null
         } ?: return

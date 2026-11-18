@@ -11,9 +11,7 @@
     <color name="ds_shadow_light">#F2FFFFFF</color>
     <color name="ds_shadow_inset">#80C7C6D5</color>
     <!-- Floating is the surface token for overlays such as popups and dialogs. -->
-    <color name="ds_surface_floating">#F8F8FC</color>
-    <color name="ds_stroke_floating">@color/ds_divider</color>
-    <color name="ds_shadow_floating">#292836</color>
+
     <color name="ds_note_color_ink">#292836</color>
     <color name="ds_note_color_accent">#7260A5</color>
     <color name="ds_note_color_red">#B04A5A</color>

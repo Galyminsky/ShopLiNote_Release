@@ -27,6 +27,9 @@ interface Dao {
     @Query("SELECT * FROM library WHERE name LIKE :name")
     suspend fun getAllLibraryItems(name: String): List<LibraryItem>
 
+    @Query("SELECT EXISTS(SELECT 1 FROM library WHERE name = :name)")
+    suspend fun libraryItemExists(name: String): Boolean
+
     @Query("DELETE FROM note_list WHERE id IS :id")
     suspend fun deleteNote(id: Int)
 

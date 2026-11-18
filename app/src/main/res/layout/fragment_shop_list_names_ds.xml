@@ -58,6 +58,7 @@
 
                 <EditText
                     android:id="@+id/tvShopSearchHint"
+                    android:importantForAutofill="no"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/ds_shop_search_icon_gap"
@@ -129,7 +130,7 @@
         </LinearLayout>
     </FrameLayout>
 
-    <com.jobforandroid.shoplinoterelease.ui.ds.NeumorphicSurface xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" style="@style/Widget.DS.PrimarySurface" android:layout_width="match_parent" android:layout_height="@dimen/ds_button_height" android:layout_marginHorizontal="@dimen/ds_screen_padding_h" android:layout_marginBottom="@dimen/ds_shop_button_bottom_gap">
+    <com.jobforandroid.shoplinoterelease.ui.ds.NeumorphicSurface style="@style/Widget.DS.PrimarySurface" android:layout_width="match_parent" android:layout_height="@dimen/ds_button_height" android:layout_marginHorizontal="@dimen/ds_screen_padding_h" android:layout_marginBottom="@dimen/ds_shop_button_bottom_gap">
 <com.google.android.material.button.MaterialButton android:layout_width="match_parent" android:layout_height="wrap_content"
         android:id="@+id/btnNewList"
         style="@style/Widget.DS.Button.Primary"

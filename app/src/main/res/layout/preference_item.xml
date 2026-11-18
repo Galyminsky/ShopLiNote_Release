@@ -3,7 +3,7 @@
     android:layout_width="match_parent" android:layout_height="wrap_content"
 
     android:clipChildren="false" style="@style/Widget.DS.SettingsRow">
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="center_vertical"
@@ -21,7 +21,7 @@
         android:layout_marginEnd="16dp"
         android:contentDescription="@null"
         android:gravity="center"
-        android:scaleType="centerInside" android:tint="@color/ds_accent_muted" />
+        android:scaleType="centerInside" app:tint="@color/ds_accent_muted" />
 
     <LinearLayout
         android:layout_width="0dp"
@@ -41,7 +41,7 @@
             android:id="@android:id/summary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="?attr/theme_muted_text"
+            android:textColor="@color/ds_on_surface_variant"
             android:textAppearance="@style/TextAppearance.DS.Caption" />
     </LinearLayout>
 

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="DsNeumorphicSurface">
+    <declare-styleable name="NeumorphicSurface">
         <attr name="dsVariant">
             <enum name="raised" value="0" />
             <enum name="raisedFlat" value="1" />
@@ -13,7 +13,7 @@
         <attr name="dsShadowOpacity" format="float" />
         <attr name="dsInsetShadowOffset" format="dimension" />
     </declare-styleable>
-    <declare-styleable name="DsEmbossHeading">
+    <declare-styleable name="EmbossTextView">
         <attr name="dsEmbossOffset" format="dimension" />
         <attr name="dsEmbossHighlight" format="color" />
         <attr name="dsEmbossShadow" format="color" />
