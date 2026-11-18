@@ -1,25 +1,29 @@
 package com.jobforandroid.shoplinoterelease.dialogs
 
 
-import android.app.AlertDialog
+import androidx.appcompat.app.AlertDialog
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import com.jobforandroid.shoplinoterelease.databinding.EditListItemDialogBinding
 import com.jobforandroid.shoplinoterelease.entities.ShopListItem
-import com.jobforandroid.shoplinoterelease.utils.CardGradient
 
 object EditListItemDialog {
     fun showDialog(context: Context, item: ShopListItem, listener: Listener) {
         var dialog: AlertDialog? = null
         val builder = AlertDialog.Builder(context)
         val binding = EditListItemDialogBinding.inflate(LayoutInflater.from(context))
-        CardGradient.apply(binding.cardContent, 0)
         builder.setView(binding.root)
         binding.apply {
             edName.setText(item.name)
             edInfo.setText(item.itemInfo)
             if (item.itemType == 1) edInfo.visibility = View.GONE
+            bDeleteItem.visibility = if (item.itemType == 0) View.VISIBLE else View.GONE
+            bDeleteItem.setOnClickListener {
+                DeleteDialog.showDialog(context, object : DeleteDialog.Listener {
+                    override fun onClick() { listener.onDelete(item); dialog?.dismiss() }
+                })
+            }
             bUpdate.setOnClickListener {
                 if (edName.text.toString().isNotEmpty()) {
                     listener.onClick(
@@ -34,11 +38,11 @@ object EditListItemDialog {
 
         }
         dialog = builder.create()
-        dialog.window?.setBackgroundDrawable(null)
-        dialog.show()
+        com.jobforandroid.shoplinoterelease.ui.ds.DsDialogs.show(dialog)
     }
 
     interface Listener {
         fun onClick(item: ShopListItem)
+        fun onDelete(item: ShopListItem) = Unit
     }
 }

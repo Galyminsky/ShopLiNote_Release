@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="@dimen/ds_dialog_shadow_space" android:clipChildren="false" android:clipToPadding="false">
+    <com.jobforandroid.shoplinoterelease.ui.ds.NeumorphicSurface android:layout_width="match_parent" android:layout_height="wrap_content" app:dsVariant="raised" app:dsCornerRadius="@dimen/ds_radius_l" android:clipChildren="false" android:clipToPadding="false">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="@dimen/ds_card_padding" android:clipChildren="false" android:clipToPadding="false">
+            <TextView android:id="@+id/dialogTitle" android:layout_width="match_parent" android:layout_height="wrap_content" android:textAppearance="@style/TextAppearance.DS.NoteTitle" />
+            <ScrollView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:layout_marginTop="@dimen/ds_space_group_header" android:clipToPadding="false">
+                <LinearLayout android:id="@+id/dialogContent" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:clipChildren="false" />
+            </ScrollView>
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginTop="@dimen/ds_space_block" android:clipChildren="false">
+                <com.jobforandroid.shoplinoterelease.ui.ds.NeumorphicSurface style="@style/Widget.DS.PrimarySurface" android:layout_width="match_parent" android:layout_height="wrap_content">
+                    <com.google.android.material.button.MaterialButton android:id="@+id/dialogPositive" style="@style/Widget.DS.Button.Primary" android:layout_width="match_parent" android:layout_height="wrap_content" />
+                </com.jobforandroid.shoplinoterelease.ui.ds.NeumorphicSurface>
+                <com.jobforandroid.shoplinoterelease.ui.ds.NeumorphicSurface android:id="@+id/dialogNegativeSurface" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ds_space_group_header" android:addStatesFromChildren="true" app:dsVariant="raisedFlat" app:dsPressedInset="true" app:dsCornerRadius="@dimen/ds_radius_m">
+                    <com.google.android.material.button.MaterialButton android:id="@+id/dialogNegative" style="@style/Widget.DS.Button.Primary" android:layout_width="match_parent" android:layout_height="wrap_content" android:textColor="@color/ds_accent_muted" />
+                </com.jobforandroid.shoplinoterelease.ui.ds.NeumorphicSurface>
+            </LinearLayout>
+        </LinearLayout>
+    </com.jobforandroid.shoplinoterelease.ui.ds.NeumorphicSurface>
+</FrameLayout>

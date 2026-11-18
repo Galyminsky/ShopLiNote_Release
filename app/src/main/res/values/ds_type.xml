@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="TextAppearance.DS.Title" parent="">
+        <item name="android:fontFamily">@font/inter_regular</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textSize">32sp</item>
+        <item name="android:lineHeight">39sp</item>
+
+        <item name="android:letterSpacing">-0.034</item>
+        <item name="android:textColor">@color/ds_on_surface</item>
+    </style>
+    <style name="TextAppearance.DS.Subtitle" parent="">
+        <item name="android:fontFamily">@font/inter_regular</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:lineHeight">18sp</item>
+
+        <item name="android:textColor">@color/ds_on_surface_variant</item>
+    </style>
+    <style name="TextAppearance.DS.SectionLabel" parent="">
+        <item name="android:fontFamily">@font/inter_semibold</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:lineHeight">15sp</item>
+
+        <item name="android:letterSpacing">0.05</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">@color/ds_on_surface_variant</item>
+    </style>
+    <style name="TextAppearance.DS.Caption" parent="">
+        <item name="android:fontFamily">@font/inter_regular</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:lineHeight">17sp</item>
+
+        <item name="android:textColor">@color/ds_on_surface_variant</item>
+    </style>
+    <style name="TextAppearance.DS.NoteTitle" parent="">
+        <item name="android:fontFamily">@font/inter</item>
+        <item name="android:textFontWeight">600</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:lineHeight">21sp</item>
+
+        <item name="android:textColor">@color/ds_on_surface</item>
+    </style>
+    <style name="TextAppearance.DS.NoteBody" parent="">
+        <item name="android:fontFamily">@font/inter_regular</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineHeight">21sp</item>
+
+        <item name="android:textColor">@color/ds_on_surface_variant</item>
+    </style>
+    <style name="TextAppearance.DS.NoteDate" parent="">
+        <item name="android:fontFamily">@font/inter_regular</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textSize">11sp</item>
+        <item name="android:lineHeight">15sp</item>
+
+        <item name="android:textColor">@color/ds_on_surface_variant</item>
+    </style>
+    <style name="TextAppearance.DS.Input" parent="">
+        <item name="android:fontFamily">@font/inter_regular</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineHeight">20sp</item>
+
+        <item name="android:textColor">@color/ds_on_surface_variant</item>
+    </style>
+    <style name="TextAppearance.DS.Button" parent="">
+        <item name="android:fontFamily">@font/inter_semibold</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:lineHeight">18sp</item>
+
+        <item name="android:textColor">@color/ds_on_accent</item>
+    </style>
+    <style name="TextAppearance.DS.Button.Primary" parent="TextAppearance.DS.Button">
+        <item name="android:fontFamily">@font/inter</item>
+        <item name="android:textFontWeight">600</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:lineHeight">20sp</item>
+        <item name="android:textColor">@color/ds_on_accent</item>
+    </style>
+    <style name="Widget.DS.Button.Primary" parent="Widget.MaterialComponents.Button">
+        <item name="android:minHeight">@dimen/ds_button_height</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:stateListAnimator">@null</item>
+        <item name="android:textAppearance">@style/TextAppearance.DS.Button.Primary</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="backgroundTint">@android:color/transparent</item>
+        <item name="rippleColor">@android:color/transparent</item>
+        <item name="android:textColor">@color/ds_on_primary_surface</item>
+        <item name="cornerRadius">@dimen/ds_radius_m</item>
+    </style>
+    <style name="TextAppearance.DS.NavLabel" parent="">
+        <item name="android:fontFamily">@font/inter_regular</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:lineHeight">12sp</item>
+
+        <item name="android:textColor">@color/ds_on_surface_variant</item>
+    </style>
+    <style name="TextAppearance.DS.NavLabel.Active">
+
+                <item name="android:fontFamily">@font/inter_semibold</item>
+<item name="android:textColor">@color/ds_accent_muted</item>
+    </style>
+    <style name="TextAppearance.DS.SettingTitle" parent="">
+        <item name="android:fontFamily">@font/inter_medium</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineHeight">17sp</item>
+
+        <item name="android:textColor">@color/ds_on_surface</item>
+    </style>
+
+    <style name="TextAppearance.DS.NoteViewBack" parent="">
+        <item name="android:fontFamily">@font/inter_regular</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineHeight">20sp</item>
+        <item name="android:textColor">@color/ds_on_surface</item>
+    </style>
+    <style name="TextAppearance.DS.NoteViewTitle" parent="">
+        <item name="android:fontFamily">@font/inter_regular</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textSize">28sp</item>
+        <item name="android:lineHeight">34sp</item>
+        <item name="android:letterSpacing">-0.029</item>
+        <item name="android:textColor">@color/ds_on_surface</item>
+    </style>
+    <style name="TextAppearance.DS.NoteViewContentTitle" parent="">
+        <item name="android:fontFamily">@font/inter_semibold</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textSize">25sp</item>
+        <item name="android:lineHeight">31.25sp</item>
+        <item name="android:letterSpacing">-0.024</item>
+        <item name="android:textColor">@color/ds_on_surface</item>
+    </style>
+    <style name="TextAppearance.DS.NoteViewDate" parent="">
+        <item name="android:fontFamily">@font/inter_regular</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:lineHeight">16sp</item>
+        <item name="android:textColor">@color/ds_on_surface_variant</item>
+    </style>
+    <style name="TextAppearance.DS.NoteViewBody" parent="">
+        <item name="android:fontFamily">@font/inter_regular</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:lineHeight">26.4sp</item>
+        <item name="android:textColor">@color/ds_on_surface</item>
+    </style>
+    <style name="TextAppearance.DS.NoteViewEmpty" parent="">
+        <item name="android:fontFamily">@font/inter_regular</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:lineHeight">26.4sp</item>
+        <item name="android:textColor">@color/ds_on_surface_variant</item>
+    </style>
+    <style name="TextAppearance.DS.NoteViewEdited" parent="">
+        <item name="android:fontFamily">@font/inter_regular</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textSize">11sp</item>
+        <item name="android:lineHeight">15sp</item>
+        <item name="android:textColor">@color/ds_on_surface_variant</item>
+    </style>
+    <style name="TextAppearance.DS.NoteViewAction" parent="">
+        <item name="android:fontFamily">@font/inter_semibold</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:lineHeight">18sp</item>
+        <item name="android:textColor">@color/ds_accent</item>
+    </style>
+    <style name="TextAppearance.DS.NoteMenuAction" parent="">
+        <item name="android:fontFamily">@font/inter_regular</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:lineHeight">20sp</item>
+        <item name="android:textColor">@color/ds_on_surface</item>
+    </style>
+    <style name="TextAppearance.DS.NotesEmptyTitle" parent="">
+        <item name="android:fontFamily">@font/inter_semibold</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:lineHeight">23sp</item>
+        <item name="android:textColor">@color/ds_on_surface</item>
+    </style>
+    <style name="TextAppearance.DS.NotesEmptyMessage" parent="">
+        <item name="android:fontFamily">@font/inter_regular</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineHeight">20sp</item>
+        <item name="android:textColor">@color/ds_on_surface_variant</item>
+    </style>
+    <style name="TextAppearance.DS.ShopListName" parent="">
+        <item name="android:fontFamily">@font/inter</item>
+        <item name="android:textFontWeight">600</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:lineHeight">24sp</item>
+        <item name="android:textColor">@color/ds_on_surface</item>
+    </style>
+
+    <style name="TextAppearance.DS.ShopListLeft" parent="">
+        <item name="android:fontFamily">@font/inter_regular</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:lineHeight">16sp</item>
+        <item name="android:textColor">@color/ds_on_surface_variant</item>
+    </style>
+    <style name="TextAppearance.DS.ShopListChecked" parent="">
+        <item name="android:fontFamily">@font/inter_medium</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:lineHeight">16sp</item>
+        <item name="android:textColor">@color/ds_accent</item>
+    </style>
+    <style name="TextAppearance.DS.ShopListDate" parent="">
+        <item name="android:fontFamily">@font/inter_regular</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textSize">11sp</item>
+        <item name="android:lineHeight">15sp</item>
+        <item name="android:textColor">@color/ds_on_surface_variant</item>
+    </style>
+    <style name="TextAppearance.DS.NoteEditScreenTitle" parent="">
+        <item name="android:fontFamily">@font/inter_regular</item><item name="android:includeFontPadding">false</item>
+        <item name="android:textSize">28sp</item><item name="android:lineHeight">34sp</item>
+        <item name="android:letterSpacing">-0.029</item><item name="android:textColor">@color/ds_note_color_ink</item>
+    </style>
+    <style name="TextAppearance.DS.NoteEditDate" parent="TextAppearance.DS.NoteViewDate"><item name="android:textSize">12sp</item><item name="android:lineHeight">16sp</item></style>
+    <style name="TextAppearance.DS.NoteEditLabel" parent="">
+        <item name="android:fontFamily">@font/inter_regular</item><item name="android:includeFontPadding">false</item>
+        <item name="android:textSize">11sp</item><item name="android:lineHeight">15.4sp</item><item name="android:textColor">@color/ds_on_surface_variant</item>
+    </style>
+    <style name="TextAppearance.DS.NoteEditTitleInput" parent="">
+        <item name="android:fontFamily">@font/inter_semibold</item><item name="android:includeFontPadding">false</item>
+        <item name="android:textSize">25sp</item><item name="android:lineHeight">31.25sp</item><item name="android:letterSpacing">-0.024</item>
+        <item name="android:textColor">@color/ds_note_color_ink</item><item name="android:textColorHint">@color/ds_on_surface_variant</item>
+        <item name="android:textColorHighlight">#4D7260A5</item><item name="android:textCursorDrawable">@drawable/ds_note_cursor</item>
+    </style>
+    <style name="TextAppearance.DS.NoteEditContentInput" parent="">
+        <item name="android:fontFamily">@font/inter_regular</item><item name="android:includeFontPadding">false</item>
+        <item name="android:textSize">16sp</item><item name="android:lineHeight">26.4sp</item>
+        <item name="android:textColor">@color/ds_note_color_ink</item><item name="android:textColorHint">@color/ds_on_surface_variant</item>
+        <item name="android:textColorHighlight">#4D7260A5</item><item name="android:textCursorDrawable">@drawable/ds_note_cursor</item>
+    </style>
+    <style name="Widget.DS.PrimarySurface" parent="">
+        <item name="dsSurfaceColor">@color/ds_primary_surface</item>
+        <item name="dsVariant">raised</item>
+        <item name="dsPressedInset">true</item>
+        <item name="dsCornerRadius">@dimen/ds_radius_m</item>
+        <item name="android:addStatesFromChildren">true</item>
+        <item name="android:clipChildren">false</item>
+    </style>
+    <style name="Widget.DS.SettingsRow" parent="">
+        <item name="dsVariant">flat</item>
+        <item name="dsPressedInset">true</item>
+        <item name="dsCornerRadius">@dimen/ds_radius_m</item>
+        <item name="dsInsetShadowOffset">@dimen/ds_settings_inset_offset</item>
+    </style>
+    <style name="Widget.DS.EmbossHeading" parent="">
+        <item name="dsEmbossOffset">@dimen/ds_emboss_offset</item>
+        <item name="dsEmbossHighlight">@color/ds_emboss_highlight</item>
+        <item name="dsEmbossShadow">@color/ds_emboss_shadow</item>
+    </style>
+</resources>

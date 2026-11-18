@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/ds_surface"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/ds_screen_padding_h"
+        android:layout_marginTop="@dimen/ds_screen_padding_top"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvShopTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/shop_title"
+            android:textAppearance="@style/TextAppearance.DS.Title"
+            tools:text="Покупки" />
+
+        <TextView
+            android:id="@+id/tvShopSubtitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/ds_shop_subtitle_gap"
+            android:textAppearance="@style/TextAppearance.DS.Subtitle"
+            tools:text="2 активных списка" />
+
+        <com.jobforandroid.shoplinoterelease.ui.ds.NeumorphicSurface
+            android:id="@+id/shopSearchField"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/ds_search_height"
+            android:layout_marginTop="@dimen/ds_space_block"
+            android:clipChildren="false"
+            app:dsCornerRadius="@dimen/ds_radius_m"
+            app:dsVariant="inset">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="@dimen/ds_shop_search_padding_h">
+
+                <ImageView
+                    android:id="@+id/ivShopSearch"
+                    android:layout_width="@dimen/ds_icon_search"
+                    android:layout_height="@dimen/ds_icon_search"
+                    android:importantForAccessibility="no"
+                    app:srcCompat="@drawable/ds_ic_search"
+                    app:tint="@color/ds_on_surface_variant" />
+
+                <EditText
+                    android:id="@+id/tvShopSearchHint"
+                    android:importantForAutofill="no"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/ds_shop_search_icon_gap"
+                    android:layout_weight="1"
+                    android:hint="@string/shop_search_hint"
+                    android:background="@null"
+                    android:inputType="text"
+                    android:singleLine="true"
+                    android:textAppearance="@style/TextAppearance.DS.Input"
+                    android:textColor="@color/ds_on_surface_variant"
+                    tools:ignore="HardcodedText" />
+            </LinearLayout>
+        </com.jobforandroid.shoplinoterelease.ui.ds.NeumorphicSurface>
+    </LinearLayout>
+
+    <include
+        android:id="@+id/shopSectionHeader"
+        layout="@layout/shop_list_section_header_ds"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/ds_screen_padding_h"
+        android:layout_marginTop="@dimen/ds_space_block"
+        android:layout_marginBottom="0dp" />
+
+    <FrameLayout
+        android:id="@+id/listViewport"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipChildren="true"
+        android:clipToPadding="true">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvShopLists"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingHorizontal="@dimen/ds_screen_padding_h"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:paddingBottom="@dimen/ds_shop_list_bottom_padding"
+            android:paddingTop="@dimen/ds_space_list"
+            tools:itemCount="2"
+            tools:listitem="@layout/shop_list_name_item_ds" />
+
+        <LinearLayout
+            android:id="@+id/emptyShopLists"
+            android:paddingHorizontal="@dimen/ds_screen_padding_h"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone"
+            tools:visibility="visible">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/shop_empty_title"
+                android:textAppearance="@style/TextAppearance.DS.NotesEmptyTitle" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/ds_shop_empty_message_gap"
+                android:gravity="center"
+                android:maxWidth="@dimen/ds_shop_empty_max_width"
+                android:text="@string/shop_empty_message"
+                android:textAppearance="@style/TextAppearance.DS.NotesEmptyMessage" />
+        </LinearLayout>
+    </FrameLayout>
+
+    <com.jobforandroid.shoplinoterelease.ui.ds.NeumorphicSurface style="@style/Widget.DS.PrimarySurface" android:layout_width="match_parent" android:layout_height="@dimen/ds_button_height" android:layout_marginHorizontal="@dimen/ds_screen_padding_h" android:layout_marginBottom="@dimen/ds_shop_button_bottom_gap">
+<com.google.android.material.button.MaterialButton android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:id="@+id/btnNewList"
+        style="@style/Widget.DS.Button.Primary"
+        android:text="@string/shop_new_list"
+        app:icon="@drawable/ds_ic_plus"
+        app:iconGravity="textStart"
+        app:iconPadding="@dimen/ds_shop_button_icon_gap"
+        app:iconSize="@dimen/ds_icon_leading"
+        app:iconTint="@color/ds_on_primary_surface" />
+</com.jobforandroid.shoplinoterelease.ui.ds.NeumorphicSurface>
+</LinearLayout>

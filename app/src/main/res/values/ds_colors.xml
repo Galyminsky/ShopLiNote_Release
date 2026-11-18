@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="ds_surface">#EEEEF4</color>
+    <color name="ds_surface_inset">#E7E7EF</color>
+    <color name="ds_on_surface">#292836</color>
+    <color name="ds_on_surface_variant">#686677</color>
+    <color name="ds_accent">#7260A5</color>
+    <color name="ds_on_accent">#FFFFFF</color>
+    <color name="ds_divider">#DAD9E4</color>
+    <color name="ds_shadow_dark">#99C4C3D3</color>
+    <color name="ds_shadow_light">#F2FFFFFF</color>
+    <color name="ds_shadow_inset">#80C7C6D5</color>
+    <!-- Floating is the surface token for overlays such as popups and dialogs. -->
+
+    <color name="ds_note_color_ink">#292836</color>
+    <color name="ds_note_color_accent">#7260A5</color>
+    <color name="ds_note_color_red">#B04A5A</color>
+    <color name="ds_note_color_orange">#A4551B</color>
+    <color name="ds_note_color_green">#2F7556</color>
+    <color name="ds_note_color_blue">#3B68A6</color>
+    <color name="ds_primary_surface">#D5CAE5</color>
+    <color name="ds_on_primary_surface">#43334F</color>
+    <color name="ds_accent_muted">#786387</color>
+    <color name="ds_emboss_highlight">#CCFFFFFF</color>
+    <color name="ds_emboss_shadow">#40686677</color>
+</resources>

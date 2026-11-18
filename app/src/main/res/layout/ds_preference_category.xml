@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:paddingHorizontal="@dimen/ds_card_padding" android:paddingTop="@dimen/ds_space_group_header" android:paddingBottom="@dimen/ds_space_card_inner">
+    <com.jobforandroid.shoplinoterelease.ui.ds.EmbossTextView style="@style/Widget.DS.EmbossHeading" android:id="@android:id/title" android:layout_width="match_parent" android:layout_height="wrap_content" android:textAppearance="@style/TextAppearance.DS.SectionLabel" android:textColor="@color/ds_accent_muted" />
+</LinearLayout>

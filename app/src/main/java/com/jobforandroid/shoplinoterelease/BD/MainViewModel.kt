@@ -36,7 +36,7 @@ class MainViewModel(private val database: MainDataBase) : ViewModel() {
     }
 
     fun insertNote(note: NoteItem) = viewModelScope.launch {
-        dao.insertNote(note)
+        dao.insertNote(note.copy(modifiedAt = System.currentTimeMillis(), hasBeenEdited = false))
     }
 
     fun insertShopListName(listName: ShopListNameItem) = viewModelScope.launch {
@@ -61,7 +61,7 @@ class MainViewModel(private val database: MainDataBase) : ViewModel() {
         }
 
     fun updateNote(note: NoteItem) = viewModelScope.launch {
-        dao.updateNote(note)
+        dao.updateNote(note.copy(modifiedAt = System.currentTimeMillis(), hasBeenEdited = true))
     }
 
     fun updateLibraryItem(item: LibraryItem) = viewModelScope.launch {
@@ -71,6 +71,13 @@ class MainViewModel(private val database: MainDataBase) : ViewModel() {
     fun updateListItem(item: ShopListItem) = viewModelScope.launch {
         database.withTransaction {
             dao.updateListItem(item)
+            dao.updateShopListCounters(item.listId)
+        }
+    }
+
+    fun deleteShopItem(item: ShopListItem) = viewModelScope.launch {
+        database.withTransaction {
+            item.id?.let { dao.deleteShopItem(it) }
             dao.updateShopListCounters(item.listId)
         }
     }
@@ -108,7 +115,7 @@ class MainViewModel(private val database: MainDataBase) : ViewModel() {
     }
 
     private suspend fun isLibraryItemExists(name: String): Boolean {
-        return dao.getAllLibraryItems(name).isNotEmpty()
+        return dao.libraryItemExists(name)
     }
 
     class MainViewModelFactory(val database: MainDataBase) : ViewModelProvider.Factory {

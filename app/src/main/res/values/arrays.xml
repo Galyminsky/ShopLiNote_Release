@@ -18,22 +18,9 @@
     </string-array>
 
     <string-array name="time_format_values">
-        <item>hh:mm:ss - dd.MM.yyyy</item>
-        <item>dd.MM.yyyy - hh:mm:ss</item>
+        <item>HH:mm:ss - dd.MM.yyyy</item>
+        <item>dd.MM.yyyy - HH:mm:ss</item>
         <item>"h:mm a"</item>
-
-    </string-array>
-
-    <string-array name="choose_theme_array">
-        <item>Lavender Dream</item>
-        <item>Amber Glow</item>
-        <item>Forest Essence</item>
-    </string-array>
-
-    <string-array name="choose_theme_values">
-        <item>lavender_dream</item>
-        <item>amber_glow</item>
-        <item>forest_essence</item>
 
     </string-array>
 
@@ -54,4 +41,6 @@
         <item>32</item>
         <item>34</item>
     </string-array>
+    <string-array name="ds_mode_labels"><item>@string/ds_mode_light</item></string-array>
+    <string-array name="ds_mode_values"><item>light</item></string-array>
 </resources>

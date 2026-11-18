@@ -26,4 +26,7 @@ data class NoteItem(
     @ColumnInfo(name = "category")
     val category: String,
 
+    @ColumnInfo(defaultValue = "0") val modifiedAt: Long = 0,
+    @ColumnInfo(defaultValue = "0") val hasBeenEdited: Boolean = false,
+
     ) : Serializable

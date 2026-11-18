@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/ds_surface"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    android:fitsSystemWindows="false"
+    android:orientation="vertical"
+    android:paddingHorizontal="@dimen/ds_screen_padding_h"
+    android:paddingTop="@dimen/ds_screen_padding_top"
+    android:paddingBottom="@dimen/ds_screen_padding_bottom">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/ds_note_edit_toolbar_height"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:id="@+id/btnCancel"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+            <ImageView android:layout_width="20dp" android:layout_height="20dp" android:contentDescription="@null" app:srcCompat="@drawable/ds_ic_chevron_left" app:tint="@color/ds_note_color_ink" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="7dp" android:fontFamily="@font/inter_regular" android:text="@string/note_edit_cancel" android:textColor="@color/ds_note_color_ink" android:textSize="14sp" />
+        </LinearLayout>
+        <View android:layout_width="0dp" android:layout_height="1dp" android:layout_weight="1" />
+        <com.jobforandroid.shoplinoterelease.ui.ds.NeumorphicSurface style="@style/Widget.DS.PrimarySurface" android:layout_width="@dimen/ds_note_edit_save_width" android:layout_height="@dimen/ds_note_edit_save_height"><TextView
+            android:id="@+id/btnSave"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:clickable="true"
+            android:focusable="true"
+            android:fontFamily="@font/inter_semibold"
+            android:gravity="center"
+            android:text="@string/note_edit_save"
+            android:textColor="@color/ds_on_primary_surface"
+            android:textSize="13sp" /></com.jobforandroid.shoplinoterelease.ui.ds.NeumorphicSurface>
+    </LinearLayout>
+
+    <ScrollView android:id="@+id/svEditor" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:fillViewport="true" android:clipToPadding="true" android:scrollbars="none">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:paddingBottom="@dimen/ds_space_group_header">
+    <TextView
+        android:id="@+id/tvEditScreenTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/ds_space_block"
+        android:text="@string/note_edit_new_title"
+        android:textAppearance="@style/TextAppearance.DS.NoteEditScreenTitle"
+        tools:text="@string/note_edit_edit_title" />
+    <TextView
+        android:id="@+id/tvEditDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:textAppearance="@style/TextAppearance.DS.NoteEditDate"
+        tools:text="30 октября 2026 · 09:41" />
+
+    <com.jobforandroid.shoplinoterelease.ui.ds.NeumorphicSurface
+        android:id="@+id/cardEditor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/ds_space_block"
+        android:clipChildren="true"
+        android:clipToPadding="true"
+        android:padding="@dimen/ds_note_edit_card_padding"
+        app:dsCornerRadius="@dimen/ds_radius_m"
+        app:dsVariant="inset">
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+                <TextView android:id="@+id/tvFieldLabel" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/note_edit_field_title" android:textAppearance="@style/TextAppearance.DS.NoteEditLabel" />
+                <EditText
+                    android:id="@+id/etTitle"
+                    android:importantForAutofill="no"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:background="@null"
+                    android:gravity="top|start"
+                    android:hint="@string/note_edit_title_hint"
+                    android:imeOptions="actionNext"
+                    android:inputType="textCapSentences|textMultiLine"
+                    android:minLines="1"
+                    android:padding="0dp"
+                    android:textAppearance="@style/TextAppearance.DS.NoteEditTitleInput" />
+                <View android:id="@+id/vDivider" android:layout_width="match_parent" android:layout_height="1dp" android:layout_marginTop="18dp" android:background="@color/ds_divider" />
+                <EditText
+                    android:id="@+id/etContent"
+                    android:importantForAutofill="no"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:background="@null"
+                    android:gravity="top|start"
+                    android:hint="@string/note_edit_content_hint"
+                    android:inputType="textCapSentences|textMultiLine"
+                    android:minLines="6"
+                    android:padding="0dp"
+                    android:textAppearance="@style/TextAppearance.DS.NoteEditContentInput" />
+            </LinearLayout>
+
+    </com.jobforandroid.shoplinoterelease.ui.ds.NeumorphicSurface>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <com.jobforandroid.shoplinoterelease.ui.ds.NeumorphicSurface
+        android:id="@+id/panelFormat"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/ds_note_edit_format_height"
+        android:layout_marginHorizontal="@dimen/ds_note_edit_format_shadow_margin"
+        android:layout_marginTop="@dimen/ds_space_block"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:paddingHorizontal="10dp"
+        app:dsCornerRadius="@dimen/ds_radius_m"
+        app:dsVariant="raisedFlat">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:gravity="center_vertical" android:orientation="horizontal">
+            <com.jobforandroid.shoplinoterelease.ui.ds.NeumorphicSurface app:dsVariant="flat" app:dsPressedInset="true" app:dsCornerRadius="@dimen/ds_radius_s" android:id="@+id/btnBold" android:layout_width="0dp" android:layout_height="48dp" android:layout_weight="1"  android:clickable="true" android:contentDescription="@string/note_edit_format_bold" android:focusable="true">
+                <ImageView android:layout_width="20dp" android:layout_height="20dp" android:layout_gravity="center" android:contentDescription="@null" app:srcCompat="@drawable/ds_ic_bold" app:tint="@color/ds_note_color_ink" />
+            </com.jobforandroid.shoplinoterelease.ui.ds.NeumorphicSurface>
+            <com.jobforandroid.shoplinoterelease.ui.ds.NeumorphicSurface app:dsVariant="flat" app:dsPressedInset="true" app:dsCornerRadius="@dimen/ds_radius_s" android:id="@+id/btnItalic" android:layout_width="0dp" android:layout_height="48dp" android:layout_weight="1"  android:clickable="true" android:contentDescription="@string/note_edit_format_italic" android:focusable="true">
+                <ImageView android:layout_width="20dp" android:layout_height="20dp" android:layout_gravity="center" android:contentDescription="@null" app:srcCompat="@drawable/ds_ic_italic" app:tint="@color/ds_note_color_ink" />
+            </com.jobforandroid.shoplinoterelease.ui.ds.NeumorphicSurface>
+            <View android:layout_width="1dp" android:layout_height="24dp" android:background="@color/ds_divider" />
+            <com.jobforandroid.shoplinoterelease.ui.ds.NeumorphicSurface android:layout_width="0dp" android:layout_height="48dp" android:layout_weight="1" android:addStatesFromChildren="true" app:dsVariant="flat" app:dsPressedInset="true" app:dsCornerRadius="@dimen/ds_radius_s"><LinearLayout android:id="@+id/btnColor" android:layout_width="match_parent" android:layout_height="48dp"   android:clickable="true" android:contentDescription="@string/note_edit_format_color" android:focusable="true" android:gravity="center" android:orientation="vertical">
+                <TextView android:id="@+id/tvColorGlyph" android:layout_width="wrap_content" android:layout_height="wrap_content" android:fontFamily="@font/inter_medium" android:text="@string/ds_format_color_glyph" android:textColor="@color/ds_note_color_accent" android:textSize="20sp" />
+                <View android:id="@+id/vColorBar" android:layout_width="17dp" android:layout_height="3dp" android:layout_marginTop="3dp" android:background="@drawable/ds_bg_note_color_bar" />
+            </LinearLayout></com.jobforandroid.shoplinoterelease.ui.ds.NeumorphicSurface>
+        </LinearLayout>
+    </com.jobforandroid.shoplinoterelease.ui.ds.NeumorphicSurface>
+
+    <TextView
+        android:id="@+id/tvEditStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/inter_regular"
+        android:lineHeight="15.4sp"
+        android:textColor="@color/ds_on_surface_variant"
+        android:textSize="11sp"
+        android:visibility="invisible"
+        tools:text="@string/note_edit_status_draft" />
+</LinearLayout>

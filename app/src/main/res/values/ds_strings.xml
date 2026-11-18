@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ds_notes_title">Заметки</string>
+    <string name="ds_notes_subtitle">Всё важное — под рукой</string>
+    <string name="ds_notes_search_hint">Найти заметку</string>
+    <string name="ds_notes_section_all">Все заметки</string>
+    <string name="ds_notes_section_sort">По дате</string>
+    <string name="note_view_back">&#x417;&#x430;&#x43C;&#x435;&#x442;&#x43A;&#x438;</string>
+    <string name="note_view_empty">&#x41D;&#x435;&#x442; &#x442;&#x435;&#x43A;&#x441;&#x442;&#x430;</string>
+
+    <string name="note_view_edit">&#x420;&#x435;&#x434;&#x430;&#x43A;&#x442;&#x438;&#x440;&#x43E;&#x432;&#x430;&#x442;&#x44C;</string>
+    <string name="note_view_delete">&#x423;&#x434;&#x430;&#x43B;&#x438;&#x442;&#x44C;</string>
+
+    <string name="note_view_screen_title">&#x41F;&#x440;&#x43E;&#x441;&#x43C;&#x43E;&#x442;&#x440; &#x437;&#x430;&#x43C;&#x435;&#x442;&#x43A;&#x438;</string>
+    <string name="note_view_edited_prefix">&#x418;&#x437;&#x43C;&#x435;&#x43D;&#x435;&#x43D;&#x43E; &#xB7; %1$s</string>
+    <string name="note_view_delete_confirm_title">&#x423;&#x434;&#x430;&#x43B;&#x438;&#x442;&#x44C; &#x437;&#x430;&#x43C;&#x435;&#x442;&#x43A;&#x443;?</string>
+    <string name="note_view_delete_confirm_message">&#x42D;&#x442;&#x43E; &#x434;&#x435;&#x439;&#x441;&#x442;&#x432;&#x438;&#x435; &#x43D;&#x435;&#x43B;&#x44C;&#x437;&#x44F; &#x43E;&#x442;&#x43C;&#x435;&#x43D;&#x438;&#x442;&#x44C;.</string>
+    <string name="note_view_cancel">&#x41E;&#x442;&#x43C;&#x435;&#x43D;&#x430;</string>
+    <string name="note_menu_edit">&#x420;&#x435;&#x434;&#x430;&#x43A;&#x442;&#x438;&#x440;&#x43E;&#x432;&#x430;&#x442;&#x44C;</string>
+    <string name="note_menu_delete">&#x423;&#x434;&#x430;&#x43B;&#x438;&#x442;&#x44C;</string>
+    <string name="notes_empty_title">&#x41F;&#x43E;&#x43A;&#x430; &#x43D;&#x435;&#x442; &#x437;&#x430;&#x43C;&#x435;&#x442;&#x43E;&#x43A;</string>
+    <string name="notes_empty_message">&#x41D;&#x430;&#x436;&#x43C;&#x438;&#x442;&#x435; &#xAB;&#x41D;&#x43E;&#x432;&#x430;&#x44F; &#x437;&#x430;&#x43C;&#x435;&#x442;&#x43A;&#x430;&#xBB;, &#x447;&#x442;&#x43E;&#x431;&#x44B; &#x441;&#x43E;&#x437;&#x434;&#x430;&#x442;&#x44C; &#x43F;&#x435;&#x440;&#x432;&#x443;&#x44E;</string>
+    <string name="note_edit_cancel">Отмена</string>
+    <string name="note_edit_save">Сохранить</string>
+    <string name="note_edit_new_title">Новая заметка</string>
+    <string name="note_edit_edit_title">Редактирование</string>
+
+    <string name="note_edit_field_title">ЗАГОЛОВОК</string>
+    <string name="note_edit_title_hint">Название заметки</string>
+    <string name="note_edit_content_hint">Текст заметки</string>
+    <string name="note_edit_format_bold">Жирный</string>
+    <string name="note_edit_format_italic">Курсив</string>
+    <string name="note_edit_format_color">Цвет текста</string>
+
+    <string name="note_edit_color_ink">Тёмный</string>
+    <string name="note_edit_color_accent">Акцентный</string>
+    <string name="note_edit_color_red">Красный</string>
+    <string name="note_edit_color_orange">Оранжевый</string>
+    <string name="note_edit_color_green">Зелёный</string>
+    <string name="note_edit_color_blue">Синий</string>
+    <string name="note_edit_status_draft">&#x427;&#x435;&#x440;&#x43D;&#x43E;&#x432;&#x438;&#x43A; &#xB7; &#x435;&#x449;&#x451; &#x43D;&#x435; &#x441;&#x43E;&#x445;&#x440;&#x430;&#x43D;&#x451;&#x43D;</string>
+    <string name="note_edit_status_unsaved">&#x418;&#x437;&#x43C;&#x435;&#x43D;&#x435;&#x43D;&#x438;&#x44F; &#x43D;&#x435; &#x441;&#x43E;&#x445;&#x440;&#x430;&#x43D;&#x435;&#x43D;&#x44B;</string>
+    <string name="note_edit_discard_title">&#x41E;&#x442;&#x43C;&#x435;&#x43D;&#x438;&#x442;&#x44C; &#x438;&#x437;&#x43C;&#x435;&#x43D;&#x435;&#x43D;&#x438;&#x44F;?</string>
+    <string name="note_edit_discard_message">&#x412;&#x432;&#x435;&#x434;&#x451;&#x43D;&#x43D;&#x44B;&#x439; &#x442;&#x435;&#x43A;&#x441;&#x442; &#x43D;&#x435; &#x431;&#x443;&#x434;&#x435;&#x442; &#x441;&#x43E;&#x445;&#x440;&#x430;&#x43D;&#x451;&#x43D;.</string>
+    <string name="note_edit_discard_continue">&#x41F;&#x440;&#x43E;&#x434;&#x43E;&#x43B;&#x436;&#x438;&#x442;&#x44C; &#x440;&#x435;&#x434;&#x430;&#x43A;&#x442;&#x438;&#x440;&#x43E;&#x432;&#x430;&#x43D;&#x438;&#x435;</string>
+    <string name="note_edit_discard_cancel">&#x41E;&#x442;&#x43C;&#x435;&#x43D;&#x438;&#x442;&#x44C;</string>
+    <string name="shop_title">&#x41F;&#x43E;&#x43A;&#x443;&#x43F;&#x43A;&#x438;</string>
+
+    <string name="shop_search_hint">&#x41D;&#x430;&#x439;&#x442;&#x438; &#x441;&#x43F;&#x438;&#x441;&#x43E;&#x43A;</string>
+    <string name="shop_new_list">&#x41D;&#x43E;&#x432;&#x44B;&#x439; &#x441;&#x43F;&#x438;&#x441;&#x43E;&#x43A;</string>
+    <string name="shop_empty_title">&#x41F;&#x43E;&#x43A;&#x430; &#x43D;&#x435;&#x442; &#x441;&#x43F;&#x438;&#x441;&#x43A;&#x43E;&#x432;</string>
+    <string name="shop_empty_message">&#x41D;&#x430;&#x436;&#x43C;&#x438;&#x442;&#x435; &#xAB;&#x41D;&#x43E;&#x432;&#x44B;&#x439; &#x441;&#x43F;&#x438;&#x441;&#x43E;&#x43A;&#xBB;, &#x447;&#x442;&#x43E;&#x431;&#x44B; &#x441;&#x43E;&#x437;&#x434;&#x430;&#x442;&#x44C; &#x43F;&#x435;&#x440;&#x432;&#x44B;&#x439;</string>
+    <string name="shop_section_in_progress">&#x412; &#x41F;&#x420;&#x41E;&#x426;&#x415;&#x421;&#x421;&#x415;</string>
+
+    <plurals name="shop_active_lists">
+        <item quantity="one">%d &#x430;&#x43A;&#x442;&#x438;&#x432;&#x43D;&#x44B;&#x439; &#x441;&#x43F;&#x438;&#x441;&#x43E;&#x43A;</item>
+        <item quantity="few">%d &#x430;&#x43A;&#x442;&#x438;&#x432;&#x43D;&#x44B;&#x445; &#x441;&#x43F;&#x438;&#x441;&#x43A;&#x430;</item>
+        <item quantity="many">%d &#x430;&#x43A;&#x442;&#x438;&#x432;&#x43D;&#x44B;&#x445; &#x441;&#x43F;&#x438;&#x441;&#x43A;&#x43E;&#x432;</item>
+        <item quantity="other">%d &#x430;&#x43A;&#x442;&#x438;&#x432;&#x43D;&#x43E;&#x433;&#x43E; &#x441;&#x43F;&#x438;&#x441;&#x43A;&#x430;</item>
+    </plurals>
+    <plurals name="shop_list_count">
+        <item quantity="one">%d &#x441;&#x43F;&#x438;&#x441;&#x43E;&#x43A;</item>
+        <item quantity="few">%d &#x441;&#x43F;&#x438;&#x441;&#x43A;&#x430;</item>
+        <item quantity="many">%d &#x441;&#x43F;&#x438;&#x441;&#x43A;&#x43E;&#x432;</item>
+        <item quantity="other">%d &#x441;&#x43F;&#x438;&#x441;&#x43A;&#x430;</item>
+    </plurals>
+    <plurals name="shop_list_left">
+        <item quantity="one">&#x41E;&#x441;&#x442;&#x430;&#x43B;&#x43E;&#x441;&#x44C; %d</item>
+        <item quantity="few">&#x41E;&#x441;&#x442;&#x430;&#x43B;&#x43E;&#x441;&#x44C; %d</item>
+        <item quantity="many">&#x41E;&#x441;&#x442;&#x430;&#x43B;&#x43E;&#x441;&#x44C; %d</item>
+        <item quantity="other">&#x41E;&#x441;&#x442;&#x430;&#x43B;&#x43E;&#x441;&#x44C; %d</item>
+    </plurals>
+    <string name="ds_no_results">Ничего не найдено</string>
+    <string name="ds_mode_light">Светлая</string>
+
+    <string name="ds_shop_checked">%1$d из %2$d куплено</string>
+    <string name="ds_shop_all_lists">Все списки</string>
+    <string name="ds_settings_subtitle">Персонализация приложения</string>
+    <string name="ds_settings_general">Общие настройки</string>
+    <string name="ds_format_color_glyph" translatable="false">A</string>
+    <string name="ds_metadata_separator" translatable="false">·</string>
+</resources>

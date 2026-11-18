@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ds_notes_title">Notes</string>
+    <string name="ds_notes_subtitle">Keep what matters close</string>
+    <string name="ds_notes_search_hint">Find a note</string>
+    <string name="ds_notes_section_all">All notes</string>
+    <string name="ds_notes_section_sort">By date</string>
+    <string name="note_view_back">Notes</string>
+    <string name="note_view_empty">No text</string>
+
+    <string name="note_view_edit">Edit</string>
+    <string name="note_view_delete">Delete</string>
+
+    <string name="note_view_screen_title">View note</string>
+    <string name="note_view_edited_prefix">Edited · %1$s</string>
+    <string name="note_view_delete_confirm_title">Delete note?</string>
+    <string name="note_view_delete_confirm_message">This cannot be undone.</string>
+    <string name="note_view_cancel">Cancel</string>
+    <string name="note_menu_edit">Edit</string>
+    <string name="note_menu_delete">Delete</string>
+    <string name="notes_empty_title">No notes yet</string>
+    <string name="notes_empty_message">Tap “New note” to create your first note</string>
+    <string name="note_edit_cancel">Cancel</string>
+    <string name="note_edit_save">Save</string>
+    <string name="note_edit_new_title">New note</string>
+    <string name="note_edit_edit_title">Edit note</string>
+    <string name="note_edit_field_title">TITLE</string>
+    <string name="note_edit_title_hint">Note title</string>
+    <string name="note_edit_content_hint">Note text</string>
+    <string name="note_edit_format_bold">Bold</string>
+    <string name="note_edit_format_italic">Italic</string>
+    <string name="note_edit_format_color">Text color</string>
+    <string name="note_edit_color_ink">Default</string>
+    <string name="note_edit_color_accent">Accent</string>
+    <string name="note_edit_color_red">Red</string>
+    <string name="note_edit_color_orange">Orange</string>
+    <string name="note_edit_color_green">Green</string>
+    <string name="note_edit_color_blue">Blue</string>
+    <string name="note_edit_status_draft">Draft · not saved yet</string>
+    <string name="note_edit_status_unsaved">Unsaved changes</string>
+    <string name="note_edit_discard_title">Discard changes?</string>
+    <string name="note_edit_discard_message">Your text will not be saved.</string>
+    <string name="note_edit_discard_continue">Keep editing</string>
+    <string name="note_edit_discard_cancel">Discard</string>
+    <string name="shop_title">Shopping</string>
+
+    <string name="shop_search_hint">Find a list</string>
+    <string name="shop_new_list">New list</string>
+    <string name="shop_empty_title">No lists yet</string>
+    <string name="shop_empty_message">Tap “New list” to create your first list</string>
+    <string name="shop_section_in_progress">IN PROGRESS</string>
+
+    <string name="ds_no_results">No results</string>
+    <string name="ds_mode_light">Light</string>
+
+    <string name="ds_shop_checked">%1$d of %2$d purchased</string>
+    <string name="ds_shop_all_lists">All lists</string>
+
+    <plurals name="shop_active_lists"><item quantity="one">%d active list</item><item quantity="other">%d active lists</item></plurals>
+    <plurals name="shop_list_count"><item quantity="one">%d list</item><item quantity="other">%d lists</item></plurals>
+    <plurals name="shop_list_left"><item quantity="one">%d left</item><item quantity="other">%d left</item></plurals>
+    <string name="ds_settings_subtitle">App personalization</string>
+    <string name="ds_settings_general">General settings</string>
+</resources>

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.jobforandroid.shoplinoterelease.ui.ds.NeumorphicSurface xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottomNav"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clipChildren="false"
+    android:padding="@dimen/ds_nav_panel_padding" app:dsVariant="raised" app:dsCornerRadius="@dimen/ds_radius_l">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:baselineAligned="false" android:clipChildren="false">
+
+    <FrameLayout
+        android:id="@+id/navNotes"
+        android:contentDescription="@string/ds_notes_title"
+        android:screenReaderFocusable="true"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/ds_nav_item_height"
+        android:layout_marginHorizontal="4dp"
+        android:layout_weight="1"
+        android:clickable="true"
+        android:focusable="true">
+
+        <com.jobforandroid.shoplinoterelease.ui.ds.NeumorphicSurface
+            android:id="@+id/navNotesBg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            app:dsCornerRadius="@dimen/ds_radius_m"
+            app:dsVariant="inset"
+            tools:visibility="visible" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/navNotesIcon"
+                android:importantForAccessibility="no"
+                android:layout_width="@dimen/ds_icon_nav"
+                android:layout_height="@dimen/ds_icon_nav"
+                app:srcCompat="@drawable/ds_ic_notebook_pen"
+                app:tint="@color/ds_on_surface_variant"
+                tools:tint="@color/ds_accent_muted" />
+
+            <TextView
+                android:id="@+id/navNotesLabel"
+                android:importantForAccessibility="no"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/ds_notes_title"
+                android:textAppearance="@style/TextAppearance.DS.NavLabel"
+                tools:textAppearance="@style/TextAppearance.DS.NavLabel.Active" />
+        </LinearLayout>
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/navPurchases"
+        android:contentDescription="@string/shop_title"
+        android:screenReaderFocusable="true"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/ds_nav_item_height"
+        android:layout_marginHorizontal="4dp"
+        android:layout_weight="1"
+        android:clickable="true"
+        android:focusable="true">
+
+        <com.jobforandroid.shoplinoterelease.ui.ds.NeumorphicSurface
+            android:id="@+id/navPurchasesBg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            app:dsCornerRadius="@dimen/ds_radius_m"
+            app:dsVariant="inset" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/navPurchasesIcon"
+                android:importantForAccessibility="no"
+                android:layout_width="@dimen/ds_icon_nav"
+                android:layout_height="@dimen/ds_icon_nav"
+                app:srcCompat="@drawable/ds_ic_shopping_basket"
+                app:tint="@color/ds_on_surface_variant" />
+
+            <TextView
+                android:id="@+id/navPurchasesLabel"
+                android:importantForAccessibility="no"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/shop_title"
+                android:textAppearance="@style/TextAppearance.DS.NavLabel" />
+        </LinearLayout>
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/navSettings"
+        android:contentDescription="@string/settings"
+        android:screenReaderFocusable="true"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/ds_nav_item_height"
+        android:layout_marginHorizontal="4dp"
+        android:layout_weight="1"
+        android:clickable="true"
+        android:focusable="true">
+
+        <com.jobforandroid.shoplinoterelease.ui.ds.NeumorphicSurface
+            android:id="@+id/navSettingsBg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            app:dsCornerRadius="@dimen/ds_radius_m"
+            app:dsVariant="inset" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/navSettingsIcon"
+                android:importantForAccessibility="no"
+                android:layout_width="@dimen/ds_icon_nav"
+                android:layout_height="@dimen/ds_icon_nav"
+                app:srcCompat="@drawable/ds_ic_settings_2"
+                app:tint="@color/ds_on_surface_variant" />
+
+            <TextView
+                android:id="@+id/navSettingsLabel"
+                android:importantForAccessibility="no"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/settings"
+                android:textAppearance="@style/TextAppearance.DS.NavLabel" />
+        </LinearLayout>
+    </FrameLayout>
+</LinearLayout>
+</com.jobforandroid.shoplinoterelease.ui.ds.NeumorphicSurface>

@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.jobforandroid.shoplinoterelease.ui.ds.NeumorphicSurface xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+
+    android:clipChildren="false" style="@style/Widget.DS.SettingsRow">
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="center_vertical"
-    android:minHeight="64dp"
+    android:minHeight="@dimen/ds_settings_row_height"
     android:orientation="horizontal"
     android:paddingStart="16dp"
     android:paddingEnd="16dp"
@@ -12,12 +16,12 @@
 
     <ImageView
         android:id="@android:id/icon"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
         android:layout_marginEnd="16dp"
         android:contentDescription="@null"
         android:gravity="center"
-        android:scaleType="centerInside" />
+        android:scaleType="centerInside" app:tint="@color/ds_accent_muted" />
 
     <LinearLayout
         android:layout_width="0dp"
@@ -31,14 +35,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="?attr/colorOnSurface"
-            android:textSize="16sp" />
+            android:textAppearance="@style/TextAppearance.DS.SettingTitle" />
 
         <TextView
             android:id="@android:id/summary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="?attr/theme_muted_text"
-            android:textSize="14sp" />
+            android:textColor="@color/ds_on_surface_variant"
+            android:textAppearance="@style/TextAppearance.DS.Caption" />
     </LinearLayout>
 
     <FrameLayout
@@ -46,3 +50,5 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 </LinearLayout>
+
+</com.jobforandroid.shoplinoterelease.ui.ds.NeumorphicSurface>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ds_notes_title">Нотатки</string>
+    <string name="ds_notes_subtitle">Усе важливе — під рукою</string>
+    <string name="ds_notes_search_hint">Знайти нотатку</string>
+    <string name="ds_notes_section_all">Усі нотатки</string>
+    <string name="ds_notes_section_sort">За датою</string>
+    <string name="note_view_back">Нотатки</string>
+    <string name="note_view_empty">Немає тексту</string>
+
+    <string name="note_view_edit">Редагувати</string>
+    <string name="note_view_delete">Видалити</string>
+
+    <string name="note_view_screen_title">Перегляд нотатки</string>
+    <string name="note_view_edited_prefix">Змінено · %1$s</string>
+    <string name="note_view_delete_confirm_title">Видалити нотатку?</string>
+    <string name="note_view_delete_confirm_message">Цю дію неможливо скасувати.</string>
+    <string name="note_view_cancel">Скасувати</string>
+    <string name="note_menu_edit">Редагувати</string>
+    <string name="note_menu_delete">Видалити</string>
+    <string name="notes_empty_title">Нотаток поки немає</string>
+    <string name="notes_empty_message">Натисніть «Нова нотатка», щоб створити першу</string>
+    <string name="note_edit_cancel">Скасувати</string>
+    <string name="note_edit_save">Зберегти</string>
+    <string name="note_edit_new_title">Нова нотатка</string>
+    <string name="note_edit_edit_title">Редагування</string>
+    <string name="note_edit_field_title">ЗАГОЛОВОК</string>
+    <string name="note_edit_title_hint">Назва нотатки</string>
+    <string name="note_edit_content_hint">Текст нотатки</string>
+    <string name="note_edit_format_bold">Жирний</string>
+    <string name="note_edit_format_italic">Курсив</string>
+    <string name="note_edit_format_color">Колір тексту</string>
+    <string name="note_edit_color_ink">Основний</string>
+    <string name="note_edit_color_accent">Акцентний</string>
+    <string name="note_edit_color_red">Червоний</string>
+    <string name="note_edit_color_orange">Помаранчевий</string>
+    <string name="note_edit_color_green">Зелений</string>
+    <string name="note_edit_color_blue">Синій</string>
+    <string name="note_edit_status_draft">Чернетка · ще не збережена</string>
+    <string name="note_edit_status_unsaved">Незбережені зміни</string>
+    <string name="note_edit_discard_title">Скасувати зміни?</string>
+    <string name="note_edit_discard_message">Введений текст не буде збережено.</string>
+    <string name="note_edit_discard_continue">Продовжити редагування</string>
+    <string name="note_edit_discard_cancel">Скасувати</string>
+    <string name="shop_title">Покупки</string>
+
+    <string name="shop_search_hint">Знайти список</string>
+    <string name="shop_new_list">Новий список</string>
+    <string name="shop_empty_title">Списків поки немає</string>
+    <string name="shop_empty_message">Натисніть «Новий список», щоб створити перший</string>
+    <string name="shop_section_in_progress">У ПРОЦЕСІ</string>
+
+    <string name="ds_no_results">Нічого не знайдено</string>
+    <string name="ds_mode_light">Світла</string>
+
+    <string name="ds_shop_checked">%1$d з %2$d придбано</string>
+    <string name="ds_shop_all_lists">Усі списки</string>
+
+    <plurals name="shop_active_lists"><item quantity="one">%d активний список</item><item quantity="few">%d активні списки</item><item quantity="many">%d активних списків</item><item quantity="other">%d активного списку</item></plurals>
+    <plurals name="shop_list_count"><item quantity="one">%d список</item><item quantity="few">%d списки</item><item quantity="many">%d списків</item><item quantity="other">%d списку</item></plurals>
+    <plurals name="shop_list_left"><item quantity="one">Залишилося %d</item><item quantity="few">Залишилося %d</item><item quantity="many">Залишилося %d</item><item quantity="other">Залишилося %d</item></plurals>
+    <string name="ds_settings_subtitle">Персоналізація застосунку</string>
+    <string name="ds_settings_general">Загальні налаштування</string>
+</resources>

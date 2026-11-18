@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="NeumorphicSurface">
+        <attr name="dsVariant">
+            <enum name="raised" value="0" />
+            <enum name="raisedFlat" value="1" />
+            <enum name="inset" value="2" />
+            <enum name="flat" value="3" />
+        </attr>
+        <attr name="dsCornerRadius" format="dimension" />
+        <attr name="dsSurfaceColor" format="color" />
+        <attr name="dsPressedInset" format="boolean" />
+        <attr name="dsShadowOpacity" format="float" />
+        <attr name="dsInsetShadowOffset" format="dimension" />
+    </declare-styleable>
+    <declare-styleable name="EmbossTextView">
+        <attr name="dsEmbossOffset" format="dimension" />
+        <attr name="dsEmbossHighlight" format="color" />
+        <attr name="dsEmbossShadow" format="color" />
+    </declare-styleable>
+</resources>

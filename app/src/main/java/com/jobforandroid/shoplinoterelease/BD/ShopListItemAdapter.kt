@@ -15,7 +15,6 @@ import com.jobforandroid.shoplinoterelease.R
 import com.jobforandroid.shoplinoterelease.databinding.ShopLibraryListItemBinding
 import com.jobforandroid.shoplinoterelease.databinding.ShopListItemBinding
 import com.jobforandroid.shoplinoterelease.entities.ShopListItem
-import com.jobforandroid.shoplinoterelease.utils.CardGradient
 
 class ShopListItemAdapter(private val listener: Listener) :
     ListAdapter<ShopListItem, ShopListItemAdapter.ItemHolder>(ItemComparator()) {
@@ -30,9 +29,9 @@ class ShopListItemAdapter(private val listener: Listener) :
 
     override fun onBindViewHolder(holder: ItemHolder, position: Int) {
         if (getItem(position).itemType == 0) {
-            holder.setItemData(getItem(position), listener, position)
+            holder.setItemData(getItem(position), listener)
         } else {
-            holder.setLibraryData(getItem(position), listener, position)
+            holder.setLibraryData(getItem(position), listener)
         }
     }
 
@@ -59,10 +58,9 @@ class ShopListItemAdapter(private val listener: Listener) :
 
     class ItemHolder(val view: View) : RecyclerView.ViewHolder(view) {
 
-        fun setItemData(shopListItem: ShopListItem, listener: Listener, position: Int) {
+        fun setItemData(shopListItem: ShopListItem, listener: Listener) {
             val binding = ShopListItemBinding.bind(view)
             binding.apply {
-                CardGradient.apply(cardContent, position)
                 tvName.text = shopListItem.name
                 tvInfo.text = shopListItem.itemInfo
                 tvInfo.visibility = infoVisibility(shopListItem)
@@ -74,16 +72,16 @@ class ShopListItemAdapter(private val listener: Listener) :
                         CHECK_BOX
                     )
                 }
+                itemView.setOnLongClickListener { listener.onClickItem(shopListItem, DELETE_ITEM); true }
                 imEdit.setOnClickListener {
                     listener.onClickItem(shopListItem, EDIT)
                 }
             }
         }
 
-        fun setLibraryData(shopListItem: ShopListItem, listener: Listener, position: Int) {
+        fun setLibraryData(shopListItem: ShopListItem, listener: Listener) {
             val binding = ShopLibraryListItemBinding.bind(view)
             binding.apply {
-                CardGradient.apply(cardContent, position)
                 tvName.text = shopListItem.name
                 imEdit.setOnClickListener {
                     listener.onClickItem(shopListItem, EDIT_LIBRARY_ITEM)
@@ -102,7 +100,7 @@ class ShopListItemAdapter(private val listener: Listener) :
                 if (chBox.isChecked) {
                     tvName.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
                     tvInfo.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
-                    val mutedTextColor = getThemeColor(binding.root, R.attr.theme_muted_text)
+                    val mutedTextColor = ContextCompat.getColor(binding.root.context, R.color.ds_on_surface_variant)
                     tvName.setTextColor(mutedTextColor)
                     tvInfo.setTextColor(mutedTextColor)
                 } else {
@@ -158,7 +156,7 @@ class ShopListItemAdapter(private val listener: Listener) :
             oldItem: ShopListItem,
             newItem: ShopListItem
         ): Boolean {
-            return oldItem.id == newItem.id
+            return oldItem.id == newItem.id && oldItem.itemType == newItem.itemType
         }
 
         override fun areContentsTheSame(
@@ -174,6 +172,7 @@ class ShopListItemAdapter(private val listener: Listener) :
     }
 
     companion object {
+        const val DELETE_ITEM = 5
         const val EDIT = 0
         const val CHECK_BOX = 1
         const val EDIT_LIBRARY_ITEM = 2

@@ -2,11 +2,9 @@ package com.jobforandroid.shoplinoterelease.activities
 
 
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -20,13 +18,11 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.doOnLayout
 import androidx.lifecycle.lifecycleScope
-import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.jobforandroid.shoplinoterelease.ui.ds.DsDialogs
 import com.jobforandroid.shoplinoterelease.BD.MainViewModel
 import com.jobforandroid.shoplinoterelease.BD.ShopListItemAdapter
 import com.jobforandroid.shoplinoterelease.R
-import com.jobforandroid.shoplinoterelease.utils.ThemeManager
 import com.jobforandroid.shoplinoterelease.databinding.ActivityShopListBinding
 import com.jobforandroid.shoplinoterelease.dialogs.EditListItemDialog
 import com.jobforandroid.shoplinoterelease.entities.LibraryItem
@@ -54,17 +50,15 @@ class ShopListActivity : AppCompatActivity(), ShopListItemAdapter.Listener {
     private var isAddingLibrarySuggestion = false
     private var pendingAddedItemName: String? = null
     private lateinit var textWatcher: TextWatcher
-    private lateinit var defPref: SharedPreferences
-    private var currentTheme = ""
+    private var restoredInput: String? = null
+    private var restoredActions = false
 
     private val mainViewModel: MainViewModel by viewModels {
         MainViewModel.MainViewModelFactory((applicationContext as MainApp).database)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        defPref = PreferenceManager.getDefaultSharedPreferences(this)
-        currentTheme = ThemeManager.getThemeKey(this)
-        setTheme(getSelectedTheme())
+        setTheme(R.style.Theme_App_DS_Shop)
         super.onCreate(savedInstanceState)
         binding = ActivityShopListBinding.inflate(layoutInflater)
 
@@ -114,9 +108,13 @@ class ShopListActivity : AppCompatActivity(), ShopListItemAdapter.Listener {
         })
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
         init()
+        if (isFinishing) return
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = shopListNameItem?.name
         initRcView()
         listItemObserver()
+        restoredInput = savedInstanceState?.getString("shop_input")
+        restoredActions = savedInstanceState?.getBoolean("shop_actions") ?: false
         setupFloatingActions()
         applyFloatingActionInsets()
 
@@ -132,7 +130,20 @@ class ShopListActivity : AppCompatActivity(), ShopListItemAdapter.Listener {
         newItem.isVisible = false
         saveItem.isVisible = false
         textWatcher = textWatcher()
+        restoredInput?.let { input ->
+            newItem.isVisible = true
+            newItem.expandActionView()
+            edItem?.setText(input)
+            restoredInput = null
+        }
+        if (restoredActions) { setAdditionalActionsOpen(true); restoredActions = false }
         return true
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        if (isAddingItemMode) outState.putString("shop_input", edItem?.text?.toString().orEmpty())
+        outState.putBoolean("shop_actions", additionalActionsOpen)
+        super.onSaveInstanceState(outState)
     }
 
     private fun textWatcher(): TextWatcher {
@@ -141,7 +152,6 @@ class ShopListActivity : AppCompatActivity(), ShopListItemAdapter.Listener {
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-                Log.d("MyLog", "On Text Changed: $s")
                 mainViewModel.getAllLibraryItems("%$s%")
             }
 
@@ -151,6 +161,7 @@ class ShopListActivity : AppCompatActivity(), ShopListItemAdapter.Listener {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == android.R.id.home) { onBackPressedDispatcher.onBackPressed(); return true }
         if (item.itemId == R.id.save_item) {
             saveShopItem(collapseAfterSuccess = false)
             return true
@@ -160,13 +171,14 @@ class ShopListActivity : AppCompatActivity(), ShopListItemAdapter.Listener {
 
     private fun addNewShopItem(name: String, onComplete: (Result<Unit>) -> Unit): Boolean {
         if (name.isEmpty() || isAddingShopItem) return false
+        val listId = shopListNameItem?.id ?: return false
         isAddingShopItem = true
         val item = ShopListItem(
             null,
             name,
             "",
             false,
-            shopListNameItem?.id!!,
+            listId,
             0
         )
         val insertOperation = mainViewModel.insertShopItem(item)
@@ -184,7 +196,8 @@ class ShopListActivity : AppCompatActivity(), ShopListItemAdapter.Listener {
     }
 
     private fun listItemObserver() {
-        mainViewModel.getAllItemsFromList(shopListNameItem?.id!!).observe(this) {
+        val listId = shopListNameItem?.id ?: return
+        mainViewModel.getAllItemsFromList(listId).observe(this) {
             currentShopItems = it
             if (!isAddingItemMode) {
                 adapter?.submitList(it) { showPendingAddedItemFeedback() }
@@ -263,7 +276,8 @@ class ShopListActivity : AppCompatActivity(), ShopListItemAdapter.Listener {
     }
 
     private fun init() {
-        shopListNameItem = intent.getSerializableExtra(SHOP_LIST_NAME) as ShopListNameItem
+        shopListNameItem = runCatching { androidx.core.content.IntentCompat.getSerializableExtra(intent, SHOP_LIST_NAME, ShopListNameItem::class.java) }.getOrNull()
+        if (shopListNameItem?.id == null) { finish(); return }
     }
 
     companion object {
@@ -272,6 +286,9 @@ class ShopListActivity : AppCompatActivity(), ShopListItemAdapter.Listener {
 
     override fun onClickItem(shopListItem: ShopListItem, state: Int) {
         when (state) {
+            ShopListItemAdapter.DELETE_ITEM -> com.jobforandroid.shoplinoterelease.dialogs.DeleteDialog.showDialog(this, object : com.jobforandroid.shoplinoterelease.dialogs.DeleteDialog.Listener {
+                override fun onClick() { mainViewModel.deleteShopItem(shopListItem) }
+            })
             ShopListItemAdapter.CHECK_BOX -> mainViewModel.updateListItem(shopListItem)
             ShopListItemAdapter.EDIT -> editListItem(shopListItem)
             ShopListItemAdapter.EDIT_LIBRARY_ITEM -> editLibraryItem(shopListItem)
@@ -290,7 +307,7 @@ class ShopListActivity : AppCompatActivity(), ShopListItemAdapter.Listener {
                 if (!started) isAddingLibrarySuggestion = false
             }
             ShopListItemAdapter.DELETE_LIBRARY_ITEM -> {
-                mainViewModel.deleteLibraryItem(shopListItem.id!!)
+                shopListItem.id?.let { mainViewModel.deleteLibraryItem(it) }
                 mainViewModel.getAllLibraryItems("%${edItem?.text.toString()}%")
             }
         }
@@ -301,6 +318,7 @@ class ShopListActivity : AppCompatActivity(), ShopListItemAdapter.Listener {
             override fun onClick(item: ShopListItem) {
                 mainViewModel.updateListItem(item)
             }
+            override fun onDelete(item: ShopListItem) { mainViewModel.deleteShopItem(item) }
         })
     }
 
@@ -325,11 +343,6 @@ class ShopListActivity : AppCompatActivity(), ShopListItemAdapter.Listener {
                 if (collapseAfterSuccess) newItemMenu?.collapseActionView()
             }
         }
-    }
-
-    private fun getSelectedTheme(): Int {
-        return ThemeManager.getThemeStyle(this)
-
     }
 
     private fun setupFloatingActions() = with(binding) {
@@ -381,14 +394,9 @@ class ShopListActivity : AppCompatActivity(), ShopListItemAdapter.Listener {
 
     private fun confirmDeleteCurrentList() {
         val list = shopListNameItem ?: return
-        MaterialAlertDialogBuilder(this)
-            .setTitle(R.string.delete_alert)
-            .setMessage(getString(R.string.delete_current_list_confirm, list.name))
-            .setNegativeButton(R.string.cancel_button, null)
-            .setPositiveButton(R.string.delete_button) { _, _ ->
-                deleteCurrentList(list.id ?: return@setPositiveButton)
-            }
-            .show()
+        DsDialogs.confirm(this, getString(R.string.delete_alert), getString(R.string.delete_current_list_confirm, list.name), R.string.delete_button, R.string.cancel_button) {
+            list.id?.let { deleteCurrentList(it) }
+        }
     }
 
     private fun deleteCurrentList(listId: Int) {
@@ -396,6 +404,7 @@ class ShopListActivity : AppCompatActivity(), ShopListItemAdapter.Listener {
         isDeletingList = true
         mainViewModel.deleteShopList(listId, true).invokeOnCompletion { error ->
             runOnUiThread {
+                if (isDestroyed || isFinishing) return@runOnUiThread
                 isDeletingList = false
                 if (error == null) {
                     finish()
@@ -408,19 +417,15 @@ class ShopListActivity : AppCompatActivity(), ShopListItemAdapter.Listener {
 
     private fun confirmClearCurrentList() {
         val list = shopListNameItem ?: return
-        MaterialAlertDialogBuilder(this)
-            .setTitle(R.string.clear_list)
-            .setMessage(getString(R.string.clear_current_list_confirm, list.name))
-            .setNegativeButton(R.string.cancel_button, null)
-            .setPositiveButton(R.string.clear_all_action) { _, _ ->
-                val listId = list.id ?: return@setPositiveButton
+        DsDialogs.confirm(this, getString(R.string.clear_list), getString(R.string.clear_current_list_confirm, list.name), R.string.clear_all_action, R.string.cancel_button) {
+                val listId = list.id ?: return@confirm
                 mainViewModel.deleteShopList(listId, false).invokeOnCompletion { error ->
                     if (error != null) runOnUiThread {
+                        if (isDestroyed || isFinishing) return@runOnUiThread
                         Toast.makeText(this, R.string.action_failed, Toast.LENGTH_SHORT).show()
                     }
                 }
-            }
-            .show()
+        }
     }
 
     private fun setAdditionalActionsOpen(open: Boolean) {

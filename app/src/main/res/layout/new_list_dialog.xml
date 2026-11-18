@@ -3,34 +3,30 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:elevation="5dp">
+    android:padding="@dimen/ds_dialog_shadow_space"
+    android:clipChildren="false"
+    android:clipToPadding="false">
 
-    <com.google.android.material.card.MaterialCardView
+    <com.jobforandroid.shoplinoterelease.ui.ds.NeumorphicSurface app:dsCornerRadius="@dimen/ds_radius_l" app:dsVariant="raised"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="4dp"
         android:layout_marginBottom="4dp"
-        android:elevation="5dp"
-        app:cardBackgroundColor="?attr/colorSurface"
-        app:cardCornerRadius="12dp"
-        app:cardElevation="5dp"
-        android:outlineSpotShadowColor="?attr/theme_surface_shadow"
-        android:outlineAmbientShadowColor="?attr/theme_surface_highlight"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:strokeColor="?attr/theme_card_outline"
-        app:strokeWidth="1dp">
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:id="@+id/cardContent"
+            android:clipChildren="false"
+            android:clipToPadding="false"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="10dp">
+            android:padding="@dimen/ds_card_padding">
 
             <TextView
                 android:id="@+id/tvTitle"
@@ -39,28 +35,25 @@
                 android:gravity="center"
                 android:text="@string/new_list_name"
                 android:textColor="?attr/colorOnSurface"
-                android:textSize="18sp" />
+                android:textAppearance="@style/TextAppearance.DS.NoteTitle" />
 
-            <com.google.android.material.textfield.TextInputEditText
+            <com.jobforandroid.shoplinoterelease.ui.ds.NeumorphicSurface android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginVertical="@dimen/ds_space_card_inner" app:dsVariant="inset" app:dsCornerRadius="@dimen/ds_radius_m"><com.google.android.material.textfield.TextInputEditText android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@null" android:padding="@dimen/ds_field_padding"
                 android:id="@+id/edNewListName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="@string/list_name"
                 android:inputType="textPersonName"
                 android:textColor="?attr/colorOnSurface"
-                android:textColorHint="?attr/theme_muted_text"
-                android:backgroundTint="?attr/theme_card_outline"
-                android:minHeight="48dp" />
+                android:textColorHint="@color/ds_on_surface_variant"
+                android:minHeight="48dp" /></com.jobforandroid.shoplinoterelease.ui.ds.NeumorphicSurface>
 
-            <com.google.android.material.button.MaterialButton
+            <com.jobforandroid.shoplinoterelease.ui.ds.NeumorphicSurface style="@style/Widget.DS.PrimarySurface" android:layout_width="match_parent" android:layout_height="wrap_content">
+<com.google.android.material.button.MaterialButton android:layout_width="match_parent" android:layout_height="wrap_content"
                 android:id="@+id/bCreate"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:text="@string/create"
-                android:textColor="?attr/theme_on_gradient"
-                android:background="?attr/theme_gradient_button_drawable"
+                android:textColor="@color/ds_on_primary_surface"
+                style="@style/Widget.DS.Button.Primary"
                 app:cornerRadius="10dp" />
+</com.jobforandroid.shoplinoterelease.ui.ds.NeumorphicSurface>
         </LinearLayout>
-    </com.google.android.material.card.MaterialCardView>
+    </com.jobforandroid.shoplinoterelease.ui.ds.NeumorphicSurface>
 </androidx.constraintlayout.widget.ConstraintLayout>
